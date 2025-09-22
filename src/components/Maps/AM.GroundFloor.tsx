@@ -27,7 +27,7 @@ function AMGroundFloor({
 
   return (
     <TransformWrapper ref={transformRef} initialScale={3.5}>
-      {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+      {() => (
         <>
           <MapFloatingIcons />
           <TransformComponent wrapperStyle={{ width: '100%', height: '100%', paddingTop: 100 }}>
