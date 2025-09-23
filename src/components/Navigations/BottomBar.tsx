@@ -2,9 +2,9 @@ import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Paper } from '@mui/material';
+import { Bookmark, Map } from '@mui/icons-material';
 
 export default function BottomBar() {
   const [value, setValue] = React.useState(0);
@@ -23,9 +23,8 @@ export default function BottomBar() {
       <BottomNavigation
         showLabels
         value={value}
-        onChange={(event, newValue) => {
+        onChange={(_event, newValue) => {
           setValue(newValue);
-          console.log(event);
         }}
         sx={{
           backgroundColor: '#7B48FF',
@@ -39,9 +38,10 @@ export default function BottomBar() {
           },
         }}
       >
+        <BottomNavigationAction label="Explore" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Maps" icon={<Map />} />
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Save" icon={<Bookmark />} />
       </BottomNavigation>
     </Paper>
   );
