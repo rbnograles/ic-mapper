@@ -1,31 +1,14 @@
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Stack,
-  Chip,
-  TextField,
-  Autocomplete,
-} from '@mui/material';
+import { AppBar, Box, Toolbar, TextField, Autocomplete } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import FlatwareIcon from '@mui/icons-material/Flatware';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import WcIcon from '@mui/icons-material/Wc';
-import RoomServiceIcon from '@mui/icons-material/RoomService';
-import ElevatorIcon from '@mui/icons-material/Elevator';
-import EscalatorIcon from '@mui/icons-material/Escalator';
-import DoorFront from '@mui/icons-material/DoorFront';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import Chips from './Chips';
+import LocationPinIcon from '@mui/icons-material/LocationPin';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: 10,
   backgroundColor: theme.palette.common.white,
   boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
-  marginLeft: theme.spacing(2),
   flex: 1,
   display: 'flex',
   alignItems: 'center',
@@ -52,6 +35,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
+const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toUpperCase());
+
 export default function SearchAppBar({
   options,
   onSelect,
@@ -72,17 +57,7 @@ export default function SearchAppBar({
           paddingTop: 1.5,
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between', paddingX: 3, marginBottom: 2 }}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="default"
-            aria-label="menu"
-            sx={{ mr: 2, bgcolor: 'white', boxShadow: 1, borderRadius: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-
+        <Toolbar sx={{ justifyContent: 'space-between', marginBottom: 2 }}>
           {/* Search box with Autocomplete */}
           <Search>
             <SearchIconWrapper>
@@ -90,15 +65,20 @@ export default function SearchAppBar({
             </SearchIconWrapper>
             <Autocomplete
               freeSolo
-             
               options={options}
-              getOptionLabel={(opt) => opt.name}
+              getOptionLabel={(opt) => (opt?.name ? capitalizeWords(opt.name.toLowerCase()) : '')}
               onChange={(_, value) => onSelect(value)}
               sx={{ flex: 1 }}
+              renderOption={(props, option) => (
+                <li {...props} key={option.id} style={{ display: 'flex', alignItems: 'center' }}>
+                  <LocationPinIcon style={{ marginRight: 8, color: '#1976d2' }} />
+                  {capitalizeWords(option.name.toLowerCase())}
+                </li>
+              )}
               renderInput={(params) => (
                 <StyledTextField
                   {...params}
-                  style={{ padding:10}}
+                  style={{ padding: 10 }}
                   placeholder="Search for a place"
                   variant="standard"
                 />
@@ -108,74 +88,7 @@ export default function SearchAppBar({
         </Toolbar>
 
         {/* Chips Section */}
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{
-            overflowX: 'auto',
-            width: '100%',
-            paddingX: 2,
-            pb: 1,
-            '&::-webkit-scrollbar': { display: 'none' },
-          }}
-        >
-          <Chip
-            label="Restaurants"
-            onClick={handleClick}
-            icon={<FlatwareIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Shops"
-            onClick={handleClick}
-            icon={<StorefrontIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Restrooms"
-            onClick={handleClick}
-            icon={<WcIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Concierge"
-            onClick={handleClick}
-            icon={<RoomServiceIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Elevator"
-            onClick={handleClick}
-            icon={<ElevatorIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Escalator"
-            onClick={handleClick}
-            icon={<EscalatorIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Entrance/Exit"
-            onClick={handleClick}
-            icon={<DoorFront style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-          <Chip
-            label="Services"
-            onClick={handleClick}
-            icon={<AccountBalanceIcon style={{ color: 'white' }} />}
-            clickable
-            style={{ backgroundColor: '#8E99C7', color: 'white' }}
-          />
-        </Stack>
+        <Chips handleClick={handleClick} />
       </AppBar>
     </Box>
   );
