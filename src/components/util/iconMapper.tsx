@@ -1,20 +1,24 @@
 import type { JSX } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import EscalatorIcon from '@mui/icons-material/Escalator';
-import DoorSlidingIcon from '@mui/icons-material/DoorSliding';
-import ElevatorIcon from '@mui/icons-material/Elevator';
-import WcIcon from '@mui/icons-material/Wc';
+import { GiEscalator } from 'react-icons/gi';
+import { FaRestroom } from 'react-icons/fa';
+import { FaConciergeBell } from 'react-icons/fa';
+import { FaDoorOpen } from 'react-icons/fa';
+import { FaElevator } from 'react-icons/fa6';
+import { FaBoxesStacked } from 'react-icons/fa6';
 
 const style = {
   default: { color: 'white', fontSize: 22 },
-}
+};
 
 const ICON_MAP: Record<string, JSX.Element> = {
-    location: <LocationOnIcon style={style.default} />,
-    escalator: <EscalatorIcon style={style.default} />,
-    door: <DoorSlidingIcon style={style.default} />,
-    elevator: <ElevatorIcon style={style.default} />,
-    restroom: <WcIcon style={style.default} />,
+  location: <LocationOnIcon style={style.default} />,
+  escalator: <GiEscalator style={style.default} />,
+  door: <FaDoorOpen style={{ color: 'black', fontSize: 20, margin: 2 }} />,
+  elevator: <FaElevator style={{ color: 'white', fontSize: 18, margin: 2 }} />,
+  restroom: <FaRestroom style={style.default} />,
+  concierge: <FaConciergeBell style={{ color: 'black', fontSize: 20, margin: 2 }} />,
+  box: <FaBoxesStacked style={{ color: 'black', fontSize: 20, margin: 2 }} />,
 };
 
 export default ICON_MAP;
