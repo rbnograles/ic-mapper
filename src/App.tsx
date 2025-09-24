@@ -1,106 +1,96 @@
 import { useState, useMemo } from 'react';
-import { Box } from '@mui/material';
+import { Box, CssBaseline } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+
+import theme from './styles/theme';
+import { layoutStyles } from './styles/layoutStyles';
 import BottomBar from './components/Navigations/BottomBar';
 import AMGroundFloor from './components/Maps/AM.GroundFloor';
 import SearchAppBar from './components/Navigations/SearchAppBar';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Map from './components/Data/GroupFloor.json';
+import MapData from './components/Data/GroupFloor.json';
 
-const theme = createTheme({
-  typography: {
-    fontFamily: 'Poppins, Roboto, Helvetica, Arial, sans-serif',
-  },
-});
+export interface PathItem {
+  id: string;
+  name: string;
+  type?: string;
+  image?: string;
+}
 
 export default function App() {
+  // Map Highlight State
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [highlightName, setHighlightName] = useState<string | null>(null);
-
-  // ✅ New: track which TYPE is selected
   const [selectedType, setSelectedType] = useState<string | null>(null);
-
-  const options = useMemo(() => [...Map.GroundFloor], []);
-
-  const handleSelect = (path: any) => {
-    setHighlightName(path?.name || null);
-    setHighlightId(path?.id || null);
-    setSelectedType(null); // clear type filter when a specific path is selected
-  };
-
-  const handleClickPath = (path: any) => {
-    setHighlightName(path?.name || null);
-    setHighlightId(path?.id || null);
-    setSelectedType(null); // clear type filter when a specific path is clicked
-  };
-
-  const handleChipClick = (type: string) => {
-    // clicking same chip toggles it off
-    setSelectedType((prev) => (prev === type ? null : type));
-    setHighlightId(null); // clear specific highlight when filtering by type
+  // path information stage
+  const [pathItem, setPathItems] = useState<PathItem>({
+    name: '',
+    id: '',
+  });
+  // Slider State
+  const [expanded, setExpanded] = useState(false);
+  const resetHighlight = () => {
+    setHighlightId(null);
     setHighlightName(null);
   };
 
-  const uniqueOptions = options.filter(
-    (item, index, self) => index === self.findIndex((t) => t.name === item.name)
+  const handlePathSelect = (path: PathItem | null) => {
+    setHighlightId(path?.id || null);
+    setHighlightName(path?.name || null);
+    setPathItems(path as PathItem);
+    setSelectedType(null);
+  };
+
+  const handleChipClick = (type: string) => {
+    setSelectedType((prev) => (prev === type ? null : type));
+    resetHighlight();
+  };
+
+  const handleSliderPathClick = () => {
+    setExpanded(true);
+  };
+
+  const handleSliderClose = () => {
+    setExpanded(false);
+  };
+
+  // Map render State
+  const options = useMemo(() => [...MapData.GroundFloor], []);
+
+  const uniqueOptions = useMemo(
+    () =>
+      options.filter((item, index, self) => index === self.findIndex((t) => t.name === item.name)),
+    [options]
   );
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ minHeight: '100vh', pb: 7, bgcolor: '#F5F3F3' }}>
-        {/* Search Bar */}
-        <Box
-          sx={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            zIndex: 1200,
-          }}
-        >
+      <Box sx={layoutStyles.appRoot}>
+        <Box sx={layoutStyles.fixedTop}>
           <SearchAppBar
             options={uniqueOptions}
-            onSelect={handleSelect}
+            onSelect={handlePathSelect}
             handleChipClick={handleChipClick}
           />
         </Box>
 
-        {/* Map Body */}
-        <Box sx={{ height: 'calc(100vh - 120px)', overflow: 'hidden', mt: 7 }}>
+        <Box sx={layoutStyles.mapContainer}>
           <AMGroundFloor
             highlightId={highlightId}
             highlightName={highlightName}
-            selectedType={selectedType} // ✅ send down
+            selectedType={selectedType}
             map={options}
-            onClick={handleClickPath}
+            onClick={handlePathSelect}
+            handleSliderPathClick={handleSliderPathClick}
           />
         </Box>
 
-        {/* Chips for filtering by type */}
-        <Box
-          sx={{
-            position: 'fixed',
-            bottom: 56, // leave space for BottomBar
-            left: 0,
-            width: '100%',
-            zIndex: 1200,
-            bgcolor: 'transparent',
-          }}
-        ></Box>
-
-        {/* Bottom Navigation */}
-        <Box
-          sx={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            width: '100%',
-            zIndex: 1200,
-            bgcolor: 'transparent',
-          }}
-        >
-          <BottomBar />
+        <Box sx={layoutStyles.fixedBottom}>
+          <BottomBar
+            expanded={expanded}
+            handleSliderClose={handleSliderClose}
+            pathItem={pathItem}
+          />
         </Box>
       </Box>
     </ThemeProvider>

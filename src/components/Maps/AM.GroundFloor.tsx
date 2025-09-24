@@ -5,21 +5,32 @@ import ICON_MAP from '../util/iconMapper';
 import AMGFNames from './partials/AM.GF.Names';
 import AMGFMapBoundaries from './partials/AM.GF.MapBoundaries';
 import AMGroundFloorBase from './partials/AM.GF.MapBase';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 function AMGroundFloor({
   highlightId,
   highlightName,
-  selectedType, // ✅ NEW
+  selectedType,
   map,
   onClick,
+  handleSliderPathClick,
 }: {
   highlightId: string | null;
   highlightName: string | null;
-  selectedType?: string | null; // ✅ NEW
+  selectedType?: string | null;
   map: any[];
   onClick?: (p: any) => void;
+  handleSliderPathClick?: () => void;
 }) {
+  const theme = useTheme();
   const transformRef = useRef<any>(null);
+  // ✅ MUI breakpoints
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // <600px
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md')); // 600–900px
+
+  // ✅ Decide scale based on breakpoint
+  const initialScale = isMobile ? 1.5 : isTablet ? 2 : 3;
+
   const [centers, setCenters] = useState<Record<string, { x: number; y: number }>>({});
   const originalPositions = useRef<Map<string, { parent: SVGGElement; index: number }>>(new Map());
   const prevHighlightRef = useRef<string | null>(null);
@@ -27,9 +38,20 @@ function AMGroundFloor({
   const focusOnPath = useCallback((id: string) => {
     const path = document.getElementById(id);
     if (!path || !transformRef.current) return;
+
+    // zoom normally
     transformRef.current.zoomToElement(path, 4.5, 300);
+
+    // then pan upward slightly
+    setTimeout(() => {
+      const { state, centerView } = transformRef.current;
+      const offsetY = isMobile ? -2000 : -100;
+      centerView(state.positionX, state.positionY + offsetY, state.scale, 200);
+    }, 310); // run after zoom animation
   }, []);
 
+  // Calculate centers and store original positions of paths whenever the map changes
+  // eg. clicks or highlights
   useEffect(() => {
     const newCenters: Record<string, { x: number; y: number }> = {};
     map.forEach((p: any) => {
@@ -48,10 +70,12 @@ function AMGroundFloor({
     setCenters(newCenters);
   }, [map]);
 
+  // make sure that the view of the application focuses on the highlighted path
   useEffect(() => {
     if (highlightId) focusOnPath(highlightId);
   }, [highlightId, focusOnPath]);
 
+  // Move highlighted path to end of SVG to ensure it's on top
   useEffect(() => {
     if (!highlightId) return;
     const prevId = prevHighlightRef.current;
@@ -77,10 +101,21 @@ function AMGroundFloor({
     prevHighlightRef.current = highlightId;
   }, [highlightId]);
 
-  const handleClick = useCallback((p: any) => onClick?.(p), [onClick]);
+  const handleClick = useCallback(
+    (p: any) => {
+      onClick?.(p); // first callback
+      handleSliderPathClick?.(); // second callback
+    },
+    [onClick, handleSliderPathClick]
+  );
 
   return (
-    <TransformWrapper ref={transformRef} initialScale={3}>
+    <TransformWrapper
+      ref={transformRef}
+      initialScale={initialScale}
+      limitToBounds={false}
+      centerOnInit={true} // ✅ allow moving beyond SVG edges
+    >
       <MapFloatingIcons />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox="-10 -20 1760 1190" style={{ width: '100%', height: 'auto' }} fill="none">
