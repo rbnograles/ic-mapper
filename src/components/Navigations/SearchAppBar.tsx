@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import Chips from './Chips';
 import LocationPinIcon from '@mui/icons-material/LocationPin';
+import uniqueTypes from '../Data/unique_types.json';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -40,12 +41,12 @@ const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toU
 export default function SearchAppBar({
   options,
   onSelect,
+  handleChipClick,
 }: {
   options: any[];
   onSelect: (item: any) => void;
+  handleChipClick: (type: string) => void;
 }) {
-  const handleClick = () => console.info('Chip clicked');
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -57,7 +58,7 @@ export default function SearchAppBar({
           paddingTop: 1.5,
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between', marginBottom: 2 }}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           {/* Search box with Autocomplete */}
           <Search>
             <SearchIconWrapper>
@@ -65,14 +66,33 @@ export default function SearchAppBar({
             </SearchIconWrapper>
             <Autocomplete
               freeSolo
+              blurOnSelect
               options={options}
               getOptionLabel={(opt) => (opt?.name ? capitalizeWords(opt.name.toLowerCase()) : '')}
               onChange={(_, value) => onSelect(value)}
               sx={{ flex: 1 }}
               renderOption={(props, option) => (
-                <li {...props} key={option.id} style={{ display: 'flex', alignItems: 'center' }}>
-                  <LocationPinIcon style={{ marginRight: 8, color: '#1976d2' }} />
-                  {capitalizeWords(option.name.toLowerCase())}
+                <li
+                  {...props}
+                  key={option.id}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start', // align top so name+type stack nicely
+                    flexDirection: 'column',
+                    padding: '8px 12px',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+                    <LocationPinIcon sx={{ mr: 1, color: 'red' }} />
+                    <Box>
+                      <Box sx={{ fontWeight: 500, fontSize: 16 }}>
+                        {capitalizeWords(option.name.toLowerCase())}
+                      </Box>
+                      <Box sx={{ fontSize: 13, color: 'text.secondary' }}>
+                        {option.type ?? 'Unknown'}
+                      </Box>
+                    </Box>
+                  </Box>
                 </li>
               )}
               renderInput={(params) => (
@@ -88,7 +108,7 @@ export default function SearchAppBar({
         </Toolbar>
 
         {/* Chips Section */}
-        <Chips handleClick={handleClick} />
+        <Chips handleClick={handleChipClick} types={uniqueTypes.types} />
       </AppBar>
     </Box>
   );
