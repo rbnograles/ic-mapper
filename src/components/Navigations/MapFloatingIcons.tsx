@@ -13,7 +13,7 @@ function MapFloatingIcons() {
       sx={{
         '& > :not(style)': { m: 1 },
         position: 'fixed',
-        bottom: 100,
+        bottom: 10,
         right: 16,
         display: 'flex',
         flexDirection: 'column',
