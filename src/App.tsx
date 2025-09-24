@@ -13,7 +13,8 @@ export interface PathItem {
   id: string;
   name: string;
   type?: string;
-  image?: string;
+  img?: string;
+  description?: string;
 }
 
 export default function App() {

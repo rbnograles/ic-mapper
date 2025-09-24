@@ -4,3 +4,10 @@
   font-family: 'Poppins', sans-serif !important;
   background-color: #F5F3F3;
 }
+
+@keyframes pinPop {
+  0%   { transform: scale(0) translateY(0); }
+  60%  { transform: scale(1.2) translateY(-6px); }  /* overshoot + small lift */
+  100% { transform: scale(1) translateY(-4px); }
+}
+

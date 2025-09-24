@@ -26,10 +26,10 @@ function AMGroundFloor({
   const transformRef = useRef<any>(null);
   // ✅ MUI breakpoints
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // <600px
-  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md')); // 600–900px
+  const isTablet = useMediaQuery(theme.breakpoints.between('lg', 'xl')); // 600–900px
 
   // ✅ Decide scale based on breakpoint
-  const initialScale = isMobile ? 1.5 : isTablet ? 2 : 3;
+  const initialScale = isMobile ? 1.5 : isTablet ? 2.4 : 3.5;
 
   const [centers, setCenters] = useState<Record<string, { x: number; y: number }>>({});
   const originalPositions = useRef<Map<string, { parent: SVGGElement; index: number }>>(new Map());
@@ -38,16 +38,7 @@ function AMGroundFloor({
   const focusOnPath = useCallback((id: string) => {
     const path = document.getElementById(id);
     if (!path || !transformRef.current) return;
-
-    // zoom normally
     transformRef.current.zoomToElement(path, 4.5, 300);
-
-    // then pan upward slightly
-    setTimeout(() => {
-      const { state, centerView } = transformRef.current;
-      const offsetY = isMobile ? -2000 : -100;
-      centerView(state.positionX, state.positionY + offsetY, state.scale, 200);
-    }, 310); // run after zoom animation
   }, []);
 
   // Calculate centers and store original positions of paths whenever the map changes
@@ -110,13 +101,8 @@ function AMGroundFloor({
   );
 
   return (
-    <TransformWrapper
-      ref={transformRef}
-      initialScale={initialScale}
-      limitToBounds={false}
-      centerOnInit={true} // ✅ allow moving beyond SVG edges
-    >
-      <MapFloatingIcons />
+    <TransformWrapper ref={transformRef} initialScale={initialScale}>
+      <MapFloatingIcons transformRef={transformRef} />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox="-10 -20 1760 1190" style={{ width: '100%', height: 'auto' }} fill="none">
           <g id="Base Map">

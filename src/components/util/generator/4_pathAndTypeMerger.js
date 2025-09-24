@@ -20,7 +20,7 @@ baseData.GroundFloor = baseData.GroundFloor.map(item => {
   const key = item.name.trim().toLowerCase();
   return {
     ...item,
-    type: typeMap.get(key) || item.name // default to 'Unknown' if no match
+    type: typeMap.get(key) || item.name
   };
 });
 
