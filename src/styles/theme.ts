@@ -6,14 +6,14 @@ const theme = createTheme({
   },
   palette: {
     background: {
-      default: '#F5F3F3',
+      default: '#e9e8e8',
     },
     primary: {
-      main: '#283B6A', // you can reuse your existing brand colors
+      main: '#7B48FF',
     },
     secondary: {
-      main: '#F02430',
-    },
+      main: '#371a55ff',
+    }
   },
 });
 
