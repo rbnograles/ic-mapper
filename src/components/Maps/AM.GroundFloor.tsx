@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import MapFloatingIcons from '../Navigations/MapFloatingIcons';
 import ICON_MAP from '../util/iconMapper';
@@ -38,7 +38,7 @@ function AMGroundFloor({
   const focusOnPath = useCallback((id: string) => {
     const path = document.getElementById(id);
     if (!path || !transformRef.current) return;
-    transformRef.current.zoomToElement(path, 4.5, 300);
+    transformRef.current.zoomToElement(path, 5.5, 800);
   }, []);
 
   // Calculate centers and store original positions of paths whenever the map changes
@@ -62,9 +62,17 @@ function AMGroundFloor({
   }, [map]);
 
   // make sure that the view of the application focuses on the highlighted path
+  // allows smoother transitions
   useEffect(() => {
-    if (highlightId) focusOnPath(highlightId);
-  }, [highlightId, focusOnPath]);
+    if (!highlightId) return;
+    const timeout = setTimeout(
+      () => {
+        focusOnPath(highlightId);
+      },
+      isMobile ? 200 : 0
+    ); // delay only on mobile
+    return () => clearTimeout(timeout);
+  }, [highlightId, focusOnPath, isMobile]);
 
   // Move highlighted path to end of SVG to ensure it's on top
   useEffect(() => {
@@ -101,7 +109,12 @@ function AMGroundFloor({
   );
 
   return (
-    <TransformWrapper ref={transformRef} initialScale={initialScale}>
+    <TransformWrapper
+      ref={transformRef}
+      limitToBounds={false}
+      centerOnInit
+      initialScale={initialScale}
+    >
       <MapFloatingIcons transformRef={transformRef} />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox="-10 -20 1760 1190" style={{ width: '100%', height: 'auto' }} fill="none">
@@ -139,4 +152,4 @@ function AMGroundFloor({
   );
 }
 
-export default AMGroundFloor;
+export default memo(AMGroundFloor);
