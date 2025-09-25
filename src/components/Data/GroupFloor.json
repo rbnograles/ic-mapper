@@ -7,7 +7,7 @@
       "type": "Park",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": ["Vector192", "Vector187", "Vector186"]
     },
     {
       "id": "Vector 44",
@@ -16,7 +16,7 @@
       "type": "Park",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": ["Vector192"]
     },
     {
       "id": "Vector 45",
@@ -25,7 +25,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 46",
@@ -34,7 +34,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 47",
@@ -43,7 +43,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 48",
@@ -52,7 +52,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 128",
@@ -61,7 +61,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 130",
@@ -70,7 +70,7 @@
       "type": "Services",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 131",
@@ -79,7 +79,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 132",
@@ -88,7 +88,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 133",
@@ -97,7 +97,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 134",
@@ -106,7 +106,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 135",
@@ -115,7 +115,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 127",
@@ -124,7 +124,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 129",
@@ -133,7 +133,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 49",
@@ -142,7 +142,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 50",
@@ -151,7 +151,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 51",
@@ -160,7 +160,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 52",
@@ -169,7 +169,7 @@
       "type": "Services",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 53",
@@ -178,7 +178,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 54",
@@ -187,7 +187,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 55",
@@ -196,7 +196,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 56",
@@ -205,7 +205,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 57",
@@ -214,7 +214,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 58",
@@ -223,7 +223,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 59",
@@ -232,7 +232,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 60",
@@ -241,7 +241,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 61",
@@ -250,7 +250,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 62",
@@ -259,7 +259,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 63",
@@ -268,7 +268,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 64",
@@ -277,7 +277,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 65",
@@ -286,7 +286,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 66",
@@ -295,7 +295,7 @@
       "type": "Services",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 67",
@@ -304,7 +304,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 68",
@@ -313,7 +313,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 69",
@@ -322,7 +322,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 70",
@@ -331,7 +331,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 71",
@@ -340,7 +340,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 73",
@@ -349,7 +349,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 75",
@@ -358,7 +358,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 76",
@@ -367,7 +367,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 77",
@@ -376,7 +376,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 79",
@@ -385,7 +385,7 @@
       "type": "Transport Terminal",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 80",
@@ -396,7 +396,7 @@
       "type": "Services",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 81",
@@ -406,7 +406,7 @@
       "type": "Landmark",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 82",
@@ -415,7 +415,7 @@
       "type": "Food & Beverage",
       "img": "https://imgs.search.brave.com/6orNHNqHgBLy-ihwLn9xuVpT-gKS_S4o-JLY3CymWiE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDU4/MTE1NzgxL3Bob3Rv/L2pvbGxpYmVlLXNp/Z24uanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWtvYktibElt/OEo1dXQyc0hkT3pO/b05EU2QwandlZzlT/NHoxb0JSOEh1YVU9",
       "description": "Jollibee is best known for Chickenjoy, our signature fried chicken which is delicately hand-breaded to be crispylicious on the outside, with a secret marinade making it juicylicious on the inside. Every day, our customers revel in the joy of our fan favorites which include our deliciously savory hamburgers, sweet-style Jolly Spaghetti, and scrumptious Peach Mango Pie made with real Philippine mangoes.",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 83",
@@ -424,7 +424,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 84",
@@ -433,7 +433,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 85",
@@ -442,7 +442,7 @@
       "type": "Activity Center",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 87",
@@ -451,7 +451,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 88",
@@ -460,7 +460,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 89",
@@ -469,7 +469,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 90",
@@ -478,7 +478,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 91",
@@ -487,7 +487,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 92",
@@ -496,7 +496,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 93",
@@ -505,7 +505,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 94",
@@ -514,7 +514,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 95",
@@ -523,7 +523,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 96",
@@ -532,7 +532,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 97",
@@ -541,7 +541,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 98",
@@ -550,7 +550,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 99",
@@ -559,7 +559,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 100",
@@ -568,7 +568,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 101",
@@ -577,7 +577,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-72",
@@ -586,7 +586,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-73",
@@ -595,7 +595,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-74",
@@ -604,7 +604,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-75",
@@ -613,7 +613,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 103",
@@ -622,7 +622,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 104",
@@ -631,7 +631,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 105",
@@ -640,7 +640,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-80",
@@ -649,7 +649,7 @@
       "type": "Hotel",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 107",
@@ -658,7 +658,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 108",
@@ -667,7 +667,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 109",
@@ -678,7 +678,7 @@
       "type": "Escalator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 112",
@@ -689,7 +689,7 @@
       "type": "Escalator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 113",
@@ -700,7 +700,7 @@
       "type": "Restroom",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 119",
@@ -711,7 +711,7 @@
       "type": "Escalator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 120",
@@ -722,7 +722,7 @@
       "type": "Concierge",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 124",
@@ -733,7 +733,7 @@
       "type": "Escalator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 137",
@@ -744,7 +744,7 @@
       "type": "Restroom",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 138",
@@ -755,7 +755,7 @@
       "type": "Restroom",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 139",
@@ -766,7 +766,7 @@
       "type": "Escalator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 140",
@@ -777,7 +777,7 @@
       "type": "Escalator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 141",
@@ -788,7 +788,7 @@
       "type": "Concierge",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 123",
@@ -799,7 +799,7 @@
       "type": "Restroom",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 122",
@@ -810,7 +810,7 @@
       "type": "Restroom",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 110",
@@ -821,7 +821,7 @@
       "type": "Concierge",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 111",
@@ -832,7 +832,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 114",
@@ -843,7 +843,7 @@
       "type": "Elevator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 115",
@@ -854,7 +854,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 116",
@@ -865,7 +865,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 117",
@@ -876,7 +876,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 118",
@@ -887,7 +887,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 121",
@@ -898,7 +898,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 125",
@@ -909,7 +909,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 184",
@@ -920,7 +920,7 @@
       "type": "Elevator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 136",
@@ -931,7 +931,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 143",
@@ -940,7 +940,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 144",
@@ -949,7 +949,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 145",
@@ -958,7 +958,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 146",
@@ -967,7 +967,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 147",
@@ -976,7 +976,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 148",
@@ -985,7 +985,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 149",
@@ -994,7 +994,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 150",
@@ -1003,7 +1003,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-117",
@@ -1012,7 +1012,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "path-118",
@@ -1021,7 +1021,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 152",
@@ -1030,7 +1030,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 153",
@@ -1039,7 +1039,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 154",
@@ -1048,7 +1048,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 155",
@@ -1057,7 +1057,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 156",
@@ -1066,7 +1066,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 157",
@@ -1075,7 +1075,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 158",
@@ -1084,7 +1084,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 159",
@@ -1093,7 +1093,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 160",
@@ -1102,7 +1102,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 161",
@@ -1111,7 +1111,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 162",
@@ -1120,7 +1120,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 163",
@@ -1129,7 +1129,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 164",
@@ -1138,7 +1138,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 165",
@@ -1147,7 +1147,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 166",
@@ -1156,7 +1156,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 167",
@@ -1165,7 +1165,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 168",
@@ -1174,7 +1174,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 169",
@@ -1183,7 +1183,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 172",
@@ -1192,7 +1192,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 173",
@@ -1201,7 +1201,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 174",
@@ -1212,7 +1212,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 175",
@@ -1221,7 +1221,7 @@
       "type": "Food & Beverage",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 176",
@@ -1230,7 +1230,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 177",
@@ -1239,7 +1239,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 178",
@@ -1248,7 +1248,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 179",
@@ -1257,7 +1257,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 180",
@@ -1266,7 +1266,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 181",
@@ -1275,7 +1275,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 182",
@@ -1284,7 +1284,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 183",
@@ -1293,7 +1293,7 @@
       "type": "Retail",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 170",
@@ -1304,7 +1304,7 @@
       "type": "Elevator",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 142",
@@ -1315,7 +1315,7 @@
       "type": "Restroom",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     },
     {
       "id": "Vector 171",
@@ -1326,7 +1326,7 @@
       "type": "Entrance/Exit",
       "img": "",
       "description": "Place description goes in here...",
-      "nearLocations": []
+      "nearPaths": []
     }
   ]
 }

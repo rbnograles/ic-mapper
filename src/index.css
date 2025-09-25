@@ -11,3 +11,13 @@
   100% { transform: scale(1) translateY(-4px); }
 }
 
+@keyframes flowStroke {
+  to {
+    stroke-dashoffset: -1000; /* moves the dash pattern forward */
+  }
+}
+
+.path-flow {
+  stroke-dasharray: 20 20;        /* dash length + gap length */
+  animation: flowStroke 20s linear infinite;
+}

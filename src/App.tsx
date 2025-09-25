@@ -8,13 +8,17 @@ import BottomBar from './components/Navigations/BottomBar';
 import AMGroundFloor from './components/Maps/AM.GroundFloor';
 import SearchAppBar from './components/Navigations/SearchAppBar';
 import MapData from './components/Data/GroupFloor.json';
-
+import EdgePath from './components/Data/routingEdges.json';
 export interface PathItem {
   id: string;
   name: string;
   type?: string;
   img?: string;
   description?: string;
+}
+export interface EdgePathTypes {
+  id: string;
+  d: string;
 }
 
 export default function App() {
@@ -27,8 +31,11 @@ export default function App() {
     name: '',
     id: '',
   });
+  const [activePathIds, setActivePathIds] = useState<string[]>([]);
+
   // Slider State
   const [expanded, setExpanded] = useState(false);
+
   const resetHighlight = () => {
     setHighlightId(null);
     setHighlightName(null);
@@ -39,7 +46,25 @@ export default function App() {
     setHighlightName(path?.name || null);
     setPathItems(path as PathItem);
     setSelectedType(null);
-    setExpanded(true);
+  };
+
+  const handlePathSearchBehavior = (path: PathItem | null) => {
+    setPathItems(path as PathItem);
+  };
+
+  const setActivePathsViaSearch = (a: any, b: any) => {
+    if (!a || !b) return;
+
+    // Make sure nearPaths arrays exist
+    const nearA = Array.isArray(a.nearPaths) ? a.nearPaths : [];
+    const nearB = Array.isArray(b.nearPaths) ? b.nearPaths : [];
+    console.log(nearA);
+    console.log(nearB);
+    // Only keep IDs that are present in BOTH nearPaths arrays
+    const activeIds = nearA.filter((id: string) => nearB.includes(id));
+    console.log(activeIds);
+    // Set those shared path IDs as active
+    setActivePathIds(activeIds);
   };
 
   const handleChipClick = (type: string) => {
@@ -73,6 +98,8 @@ export default function App() {
             options={uniqueOptions}
             onSelect={handlePathSelect}
             handleChipClick={handleChipClick}
+            setActivePathsViaSearch={setActivePathsViaSearch}
+            handlePathSearchBehavior={handlePathSearchBehavior}
           />
         </Box>
 
@@ -84,6 +111,8 @@ export default function App() {
             map={options}
             onClick={handlePathSelect}
             handleSliderPathClick={handleSliderPathClick}
+            activePathIds={activePathIds}
+            edgePath={EdgePath.edges as unknown as EdgePathTypes}
           />
         </Box>
 

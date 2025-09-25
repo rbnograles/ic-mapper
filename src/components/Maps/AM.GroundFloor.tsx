@@ -6,6 +6,8 @@ import AMGFNames from './partials/AM.GF.Names';
 import AMGFMapBoundaries from './partials/AM.GF.MapBoundaries';
 import AMGroundFloorBase from './partials/AM.GF.MapBase';
 import { useTheme, useMediaQuery } from '@mui/material';
+import AMGFRoutingPaths from './partials/AM.GF.RoutingPaths';
+import type { EdgePathTypes } from '../../App';
 
 function AMGroundFloor({
   highlightId,
@@ -14,6 +16,8 @@ function AMGroundFloor({
   map,
   onClick,
   handleSliderPathClick,
+  activePathIds,
+  edgePath,
 }: {
   highlightId: string | null;
   highlightName: string | null;
@@ -21,6 +25,8 @@ function AMGroundFloor({
   map: any[];
   onClick?: (p: any) => void;
   handleSliderPathClick?: () => void;
+  activePathIds: string[];
+  edgePath: EdgePathTypes;
 }) {
   const theme = useTheme();
   const transformRef = useRef<any>(null);
@@ -145,6 +151,7 @@ function AMGroundFloor({
             ))}
 
             <AMGFNames />
+            <AMGFRoutingPaths activeIds={activePathIds} paths={edgePath as any} />
           </g>
         </svg>
       </TransformComponent>
