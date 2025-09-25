@@ -39,6 +39,7 @@ export default function App() {
     setHighlightName(path?.name || null);
     setPathItems(path as PathItem);
     setSelectedType(null);
+    setExpanded(true);
   };
 
   const handleChipClick = (type: string) => {

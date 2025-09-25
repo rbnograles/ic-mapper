@@ -24,15 +24,16 @@ try {
 
   // ✅ Add new fields
   baseData.GroundFloor = baseData.GroundFloor.map(item => ({
+    ...item,
     id: item.id,
     name: item.name,
     img: item.img || '',
-    description: item.description || '',
+    description: item.description || 'Place description goes in here...',
     nearLocations: Array.isArray(item.nearLocations) ? item.nearLocations : []
   }));
 
   // ✅ Save back
-  fs.writeFileSync('../../Data/GroupFloor2.json', JSON.stringify(baseData, null, 2), 'utf-8');
+  fs.writeFileSync('../../Data/GroupFloor.json', JSON.stringify(baseData, null, 2), 'utf-8');
   console.log(`✅ Update complete! New fields added in ../../Data/GroupFloor2.json`);
 
 } catch (err) {
