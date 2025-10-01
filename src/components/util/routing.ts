@@ -1,219 +1,174 @@
 // utils/routing.ts
-type NodeItem = {
-  id: string;
-  name?: string;
-  path: string; // polygon path d or area path
-};
+import type { Graph, Place, INodes } from '../../interface/BaseMap';
 
-type EdgeItem = {
-  id: string;
-  d: string; // path d for the segment
-  from?: string; // optional pre-mapped node id
-  to?: string;   // optional pre-mapped node id
-};
+type AdjList = Record<string, { to: string; weight: number }[]>;
 
-type EdgeWithMeta = EdgeItem & {
-  length: number;
-  from?: string;
-  to?: string;
-  startPoint?: { x: number; y: number };
-  endPoint?: { x: number; y: number };
-};
+/**
+ * Build adjacency list from nodes.neighbors
+ */
+function buildAdjacency(graph: Graph): AdjList {
+  const adj: AdjList = {};
 
-const SVG_NS = 'http://www.w3.org/2000/svg';
-
-function makePathElement(d: string) {
-  const p = document.createElementNS(SVG_NS, 'path');
-  p.setAttribute('d', d);
-  return p;
-}
-
-function getPathLengthAndEndpoints(d: string) {
-  try {
-    const p = makePathElement(d);
-    const length = p.getTotalLength();
-    const start = p.getPointAtLength(0);
-    const end = p.getPointAtLength(Math.max(0, length - 0.0001));
-    return {
-      length,
-      start: { x: start.x, y: start.y },
-      end: { x: end.x, y: end.y },
-    };
-  } catch (err) {
-    console.warn('Invalid path d:', d, err);
-    return { length: Infinity, start: null, end: null };
+  for (const node of graph.nodes) {
+    adj[node.id] = [];
   }
+
+  for (const node of graph.nodes) {
+    for (const neighborId of node.neighbors ?? []) {
+      const neighbor = graph.nodes.find((n) => n.id === neighborId);
+      if (!neighbor) continue;
+
+      const weight = Math.hypot(node.x - neighbor.x, node.y - neighbor.y);
+
+      // bidirectional
+      adj[node.id].push({ to: neighborId, weight });
+      adj[neighborId].push({ to: node.id, weight });
+    }
+  }
+
+  return adj;
 }
 
-function getNodeCenterFromD(d: string) {
-  try {
-    const p = makePathElement(d);
-    const box = p.getBBox();
-    return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
-  } catch {
+/**
+ * Euclidean distance heuristic for A*
+ */
+function heuristic(a: INodes, b: INodes) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
+/**
+ * A* pathfinding
+ */
+export function findShortestPath(graph: Graph, startNode: string, endNode: string) {
+  const adj = buildAdjacency(graph);
+  const nodesById = Object.fromEntries(graph.nodes.map((n) => [n.id, n]));
+
+  if (!(startNode in adj)) throw new Error(`Start node ${startNode} not found`);
+  if (!(endNode in adj)) throw new Error(`End node ${endNode} not found`);
+
+  const openSet = new Set<string>([startNode]);
+  const cameFrom: Record<string, string | null> = {};
+
+  const gScore: Record<string, number> = {};
+  const fScore: Record<string, number> = {};
+
+  for (const n of graph.nodes) {
+    gScore[n.id] = Infinity;
+    fScore[n.id] = Infinity;
+    cameFrom[n.id] = null;
+  }
+
+  gScore[startNode] = 0;
+  fScore[startNode] = heuristic(nodesById[startNode], nodesById[endNode]);
+
+  while (openSet.size > 0) {
+    let current: string = [...openSet].reduce((a, b) => (fScore[a] < fScore[b] ? a : b));
+
+    if (current === endNode) {
+      const path: string[] = [];
+      while (current) {
+        path.unshift(current);
+        current = cameFrom[current]!;
+      }
+      return { nodes: path, distance: gScore[endNode] };
+    }
+
+    openSet.delete(current);
+
+    for (const { to, weight } of adj[current]) {
+      const tentativeG = gScore[current] + weight;
+      if (tentativeG < gScore[to]) {
+        cameFrom[to] = current;
+        gScore[to] = tentativeG;
+        fScore[to] = tentativeG + heuristic(nodesById[to], nodesById[endNode]);
+        openSet.add(to);
+      }
+    }
+  }
+
+  return { nodes: [], distance: Infinity };
+}
+
+/**
+ * Compute centroid of a polygon path string (M/L commands only)
+ */
+function computeCentroid(pathStr: string): { x: number; y: number } {
+  const numbers = pathStr.match(/-?\d+(\.\d+)?/g)?.map(Number) || [];
+  const xs = numbers.filter((_, i) => i % 2 === 0);
+  const ys = numbers.filter((_, i) => i % 2 === 1);
+
+  const cx = xs.reduce((a, b) => a + b, 0) / xs.length;
+  const cy = ys.reduce((a, b) => a + b, 0) / ys.length;
+
+  return { x: cx, y: cy };
+}
+
+/**
+ * Find nearest graph node to a given point
+ */
+function findNearestNode(graph: Graph, point: { x: number; y: number }): string | null {
+  let nearest: string | null = null;
+  let bestDist = Infinity;
+
+  for (const node of graph.nodes) {
+    const d = Math.hypot(point.x - node.x, point.y - node.y);
+    if (d < bestDist) {
+      bestDist = d;
+      nearest = node.id;
+    }
+  }
+
+  return nearest;
+}
+
+/**
+ * Path between places (auto-nearest-node if entranceNode not set)
+ */
+export function findPathBetweenPlaces(graph: Graph, placeA: string, placeB: string) {
+  const p1 = graph.places.find((p) => p.name === placeA);
+  const p2 = graph.places.find((p) => p.name === placeB);
+  console.log(p1);
+  console.log(p2);
+  if (!p1 || !p2) {
+    console.warn('Place not found', { placeA, placeB });
     return null;
   }
-}
 
-function sqDist(a: { x: number; y: number }, b: { x: number; y: number }) {
-  const dx = a.x - b.x;
-  const dy = a.y - b.y;
-  return dx * dx + dy * dy;
-}
+  const validNode = (id: string) => graph.nodes.some((n) => n.id === id);
 
-/**
- * Build graph:
- *  - compute node centers
- *  - compute edge lengths & endpoints
- *  - match each edge endpoint to nearest node (within threshold) OR use from/to if present
- */
-export function buildGraphFromData(nodes: NodeItem[], edges: EdgeItem[], options?: { matchThreshold?: number }) {
-  const threshold = options?.matchThreshold ?? 40; // px — tune this for your map scale
-  const thresholdSq = threshold * threshold;
+  const getNodes = (p: Place) => {
+    if (p.entranceNode && validNode(p.entranceNode)) return [p.entranceNode];
+    if (p.nearNodes) return p.nearNodes.filter(validNode);
 
-  // 1) compute node centers
-  const nodeCenters: Record<string, { x: number; y: number }> = {};
-  nodes.forEach((n) => {
-    const c = getNodeCenterFromD(n.path);
-    if (c) nodeCenters[n.id] = c;
-    else console.warn('Could not compute center for node', n.id);
-  });
-
-  // 2) process edges
-  const edgesMeta: EdgeWithMeta[] = edges.map((e) => {
-    const info = getPathLengthAndEndpoints(e.d);
-    return {
-      ...e,
-      length: info.length || Infinity,
-      startPoint: info.start || undefined,
-      endPoint: info.end || undefined,
-    };
-  });
-
-  // 3) match endpoints to nodes (if not provided)
-  edgesMeta.forEach((edge) => {
-    if (edge.from && edge.to) return; // already mapped
-
-    const start = edge.startPoint;
-    const end = edge.endPoint;
-    let bestStartId: string | undefined;
-    let bestEndId: string | undefined;
-
-    if (start) {
-      let bestDist = Infinity;
-      for (const nid of Object.keys(nodeCenters)) {
-        const d = sqDist(start, nodeCenters[nid]);
-        if (d < bestDist) {
-          bestDist = d;
-          bestStartId = nid;
-        }
-      }
-      if (bestDist > thresholdSq) {
-        // too far: maybe manual mapping required
-        bestStartId = undefined;
-      }
+    // fallback: nearest node to polygon centroid
+    if (p.path) {
+      const centroid = computeCentroid(p.path);
+      const nearest = findNearestNode(graph, centroid);
+      return nearest ? [nearest] : [];
     }
 
-    if (end) {
-      let bestDist = Infinity;
-      for (const nid of Object.keys(nodeCenters)) {
-        const d = sqDist(end, nodeCenters[nid]);
-        if (d < bestDist) {
-          bestDist = d;
-          bestEndId = nid;
-        }
-      }
-      if (bestDist > thresholdSq) bestEndId = undefined;
-    }
+    return [];
+  };
 
-    // assign if found
-    if (bestStartId) edge.from = bestStartId;
-    if (bestEndId) edge.to = bestEndId;
-  });
+  const startNodes = getNodes(p1);
+  const endNodes = getNodes(p2);
 
-  // 4) build adjacency list
-  const graph: Record<
-    string,
-    { to: string; edgeId: string; weight: number }[]
-  > = {};
+  if (startNodes.length === 0 || endNodes.length === 0) {
+    console.warn('No valid nodes for one or both places', { p1, p2 });
+    return null;
+  }
 
-  // init graph nodes
-  nodes.forEach((n) => (graph[n.id] = graph[n.id] ?? []));
+  let best: { nodes: string[]; distance: number } | null = null;
 
-  edgesMeta.forEach((edge) => {
-    const { from, to, id, length } = edge;
-    if (!from || !to) {
-      console.warn(`Edge ${id} missing from/to mapping — skip or fix manually`, edge);
-      return;
-    }
-    graph[from].push({ to, edgeId: id, weight: length });
-    graph[to].push({ to: from, edgeId: id, weight: length }); // undirected
-  });
-
-  return { graph, edgesMeta, nodeCenters };
-}
-
-/**
- * Dijkstra's algorithm (simple version)
- * Returns { nodesPath: [...nodeId], edgesPath: [...edgeId], distance }
- */
-export function dijkstraFindPath(
-  graph: Record<string, { to: string; edgeId: string; weight: number }[]>,
-  start: string,
-  end: string
-) {
-  const nodes = Object.keys(graph);
-  const dist: Record<string, number> = {};
-  const prevNode: Record<string, string | null> = {};
-  const prevEdge: Record<string, string | null> = {};
-  const visited: Set<string> = new Set();
-
-  nodes.forEach((n) => {
-    dist[n] = Infinity;
-    prevNode[n] = null;
-    prevEdge[n] = null;
-  });
-  if (!graph[start] || !graph[end]) return null;
-  dist[start] = 0;
-
-  while (true) {
-    // find unvisited node with smallest dist
-    let u: string | null = null;
-    let best = Infinity;
-    for (const n of nodes) {
-      if (visited.has(n)) continue;
-      if (dist[n] < best) {
-        best = dist[n];
-        u = n;
-      }
-    }
-    if (u === null) break; // no reachable nodes
-    if (u === end) break;
-    visited.add(u);
-
-    // relax neighbors
-    for (const neighbor of graph[u]) {
-      if (visited.has(neighbor.to)) continue;
-      const alt = dist[u] + neighbor.weight;
-      if (alt < dist[neighbor.to]) {
-        dist[neighbor.to] = alt;
-        prevNode[neighbor.to] = u;
-        prevEdge[neighbor.to] = neighbor.edgeId;
+  for (const s of startNodes) {
+    for (const t of endNodes) {
+      const result = findShortestPath(graph, s, t);
+      if (result.nodes.length === 0) continue;
+      if (!best || result.distance < best.distance) {
+        best = result;
       }
     }
   }
 
-  if (dist[end] === Infinity) return null; // no path
-
-  // backtrack
-  const nodesPath: string[] = [];
-  const edgesPath: string[] = [];
-  let cur: string | null = end;
-  while (cur) {
-    nodesPath.unshift(cur);
-    if (prevEdge[cur]) edgesPath.unshift(prevEdge[cur]!);
-    cur = prevNode[cur];
-  }
-
-  return { nodesPath, edgesPath, distance: dist[end] };
+  return best;
 }

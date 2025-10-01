@@ -9,6 +9,8 @@ type MapRegionProps = {
     strokeWidth?: string | number;
     icon?: any;
     isTypeHighlighted: boolean;
+    centerX: number | undefined;
+    centerY: number | undefined;
   };
   highlightName: string | null;
   centers: { [key: string]: { x: number; y: number } };
@@ -30,18 +32,14 @@ const AMGroundFloorBase = React.memo(
     const isNameHighlighted = highlightName === p.name;
 
     const fillColor = isNameHighlighted
-      ? '#7B48FF'
+      ? '#F2FFB7'
       : isTypeHighlighted
-        ? '#7B48FF'
+        ? '#F2FFB7'
         : p.baseFill || '#E4E9F4';
 
-    const strokeColor = isNameHighlighted
-      ? '#010626ff'
-      : isTypeHighlighted
-        ? '#010626ff'
-        : '#7b48ff';
+    const strokeColor = isNameHighlighted ? '#FDC023' : isTypeHighlighted ? '#FDC023' : '#F4EDDB';
 
-    const strokeWidth = isNameHighlighted || isTypeHighlighted ? 3 : 1;
+    const strokeWidth = isNameHighlighted || isTypeHighlighted ? 4 : 2;
 
     return (
       <g key={p.id} onClick={() => onClick?.(p)}>
@@ -62,8 +60,22 @@ const AMGroundFloorBase = React.memo(
 
         {/* ---- Center Icon ---- */}
         {centers[p.id] && (
-          <foreignObject x={centers[p.id].x - 12} y={centers[p.id].y - 12} width={24} height={24}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <foreignObject
+            x={centers[p.id].x - 40}
+            y={centers[p.id].y - (p.centerY !== undefined ? p.centerY : 12)}
+            width={86}
+            height={86}
+          >
+            <div
+              style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                pointerEvents: 'none',
+              }}
+            >
               {ICON_MAP[p.icon]}
             </div>
           </foreignObject>

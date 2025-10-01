@@ -9,7 +9,9 @@ import ParkIcon from '@mui/icons-material/Park';
 import { Stack, Chip, ThemeProvider, CssBaseline } from '@mui/material';
 import type { JSX } from 'react';
 import { FaBus, FaServer } from 'react-icons/fa';
-import { FaLocationArrow } from 'react-icons/fa6';
+import { FaLocationArrow, FaStairs } from 'react-icons/fa6';
+import { BsBank2 } from 'react-icons/bs';
+
 import theme from '../../styles/theme';
 
 const iconMap: Record<string, JSX.Element> = {
@@ -23,7 +25,8 @@ const iconMap: Record<string, JSX.Element> = {
   'Entrance/Exit': <DoorFrontIcon style={{ color: 'white' }} />,
   Park: <ParkIcon style={{ color: 'white' }} />,
   'Transport Terminal': <FaBus style={{ color: 'white' }} />,
-  // Add more types here as needed
+  Stairs: <FaStairs style={{ color: 'white' }} />,
+  Bank: <BsBank2 style={{ color: 'white' }} />,
 };
 
 type ChipsProps = {

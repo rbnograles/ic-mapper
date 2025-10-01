@@ -59,14 +59,14 @@ export default function SearchAppBar({
   options,
   onSelect,
   handleChipClick,
-  setActivePathsViaSearch,
   handlePathSearchBehavior,
+  handleRoute,
 }: {
   options: any[];
   onSelect: (item: any, type?: 'A' | 'B') => void;
   handleChipClick: (type: string) => void;
-  setActivePathsViaSearch: (a: any, b: any) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
+  handleRoute: (from: string, to: string) => void;
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -77,7 +77,7 @@ export default function SearchAppBar({
 
   const setPointBMethod = (val: any) => {
     setPointB(val);
-    setActivePathsViaSearch(pointA, val);
+    handleRoute(pointA.name, val.name);
     if (pointA) setDirectionOpen(false);
   };
 
@@ -216,7 +216,7 @@ export default function SearchAppBar({
           </Stack>
           <Divider />
           <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ pt: 2 }}>
-            <Stack spacing={1.5} alignItems="center" sx={{ mt: 2 }}>
+            <Stack spacing={1.5} alignItems="center" style={{ marginTop: 18 }}>
               <Box
                 sx={{
                   width: 16,

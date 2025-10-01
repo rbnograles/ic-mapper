@@ -4,11 +4,11 @@ import { GiEscalator } from 'react-icons/gi';
 import { FaRestroom } from 'react-icons/fa';
 import { FaConciergeBell } from 'react-icons/fa';
 import { FaDoorOpen } from 'react-icons/fa';
-import { FaElevator } from 'react-icons/fa6';
+import { FaElevator, FaStairs } from 'react-icons/fa6';
 import { FaBoxesStacked } from 'react-icons/fa6';
 
 const style = {
-  default: { color: 'white', fontSize: 22 },
+  default: { color: 'black', fontSize: 500 },
 };
 
 const ICON_MAP: Record<string, JSX.Element> = {
@@ -19,6 +19,7 @@ const ICON_MAP: Record<string, JSX.Element> = {
   restroom: <FaRestroom style={style.default} />,
   concierge: <FaConciergeBell style={{ color: 'black', fontSize: 20, margin: 2 }} />,
   box: <FaBoxesStacked style={{ color: 'black', fontSize: 20, margin: 2 }} />,
+  stairs: <FaStairs style={{ color: 'black', fontSize: 500, margin: 2 }} />,
 };
 
 export default ICON_MAP;
