@@ -8,74 +8,7 @@ import { useTheme, useMediaQuery } from '@mui/material';
 import type { INodes } from '../../interface/BaseMap';
 import AMGFRoadMarks from './partials/AM.GF.RoadMarks';
 import AMGFBuildingMarks from './partials/AM.GF.BuildingMarks';
-
-import { motion } from 'framer-motion';
-import { line, curveCatmullRom } from 'd3-shape';
-import { FaMapMarkerAlt } from 'react-icons/fa';
-
-type Node = { id: string; x: number; y: number };
-
-export function Route({ route, nodes }: { route: string[]; nodes: Node[] }) {
-  if (!route || route.length < 2) return null;
-
-  // Extract coordinates of route nodes
-  const points = route
-    .map((id) => nodes.find((n) => n.id === id))
-    .filter((n): n is Node => !!n)
-    .map((n) => [n.x, n.y] as [number, number]);
-
-  // Smooth line generator
-  const lineGenerator = line<[number, number]>()
-    .x((d) => d[0])
-    .y((d) => d[1])
-    .curve(curveCatmullRom.alpha(1)); // smooth, rounded edges
-
-  const pathData = lineGenerator(points) || '';
-
-  const startNode = points[0];
-  const endNode = points[points.length - 1];
-
-  return (
-    <g id="current-route">
-      {/* Animated flowing path */}
-      <motion.path
-        d={pathData}
-        stroke="#FF0000"
-        strokeWidth={15}
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeDasharray="10 20"
-        initial={{ strokeDashoffset: 1000 }}
-        animate={{ strokeDashoffset: 0 }}
-        transition={{
-          repeat: Infinity,
-          ease: 'linear',
-          duration: 10,
-        }}
-      />
-
-      {/* Start node circle */}
-      {startNode && (
-        <circle
-          cx={startNode[0]}
-          cy={startNode[1]}
-          r={30}
-          fill="#4CAF50"
-          stroke="black"
-          strokeWidth={2}
-        />
-      )}
-
-      {/* End node pin */}
-      {endNode && (
-        <foreignObject x={endNode[0] - 44} y={endNode[1] - 80} width={85} height={85}>
-          <FaMapMarkerAlt size={85} color="blue" style={{ outline: 'white' }} />
-        </foreignObject>
-      )}
-    </g>
-  );
-}
+import AMGFPathNodes from './partials/AM.GF.PathNodes';
 
 function AMGroundFloor({
   highlightId,
@@ -213,7 +146,7 @@ function AMGroundFloor({
       <MapFloatingIcons transformRef={transformRef} />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox="0 0 14779 10635" style={{ width: '100%', height: 'auto' }} fill="none">
-          <g id="Base Map" filter="url(#filter0_d_232_11)">
+          <g id="Base Map">
             <defs>
               <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
                 <feDropShadow
@@ -264,69 +197,8 @@ function AMGroundFloor({
                 ))}
 
             {/* Draw route line */}
-            <Route route={activeNodeIds} nodes={nodes} />
+            <AMGFPathNodes route={activeNodeIds} nodes={nodes} />
           </g>
-          <defs>
-            <filter
-              id="filter0_d_232_11"
-              x="0.000488281"
-              y="0.983643"
-              width="14512"
-              height="10507.5"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset dx="103" dy="144" />
-              <feGaussianBlur stdDeviation="15" />
-              <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_232_11" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow_232_11"
-                result="shape"
-              />
-            </filter>
-            <filter
-              id="filter1_d_232_11"
-              x="0.000488281"
-              y="0.983643"
-              width="14579"
-              height="10542.5"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset dx="150" dy="159" />
-              <feGaussianBlur stdDeviation="25" />
-              <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0.858824 0 0 0 0 0.858824 0 0 0 0 0.858824 0 0 0 1 0"
-              />
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_232_11" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow_232_11"
-                result="shape"
-              />
-            </filter>
-          </defs>
         </svg>
       </TransformComponent>
     </TransformWrapper>

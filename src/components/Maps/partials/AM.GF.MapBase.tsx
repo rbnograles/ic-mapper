@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 type MapRegionProps = {
   p: {
@@ -20,7 +20,7 @@ type MapRegionProps = {
   isTypeHighlighted?: boolean;
 };
 
-const AMGroundFloorBase = React.memo(
+const AMGroundFloorBase = memo(
   function MapRegion({
     p,
     highlightName,

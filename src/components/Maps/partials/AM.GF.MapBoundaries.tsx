@@ -1,4 +1,6 @@
-function AMGFMapBoundaries({ highlightName }: { highlightName: string | null }) {
+import { memo } from 'react';
+
+const AMGFMapBoundaries = ({ highlightName }: { highlightName: string | null }) => {
   return (
     <g id="Map Boundaries">
       <path
@@ -78,6 +80,6 @@ function AMGFMapBoundaries({ highlightName }: { highlightName: string | null }) 
       />
     </g>
   );
-}
+};
 
-export default AMGFMapBoundaries;
+export default memo(AMGFMapBoundaries);
