@@ -1,4 +1,6 @@
-function AMGFRoadMarks() {
+import { memo } from 'react';
+
+const AMGFRoadMarks = () => {
   return (
     <g id="RoadMarks">
       <path
@@ -28,6 +30,6 @@ function AMGFRoadMarks() {
       />
     </g>
   );
-}
+};
 
-export default AMGFRoadMarks;
+export default memo(AMGFRoadMarks);

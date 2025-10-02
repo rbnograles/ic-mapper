@@ -1,4 +1,6 @@
-function AMGFBuildingMarks() {
+import { memo } from 'react';
+
+const AMGFBuildingMarks = () => {
   return (
     <g id="Building Marks">
       <path
@@ -438,6 +440,6 @@ function AMGFBuildingMarks() {
       />
     </g>
   );
-}
+};
 
-export default AMGFBuildingMarks;
+export default memo(AMGFBuildingMarks);
