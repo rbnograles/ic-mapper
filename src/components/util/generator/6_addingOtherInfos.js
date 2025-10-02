@@ -23,13 +23,15 @@ try {
   }
 
   // ✅ Add new fields
-  baseData.GroundFloor = baseData.GroundFloor.map(item => ({
+  baseData.GroundFloor = baseData.GroundFloor.map((item) => ({
     ...item,
     id: item.id,
     name: item.name,
     img: item.img || '',
+    type: '',
     description: item.description || 'Place description goes in here...',
-    nearLocations: Array.isArray(item.nearLocations) ? item.nearLocations : []
+    entranceNode: '',
+    nearNodes: Array.isArray(item.nearLocations) ? item.nearLocations : [],
   }));
 
   // ✅ Save back

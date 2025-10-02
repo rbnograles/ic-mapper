@@ -1,8 +1,21 @@
-<svg width="658" height="836" viewBox="0 0 658 836" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M105.5 329V146L264.5 0.5H400.5" stroke="black"/>
-<path d="M102 408.5V835.5" stroke="black"/>
-<path d="M1 373L64 371" stroke="black"/>
-<path d="M182 340L216.234 331H262" stroke="black"/>
-<path d="M185 405L216.767 414H262" stroke="black"/>
-<path d="M350 303V220.5H588V280H657.5" stroke="black"/>
-</svg>
+<g id="Routing Path">
+<circle id="N1" cx="312" cy="502" r="3" fill="#D9D9D9"/>
+<circle id="N2" cx="354" cy="469" r="3" fill="#D9D9D9"/>
+<circle id="N3" cx="354" cy="537" r="3" fill="#D9D9D9"/>
+<circle id="N4" cx="354" cy="503" r="3" fill="#D9D9D9"/>
+<path id="N5" d="M443 502C443 503.657 441.657 505 440 505C438.343 505 437 503.657 437 502C437 500.343 438.343 499 440 499C441.657 499 443 500.343 443 502Z" fill="#D9D9D9"/>
+<circle id="N6" cx="566" cy="500" r="3" fill="#D9D9D9"/>
+<circle id="N6_2" cx="643" cy="499" r="3" fill="#D9D9D9"/>
+<path id="N7" d="M489 476C489 477.657 487.657 479 486 479C484.343 479 483 477.657 483 476C483 474.343 484.343 473 486 473C487.657 473 489 474.343 489 476Z" fill="#D9D9D9"/>
+<circle id="N8" cx="469" cy="442" r="3" fill="#D9D9D9"/>
+<circle id="N9" cx="417" cy="444" r="3" fill="#D9D9D9"/>
+<path id="N10" d="M477 486C477 487.657 475.657 489 474 489C472.343 489 471 487.657 471 486C471 484.343 472.343 483 474 483C475.657 483 477 484.343 477 486Z" fill="#D9D9D9"/>
+<path id="N10_2" d="M477 503C477 504.657 475.657 506 474 506C472.343 506 471 504.657 471 503C471 501.343 472.343 500 474 500C475.657 500 477 501.343 477 503Z" fill="#D9D9D9"/>
+<circle id="N13" cx="520" cy="470" r="3" fill="#D9D9D9"/>
+<circle id="N13_2" cx="543" cy="470" r="3" fill="#D9D9D9"/>
+<circle id="N13_3" cx="566" cy="470" r="3" fill="#D9D9D9"/>
+<circle id="N16" cx="444" cy="456" r="3" fill="#D9D9D9"/>
+<circle id="N18" cx="418" cy="562" r="3" fill="#D9D9D9"/>
+<circle id="N19" cx="441" cy="585" r="3" fill="#D9D9D9"/>
+<circle id="N20" cx="228" cy="503" r="3" fill="#D9D9D9"/>
+</g>

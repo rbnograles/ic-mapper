@@ -1,5 +1,5 @@
 import { Paper, Box, Slide, Typography } from '@mui/material';
-import type { PathItem } from '../../App';
+import type { PathItem } from '../../interface/BaseMap';
 
 function BottomSlider({
   isMobile,

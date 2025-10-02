@@ -1,0 +1,3184 @@
+{
+  "nodes": [
+    {
+      "id": "Ellipse 2",
+      "x": 2900.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 3"
+      ]
+    },
+    {
+      "id": "Ellipse 3",
+      "x": 2966.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 2",
+        "Ellipse 4"
+      ]
+    },
+    {
+      "id": "Ellipse 4",
+      "x": 3032.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 3",
+        "Ellipse 5"
+      ]
+    },
+    {
+      "id": "Ellipse 5",
+      "x": 3098.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 4",
+        "Ellipse 6"
+      ]
+    },
+    {
+      "id": "Ellipse 6",
+      "x": 3164.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 5",
+        "Ellipse 7"
+      ]
+    },
+    {
+      "id": "Ellipse 7",
+      "x": 3230.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 6",
+        "Ellipse 8"
+      ]
+    },
+    {
+      "id": "Ellipse 8",
+      "x": 3296.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 7",
+        "Ellipse 9"
+      ]
+    },
+    {
+      "id": "Ellipse 9",
+      "x": 3362.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 8",
+        "Ellipse 10"
+      ]
+    },
+    {
+      "id": "Ellipse 10",
+      "x": 3428.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 9",
+        "Ellipse 11",
+        "Ellipse 195",
+        "Ellipse 316"
+      ]
+    },
+    {
+      "id": "Ellipse 316",
+      "x": 3494.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 10",
+        "Ellipse 317"
+      ]
+    },
+    {
+      "id": "Ellipse 317",
+      "x": 3560.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 316",
+        "Ellipse 318"
+      ]
+    },
+    {
+      "id": "Ellipse 318",
+      "x": 3626.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 317",
+        "Ellipse 319"
+      ]
+    },
+    {
+      "id": "Ellipse 319",
+      "x": 3692.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 318",
+        "Ellipse 320"
+      ]
+    },
+    {
+      "id": "Ellipse 320",
+      "x": 3758.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 319",
+        "Ellipse 321"
+      ]
+    },
+    {
+      "id": "Ellipse 321",
+      "x": 3824.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 320",
+        "Ellipse 322"
+      ]
+    },
+    {
+      "id": "Ellipse 322",
+      "x": 3890.5,
+      "y": 5022.5,
+      "neighbors": [
+        "Ellipse 321",
+        "Ellipse 323"
+      ]
+    },
+    {
+      "id": "Ellipse 323",
+      "x": 3941.5,
+      "y": 4981.5,
+      "neighbors": [
+        "Ellipse 322",
+        "Ellipse 324"
+      ]
+    },
+    {
+      "id": "Ellipse 324",
+      "x": 3992.5,
+      "y": 4940.5,
+      "neighbors": [
+        "Ellipse 323",
+        "Ellipse 325"
+      ]
+    },
+    {
+      "id": "Ellipse 325",
+      "x": 4043.5,
+      "y": 4899.5,
+      "neighbors": [
+        "Ellipse 324",
+        "Ellipse 326"
+      ]
+    },
+    {
+      "id": "Ellipse 326",
+      "x": 4094.5,
+      "y": 4858.5,
+      "neighbors": [
+        "Ellipse 325",
+        "Ellipse 327"
+      ]
+    },
+    {
+      "id": "Ellipse 327",
+      "x": 4145.5,
+      "y": 4817.5,
+      "neighbors": [
+        "Ellipse 326",
+        "Ellipse 328"
+      ]
+    },
+    {
+      "id": "Ellipse 328",
+      "x": 4196.5,
+      "y": 4776.5,
+      "neighbors": [
+        "Ellipse 327",
+        "Ellipse 329"
+      ]
+    },
+    {
+      "id": "Ellipse 329",
+      "x": 4247.5,
+      "y": 4735.5,
+      "neighbors": [
+        "Ellipse 328",
+        "Ellipse 330"
+      ]
+    },
+    {
+      "id": "Ellipse 330",
+      "x": 4298.5,
+      "y": 4694.5,
+      "neighbors": [
+        "Ellipse 329",
+        "Ellipse 331"
+      ]
+    },
+    {
+      "id": "Ellipse 331",
+      "x": 4349.5,
+      "y": 4653.5,
+      "neighbors": [
+        "Ellipse 330",
+        "Ellipse 332"
+      ]
+    },
+    {
+      "id": "Ellipse 332",
+      "x": 4397.5,
+      "y": 4653.5,
+      "neighbors": [
+        "Ellipse 331",
+        "Ellipse 333"
+      ]
+    },
+    {
+      "id": "Ellipse 333",
+      "x": 4445.5,
+      "y": 4653.5,
+      "neighbors": [
+        "Ellipse 332",
+        "Ellipse 334"
+      ]
+    },
+    {
+      "id": "Ellipse 334",
+      "x": 4493.5,
+      "y": 4653.5,
+      "neighbors": [
+        "Ellipse 333",
+        "Ellipse 335"
+      ]
+    },
+    {
+      "id": "Ellipse 335",
+      "x": 4542.5,
+      "y": 4643.5,
+      "neighbors": [
+        "Ellipse 334",
+        "Ellipse 336"
+      ]
+    },
+    {
+      "id": "Ellipse 336",
+      "x": 4591.5,
+      "y": 4613.5,
+      "neighbors": [
+        "Ellipse 335",
+        "Ellipse 337"
+      ]
+    },
+    {
+      "id": "Ellipse 337",
+      "x": 4644.5,
+      "y": 4587.5,
+      "neighbors": [
+        "Ellipse 336",
+        "Ellipse 338"
+      ]
+    },
+    {
+      "id": "Ellipse 338",
+      "x": 4697.5,
+      "y": 4561.5,
+      "neighbors": [
+        "Ellipse 337",
+        "Ellipse 339"
+      ]
+    },
+    {
+      "id": "Ellipse 339",
+      "x": 4769.5,
+      "y": 4551.5,
+      "neighbors": [
+        "Ellipse 338",
+        "Ellipse 340"
+      ]
+    },
+    {
+      "id": "Ellipse 340",
+      "x": 4841.5,
+      "y": 4541.5,
+      "neighbors": [
+        "Ellipse 339",
+        "Ellipse 341"
+      ]
+    },
+    {
+      "id": "Ellipse 341",
+      "x": 4913.5,
+      "y": 4551.5,
+      "neighbors": [
+        "Ellipse 340",
+        "Ellipse 342"
+      ]
+    },
+    {
+      "id": "Ellipse 342",
+      "x": 4985.5,
+      "y": 4569.5,
+      "neighbors": [
+        "Ellipse 341"
+      ]
+    },
+    {
+      "id": "Ellipse 195",
+      "x": 3428.5,
+      "y": 5068.5,
+      "neighbors": [
+        "Ellipse 10",
+        "Ellipse 196"
+      ]
+    },
+    {
+      "id": "Ellipse 196",
+      "x": 3428.5,
+      "y": 5114.5,
+      "neighbors": [
+        "Ellipse 195",
+        "Ellipse 197"
+      ]
+    },
+    {
+      "id": "Ellipse 197",
+      "x": 3428.5,
+      "y": 5160.5,
+      "neighbors": [
+        "Ellipse 196",
+        "Ellipse 198"
+      ]
+    },
+    {
+      "id": "Ellipse 198",
+      "x": 3428.5,
+      "y": 5206.5,
+      "neighbors": [
+        "Ellipse 197",
+        "Ellipse 199"
+      ]
+    },
+    {
+      "id": "Ellipse 199",
+      "x": 3428.5,
+      "y": 5252.5,
+      "neighbors": [
+        "Ellipse 198",
+        "Ellipse 200"
+      ]
+    },
+    {
+      "id": "Ellipse 200",
+      "x": 3445.5,
+      "y": 5297.5,
+      "neighbors": [
+        "Ellipse 199",
+        "Ellipse 201"
+      ]
+    },
+    {
+      "id": "Ellipse 201",
+      "x": 3478.5,
+      "y": 5339.5,
+      "neighbors": [
+        "Ellipse 200",
+        "Ellipse 202"
+      ]
+    },
+    {
+      "id": "Ellipse 202",
+      "x": 3511.5,
+      "y": 5381.5,
+      "neighbors": [
+        "Ellipse 201",
+        "Ellipse 203"
+      ]
+    },
+    {
+      "id": "Ellipse 203",
+      "x": 3544.5,
+      "y": 5423.5,
+      "neighbors": [
+        "Ellipse 202",
+        "Ellipse 204"
+      ]
+    },
+    {
+      "id": "Ellipse 204",
+      "x": 3577.5,
+      "y": 5465.5,
+      "neighbors": [
+        "Ellipse 203",
+        "Ellipse 205"
+      ]
+    },
+    {
+      "id": "Ellipse 205",
+      "x": 3610.5,
+      "y": 5507.5,
+      "neighbors": [
+        "Ellipse 204",
+        "Ellipse 270",
+        "Ellipse 206"
+      ]
+    },
+    {
+      "id": "Ellipse 270",
+      "x": 3577.5,
+      "y": 5565.5,
+      "neighbors": [
+        "Ellipse 271",
+        "Ellipse 205",
+        "Ellipse 206"
+      ]
+    },
+    {
+      "id": "Ellipse 271",
+      "x": 3544.5,
+      "y": 5623.5,
+      "neighbors": [
+        "Ellipse 272",
+        "Ellipse 270"
+      ]
+    },
+    {
+      "id": "Ellipse 272",
+      "x": 3511.5,
+      "y": 5681.5,
+      "neighbors": [
+        "Ellipse 273",
+        "Ellipse 271"
+      ]
+    },
+    {
+      "id": "Ellipse 273",
+      "x": 3478.5,
+      "y": 5739.5,
+      "neighbors": [
+        "Ellipse 347",
+        "Ellipse 272",
+        "Ellipse 274"
+      ]
+    },
+    {
+      "id": "Ellipse 274",
+      "x": 3478.5,
+      "y": 5816.5,
+      "neighbors": [
+        "Ellipse 347",
+        "Ellipse 273",
+        "Ellipse 275"
+      ]
+    },
+    {
+      "id": "Ellipse 275",
+      "x": 3478.5,
+      "y": 5893.5,
+      "neighbors": [
+        "Ellipse 274",
+        "Ellipse 276"
+      ]
+    },
+    {
+      "id": "Ellipse 276",
+      "x": 3478.5,
+      "y": 5970.5,
+      "neighbors": [
+        "Ellipse 348",
+        "Ellipse 275",
+        "Ellipse 277"
+      ]
+    },
+    {
+      "id": "Ellipse 277",
+      "x": 3511.5,
+      "y": 6033.5,
+      "neighbors": [
+        "Ellipse 276"
+      ]
+    },
+    {
+      "id": "Ellipse 278",
+      "x": 3511.5,
+      "y": 6120.5,
+      "neighbors": [
+        "Ellipse 279"
+      ]
+    },
+    {
+      "id": "Ellipse 279",
+      "x": 3511.5,
+      "y": 6197.5,
+      "neighbors": [
+        "Ellipse 278",
+        "Ellipse 280"
+      ]
+    },
+    {
+      "id": "Ellipse 280",
+      "x": 3511.5,
+      "y": 6274.5,
+      "neighbors": [
+        "Ellipse 279",
+        "Ellipse 281"
+      ]
+    },
+    {
+      "id": "Ellipse 281",
+      "x": 3511.5,
+      "y": 6351.5,
+      "neighbors": [
+        "Ellipse 280",
+        "Ellipse 282"
+      ]
+    },
+    {
+      "id": "Ellipse 282",
+      "x": 3511.5,
+      "y": 6428.5,
+      "neighbors": [
+        "Ellipse 281",
+        "Ellipse 283"
+      ]
+    },
+    {
+      "id": "Ellipse 283",
+      "x": 3511.5,
+      "y": 6505.5,
+      "neighbors": [
+        "Ellipse 350",
+        "Ellipse 282",
+        "Ellipse 284"
+      ]
+    },
+    {
+      "id": "Ellipse 284",
+      "x": 3511.5,
+      "y": 6582.5,
+      "neighbors": [
+        "Ellipse 283",
+        "Ellipse 285"
+      ]
+    },
+    {
+      "id": "Ellipse 285",
+      "x": 3511.5,
+      "y": 6659.5,
+      "neighbors": [
+        "Ellipse 284",
+        "Ellipse 286"
+      ]
+    },
+    {
+      "id": "Ellipse 286",
+      "x": 3511.5,
+      "y": 6736.5,
+      "neighbors": [
+        "Ellipse 285",
+        "Ellipse 287"
+      ]
+    },
+    {
+      "id": "Ellipse 287",
+      "x": 3511.5,
+      "y": 6813.5,
+      "neighbors": [
+        "Ellipse 286",
+        "Ellipse 288"
+      ]
+    },
+    {
+      "id": "Ellipse 288",
+      "x": 3511.5,
+      "y": 6890.5,
+      "neighbors": [
+        "Ellipse 287",
+        "Ellipse 289"
+      ]
+    },
+    {
+      "id": "Ellipse 289",
+      "x": 3511.5,
+      "y": 6967.5,
+      "neighbors": [
+        "Ellipse 288",
+        "Ellipse 290"
+      ]
+    },
+    {
+      "id": "Ellipse 290",
+      "x": 3511.5,
+      "y": 7044.5,
+      "neighbors": [
+        "Ellipse 289",
+        "Ellipse 291"
+      ]
+    },
+    {
+      "id": "Ellipse 291",
+      "x": 3511.5,
+      "y": 7121.5,
+      "neighbors": [
+        "Ellipse 290",
+        "Ellipse 292"
+      ]
+    },
+    {
+      "id": "Ellipse 292",
+      "x": 3511.5,
+      "y": 7198.5,
+      "neighbors": [
+        "Ellipse 291",
+        "Ellipse 293"
+      ]
+    },
+    {
+      "id": "Ellipse 293",
+      "x": 3511.5,
+      "y": 7275.5,
+      "neighbors": [
+        "Ellipse 292",
+        "Ellipse 294"
+      ]
+    },
+    {
+      "id": "Ellipse 294",
+      "x": 3511.5,
+      "y": 7352.5,
+      "neighbors": [
+        "Ellipse 293",
+        "Ellipse 295"
+      ]
+    },
+    {
+      "id": "Ellipse 295",
+      "x": 3511.5,
+      "y": 7429.5,
+      "neighbors": [
+        "Ellipse 294",
+        "Ellipse 296"
+      ]
+    },
+    {
+      "id": "Ellipse 296",
+      "x": 3511.5,
+      "y": 7506.5,
+      "neighbors": [
+        "Ellipse 295",
+        "Ellipse 297"
+      ]
+    },
+    {
+      "id": "Ellipse 297",
+      "x": 3511.5,
+      "y": 7583.5,
+      "neighbors": [
+        "Ellipse 296",
+        "Ellipse 298"
+      ]
+    },
+    {
+      "id": "Ellipse 298",
+      "x": 3511.5,
+      "y": 7660.5,
+      "neighbors": [
+        "Ellipse 297",
+        "Ellipse 299"
+      ]
+    },
+    {
+      "id": "Ellipse 299",
+      "x": 3511.5,
+      "y": 7737.5,
+      "neighbors": [
+        "Ellipse 298",
+        "Ellipse 300"
+      ]
+    },
+    {
+      "id": "Ellipse 300",
+      "x": 3511.5,
+      "y": 7814.5,
+      "neighbors": [
+        "Ellipse 299",
+        "Ellipse 301"
+      ]
+    },
+    {
+      "id": "Ellipse 301",
+      "x": 3511.5,
+      "y": 7891.5,
+      "neighbors": [
+        "Ellipse 300",
+        "Ellipse 302"
+      ]
+    },
+    {
+      "id": "Ellipse 302",
+      "x": 3511.5,
+      "y": 7968.5,
+      "neighbors": [
+        "Ellipse 301",
+        "Ellipse 303"
+      ]
+    },
+    {
+      "id": "Ellipse 303",
+      "x": 3511.5,
+      "y": 8045.5,
+      "neighbors": [
+        "Ellipse 302",
+        "Ellipse 304"
+      ]
+    },
+    {
+      "id": "Ellipse 304",
+      "x": 3511.5,
+      "y": 8122.5,
+      "neighbors": [
+        "Ellipse 303",
+        "Ellipse 305"
+      ]
+    },
+    {
+      "id": "Ellipse 305",
+      "x": 3511.5,
+      "y": 8199.5,
+      "neighbors": [
+        "Ellipse 304",
+        "Ellipse 306"
+      ]
+    },
+    {
+      "id": "Ellipse 306",
+      "x": 3511.5,
+      "y": 8276.5,
+      "neighbors": [
+        "Ellipse 305",
+        "Ellipse 307"
+      ]
+    },
+    {
+      "id": "Ellipse 307",
+      "x": 3511.5,
+      "y": 8353.5,
+      "neighbors": [
+        "Ellipse 306",
+        "Ellipse 308"
+      ]
+    },
+    {
+      "id": "Ellipse 308",
+      "x": 3511.5,
+      "y": 8430.5,
+      "neighbors": [
+        "Ellipse 307",
+        "Ellipse 309"
+      ]
+    },
+    {
+      "id": "Ellipse 309",
+      "x": 3511.5,
+      "y": 8507.5,
+      "neighbors": [
+        "Ellipse 308",
+        "Ellipse 310"
+      ]
+    },
+    {
+      "id": "Ellipse 310",
+      "x": 3511.5,
+      "y": 8584.5,
+      "neighbors": [
+        "Ellipse 309",
+        "Ellipse 311"
+      ]
+    },
+    {
+      "id": "Ellipse 311",
+      "x": 3511.5,
+      "y": 8661.5,
+      "neighbors": [
+        "Ellipse 310",
+        "Ellipse 312"
+      ]
+    },
+    {
+      "id": "Ellipse 312",
+      "x": 3511.5,
+      "y": 8738.5,
+      "neighbors": [
+        "Ellipse 311",
+        "Ellipse 313"
+      ]
+    },
+    {
+      "id": "Ellipse 313",
+      "x": 3511.5,
+      "y": 8815.5,
+      "neighbors": [
+        "Ellipse 312",
+        "Ellipse 314"
+      ]
+    },
+    {
+      "id": "Ellipse 314",
+      "x": 3511.5,
+      "y": 8892.5,
+      "neighbors": [
+        "Ellipse 313",
+        "Ellipse 315"
+      ]
+    },
+    {
+      "id": "Ellipse 315",
+      "x": 3511.5,
+      "y": 8969.5,
+      "neighbors": [
+        "Ellipse 314"
+      ]
+    },
+    {
+      "id": "Ellipse 206",
+      "x": 3643.5,
+      "y": 5549.5,
+      "neighbors": [
+        "Ellipse 270",
+        "Ellipse 205",
+        "Ellipse 207"
+      ]
+    },
+    {
+      "id": "Ellipse 207",
+      "x": 3676.5,
+      "y": 5591.5,
+      "neighbors": [
+        "Ellipse 206",
+        "Ellipse 208"
+      ]
+    },
+    {
+      "id": "Ellipse 208",
+      "x": 3729.5,
+      "y": 5607.5,
+      "neighbors": [
+        "Ellipse 207",
+        "Ellipse 209"
+      ]
+    },
+    {
+      "id": "Ellipse 209",
+      "x": 3782.5,
+      "y": 5623.5,
+      "neighbors": [
+        "Ellipse 208",
+        "Ellipse 210",
+        "Ellipse 346"
+      ]
+    },
+    {
+      "id": "Ellipse 210",
+      "x": 3782.5,
+      "y": 5679.5,
+      "neighbors": [
+        "Ellipse 209",
+        "Ellipse 211",
+        "Ellipse 346"
+      ]
+    },
+    {
+      "id": "Ellipse 211",
+      "x": 3782.5,
+      "y": 5735.5,
+      "neighbors": [
+        "Ellipse 210",
+        "Ellipse 212"
+      ]
+    },
+    {
+      "id": "Ellipse 212",
+      "x": 3782.5,
+      "y": 5791.5,
+      "neighbors": [
+        "Ellipse 211",
+        "Ellipse 213"
+      ]
+    },
+    {
+      "id": "Ellipse 213",
+      "x": 3782.5,
+      "y": 5847.5,
+      "neighbors": [
+        "Ellipse 212",
+        "Ellipse 214"
+      ]
+    },
+    {
+      "id": "Ellipse 214",
+      "x": 3782.5,
+      "y": 5903.5,
+      "neighbors": [
+        "Ellipse 213",
+        "Ellipse 215"
+      ]
+    },
+    {
+      "id": "Ellipse 215",
+      "x": 3782.5,
+      "y": 5959.5,
+      "neighbors": [
+        "Ellipse 214",
+        "Ellipse 216"
+      ]
+    },
+    {
+      "id": "Ellipse 216",
+      "x": 3782.5,
+      "y": 6015.5,
+      "neighbors": [
+        "Ellipse 215",
+        "Ellipse 217"
+      ]
+    },
+    {
+      "id": "Ellipse 217",
+      "x": 3782.5,
+      "y": 6071.5,
+      "neighbors": [
+        "Ellipse 216",
+        "Ellipse 218"
+      ]
+    },
+    {
+      "id": "Ellipse 218",
+      "x": 3782.5,
+      "y": 6127.5,
+      "neighbors": [
+        "Ellipse 217",
+        "Ellipse 219"
+      ]
+    },
+    {
+      "id": "Ellipse 219",
+      "x": 3782.5,
+      "y": 6183.5,
+      "neighbors": [
+        "Ellipse 218",
+        "Ellipse 220"
+      ]
+    },
+    {
+      "id": "Ellipse 220",
+      "x": 3782.5,
+      "y": 6239.5,
+      "neighbors": [
+        "Ellipse 219",
+        "Ellipse 221"
+      ]
+    },
+    {
+      "id": "Ellipse 221",
+      "x": 3782.5,
+      "y": 6295.5,
+      "neighbors": [
+        "Ellipse 220",
+        "Ellipse 222"
+      ]
+    },
+    {
+      "id": "Ellipse 222",
+      "x": 3782.5,
+      "y": 6351.5,
+      "neighbors": [
+        "Ellipse 221",
+        "Ellipse 223"
+      ]
+    },
+    {
+      "id": "Ellipse 223",
+      "x": 3782.5,
+      "y": 6407.5,
+      "neighbors": [
+        "Ellipse 222",
+        "Ellipse 224"
+      ]
+    },
+    {
+      "id": "Ellipse 224",
+      "x": 3782.5,
+      "y": 6463.5,
+      "neighbors": [
+        "Ellipse 223",
+        "Ellipse 225",
+        "Ellipse 355"
+      ]
+    },
+    {
+      "id": "Ellipse 225",
+      "x": 3782.5,
+      "y": 6519.5,
+      "neighbors": [
+        "Ellipse 224",
+        "Ellipse 226",
+        "Ellipse 355"
+      ]
+    },
+    {
+      "id": "Ellipse 226",
+      "x": 3782.5,
+      "y": 6575.5,
+      "neighbors": [
+        "Ellipse 225",
+        "Ellipse 227"
+      ]
+    },
+    {
+      "id": "Ellipse 227",
+      "x": 3782.5,
+      "y": 6631.5,
+      "neighbors": [
+        "Ellipse 226",
+        "Ellipse 228"
+      ]
+    },
+    {
+      "id": "Ellipse 228",
+      "x": 3782.5,
+      "y": 6687.5,
+      "neighbors": [
+        "Ellipse 227",
+        "Ellipse 229"
+      ]
+    },
+    {
+      "id": "Ellipse 229",
+      "x": 3782.5,
+      "y": 6743.5,
+      "neighbors": [
+        "Ellipse 228",
+        "Ellipse 230"
+      ]
+    },
+    {
+      "id": "Ellipse 230",
+      "x": 3782.5,
+      "y": 6799.5,
+      "neighbors": [
+        "Ellipse 229",
+        "Ellipse 231"
+      ]
+    },
+    {
+      "id": "Ellipse 231",
+      "x": 3782.5,
+      "y": 6855.5,
+      "neighbors": [
+        "Ellipse 230",
+        "Ellipse 232"
+      ]
+    },
+    {
+      "id": "Ellipse 232",
+      "x": 3782.5,
+      "y": 6911.5,
+      "neighbors": [
+        "Ellipse 231",
+        "Ellipse 233"
+      ]
+    },
+    {
+      "id": "Ellipse 233",
+      "x": 3782.5,
+      "y": 6967.5,
+      "neighbors": [
+        "Ellipse 232",
+        "Ellipse 234"
+      ]
+    },
+    {
+      "id": "Ellipse 234",
+      "x": 3782.5,
+      "y": 7023.5,
+      "neighbors": [
+        "Ellipse 233",
+        "Ellipse 235"
+      ]
+    },
+    {
+      "id": "Ellipse 235",
+      "x": 3782.5,
+      "y": 7079.5,
+      "neighbors": [
+        "Ellipse 234",
+        "Ellipse 236",
+        "Ellipse 354"
+      ]
+    },
+    {
+      "id": "Ellipse 236",
+      "x": 3782.5,
+      "y": 7135.5,
+      "neighbors": [
+        "Ellipse 235",
+        "Ellipse 237",
+        "Ellipse 354"
+      ]
+    },
+    {
+      "id": "Ellipse 237",
+      "x": 3782.5,
+      "y": 7191.5,
+      "neighbors": [
+        "Ellipse 236",
+        "Ellipse 238"
+      ]
+    },
+    {
+      "id": "Ellipse 238",
+      "x": 3782.5,
+      "y": 7247.5,
+      "neighbors": [
+        "Ellipse 237",
+        "Ellipse 239"
+      ]
+    },
+    {
+      "id": "Ellipse 239",
+      "x": 3782.5,
+      "y": 7303.5,
+      "neighbors": [
+        "Ellipse 238",
+        "Ellipse 240"
+      ]
+    },
+    {
+      "id": "Ellipse 240",
+      "x": 3782.5,
+      "y": 7359.5,
+      "neighbors": [
+        "Ellipse 239",
+        "Ellipse 241"
+      ]
+    },
+    {
+      "id": "Ellipse 241",
+      "x": 3782.5,
+      "y": 7415.5,
+      "neighbors": [
+        "Ellipse 240",
+        "Ellipse 242"
+      ]
+    },
+    {
+      "id": "Ellipse 242",
+      "x": 3782.5,
+      "y": 7471.5,
+      "neighbors": [
+        "Ellipse 241",
+        "Ellipse 243"
+      ]
+    },
+    {
+      "id": "Ellipse 243",
+      "x": 3782.5,
+      "y": 7527.5,
+      "neighbors": [
+        "Ellipse 242",
+        "Ellipse 244",
+        "Ellipse 353"
+      ]
+    },
+    {
+      "id": "Ellipse 244",
+      "x": 3782.5,
+      "y": 7583.5,
+      "neighbors": [
+        "Ellipse 243",
+        "Ellipse 353",
+        "Ellipse 245"
+      ]
+    },
+    {
+      "id": "Ellipse 245",
+      "x": 3782.5,
+      "y": 7639.5,
+      "neighbors": [
+        "Ellipse 244",
+        "Ellipse 246"
+      ]
+    },
+    {
+      "id": "Ellipse 246",
+      "x": 3782.5,
+      "y": 7695.5,
+      "neighbors": [
+        "Ellipse 245",
+        "Ellipse 247"
+      ]
+    },
+    {
+      "id": "Ellipse 247",
+      "x": 3782.5,
+      "y": 7751.5,
+      "neighbors": [
+        "Ellipse 246",
+        "Ellipse 248"
+      ]
+    },
+    {
+      "id": "Ellipse 248",
+      "x": 3782.5,
+      "y": 7807.5,
+      "neighbors": [
+        "Ellipse 247",
+        "Ellipse 249"
+      ]
+    },
+    {
+      "id": "Ellipse 249",
+      "x": 3782.5,
+      "y": 7863.5,
+      "neighbors": [
+        "Ellipse 248",
+        "Ellipse 250"
+      ]
+    },
+    {
+      "id": "Ellipse 250",
+      "x": 3782.5,
+      "y": 7919.5,
+      "neighbors": [
+        "Ellipse 249",
+        "Ellipse 251"
+      ]
+    },
+    {
+      "id": "Ellipse 251",
+      "x": 3782.5,
+      "y": 7975.5,
+      "neighbors": [
+        "Ellipse 250",
+        "Ellipse 252"
+      ]
+    },
+    {
+      "id": "Ellipse 252",
+      "x": 3782.5,
+      "y": 8031.5,
+      "neighbors": [
+        "Ellipse 251",
+        "Ellipse 253"
+      ]
+    },
+    {
+      "id": "Ellipse 253",
+      "x": 3782.5,
+      "y": 8087.5,
+      "neighbors": [
+        "Ellipse 252",
+        "Ellipse 254"
+      ]
+    },
+    {
+      "id": "Ellipse 254",
+      "x": 3782.5,
+      "y": 8143.5,
+      "neighbors": [
+        "Ellipse 253",
+        "Ellipse 255"
+      ]
+    },
+    {
+      "id": "Ellipse 255",
+      "x": 3782.5,
+      "y": 8199.5,
+      "neighbors": [
+        "Ellipse 254",
+        "Ellipse 256"
+      ]
+    },
+    {
+      "id": "Ellipse 256",
+      "x": 3782.5,
+      "y": 8255.5,
+      "neighbors": [
+        "Ellipse 255",
+        "Ellipse 257"
+      ]
+    },
+    {
+      "id": "Ellipse 257",
+      "x": 3782.5,
+      "y": 8311.5,
+      "neighbors": [
+        "Ellipse 256",
+        "Ellipse 258"
+      ]
+    },
+    {
+      "id": "Ellipse 258",
+      "x": 3782.5,
+      "y": 8367.5,
+      "neighbors": [
+        "Ellipse 257",
+        "Ellipse 259"
+      ]
+    },
+    {
+      "id": "Ellipse 259",
+      "x": 3782.5,
+      "y": 8423.5,
+      "neighbors": [
+        "Ellipse 258",
+        "Ellipse 260"
+      ]
+    },
+    {
+      "id": "Ellipse 260",
+      "x": 3782.5,
+      "y": 8479.5,
+      "neighbors": [
+        "Ellipse 259",
+        "Ellipse 261"
+      ]
+    },
+    {
+      "id": "Ellipse 261",
+      "x": 3782.5,
+      "y": 8535.5,
+      "neighbors": [
+        "Ellipse 260",
+        "Ellipse 262"
+      ]
+    },
+    {
+      "id": "Ellipse 262",
+      "x": 3782.5,
+      "y": 8591.5,
+      "neighbors": [
+        "Ellipse 261",
+        "Ellipse 263"
+      ]
+    },
+    {
+      "id": "Ellipse 263",
+      "x": 3782.5,
+      "y": 8647.5,
+      "neighbors": [
+        "Ellipse 262",
+        "Ellipse 264"
+      ]
+    },
+    {
+      "id": "Ellipse 264",
+      "x": 3782.5,
+      "y": 8703.5,
+      "neighbors": [
+        "Ellipse 263",
+        "Ellipse 265"
+      ]
+    },
+    {
+      "id": "Ellipse 265",
+      "x": 3782.5,
+      "y": 8759.5,
+      "neighbors": [
+        "Ellipse 264",
+        "Ellipse 266"
+      ]
+    },
+    {
+      "id": "Ellipse 266",
+      "x": 3782.5,
+      "y": 8815.5,
+      "neighbors": [
+        "Ellipse 267",
+        "Ellipse 265"
+      ]
+    },
+    {
+      "id": "Ellipse 267",
+      "x": 3749.5,
+      "y": 8862.5,
+      "neighbors": [
+        "Ellipse 268",
+        "Ellipse 266"
+      ]
+    },
+    {
+      "id": "Ellipse 268",
+      "x": 3716.5,
+      "y": 8909.5,
+      "neighbors": [
+        "Ellipse 267",
+        "Ellipse 269"
+      ]
+    },
+    {
+      "id": "Ellipse 269",
+      "x": 3683.5,
+      "y": 8956.5,
+      "neighbors": [
+        "Ellipse 268"
+      ]
+    },
+    {
+      "id": "Ellipse 11",
+      "x": 3428.5,
+      "y": 4976.5,
+      "neighbors": [
+        "Ellipse 12",
+        "Ellipse 10"
+      ]
+    },
+    {
+      "id": "Ellipse 12",
+      "x": 3428.5,
+      "y": 4930.5,
+      "neighbors": [
+        "Ellipse 13",
+        "Ellipse 11"
+      ]
+    },
+    {
+      "id": "Ellipse 13",
+      "x": 3428.5,
+      "y": 4884.5,
+      "neighbors": [
+        "Ellipse 14",
+        "Ellipse 12"
+      ]
+    },
+    {
+      "id": "Ellipse 14",
+      "x": 3428.5,
+      "y": 4838.5,
+      "neighbors": [
+        "Ellipse 15",
+        "Ellipse 13"
+      ]
+    },
+    {
+      "id": "Ellipse 15",
+      "x": 3428.5,
+      "y": 4792.5,
+      "neighbors": [
+        "Ellipse 16",
+        "Ellipse 14"
+      ]
+    },
+    {
+      "id": "Ellipse 16",
+      "x": 3428.5,
+      "y": 4746.5,
+      "neighbors": [
+        "Ellipse 17",
+        "Ellipse 15"
+      ]
+    },
+    {
+      "id": "Ellipse 17",
+      "x": 3428.5,
+      "y": 4700.5,
+      "neighbors": [
+        "Ellipse 16",
+        "Ellipse 18"
+      ]
+    },
+    {
+      "id": "Ellipse 18",
+      "x": 3461.5,
+      "y": 4667.5,
+      "neighbors": [
+        "Ellipse 17",
+        "Ellipse 19"
+      ]
+    },
+    {
+      "id": "Ellipse 19",
+      "x": 3494.5,
+      "y": 4634.5,
+      "neighbors": [
+        "Ellipse 18",
+        "Ellipse 20"
+      ]
+    },
+    {
+      "id": "Ellipse 20",
+      "x": 3527.5,
+      "y": 4601.5,
+      "neighbors": [
+        "Ellipse 19",
+        "Ellipse 22",
+        "Ellipse 121"
+      ]
+    },
+    {
+      "id": "Ellipse 121",
+      "x": 3573.5,
+      "y": 4568.5,
+      "neighbors": [
+        "Ellipse 21",
+        "Ellipse 22",
+        "Ellipse 20",
+        "Ellipse 122"
+      ]
+    },
+    {
+      "id": "Ellipse 122",
+      "x": 3619.5,
+      "y": 4535.5,
+      "neighbors": [
+        "Ellipse 121",
+        "Ellipse 123"
+      ]
+    },
+    {
+      "id": "Ellipse 123",
+      "x": 3665.5,
+      "y": 4502.5,
+      "neighbors": [
+        "Ellipse 122",
+        "Ellipse 124"
+      ]
+    },
+    {
+      "id": "Ellipse 124",
+      "x": 3711.5,
+      "y": 4469.5,
+      "neighbors": [
+        "Ellipse 123",
+        "Ellipse 125"
+      ]
+    },
+    {
+      "id": "Ellipse 125",
+      "x": 3757.5,
+      "y": 4436.5,
+      "neighbors": [
+        "Ellipse 124",
+        "Ellipse 126"
+      ]
+    },
+    {
+      "id": "Ellipse 126",
+      "x": 3773.5,
+      "y": 4378.5,
+      "neighbors": [
+        "Ellipse 125",
+        "Ellipse 127"
+      ]
+    },
+    {
+      "id": "Ellipse 127",
+      "x": 3773.5,
+      "y": 4317.5,
+      "neighbors": [
+        "Ellipse 128",
+        "Ellipse 126"
+      ]
+    },
+    {
+      "id": "Ellipse 128",
+      "x": 3773.5,
+      "y": 4256.5,
+      "neighbors": [
+        "Ellipse 129",
+        "Ellipse 127"
+      ]
+    },
+    {
+      "id": "Ellipse 129",
+      "x": 3773.5,
+      "y": 4195.5,
+      "neighbors": [
+        "Ellipse 130",
+        "Ellipse 128"
+      ]
+    },
+    {
+      "id": "Ellipse 130",
+      "x": 3773.5,
+      "y": 4134.5,
+      "neighbors": [
+        "Ellipse 131",
+        "Ellipse 129"
+      ]
+    },
+    {
+      "id": "Ellipse 131",
+      "x": 3773.5,
+      "y": 4073.5,
+      "neighbors": [
+        "Ellipse 132",
+        "Ellipse 130"
+      ]
+    },
+    {
+      "id": "Ellipse 132",
+      "x": 3773.5,
+      "y": 4012.5,
+      "neighbors": [
+        "Ellipse 133",
+        "Ellipse 131"
+      ]
+    },
+    {
+      "id": "Ellipse 133",
+      "x": 3773.5,
+      "y": 3951.5,
+      "neighbors": [
+        "Ellipse 134",
+        "Ellipse 132"
+      ]
+    },
+    {
+      "id": "Ellipse 134",
+      "x": 3773.5,
+      "y": 3890.5,
+      "neighbors": [
+        "Ellipse 135",
+        "Ellipse 133"
+      ]
+    },
+    {
+      "id": "Ellipse 135",
+      "x": 3773.5,
+      "y": 3829.5,
+      "neighbors": [
+        "Ellipse 136",
+        "Ellipse 134"
+      ]
+    },
+    {
+      "id": "Ellipse 136",
+      "x": 3773.5,
+      "y": 3768.5,
+      "neighbors": [
+        "Ellipse 137",
+        "Ellipse 135"
+      ]
+    },
+    {
+      "id": "Ellipse 137",
+      "x": 3773.5,
+      "y": 3707.5,
+      "neighbors": [
+        "Ellipse 138",
+        "Ellipse 136"
+      ]
+    },
+    {
+      "id": "Ellipse 138",
+      "x": 3773.5,
+      "y": 3646.5,
+      "neighbors": [
+        "Ellipse 139",
+        "Ellipse 137"
+      ]
+    },
+    {
+      "id": "Ellipse 139",
+      "x": 3773.5,
+      "y": 3585.5,
+      "neighbors": [
+        "Ellipse 140",
+        "Ellipse 138"
+      ]
+    },
+    {
+      "id": "Ellipse 140",
+      "x": 3773.5,
+      "y": 3524.5,
+      "neighbors": [
+        "Ellipse 141",
+        "Ellipse 139"
+      ]
+    },
+    {
+      "id": "Ellipse 141",
+      "x": 3773.5,
+      "y": 3463.5,
+      "neighbors": [
+        "Ellipse 142",
+        "Ellipse 140"
+      ]
+    },
+    {
+      "id": "Ellipse 142",
+      "x": 3773.5,
+      "y": 3402.5,
+      "neighbors": [
+        "Ellipse 143",
+        "Ellipse 141"
+      ]
+    },
+    {
+      "id": "Ellipse 143",
+      "x": 3773.5,
+      "y": 3341.5,
+      "neighbors": [
+        "Ellipse 144",
+        "Ellipse 142"
+      ]
+    },
+    {
+      "id": "Ellipse 144",
+      "x": 3773.5,
+      "y": 3280.5,
+      "neighbors": [
+        "Ellipse 145",
+        "Ellipse 143"
+      ]
+    },
+    {
+      "id": "Ellipse 145",
+      "x": 3773.5,
+      "y": 3219.5,
+      "neighbors": [
+        "Ellipse 146",
+        "Ellipse 144"
+      ]
+    },
+    {
+      "id": "Ellipse 146",
+      "x": 3812.5,
+      "y": 3174.5,
+      "neighbors": [
+        "Ellipse 145",
+        "Ellipse 147"
+      ]
+    },
+    {
+      "id": "Ellipse 147",
+      "x": 3851.5,
+      "y": 3129.5,
+      "neighbors": [
+        "Ellipse 146",
+        "Ellipse 148"
+      ]
+    },
+    {
+      "id": "Ellipse 148",
+      "x": 3895.5,
+      "y": 3097.5,
+      "neighbors": [
+        "Ellipse 147",
+        "Ellipse 149"
+      ]
+    },
+    {
+      "id": "Ellipse 149",
+      "x": 3932.5,
+      "y": 3064.5,
+      "neighbors": [
+        "Ellipse 148",
+        "Ellipse 150"
+      ]
+    },
+    {
+      "id": "Ellipse 150",
+      "x": 3969.5,
+      "y": 3031.5,
+      "neighbors": [
+        "Ellipse 149",
+        "Ellipse 151"
+      ]
+    },
+    {
+      "id": "Ellipse 151",
+      "x": 4006.5,
+      "y": 2998.5,
+      "neighbors": [
+        "Ellipse 150",
+        "Ellipse 152"
+      ]
+    },
+    {
+      "id": "Ellipse 152",
+      "x": 4043.5,
+      "y": 2965.5,
+      "neighbors": [
+        "Ellipse 151",
+        "Ellipse 153"
+      ]
+    },
+    {
+      "id": "Ellipse 153",
+      "x": 4080.5,
+      "y": 2932.5,
+      "neighbors": [
+        "Ellipse 152",
+        "Ellipse 154"
+      ]
+    },
+    {
+      "id": "Ellipse 154",
+      "x": 4117.5,
+      "y": 2899.5,
+      "neighbors": [
+        "Ellipse 155",
+        "Ellipse 153"
+      ]
+    },
+    {
+      "id": "Ellipse 155",
+      "x": 4149.5,
+      "y": 2861.5,
+      "neighbors": [
+        "Ellipse 154",
+        "Ellipse 156"
+      ]
+    },
+    {
+      "id": "Ellipse 156",
+      "x": 4181.5,
+      "y": 2823.5,
+      "neighbors": [
+        "Ellipse 155",
+        "Ellipse 157"
+      ]
+    },
+    {
+      "id": "Ellipse 157",
+      "x": 4213.5,
+      "y": 2785.5,
+      "neighbors": [
+        "Ellipse 156",
+        "Ellipse 158"
+      ]
+    },
+    {
+      "id": "Ellipse 158",
+      "x": 4245.5,
+      "y": 2747.5,
+      "neighbors": [
+        "Ellipse 157",
+        "Ellipse 159"
+      ]
+    },
+    {
+      "id": "Ellipse 159",
+      "x": 4291.5,
+      "y": 2712.5,
+      "neighbors": [
+        "Ellipse 158",
+        "Ellipse 160"
+      ]
+    },
+    {
+      "id": "Ellipse 160",
+      "x": 4337.5,
+      "y": 2677.5,
+      "neighbors": [
+        "Ellipse 159",
+        "Ellipse 161"
+      ]
+    },
+    {
+      "id": "Ellipse 161",
+      "x": 4383.5,
+      "y": 2642.5,
+      "neighbors": [
+        "Ellipse 160",
+        "Ellipse 162"
+      ]
+    },
+    {
+      "id": "Ellipse 162",
+      "x": 4429.5,
+      "y": 2607.5,
+      "neighbors": [
+        "Ellipse 161",
+        "Ellipse 163"
+      ]
+    },
+    {
+      "id": "Ellipse 163",
+      "x": 4475.5,
+      "y": 2572.5,
+      "neighbors": [
+        "Ellipse 162",
+        "Ellipse 164"
+      ]
+    },
+    {
+      "id": "Ellipse 164",
+      "x": 4521.5,
+      "y": 2537.5,
+      "neighbors": [
+        "Ellipse 163",
+        "Ellipse 165"
+      ]
+    },
+    {
+      "id": "Ellipse 165",
+      "x": 4564.5,
+      "y": 2491.5,
+      "neighbors": [
+        "Ellipse 164",
+        "Ellipse 166"
+      ]
+    },
+    {
+      "id": "Ellipse 166",
+      "x": 4607.5,
+      "y": 2445.5,
+      "neighbors": [
+        "Ellipse 165",
+        "Ellipse 167"
+      ]
+    },
+    {
+      "id": "Ellipse 167",
+      "x": 4650.5,
+      "y": 2399.5,
+      "neighbors": [
+        "Ellipse 166",
+        "Ellipse 168"
+      ]
+    },
+    {
+      "id": "Ellipse 168",
+      "x": 4693.5,
+      "y": 2353.5,
+      "neighbors": [
+        "Ellipse 167",
+        "Ellipse 169"
+      ]
+    },
+    {
+      "id": "Ellipse 169",
+      "x": 4736.5,
+      "y": 2307.5,
+      "neighbors": [
+        "Ellipse 168",
+        "Ellipse 170"
+      ]
+    },
+    {
+      "id": "Ellipse 170",
+      "x": 4779.5,
+      "y": 2261.5,
+      "neighbors": [
+        "Ellipse 169",
+        "Ellipse 171"
+      ]
+    },
+    {
+      "id": "Ellipse 171",
+      "x": 4822.5,
+      "y": 2215.5,
+      "neighbors": [
+        "Ellipse 170",
+        "Ellipse 172"
+      ]
+    },
+    {
+      "id": "Ellipse 172",
+      "x": 4865.5,
+      "y": 2169.5,
+      "neighbors": [
+        "Ellipse 171",
+        "Ellipse 173"
+      ]
+    },
+    {
+      "id": "Ellipse 173",
+      "x": 4908.5,
+      "y": 2123.5,
+      "neighbors": [
+        "Ellipse 172",
+        "Ellipse 174"
+      ]
+    },
+    {
+      "id": "Ellipse 174",
+      "x": 4951.5,
+      "y": 2077.5,
+      "neighbors": [
+        "Ellipse 173",
+        "Ellipse 175"
+      ]
+    },
+    {
+      "id": "Ellipse 175",
+      "x": 4994.5,
+      "y": 2031.5,
+      "neighbors": [
+        "Ellipse 174",
+        "Ellipse 176"
+      ]
+    },
+    {
+      "id": "Ellipse 176",
+      "x": 5037.5,
+      "y": 1985.5,
+      "neighbors": [
+        "Ellipse 175",
+        "Ellipse 177"
+      ]
+    },
+    {
+      "id": "Ellipse 177",
+      "x": 5106.5,
+      "y": 1983.5,
+      "neighbors": [
+        "Ellipse 176",
+        "Ellipse 178"
+      ]
+    },
+    {
+      "id": "Ellipse 178",
+      "x": 5175.5,
+      "y": 1981.5,
+      "neighbors": [
+        "Ellipse 177",
+        "Ellipse 179"
+      ]
+    },
+    {
+      "id": "Ellipse 179",
+      "x": 5244.5,
+      "y": 1979.5,
+      "neighbors": [
+        "Ellipse 178",
+        "Ellipse 180"
+      ]
+    },
+    {
+      "id": "Ellipse 180",
+      "x": 5313.5,
+      "y": 1977.5,
+      "neighbors": [
+        "Ellipse 179",
+        "Ellipse 181"
+      ]
+    },
+    {
+      "id": "Ellipse 181",
+      "x": 5382.5,
+      "y": 1975.5,
+      "neighbors": [
+        "Ellipse 180",
+        "Ellipse 182"
+      ]
+    },
+    {
+      "id": "Ellipse 182",
+      "x": 5451.5,
+      "y": 1973.5,
+      "neighbors": [
+        "Ellipse 181",
+        "Ellipse 183"
+      ]
+    },
+    {
+      "id": "Ellipse 183",
+      "x": 5520.5,
+      "y": 1971.5,
+      "neighbors": [
+        "Ellipse 182",
+        "Ellipse 184"
+      ]
+    },
+    {
+      "id": "Ellipse 184",
+      "x": 5589.5,
+      "y": 1969.5,
+      "neighbors": [
+        "Ellipse 183",
+        "Ellipse 185"
+      ]
+    },
+    {
+      "id": "Ellipse 185",
+      "x": 5658.5,
+      "y": 1967.5,
+      "neighbors": [
+        "Ellipse 184",
+        "Ellipse 186"
+      ]
+    },
+    {
+      "id": "Ellipse 186",
+      "x": 5727.5,
+      "y": 1965.5,
+      "neighbors": [
+        "Ellipse 185",
+        "Ellipse 187"
+      ]
+    },
+    {
+      "id": "Ellipse 187",
+      "x": 5796.5,
+      "y": 1963.5,
+      "neighbors": [
+        "Ellipse 186",
+        "Ellipse 188"
+      ]
+    },
+    {
+      "id": "Ellipse 188",
+      "x": 5865.5,
+      "y": 1961.5,
+      "neighbors": [
+        "Ellipse 187",
+        "Ellipse 189"
+      ]
+    },
+    {
+      "id": "Ellipse 189",
+      "x": 5934.5,
+      "y": 1959.5,
+      "neighbors": [
+        "Ellipse 188",
+        "Ellipse 190"
+      ]
+    },
+    {
+      "id": "Ellipse 190",
+      "x": 6003.5,
+      "y": 1957.5,
+      "neighbors": [
+        "Ellipse 189",
+        "Ellipse 191"
+      ]
+    },
+    {
+      "id": "Ellipse 191",
+      "x": 6072.5,
+      "y": 1955.5,
+      "neighbors": [
+        "Ellipse 190",
+        "Ellipse 192"
+      ]
+    },
+    {
+      "id": "Ellipse 192",
+      "x": 6123.5,
+      "y": 1933.5,
+      "neighbors": [
+        "Ellipse 191",
+        "Ellipse 193"
+      ]
+    },
+    {
+      "id": "Ellipse 193",
+      "x": 6174.5,
+      "y": 1911.5,
+      "neighbors": [
+        "Ellipse 192",
+        "Ellipse 194"
+      ]
+    },
+    {
+      "id": "Ellipse 194",
+      "x": 6225.5,
+      "y": 1889.5,
+      "neighbors": [
+        "Ellipse 193"
+      ]
+    },
+    {
+      "id": "Ellipse 21",
+      "x": 3527.5,
+      "y": 4507.5,
+      "neighbors": [
+        "Ellipse 23",
+        "Ellipse 22",
+        "Ellipse 121"
+      ]
+    },
+    {
+      "id": "Ellipse 23",
+      "x": 3527.5,
+      "y": 4461.5,
+      "neighbors": [
+        "Ellipse 24",
+        "Ellipse 21"
+      ]
+    },
+    {
+      "id": "Ellipse 24",
+      "x": 3527.5,
+      "y": 4415.5,
+      "neighbors": [
+        "Ellipse 25",
+        "Ellipse 23"
+      ]
+    },
+    {
+      "id": "Ellipse 25",
+      "x": 3527.5,
+      "y": 4369.5,
+      "neighbors": [
+        "Ellipse 26",
+        "Ellipse 24"
+      ]
+    },
+    {
+      "id": "Ellipse 26",
+      "x": 3527.5,
+      "y": 4323.5,
+      "neighbors": [
+        "Ellipse 27",
+        "Ellipse 25"
+      ]
+    },
+    {
+      "id": "Ellipse 27",
+      "x": 3527.5,
+      "y": 4277.5,
+      "neighbors": [
+        "Ellipse 28",
+        "Ellipse 26"
+      ]
+    },
+    {
+      "id": "Ellipse 28",
+      "x": 3527.5,
+      "y": 4231.5,
+      "neighbors": [
+        "Ellipse 29",
+        "Ellipse 27"
+      ]
+    },
+    {
+      "id": "Ellipse 29",
+      "x": 3527.5,
+      "y": 4185.5,
+      "neighbors": [
+        "Ellipse 30",
+        "Ellipse 28"
+      ]
+    },
+    {
+      "id": "Ellipse 30",
+      "x": 3527.5,
+      "y": 4139.5,
+      "neighbors": [
+        "Ellipse 31",
+        "Ellipse 29"
+      ]
+    },
+    {
+      "id": "Ellipse 31",
+      "x": 3527.5,
+      "y": 4093.5,
+      "neighbors": [
+        "Ellipse 32",
+        "Ellipse 30"
+      ]
+    },
+    {
+      "id": "Ellipse 32",
+      "x": 3527.5,
+      "y": 4047.5,
+      "neighbors": [
+        "Ellipse 33",
+        "Ellipse 31"
+      ]
+    },
+    {
+      "id": "Ellipse 33",
+      "x": 3527.5,
+      "y": 4001.5,
+      "neighbors": [
+        "Ellipse 34",
+        "Ellipse 32"
+      ]
+    },
+    {
+      "id": "Ellipse 34",
+      "x": 3527.5,
+      "y": 3955.5,
+      "neighbors": [
+        "Ellipse 35",
+        "Ellipse 33"
+      ]
+    },
+    {
+      "id": "Ellipse 35",
+      "x": 3527.5,
+      "y": 3909.5,
+      "neighbors": [
+        "Ellipse 36",
+        "Ellipse 34"
+      ]
+    },
+    {
+      "id": "Ellipse 36",
+      "x": 3527.5,
+      "y": 3863.5,
+      "neighbors": [
+        "Ellipse 37",
+        "Ellipse 35"
+      ]
+    },
+    {
+      "id": "Ellipse 37",
+      "x": 3527.5,
+      "y": 3817.5,
+      "neighbors": [
+        "Ellipse 38",
+        "Ellipse 36"
+      ]
+    },
+    {
+      "id": "Ellipse 38",
+      "x": 3527.5,
+      "y": 3771.5,
+      "neighbors": [
+        "Ellipse 39",
+        "Ellipse 37"
+      ]
+    },
+    {
+      "id": "Ellipse 39",
+      "x": 3527.5,
+      "y": 3725.5,
+      "neighbors": [
+        "Ellipse 40",
+        "Ellipse 38"
+      ]
+    },
+    {
+      "id": "Ellipse 40",
+      "x": 3527.5,
+      "y": 3679.5,
+      "neighbors": [
+        "Ellipse 41",
+        "Ellipse 39"
+      ]
+    },
+    {
+      "id": "Ellipse 41",
+      "x": 3527.5,
+      "y": 3633.5,
+      "neighbors": [
+        "Ellipse 42",
+        "Ellipse 40"
+      ]
+    },
+    {
+      "id": "Ellipse 42",
+      "x": 3527.5,
+      "y": 3587.5,
+      "neighbors": [
+        "Ellipse 43",
+        "Ellipse 41"
+      ]
+    },
+    {
+      "id": "Ellipse 43",
+      "x": 3527.5,
+      "y": 3541.5,
+      "neighbors": [
+        "Ellipse 44",
+        "Ellipse 42"
+      ]
+    },
+    {
+      "id": "Ellipse 44",
+      "x": 3527.5,
+      "y": 3495.5,
+      "neighbors": [
+        "Ellipse 45",
+        "Ellipse 43"
+      ]
+    },
+    {
+      "id": "Ellipse 45",
+      "x": 3527.5,
+      "y": 3449.5,
+      "neighbors": [
+        "Ellipse 46",
+        "Ellipse 44"
+      ]
+    },
+    {
+      "id": "Ellipse 46",
+      "x": 3527.5,
+      "y": 3403.5,
+      "neighbors": [
+        "Ellipse 47",
+        "Ellipse 45"
+      ]
+    },
+    {
+      "id": "Ellipse 47",
+      "x": 3527.5,
+      "y": 3357.5,
+      "neighbors": [
+        "Ellipse 48",
+        "Ellipse 46"
+      ]
+    },
+    {
+      "id": "Ellipse 48",
+      "x": 3527.5,
+      "y": 3311.5,
+      "neighbors": [
+        "Ellipse 49",
+        "Ellipse 47"
+      ]
+    },
+    {
+      "id": "Ellipse 49",
+      "x": 3527.5,
+      "y": 3265.5,
+      "neighbors": [
+        "Ellipse 50",
+        "Ellipse 48"
+      ]
+    },
+    {
+      "id": "Ellipse 50",
+      "x": 3527.5,
+      "y": 3219.5,
+      "neighbors": [
+        "Ellipse 51",
+        "Ellipse 49"
+      ]
+    },
+    {
+      "id": "Ellipse 51",
+      "x": 3527.5,
+      "y": 3173.5,
+      "neighbors": [
+        "Ellipse 52",
+        "Ellipse 50"
+      ]
+    },
+    {
+      "id": "Ellipse 52",
+      "x": 3544.5,
+      "y": 3125.5,
+      "neighbors": [
+        "Ellipse 53",
+        "Ellipse 51"
+      ]
+    },
+    {
+      "id": "Ellipse 53",
+      "x": 3561.5,
+      "y": 3073.5,
+      "neighbors": [
+        "Ellipse 54",
+        "Ellipse 52"
+      ]
+    },
+    {
+      "id": "Ellipse 54",
+      "x": 3588.5,
+      "y": 3035.5,
+      "neighbors": [
+        "Ellipse 53",
+        "Ellipse 55"
+      ]
+    },
+    {
+      "id": "Ellipse 55",
+      "x": 3615.5,
+      "y": 2997.5,
+      "neighbors": [
+        "Ellipse 54",
+        "Ellipse 56"
+      ]
+    },
+    {
+      "id": "Ellipse 56",
+      "x": 3650.5,
+      "y": 2964.5,
+      "neighbors": [
+        "Ellipse 55",
+        "Ellipse 57"
+      ]
+    },
+    {
+      "id": "Ellipse 57",
+      "x": 3685.5,
+      "y": 2931.5,
+      "neighbors": [
+        "Ellipse 56",
+        "Ellipse 58"
+      ]
+    },
+    {
+      "id": "Ellipse 58",
+      "x": 3720.5,
+      "y": 2898.5,
+      "neighbors": [
+        "Ellipse 59",
+        "Ellipse 57"
+      ]
+    },
+    {
+      "id": "Ellipse 59",
+      "x": 3755.5,
+      "y": 2865.5,
+      "neighbors": [
+        "Ellipse 58",
+        "Ellipse 60"
+      ]
+    },
+    {
+      "id": "Ellipse 60",
+      "x": 3790.5,
+      "y": 2832.5,
+      "neighbors": [
+        "Ellipse 59",
+        "Ellipse 61"
+      ]
+    },
+    {
+      "id": "Ellipse 61",
+      "x": 3825.5,
+      "y": 2799.5,
+      "neighbors": [
+        "Ellipse 60",
+        "Ellipse 62"
+      ]
+    },
+    {
+      "id": "Ellipse 62",
+      "x": 3860.5,
+      "y": 2766.5,
+      "neighbors": [
+        "Ellipse 61",
+        "Ellipse 63"
+      ]
+    },
+    {
+      "id": "Ellipse 63",
+      "x": 3895.5,
+      "y": 2733.5,
+      "neighbors": [
+        "Ellipse 62",
+        "Ellipse 64"
+      ]
+    },
+    {
+      "id": "Ellipse 64",
+      "x": 3930.5,
+      "y": 2700.5,
+      "neighbors": [
+        "Ellipse 63",
+        "Ellipse 65"
+      ]
+    },
+    {
+      "id": "Ellipse 65",
+      "x": 3965.5,
+      "y": 2667.5,
+      "neighbors": [
+        "Ellipse 64",
+        "Ellipse 66"
+      ]
+    },
+    {
+      "id": "Ellipse 66",
+      "x": 4000.5,
+      "y": 2634.5,
+      "neighbors": [
+        "Ellipse 65",
+        "Ellipse 67"
+      ]
+    },
+    {
+      "id": "Ellipse 67",
+      "x": 4035.5,
+      "y": 2601.5,
+      "neighbors": [
+        "Ellipse 66",
+        "Ellipse 68"
+      ]
+    },
+    {
+      "id": "Ellipse 68",
+      "x": 4070.5,
+      "y": 2568.5,
+      "neighbors": [
+        "Ellipse 67",
+        "Ellipse 69"
+      ]
+    },
+    {
+      "id": "Ellipse 69",
+      "x": 4105.5,
+      "y": 2535.5,
+      "neighbors": [
+        "Ellipse 68",
+        "Ellipse 70"
+      ]
+    },
+    {
+      "id": "Ellipse 70",
+      "x": 4140.5,
+      "y": 2502.5,
+      "neighbors": [
+        "Ellipse 69",
+        "Ellipse 71"
+      ]
+    },
+    {
+      "id": "Ellipse 71",
+      "x": 4175.5,
+      "y": 2469.5,
+      "neighbors": [
+        "Ellipse 70",
+        "Ellipse 72"
+      ]
+    },
+    {
+      "id": "Ellipse 72",
+      "x": 4210.5,
+      "y": 2436.5,
+      "neighbors": [
+        "Ellipse 71",
+        "Ellipse 73"
+      ]
+    },
+    {
+      "id": "Ellipse 73",
+      "x": 4245.5,
+      "y": 2403.5,
+      "neighbors": [
+        "Ellipse 72",
+        "Ellipse 74"
+      ]
+    },
+    {
+      "id": "Ellipse 74",
+      "x": 4280.5,
+      "y": 2370.5,
+      "neighbors": [
+        "Ellipse 75",
+        "Ellipse 73"
+      ]
+    },
+    {
+      "id": "Ellipse 75",
+      "x": 4315.5,
+      "y": 2337.5,
+      "neighbors": [
+        "Ellipse 74",
+        "Ellipse 76"
+      ]
+    },
+    {
+      "id": "Ellipse 76",
+      "x": 4350.5,
+      "y": 2304.5,
+      "neighbors": [
+        "Ellipse 75",
+        "Ellipse 77"
+      ]
+    },
+    {
+      "id": "Ellipse 77",
+      "x": 4385.5,
+      "y": 2271.5,
+      "neighbors": [
+        "Ellipse 76",
+        "Ellipse 78"
+      ]
+    },
+    {
+      "id": "Ellipse 78",
+      "x": 4420.5,
+      "y": 2238.5,
+      "neighbors": [
+        "Ellipse 77",
+        "Ellipse 79"
+      ]
+    },
+    {
+      "id": "Ellipse 79",
+      "x": 4455.5,
+      "y": 2205.5,
+      "neighbors": [
+        "Ellipse 78",
+        "Ellipse 80"
+      ]
+    },
+    {
+      "id": "Ellipse 80",
+      "x": 4490.5,
+      "y": 2172.5,
+      "neighbors": [
+        "Ellipse 79",
+        "Ellipse 81"
+      ]
+    },
+    {
+      "id": "Ellipse 81",
+      "x": 4525.5,
+      "y": 2139.5,
+      "neighbors": [
+        "Ellipse 80",
+        "Ellipse 82"
+      ]
+    },
+    {
+      "id": "Ellipse 82",
+      "x": 4560.5,
+      "y": 2106.5,
+      "neighbors": [
+        "Ellipse 81",
+        "Ellipse 83"
+      ]
+    },
+    {
+      "id": "Ellipse 83",
+      "x": 4595.5,
+      "y": 2073.5,
+      "neighbors": [
+        "Ellipse 84",
+        "Ellipse 82"
+      ]
+    },
+    {
+      "id": "Ellipse 84",
+      "x": 4630.5,
+      "y": 2040.5,
+      "neighbors": [
+        "Ellipse 83",
+        "Ellipse 85"
+      ]
+    },
+    {
+      "id": "Ellipse 85",
+      "x": 4665.5,
+      "y": 2007.5,
+      "neighbors": [
+        "Ellipse 84",
+        "Ellipse 86"
+      ]
+    },
+    {
+      "id": "Ellipse 86",
+      "x": 4700.5,
+      "y": 1974.5,
+      "neighbors": [
+        "Ellipse 85",
+        "Ellipse 87"
+      ]
+    },
+    {
+      "id": "Ellipse 87",
+      "x": 4735.5,
+      "y": 1941.5,
+      "neighbors": [
+        "Ellipse 86",
+        "Ellipse 88"
+      ]
+    },
+    {
+      "id": "Ellipse 88",
+      "x": 4770.5,
+      "y": 1908.5,
+      "neighbors": [
+        "Ellipse 87",
+        "Ellipse 89"
+      ]
+    },
+    {
+      "id": "Ellipse 89",
+      "x": 4805.5,
+      "y": 1875.5,
+      "neighbors": [
+        "Ellipse 88",
+        "Ellipse 90"
+      ]
+    },
+    {
+      "id": "Ellipse 90",
+      "x": 4840.5,
+      "y": 1842.5,
+      "neighbors": [
+        "Ellipse 91",
+        "Ellipse 89"
+      ]
+    },
+    {
+      "id": "Ellipse 91",
+      "x": 4875.5,
+      "y": 1809.5,
+      "neighbors": [
+        "Ellipse 90",
+        "Ellipse 92"
+      ]
+    },
+    {
+      "id": "Ellipse 92",
+      "x": 4910.5,
+      "y": 1776.5,
+      "neighbors": [
+        "Ellipse 91",
+        "Ellipse 93"
+      ]
+    },
+    {
+      "id": "Ellipse 93",
+      "x": 4945.5,
+      "y": 1743.5,
+      "neighbors": [
+        "Ellipse 92",
+        "Ellipse 94"
+      ]
+    },
+    {
+      "id": "Ellipse 94",
+      "x": 4980.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 93",
+        "Ellipse 95"
+      ]
+    },
+    {
+      "id": "Ellipse 95",
+      "x": 5029.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 94",
+        "Ellipse 96"
+      ]
+    },
+    {
+      "id": "Ellipse 96",
+      "x": 5078.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 95",
+        "Ellipse 97"
+      ]
+    },
+    {
+      "id": "Ellipse 97",
+      "x": 5127.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 96",
+        "Ellipse 98"
+      ]
+    },
+    {
+      "id": "Ellipse 98",
+      "x": 5176.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 97",
+        "Ellipse 99"
+      ]
+    },
+    {
+      "id": "Ellipse 99",
+      "x": 5225.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 98",
+        "Ellipse 100"
+      ]
+    },
+    {
+      "id": "Ellipse 100",
+      "x": 5274.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 99",
+        "Ellipse 101"
+      ]
+    },
+    {
+      "id": "Ellipse 101",
+      "x": 5323.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 100",
+        "Ellipse 102"
+      ]
+    },
+    {
+      "id": "Ellipse 102",
+      "x": 5372.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 101",
+        "Ellipse 103"
+      ]
+    },
+    {
+      "id": "Ellipse 103",
+      "x": 5421.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 102",
+        "Ellipse 104"
+      ]
+    },
+    {
+      "id": "Ellipse 104",
+      "x": 5470.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 103",
+        "Ellipse 105"
+      ]
+    },
+    {
+      "id": "Ellipse 105",
+      "x": 5519.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 104",
+        "Ellipse 106"
+      ]
+    },
+    {
+      "id": "Ellipse 106",
+      "x": 5568.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 105",
+        "Ellipse 107"
+      ]
+    },
+    {
+      "id": "Ellipse 107",
+      "x": 5617.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 106",
+        "Ellipse 108"
+      ]
+    },
+    {
+      "id": "Ellipse 108",
+      "x": 5666.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 107",
+        "Ellipse 109"
+      ]
+    },
+    {
+      "id": "Ellipse 109",
+      "x": 5715.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 108",
+        "Ellipse 110"
+      ]
+    },
+    {
+      "id": "Ellipse 110",
+      "x": 5764.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 109",
+        "Ellipse 111"
+      ]
+    },
+    {
+      "id": "Ellipse 111",
+      "x": 5813.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 110",
+        "Ellipse 112"
+      ]
+    },
+    {
+      "id": "Ellipse 112",
+      "x": 5862.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 111",
+        "Ellipse 113"
+      ]
+    },
+    {
+      "id": "Ellipse 113",
+      "x": 5911.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 112",
+        "Ellipse 114"
+      ]
+    },
+    {
+      "id": "Ellipse 114",
+      "x": 5960.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 113",
+        "Ellipse 115"
+      ]
+    },
+    {
+      "id": "Ellipse 115",
+      "x": 6009.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 114",
+        "Ellipse 116"
+      ]
+    },
+    {
+      "id": "Ellipse 116",
+      "x": 6058.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 115",
+        "Ellipse 117"
+      ]
+    },
+    {
+      "id": "Ellipse 117",
+      "x": 6107.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 116",
+        "Ellipse 118"
+      ]
+    },
+    {
+      "id": "Ellipse 118",
+      "x": 6156.5,
+      "y": 1710.5,
+      "neighbors": [
+        "Ellipse 117",
+        "Ellipse 119"
+      ]
+    },
+    {
+      "id": "Ellipse 119",
+      "x": 6189.5,
+      "y": 1743.5,
+      "neighbors": [
+        "Ellipse 118",
+        "Ellipse 120"
+      ]
+    },
+    {
+      "id": "Ellipse 120",
+      "x": 6222.5,
+      "y": 1776.5,
+      "neighbors": [
+        "Ellipse 119"
+      ]
+    },
+    {
+      "id": "Ellipse 22",
+      "x": 3527.5,
+      "y": 4553.5,
+      "neighbors": [
+        "Ellipse 21",
+        "Ellipse 20",
+        "Ellipse 121"
+      ]
+    },
+    {
+      "id": "Ellipse 343",
+      "x": 3527.5,
+      "y": 4947,
+      "neighbors": []
+    },
+    {
+      "id": "Ellipse 347",
+      "x": 3428.5,
+      "y": 5782,
+      "neighbors": [
+        "Ellipse 273",
+        "Ellipse 274"
+      ]
+    },
+    {
+      "id": "Ellipse 348",
+      "x": 3427.5,
+      "y": 5998,
+      "neighbors": [
+        "Ellipse 276"
+      ]
+    },
+    {
+      "id": "Ellipse 349",
+      "x": 3435.5,
+      "y": 6159,
+      "neighbors": []
+    },
+    {
+      "id": "Ellipse 350",
+      "x": 3432.5,
+      "y": 6496,
+      "neighbors": [
+        "Ellipse 283"
+      ]
+    },
+    {
+      "id": "Ellipse 351",
+      "x": 3425.5,
+      "y": 7118,
+      "neighbors": []
+    },
+    {
+      "id": "Ellipse 352",
+      "x": 3426.5,
+      "y": 7567,
+      "neighbors": []
+    },
+    {
+      "id": "Ellipse 353",
+      "x": 3837.5,
+      "y": 7536,
+      "neighbors": [
+        "Ellipse 243",
+        "Ellipse 244"
+      ]
+    },
+    {
+      "id": "Ellipse 354",
+      "x": 3844.5,
+      "y": 7122,
+      "neighbors": [
+        "Ellipse 235",
+        "Ellipse 236"
+      ]
+    },
+    {
+      "id": "Ellipse 355",
+      "x": 3844.5,
+      "y": 6474,
+      "neighbors": [
+        "Ellipse 224",
+        "Ellipse 225"
+      ]
+    },
+    {
+      "id": "Ellipse 344",
+      "x": 3428.5,
+      "y": 5544,
+      "neighbors": []
+    },
+    {
+      "id": "Ellipse 346",
+      "x": 3850.5,
+      "y": 5640,
+      "neighbors": [
+        "Ellipse 209",
+        "Ellipse 210"
+      ]
+    },
+    {
+      "id": "Ellipse 345",
+      "x": 3438.5,
+      "y": 4548,
+      "neighbors": []
+    }
+  ]
+}

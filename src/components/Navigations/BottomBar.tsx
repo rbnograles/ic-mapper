@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { LocationOn, Map, Restore, Bookmark } from '@mui/icons-material';
-import type { PathItem } from '../../App';
+import type { PathItem } from '../../interface/BaseMap';
 import BottomSlider from '../Drawers/BottomSlider';
 
 export default function BottomBar({
