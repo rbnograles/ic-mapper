@@ -28,13 +28,16 @@
     "react-icons": "^5.5.0",
     "react-zoom-pan-pinch": "^3.7.0",
     "svg-path-bounds": "^1.0.2",
+    "svg-path-parser": "^1.1.0",
     "xmldom": "^0.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@types/d3-shape": "^3.1.7",
+    "@types/node": "^24.6.2",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
+    "@types/svg-path-parser": "^1.1.6",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",

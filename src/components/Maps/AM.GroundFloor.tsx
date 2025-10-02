@@ -2,13 +2,13 @@ import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import MapFloatingIcons from '../Navigations/MapFloatingIcons';
 import ICON_MAP from '../util/iconMapper';
-import AMGFMapBoundaries from './partials/AM.GF.MapBoundaries';
-import AMGroundFloorBase from './partials/AM.GF.MapBase';
+import AMGFMapBoundaries from './partials/AMGF/AM.GF.MapBoundaries';
+import AMGroundFloorBase from './partials/AMGF/AM.GF.MapBase';
 import { useTheme, useMediaQuery } from '@mui/material';
 import type { INodes } from '../../interface/BaseMap';
-import AMGFRoadMarks from './partials/AM.GF.RoadMarks';
-import AMGFBuildingMarks from './partials/AM.GF.BuildingMarks';
-import AMGFPathNodes from './partials/AM.GF.PathNodes';
+import AMGFRoadMarks from './partials/AMGF/AM.GF.RoadMarks';
+import AMGFBuildingMarks from './partials/AMGF/AM.GF.BuildingMarks';
+import AMGFPathNodes from './partials/AMGF/AM.GF.PathNodes';
 
 function AMGroundFloor({
   highlightId,
@@ -147,17 +147,6 @@ function AMGroundFloor({
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox="0 0 14779 10635" style={{ width: '100%', height: 'auto' }} fill="none">
           <g id="Base Map">
-            <defs>
-              <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow
-                  dx="24"
-                  dy="16"
-                  stdDeviation="12"
-                  floodColor="rgba(64, 26, 136, 0.6)"
-                />
-              </filter>
-            </defs>
-
             <AMGFMapBoundaries highlightName={highlightName} />
             <AMGFRoadMarks />
 
@@ -183,18 +172,59 @@ function AMGroundFloor({
                     n.id === activeNodeIds[0] || // ✅ first node
                     n.id === activeNodeIds[activeNodeIds.length - 1] // ✅ last node
                 )
-                .map((n) => (
-                  <circle
-                    key={n.id}
-                    id={n.id}
-                    cx={n.x}
-                    cy={n.y}
-                    r={24}
-                    fill={n.id === activeNodeIds[0] ? '#4CAF50' : '#F44336'} // start=green, end=red
-                    stroke="black"
-                    strokeWidth={3}
-                  />
-                ))}
+                .map((n) =>
+                  n.type === 'entrance' ? (
+                    <ellipse
+                      key={n.id}
+                      id={n.id}
+                      cx={n.cx}
+                      cy={n.cy}
+                      rx={n.rx ?? 20} // default if missing
+                      ry={n.ry ?? 20}
+                      fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'} // start=green, end=white
+                      stroke="black"
+                      strokeWidth={3}
+                    />
+                  ) : (
+                    <circle
+                      key={n.id}
+                      id={n.id}
+                      cx={n.x}
+                      cy={n.y}
+                      r={24}
+                      fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'}
+                      stroke="black"
+                      strokeWidth={3}
+                    />
+                  )
+                )}
+
+            {/* {nodes.map((n) =>
+              n.type === 'entrance' ? (
+                <ellipse
+                  key={n.id}
+                  id={n.id}
+                  cx={n.cx}
+                  cy={n.cy}
+                  rx={n.rx ?? 20} // default if missing
+                  ry={n.ry ?? 20}
+                  fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'} // start=green, end=white
+                  stroke="black"
+                  strokeWidth={3}
+                />
+              ) : (
+                <circle
+                  key={n.id}
+                  id={n.id}
+                  cx={n.x}
+                  cy={n.y}
+                  r={24}
+                  fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'}
+                  stroke="black"
+                  strokeWidth={3}
+                />
+              )
+            )} */}
 
             {/* Draw route line */}
             <AMGFPathNodes route={activeNodeIds} nodes={nodes} />

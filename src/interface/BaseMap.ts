@@ -8,9 +8,14 @@ export interface PathItem {
 
 export interface INodes {
   id: string;
-  x: number;
-  y: number;
-  neighbors: string[]
+  x?: number;
+  y?: number;
+  rx?: number;
+  ry?: number;
+  cx?: number;
+  cy?: number;
+  type: string;
+  neighbors: string[];
 }
 
 export interface IEdges {

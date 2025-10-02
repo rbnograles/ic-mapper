@@ -11,6 +11,7 @@ import MapData from './components/Data/GroupFloor.json';
 
 import { findPathBetweenPlaces } from './components/util/routing';
 import type { Graph, PathItem } from './interface/BaseMap';
+// import AM3rdFloor from './components/Maps/AM.3rdFloor';
 
 export default function App() {
   // Map Highlight State
@@ -89,6 +90,7 @@ export default function App() {
             handleChipClick={handleChipClick}
             handlePathSearchBehavior={handlePathSearchBehavior}
             handleRoute={handleRoute}
+            pathItem={pathItem}
           />
         </Box>
 
@@ -103,6 +105,7 @@ export default function App() {
             activeNodeIds={activeNodeIds}
             nodes={nodes}
           />
+          {/* <AM3rdFloor /> */}
         </Box>
 
         <Box sx={layoutStyles.fixedBottom}>

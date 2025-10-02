@@ -1,27 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   AppBar,
   Box,
   Toolbar,
   TextField,
   Autocomplete,
-  Drawer,
   useMediaQuery,
   CssBaseline,
-  Stack,
   IconButton,
-  Typography,
-  Divider,
 } from '@mui/material';
 import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationPinIcon from '@mui/icons-material/LocationPin';
-import Chips from './Chips';
-import { FaLocationDot } from 'react-icons/fa6';
 import uniqueTypes from '../Data/unique_types.json';
-import CloseIcon from '@mui/icons-material/Close';
-import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import { FaDirections } from 'react-icons/fa';
+import Direction from '../Drawers/Direction';
+import Chips from './Chips';
+import type { PathItem } from '../../interface/BaseMap';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,12 +56,14 @@ export default function SearchAppBar({
   handleChipClick,
   handlePathSearchBehavior,
   handleRoute,
+  pathItem,
 }: {
   options: any[];
   onSelect: (item: any, type?: 'A' | 'B') => void;
   handleChipClick: (type: string) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
   handleRoute: (from: string, to: string) => void;
+  pathItem: PathItem;
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -80,6 +77,13 @@ export default function SearchAppBar({
     handleRoute(pointA.name, val.name);
     if (pointA) setDirectionOpen(false);
   };
+
+  // ✅ Sync pointA whenever pathItem changes
+  useEffect(() => {
+    if (pathItem) {
+      setPointA(pathItem);
+    }
+  }, [pathItem, onSelect]);
 
   const renderSearchBar = (placeholder: string, value: any, onChange: (val: any) => void) => (
     <Search
@@ -195,64 +199,17 @@ export default function SearchAppBar({
         </AppBar>
 
         {/* === Drawer for directions === */}
-        <Drawer
-          anchor="left"
-          open={directionOpen}
-          onClose={() => setDirectionOpen(false)}
-          PaperProps={{
-            sx: { width: isMobile ? '100vw' : 400, p: 2 },
-          }}
-        >
-          <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
-            <Stack direction="row" alignItems="center" spacing={1}>
-              <DirectionsWalkIcon color="primary" />
-              <Typography variant="subtitle1" fontWeight="bold" fontSize={24}>
-                Walking
-              </Typography>
-            </Stack>
-            <IconButton onClick={() => setDirectionOpen(false)}>
-              <CloseIcon />
-            </IconButton>
-          </Stack>
-          <Divider />
-          <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ pt: 2 }}>
-            <Stack spacing={1.5} alignItems="center" style={{ marginTop: 18 }}>
-              <Box
-                sx={{
-                  width: 16,
-                  height: 16,
-                  border: '2px solid black',
-                  borderRadius: '50%',
-                }}
-              />
-              <Stack spacing={0.8} alignItems="center">
-                {[...Array(3)].map((_, i) => (
-                  <Box
-                    key={i}
-                    sx={{
-                      width: 4,
-                      height: 4,
-                      bgcolor: 'black',
-                      borderRadius: '50%',
-                    }}
-                  />
-                ))}
-              </Stack>
-              <FaLocationDot style={{ color: '#f44336', fontSize: 20 }} />
-            </Stack>
-
-            <Stack spacing={1.5} flex={1}>
-              {renderSearchBar('Choose starting point', pointA, (val) => {
-                setPointA(val);
-                handlePathSearchBehavior(val, 'A');
-              })}
-              {renderSearchBar('Choose destination', pointB, (val) => {
-                setPointBMethod(val);
-                handlePathSearchBehavior(val, 'B');
-              })}
-            </Stack>
-          </Stack>
-        </Drawer>
+        <Direction
+          directionOpen={directionOpen}
+          setDirectionOpen={setDirectionOpen}
+          isMobile={isMobile}
+          renderSearchBar={renderSearchBar}
+          setPointA={setPointA}
+          handlePathSearchBehavior={handlePathSearchBehavior}
+          setPointBMethod={setPointBMethod}
+          pointA={pointA}
+          pointB={pointB}
+        />
       </Box>
     </ThemeProvider>
   );
