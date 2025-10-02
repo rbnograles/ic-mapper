@@ -51,7 +51,7 @@ const AMGroundFloorBase = memo(
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           style={{
-            transform: isNameHighlighted ? 'scale(1.10)' : 'scale(1)',
+
             transformBox: 'fill-box',
             transformOrigin: 'center',
             transition: 'transform 0.4s ease-in-out, fill 0.3s ease',

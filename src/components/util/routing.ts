@@ -18,7 +18,10 @@ function buildAdjacency(graph: Graph): AdjList {
       const neighbor = graph.nodes.find((n) => n.id === neighborId);
       if (!neighbor) continue;
 
-      const weight = Math.hypot(node.x - neighbor.x, node.y - neighbor.y);
+      const weight = Math.hypot(
+        (node.x ?? 0) - (neighbor.x ?? 0),
+        (node.y ?? 0) - (neighbor.y ?? 0)
+      );
 
       // bidirectional
       adj[node.id].push({ to: neighborId, weight });
@@ -33,7 +36,7 @@ function buildAdjacency(graph: Graph): AdjList {
  * Euclidean distance heuristic for A*
  */
 function heuristic(a: INodes, b: INodes) {
-  return Math.hypot(a.x - b.x, a.y - b.y);
+  return Math.hypot((a.x ?? 0) - (b.x ?? 0), (a.y ?? 0) - (b.y ?? 0));
 }
 
 /**
@@ -111,7 +114,7 @@ function findNearestNode(graph: Graph, point: { x: number; y: number }): string 
   let bestDist = Infinity;
 
   for (const node of graph.nodes) {
-    const d = Math.hypot(point.x - node.x, point.y - node.y);
+    const d = Math.hypot(point.x - (node.x ?? 0), point.y - (node.y ?? 0));
     if (d < bestDist) {
       bestDist = d;
       nearest = node.id;
