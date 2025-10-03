@@ -1,6 +1,4 @@
-import { memo } from 'react';
-import Tooltip from '@mui/material/Tooltip';
-import { Button } from '@mui/material';
+import { Fragment, memo, cloneElement } from 'react';
 
 type MapRegionProps = {
   p: {
@@ -40,63 +38,83 @@ const AMGroundFloorBase = memo(
         ? '#F2FFB7'
         : p.baseFill || '#E4E9F4';
 
-    const strokeColor = isNameHighlighted ? '#FDC023' : isTypeHighlighted ? '#FDC023' : '#F4EDDB';
+    const strokeColor = isNameHighlighted ? '#FDC023' : isTypeHighlighted ? '#FDC023' : '#7B48FF';
 
     const strokeWidth = isNameHighlighted || isTypeHighlighted ? 4 : 2;
 
+    // Clone the icon and override color if highlighted
+    const iconElement = ICON_MAP[p.icon];
+    const iconNode =
+      p.icon &&
+      iconElement &&
+      // Ensure it's a valid ReactElement and supports 'style' prop
+      typeof iconElement === 'object' &&
+      'props' in iconElement
+        ? cloneElement(iconElement as React.ReactElement<any>, {
+            ...(iconElement.props &&
+            typeof iconElement.props === 'object' &&
+            iconElement.props !== null &&
+            'style' in iconElement.props
+              ? {
+                  style: {
+                    ...((typeof iconElement.props.style === 'object' &&
+                    iconElement.props.style !== null
+                      ? iconElement.props.style
+                      : {}) as React.CSSProperties),
+                    color: isNameHighlighted
+                      ? 'black'
+                      : (iconElement.props.style as React.CSSProperties)?.color,
+                  },
+                }
+              : {}),
+          })
+        : null;
+
     return (
-      <g key={p.id} onClick={p.type !== 'NotClickable' ? () => onClick?.(p) : () => {}}>
-        {/* ---- Path ---- */}
-        <path
-          id={p.id}
-          d={p.path}
-          fill={fillColor}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          style={{
-            transformBox: 'fill-box',
-            transformOrigin: 'center',
-            transition: 'transform 0.4s ease-in-out, fill 0.3s ease',
-          }}
-        />
+      <Fragment>
+        <g
+          key={p.id}
+          onClick={p.type !== 'NotClickable' && p.type !== 'Park' ? () => onClick?.(p) : undefined}
+        >
+          {/* ---- Path ---- */}
+          <path
+            id={p.id}
+            d={p.path}
+            fill={p.type !== 'NotClickable' ? fillColor : '#B8B6B6'}
+            stroke={p.type !== 'NotClickable' && p.type !== 'Park' ? strokeColor : ''}
+            strokeWidth={strokeWidth}
+            style={{
+              transformBox: 'fill-box',
+              transformOrigin: 'center',
+              transition: 'transform 0.4s ease-in-out, fill 0.3s ease',
+            }}
+          />
 
-        {/* ---- Center Icon ---- */}
-        {centers[p.id] && (
-          <foreignObject
-            x={centers[p.id].x - 40}
-            y={centers[p.id].y - (p.centerY !== undefined ? p.centerY : 12)}
-            width={p.type === 'Unknown' ? 206 : 86}
-            height={100}
-          >
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                pointerEvents: 'none',
-              }}
+          {/* ---- Center Icon ---- */}
+          {centers[p.id] && iconNode && (
+            <foreignObject
+              x={centers[p.id].x - (p.centerX ?? 50)}
+              y={centers[p.id].y - (p.centerY ?? 30)}
+              width={100}
+              height={100}
             >
-              {ICON_MAP[p.icon]}
-
-              {p.type === 'Unknown' && (
-                <Tooltip title="Add">
-                  <Button
-                    style={{
-                      backgroundColor: 'red',
-                      color: 'white',
-                      fontSize: 24,
-                    }}
-                  >
-                    {p.id}
-                  </Button>
-                </Tooltip>
-              )}
-            </div>
-          </foreignObject>
-        )}
-      </g>
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  pointerEvents: 'none',
+                  zIndex: 999999,
+                }}
+              >
+                {iconNode}
+              </div>
+            </foreignObject>
+          )}
+        </g>
+      </Fragment>
     );
   },
   (prev, next) =>

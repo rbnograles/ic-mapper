@@ -133,8 +133,7 @@ function findNearestNode(graph: Graph, point: { x: number; y: number }): string 
 export function findPathBetweenPlaces(graph: Graph, placeA: string, placeB: string) {
   const p1 = graph.places.find((p) => p.name === placeA);
   const p2 = graph.places.find((p) => p.name === placeB);
-  console.log(p1);
-  console.log(p2);
+
   if (!p1 || !p2) {
     console.warn('Place not found', { placeA, placeB });
     return null;

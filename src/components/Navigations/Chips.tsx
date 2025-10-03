@@ -8,9 +8,10 @@ import DoorFrontIcon from '@mui/icons-material/DoorFront';
 import ParkIcon from '@mui/icons-material/Park';
 import { Stack, Chip, ThemeProvider, CssBaseline } from '@mui/material';
 import type { JSX } from 'react';
-import { FaBus, FaServer } from 'react-icons/fa';
-import { FaLocationArrow, FaStairs } from 'react-icons/fa6';
+import { FaBus, FaRunning, FaServer } from 'react-icons/fa';
+import { FaLocationArrow, FaMasksTheater, FaStairs } from 'react-icons/fa6';
 import { BsBank2 } from 'react-icons/bs';
+import { MdHotel } from 'react-icons/md';
 
 import theme from '../../styles/theme';
 
@@ -21,12 +22,15 @@ const iconMap: Record<string, JSX.Element> = {
   Services: <FaServer style={{ color: 'white', fontSize: 15 }} />,
   Concierge: <RoomServiceIcon style={{ color: 'white' }} />,
   Elevator: <ElevatorIcon style={{ color: 'white' }} />,
-  Escalator: <EscalatorIcon style={{ color: 'white' }} />,
+  ESCALATOR: <EscalatorIcon style={{ color: 'white' }} />,
   'Entrance/Exit': <DoorFrontIcon style={{ color: 'white' }} />,
   Park: <ParkIcon style={{ color: 'white' }} />,
   'Transport Terminal': <FaBus style={{ color: 'white' }} />,
   Stairs: <FaStairs style={{ color: 'white' }} />,
   Bank: <BsBank2 style={{ color: 'white' }} />,
+  Entertainment: <FaMasksTheater style={{ color: 'white' }} />,
+  'Fire Exit': <FaRunning style={{ color: 'white' }} />,
+  Hotel: <MdHotel style={{ color: 'white' }} />,
 };
 
 type ChipsProps = {

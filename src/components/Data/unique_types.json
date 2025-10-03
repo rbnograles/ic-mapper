@@ -1,19 +1,19 @@
-{
-  "types": [
-    "Park",
-    "Food & Beverage",
-    "Retail",
-    "Services",
-    "Transport Terminal",
-    "Landmark",
-    "Activity Center",
-    "Hotel",
-    "Escalator",
-    "Restroom",
-    "Concierge",
-    "Entrance/Exit",
-    "Elevator",
-    "Stairs",
-    "Bank"
-  ]
-}
+[
+  "Landmark",
+  "Retail",
+  "Food & Beverage",
+  "Entrance/Exit",
+  "Hotel",
+  "Activity Center",
+  "Stairs",
+  "ESCALATOR",
+  "Services",
+  "Bank",
+  "Transport Terminal",
+  "Park",
+  "Fire Exit",
+  "Restroom",
+  "Elevator",
+  "Entertainment",
+  "Concierge"
+]

@@ -62,14 +62,15 @@ export default function App() {
   const nodes = useMemo(() => [...MapData.nodes], []);
 
   const uniqueOptions = useMemo(
-    () => maps.filter((item, index, self) => index === self.findIndex((t) => t.name === item.name)),
+    () =>
+      maps
+        .filter((item) => item.name !== 'NotClickable') // exclude NotClickable
+        .filter((item, index, self) => index === self.findIndex((t) => t.name === item.name)), // unique by name
     [maps]
   );
 
   const handleRoute = (from: string, to: string) => {
     const path = findPathBetweenPlaces(MapData as unknown as Graph, from, to);
-    console.log('Full path result:', path);
-
     if (!path) {
       setActiveNodeIds([]);
       return;

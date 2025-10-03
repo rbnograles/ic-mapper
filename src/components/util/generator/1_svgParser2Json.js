@@ -1,9 +1,9 @@
-// parseSvgToJson.js
+// updatePathsInJson.js
 import fs from 'fs';
 import { DOMParser } from 'xmldom';
 import bounds from 'svg-path-bounds';
 
-// ✅ helper to compute centroid of a path
+// Helper to compute centroid (optional, kept for reference)
 function getCentroid(path) {
   try {
     const [x1, y1, x2, y2] = bounds(path);
@@ -13,36 +13,21 @@ function getCentroid(path) {
   }
 }
 
-// ✅ recursive collector to get ALL <path> under a <g>
+// Recursive collector to get ALL <path> under a <g>
 function collectPaths(group) {
   let results = [];
   if (!group) return results;
 
-  // group identifier (for prefixing IDs)
-  const groupId = group.getAttribute('id') || 'Group';
-
-  // collect all <path> directly under this group
   const paths = group.getElementsByTagName('path');
-  let counter = 1;
   for (let i = 0; i < paths.length; i++) {
     const pathNode = paths.item(i);
+    const id = pathNode.getAttribute('id');
     const d = pathNode.getAttribute('d');
-    const fill = pathNode.getAttribute('fill') || '#FFFFFF';
-    const centroid = getCentroid(d);
-
-    // ✅ assign unique id as groupId_index
-    const id = `${groupId}_${counter++}`;
-
-    results.push({
-      id,
-      path: d,
-      centroid,
-      name: null,
-      baseFill: fill,
-    });
+    if (id && d) {
+      results.push({ id, path: d });
+    }
   }
 
-  // recurse into nested groups
   const childGroups = group.getElementsByTagName('g');
   for (let i = 0; i < childGroups.length; i++) {
     results = results.concat(collectPaths(childGroups.item(i)));
@@ -51,60 +36,40 @@ function collectPaths(group) {
   return results;
 }
 
-// ✅ main
-function parseSvgToJson(svgFile) {
+// Main
+function updatePathsInJson(svgFile, jsonFile, outputFile) {
   const svgContent = fs.readFileSync(svgFile, 'utf-8');
   const doc = new DOMParser().parseFromString(svgContent, 'image/svg+xml');
+  const currentData = JSON.parse(fs.readFileSync(jsonFile, 'utf-8'));
 
-  // --- get building vectors (including nested groups) ---
+  // --- collect paths from SVG ---
   const buildingGroup = doc.getElementById('BLDG');
-  let buildings = collectPaths(buildingGroup);
+  const svgPaths = collectPaths(buildingGroup);
 
-  // --- get labels ---
-  const labelGroup = doc.getElementById('Building Marks');
-  const labelPaths = labelGroup?.getElementsByTagName('path') || [];
+  // --- map for quick lookup ---
+  const pathMap = new Map(svgPaths.map((b) => [b.id, b.path]));
 
-  let labels = [];
-  for (let i = 0; i < labelPaths.length; i++) {
-    const pathNode = labelPaths.item(i);
-    const id = pathNode.getAttribute('id');
-    const d = pathNode.getAttribute('d');
-    const centroid = getCentroid(d);
-    labels.push({ name: id, centroid });
-  }
-
-  // --- match labels to nearest building ---
-  for (let label of labels) {
-    let nearest = null;
-    let minDist = Infinity;
-    for (let b of buildings) {
-      const dx = label.centroid[0] - b.centroid[0];
-      const dy = label.centroid[1] - b.centroid[1];
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < minDist) {
-        minDist = dist;
-        nearest = b;
-      }
+  // --- update existing places ---
+  const updatedPlaces = currentData.places.map((place) => {
+    if (pathMap.has(place.id)) {
+      return { ...place, path: pathMap.get(place.id) };
     }
-    if (nearest) nearest.name = label.name;
-  }
+    return place;
+  });
 
-  // --- format JSON output ---
-  const places = buildings.map((b) => ({
-    id: b.id,
-    name: b.name || 'Unknown',
-    path: b.path,
-    type: 'Building',
-    entranceNode: '',
-    description: 'Place description goes in here...',
-    nearNodes: [],
-    baseFill: b.baseFill || '#FFFFFF',
-  }));
+  // --- write back JSON, keeping nodes intact ---
+  const updatedJson = {
+    ...currentData,
+    places: updatedPlaces,
+  };
 
-  return { places };
+  fs.writeFileSync(outputFile, JSON.stringify(updatedJson, null, 2));
+  console.log(`✅ Updated paths written to ${outputFile}`);
 }
 
-// Run script
-const json = parseSvgToJson('../../../assets/AyalaMallsMap/GroundFloor.svg');
-fs.writeFileSync('places.json', JSON.stringify(json, null, 2));
-console.log('✅ places.json generated!');
+// Run
+updatePathsInJson(
+  '../../../assets/AyalaMallsMap/GroundFloor.svg',
+  '../../Data/GroupFloor.json',
+  '../../Data/GroupFloor.json' // overwrite original
+);

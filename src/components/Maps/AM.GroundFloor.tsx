@@ -35,6 +35,7 @@ function AMGroundFloor({
   // ✅ MUI breakpoints
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // <600px
   const isTablet = useMediaQuery(theme.breakpoints.between('lg', 'xl')); // 600–900px
+  const isPC = useMediaQuery(theme.breakpoints.up('xl'));
   const initialScale = isMobile ? 1.5 : isTablet ? 2.4 : 3.5;
 
   const [centers, setCenters] = useState<Record<string, { x: number; y: number }>>({});
@@ -66,7 +67,11 @@ function AMGroundFloor({
 
     // ✅ Zoom OUT when a type is highlighted
     const timeout = setTimeout(() => {
-      transformRef.current.setTransform(350, 200, 3, 800);
+      isMobile
+        ? transformRef.current.setTransform(0, 100, 2, 800)
+        : isPC
+          ? transformRef.current.setTransform(650, 100, 4.3, 800)
+          : transformRef.current.setTransform(250, 100, 3.2, 800);
       // 👆 resets pan & zoom out
     }, 200);
 
@@ -141,13 +146,13 @@ function AMGroundFloor({
       limitToBounds={false}
       centerOnInit
       initialScale={initialScale}
-      maxScale={12}
+      maxScale={20}
     >
       <MapFloatingIcons transformRef={transformRef} />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox="0 0 14779 10635" style={{ width: '100%', height: 'auto' }} fill="none">
           <g id="Base Map">
-            <AMGFMapBoundaries highlightName={highlightName} />
+            <AMGFMapBoundaries />
             <AMGFRoadMarks />
 
             {map.map((p) => (
@@ -198,33 +203,6 @@ function AMGroundFloor({
                     />
                   )
                 )}
-
-            {/* {nodes.map((n) =>
-              n.type === 'entrance' ? (
-                <ellipse
-                  key={n.id}
-                  id={n.id}
-                  cx={n.cx}
-                  cy={n.cy}
-                  rx={n.rx ?? 20} // default if missing
-                  ry={n.ry ?? 20}
-                  fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'} // start=green, end=white
-                  stroke="black"
-                  strokeWidth={3}
-                />
-              ) : (
-                <circle
-                  key={n.id}
-                  id={n.id}
-                  cx={n.x}
-                  cy={n.y}
-                  r={24}
-                  fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'}
-                  stroke="black"
-                  strokeWidth={3}
-                />
-              )
-            )} */}
 
             {/* Draw route line */}
             <AMGFPathNodes route={activeNodeIds} nodes={nodes} />

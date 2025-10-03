@@ -5,8 +5,7 @@ function parseSvgToRoutingGraph(svgString, placesFile, outputPath, threshold = 5
   const nodes = [];
 
   // --- Parse <circle> ---
-  const circleRegex =
-    /<circle[^>]*id="([^"]+)"[^>]*cx="([^"]+)"[^>]*cy="([^"]+)"[^>]*r="([^"]+)"/g;
+  const circleRegex = /<circle[^>]*id="([^"]+)"[^>]*cx="([^"]+)"[^>]*cy="([^"]+)"[^>]*r="([^"]+)"/g;
   let match;
   while ((match = circleRegex.exec(svgString)) !== null) {
     const [, id, cx, cy, r] = match;
@@ -16,7 +15,7 @@ function parseSvgToRoutingGraph(svgString, placesFile, outputPath, threshold = 5
       y: Math.round(parseFloat(cy) * 100) / 100,
       rx: parseFloat(r),
       ry: parseFloat(r),
-      type: "circle",
+      type: 'path',
       neighbors: [],
     });
   }
@@ -32,7 +31,7 @@ function parseSvgToRoutingGraph(svgString, placesFile, outputPath, threshold = 5
       y: Math.round(parseFloat(cy) * 100) / 100,
       rx: parseFloat(rx),
       ry: parseFloat(ry),
-      type: "ellipse",
+      type: 'ellipse',
       neighbors: [],
     });
   }
@@ -75,7 +74,7 @@ function parseSvgToRoutingGraph(svgString, placesFile, outputPath, threshold = 5
   }
 
   // --- Load places file (keep places untouched) ---
-  const placesData = JSON.parse(fs.readFileSync(placesFile, "utf-8"));
+  const placesData = JSON.parse(fs.readFileSync(placesFile, 'utf-8'));
 
   // Merge nodes + places
   const merged = {
@@ -83,17 +82,17 @@ function parseSvgToRoutingGraph(svgString, placesFile, outputPath, threshold = 5
     places: placesData.places || placesData,
   };
 
-  fs.writeFileSync(outputPath, JSON.stringify(merged, null, 2), "utf-8");
+  fs.writeFileSync(outputPath, JSON.stringify(merged, null, 2), 'utf-8');
   console.log(`✅ Graph (circles + ellipses + places) written to ${outputPath}`);
 }
 
 // --- Example usage ---
 function main() {
-  const svgString = fs.readFileSync("../../../assets/AyalaMallsMap/GroundFloor.svg", "utf-8");
-  const placesFile = "../../Data/GroupFloor.json"; // your places file
-  const outputPath = "../../Data/GroupFloor.json"; // overwrite with new merged graph
+  const svgString = fs.readFileSync('../../../assets/AyalaMallsMap/GroundFloor.svg', 'utf-8');
+  const placesFile = '../../Data/GroupFloor.json'; // your places file
+  const outputPath = '../../Data/GroupFloor.json'; // overwrite with new merged graph
 
-  parseSvgToRoutingGraph(svgString, placesFile, outputPath, 300);
+  parseSvgToRoutingGraph(svgString, placesFile, outputPath, 100);
 }
 
 main();

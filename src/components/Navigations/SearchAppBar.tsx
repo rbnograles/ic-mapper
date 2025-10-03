@@ -209,7 +209,7 @@ export default function SearchAppBar({
             })}
           </Toolbar>
 
-          <Chips handleClick={handleChipClick} types={uniqueTypes.types} />
+          <Chips handleClick={handleChipClick} types={uniqueTypes} />
         </AppBar>
 
         {/* === Drawer for directions === */}
