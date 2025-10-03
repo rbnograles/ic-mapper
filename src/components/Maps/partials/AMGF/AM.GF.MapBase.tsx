@@ -61,9 +61,10 @@ const AMGroundFloorBase = memo(
                     iconElement.props.style !== null
                       ? iconElement.props.style
                       : {}) as React.CSSProperties),
-                    color: isNameHighlighted
-                      ? 'black'
-                      : (iconElement.props.style as React.CSSProperties)?.color,
+                    color:
+                      isNameHighlighted || isTypeHighlighted
+                        ? 'black'
+                        : (iconElement.props.style as React.CSSProperties)?.color,
                   },
                 }
               : {}),
