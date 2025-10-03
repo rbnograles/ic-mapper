@@ -66,7 +66,7 @@ function AMGroundFloor({
 
     // ✅ Zoom OUT when a type is highlighted
     const timeout = setTimeout(() => {
-      transformRef.current.setTransform(0, 0, 3.2, 800);
+      transformRef.current.setTransform(350, 200, 3, 800);
       // 👆 resets pan & zoom out
     }, 200);
 
@@ -165,7 +165,7 @@ function AMGroundFloor({
             <AMGFBuildingMarks />
 
             {/* Draw nodes */}
-            {/* {activeNodeIds.length >= 2 &&
+            {activeNodeIds.length >= 2 &&
               nodes
                 .filter(
                   (n) =>
@@ -197,9 +197,9 @@ function AMGroundFloor({
                       strokeWidth={3}
                     />
                   )
-                )} */}
+                )}
 
-            {nodes.map((n) =>
+            {/* {nodes.map((n) =>
               n.type === 'entrance' ? (
                 <ellipse
                   key={n.id}
@@ -224,7 +224,7 @@ function AMGroundFloor({
                   strokeWidth={3}
                 />
               )
-            )}
+            )} */}
 
             {/* Draw route line */}
             <AMGFPathNodes route={activeNodeIds} nodes={nodes} />

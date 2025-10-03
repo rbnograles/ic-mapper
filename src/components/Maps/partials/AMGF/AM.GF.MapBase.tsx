@@ -1,4 +1,6 @@
 import { memo } from 'react';
+import Tooltip from '@mui/material/Tooltip';
+import { Button } from '@mui/material';
 
 type MapRegionProps = {
   p: {
@@ -8,6 +10,7 @@ type MapRegionProps = {
     baseFill?: string;
     strokeWidth?: string | number;
     icon?: any;
+    type?: string;
     isTypeHighlighted: boolean;
     centerX: number | undefined;
     centerY: number | undefined;
@@ -42,7 +45,7 @@ const AMGroundFloorBase = memo(
     const strokeWidth = isNameHighlighted || isTypeHighlighted ? 4 : 2;
 
     return (
-      <g key={p.id} onClick={() => onClick?.(p)}>
+      <g key={p.id} onClick={p.type !== 'NotClickable' ? () => onClick?.(p) : () => {}}>
         {/* ---- Path ---- */}
         <path
           id={p.id}
@@ -51,7 +54,6 @@ const AMGroundFloorBase = memo(
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           style={{
-
             transformBox: 'fill-box',
             transformOrigin: 'center',
             transition: 'transform 0.4s ease-in-out, fill 0.3s ease',
@@ -63,8 +65,8 @@ const AMGroundFloorBase = memo(
           <foreignObject
             x={centers[p.id].x - 40}
             y={centers[p.id].y - (p.centerY !== undefined ? p.centerY : 12)}
-            width={86}
-            height={86}
+            width={p.type === 'Unknown' ? 206 : 86}
+            height={100}
           >
             <div
               style={{
@@ -77,6 +79,20 @@ const AMGroundFloorBase = memo(
               }}
             >
               {ICON_MAP[p.icon]}
+
+              {p.type === 'Unknown' && (
+                <Tooltip title="Add">
+                  <Button
+                    style={{
+                      backgroundColor: 'red',
+                      color: 'white',
+                      fontSize: 24,
+                    }}
+                  >
+                    {p.id}
+                  </Button>
+                </Tooltip>
+              )}
             </div>
           </foreignObject>
         )}
