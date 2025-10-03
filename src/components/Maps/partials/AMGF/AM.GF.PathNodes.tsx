@@ -3,6 +3,7 @@ import { line, curveCatmullRom } from 'd3-shape';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { memo } from 'react';
 import type { INodes } from '../../../../interface/BaseMap';
+import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
 const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) => {
   if (!route || route.length < 2) return null;
@@ -24,61 +25,54 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
 
   const startNode = routeNodes[0];
   const endNode = routeNodes[routeNodes.length - 1];
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  console.log(endNode);
   return (
-    <g id="current-route">
-      {/* Animated flowing path */}
-      <motion.path
-        d={pathData}
-        stroke="#FF0000"
-        strokeWidth={15}
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeDasharray="10 20"
-        initial={{ strokeDashoffset: 1000 }}
-        animate={{ strokeDashoffset: 0 }}
-        transition={{
-          repeat: Infinity,
-          ease: 'linear',
-          duration: 10,
-        }}
-      />
-
-      {/* Start node marker — only if type === circle */}
-      {startNode?.type === 'ellipse' && (
-        <circle
-          cx={startNode.x}
-          cy={startNode.y}
-          r={30}
-          fill="#7B48FF"
-          stroke="black"
-          strokeWidth={2}
+    <ThemeProvider theme={theme}>
+      <g id="current-route">
+        {/* Animated flowing path */}
+        <motion.path
+          d={pathData}
+          stroke="#FF0000"
+          strokeWidth={15}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray="10 20"
+          initial={{ strokeDashoffset: 1000 }}
+          animate={{ strokeDashoffset: 0 }}
+          transition={{
+            repeat: Infinity,
+            ease: 'linear',
+            duration: 10,
+          }}
         />
-      )}
 
-      {/* End node pin — only if type === circle */}
-      {endNode?.type === 'ellipse' && (
-        <foreignObject
-          x={(endNode.x ?? 0) - 44}
-          y={(endNode.y ?? 0) - 80}
-          width={300}
-          height={300}
-          overflow="visible"
-        >
-          <FaMapMarkerAlt
-            size={85}
-            color="red"
-            className="bounce"
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-            }}
+        {/* Start node marker — only if type === circle */}
+        {startNode?.type === 'ellipse' && (
+          <circle
+            cx={startNode.x}
+            cy={startNode.y}
+            r={30}
+            fill="#7B48FF"
+            stroke="black"
+            strokeWidth={2}
           />
-        </foreignObject>
-      )}
-    </g>
+        )}
+
+        {/* End node pin — only if type === circle */}
+
+        {endNode?.type === 'ellipse' && (
+          <g transform={`translate(${(endNode.x ?? 0) - 43}, ${(endNode.y ?? 0) - 94})`}>
+            <FaMapMarkerAlt
+              size={isMobile ? 90 : 85} // scale marker for mobile
+              color="red"
+            />
+          </g>
+        )}
+      </g>
+    </ThemeProvider>
   );
 };
 

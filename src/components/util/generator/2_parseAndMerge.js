@@ -88,9 +88,9 @@ function parseSvgToRoutingGraph(svgString, placesFile, outputPath, threshold = 5
 
 // --- Example usage ---
 function main() {
-  const svgString = fs.readFileSync('../../../assets/AyalaMallsMap/GroundFloor.svg', 'utf-8');
-  const placesFile = '../../Data/GroupFloor.json'; // your places file
-  const outputPath = '../../Data/GroupFloor.json'; // overwrite with new merged graph
+  const svgString = fs.readFileSync('../../../assets/AyalaMallsMap/3RDFLoor.svg', 'utf-8');
+  const placesFile = '../../Data/3rdFloor.json'; // your places file
+  const outputPath = '../../Data/3rdFloor.json'; // overwrite with new merged graph
 
   parseSvgToRoutingGraph(svgString, placesFile, outputPath, 100);
 }

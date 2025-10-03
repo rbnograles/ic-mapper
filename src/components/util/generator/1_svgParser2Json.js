@@ -69,7 +69,7 @@ function updatePathsInJson(svgFile, jsonFile, outputFile) {
 
 // Run
 updatePathsInJson(
-  '../../../assets/AyalaMallsMap/GroundFloor.svg',
-  '../../Data/GroupFloor.json',
-  '../../Data/GroupFloor.json' // overwrite original
+  '../../../assets/AyalaMallsMap/3RDFLoor.svg',
+  '../../Data/3rdFloor.json',
+  '../../Data/3rdFloor.json' // overwrite original
 );
