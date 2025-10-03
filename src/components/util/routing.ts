@@ -114,10 +114,13 @@ function findNearestNode(graph: Graph, point: { x: number; y: number }): string 
   let bestDist = Infinity;
 
   for (const node of graph.nodes) {
-    const d = Math.hypot(point.x - (node.x ?? 0), point.y - (node.y ?? 0));
-    if (d < bestDist) {
-      bestDist = d;
-      nearest = node.id;
+    if (node.type === 'circle') {
+      // only route to the path nodes
+      const d = Math.hypot(point.x - (node.x ?? 0), point.y - (node.y ?? 0));
+      if (d < bestDist) {
+        bestDist = d;
+        nearest = node.id;
+      }
     }
   }
 
@@ -141,7 +144,7 @@ export function findPathBetweenPlaces(graph: Graph, placeA: string, placeB: stri
 
   const getNodes = (p: Place) => {
     if (p.entranceNode && validNode(p.entranceNode)) return [p.entranceNode];
-    if (p.nearNodes) return p.nearNodes.filter(validNode);
+    if (p.entranceNodes) return p.entranceNodes.filter(validNode);
 
     // fallback: nearest node to polygon centroid
     if (p.path) {

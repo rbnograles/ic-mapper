@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   AppBar,
   Box,
@@ -56,7 +56,6 @@ export default function SearchAppBar({
   handleChipClick,
   handlePathSearchBehavior,
   handleRoute,
-  pathItem,
 }: {
   options: any[];
   onSelect: (item: any, type?: 'A' | 'B') => void;
@@ -67,23 +66,44 @@ export default function SearchAppBar({
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+  const pathItem: PathItem = {
+    name: '',
+    id: '',
+  };
   const [directionOpen, setDirectionOpen] = useState(false);
-  const [pointA, setPointA] = useState<any>(null);
-  const [pointB, setPointB] = useState<any>(null);
+  const [pointA, setPointA] = useState<PathItem>(pathItem);
+  const [pointB, setPointB] = useState<PathItem>(pathItem);
+
+  const setPointAMethod = (val: any) => {
+    setPointA(val);
+    if (pointB.name !== '' && val) {
+      handleRoute(val.name, pointB.name);
+      setDirectionOpen(false);
+    }
+  };
 
   const setPointBMethod = (val: any) => {
     setPointB(val);
-    handleRoute(pointA.name, val.name);
-    if (pointA) setDirectionOpen(false);
+    if (pointA.name !== '' && val) {
+      handleRoute(pointA.name, val.name);
+      setDirectionOpen(false);
+    }
   };
 
-  // ✅ Sync pointA whenever pathItem changes
-  useEffect(() => {
-    if (pathItem) {
-      setPointA(pathItem);
+  // ✅ Swap A and B without overrides
+  const handleSwapPoints = () => {
+    if (!pointA && !pointB) return;
+    const temp = pointA;
+    const newA = pointB;
+    const newB = temp;
+
+    setPointA(newA);
+    setPointB(newB);
+
+    if (newA && newB) {
+      handleRoute(newA.name, newB.name);
     }
-  }, [pathItem, onSelect]);
+  };
 
   const renderSearchBar = (placeholder: string, value: any, onChange: (val: any) => void) => (
     <Search
@@ -104,7 +124,6 @@ export default function SearchAppBar({
         getOptionLabel={(opt) => (opt?.name ? capitalizeWords(opt.name.toLowerCase()) : '')}
         onChange={(_, val) => onChange(val)}
         sx={{ flex: 1 }}
-        // ✅ Use slotProps.popper to control dropdown width (no PopperProps needed)
         slotProps={{
           popper: {
             modifiers: [
@@ -148,7 +167,7 @@ export default function SearchAppBar({
           <StyledTextField
             {...params}
             style={{ padding: 10 }}
-            placeholder={directionOpen ? `Direction: ${placeholder}` : placeholder}
+            placeholder={directionOpen ? `${placeholder}` : placeholder}
             variant="standard"
           />
         )}
@@ -156,12 +175,7 @@ export default function SearchAppBar({
 
       {/* ✅ Direction button INSIDE the search bar */}
       {!directionOpen && (
-        <IconButton
-          onClick={() => setDirectionOpen(true)}
-          sx={{
-            ml: 1,
-          }}
-        >
+        <IconButton onClick={() => setDirectionOpen(true)} sx={{ ml: 1 }}>
           <FaDirections style={{ fontSize: 28, color: theme.palette.secondary.main }} />
         </IconButton>
       )}
@@ -204,11 +218,12 @@ export default function SearchAppBar({
           setDirectionOpen={setDirectionOpen}
           isMobile={isMobile}
           renderSearchBar={renderSearchBar}
-          setPointA={setPointA}
           handlePathSearchBehavior={handlePathSearchBehavior}
           setPointBMethod={setPointBMethod}
+          setPointAMethod={setPointAMethod}
           pointA={pointA}
           pointB={pointB}
+          handleSwapPoints={handleSwapPoints}
         />
       </Box>
     </ThemeProvider>

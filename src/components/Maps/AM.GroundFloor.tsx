@@ -165,7 +165,7 @@ function AMGroundFloor({
             <AMGFBuildingMarks />
 
             {/* Draw nodes */}
-            {activeNodeIds.length >= 2 &&
+            {/* {activeNodeIds.length >= 2 &&
               nodes
                 .filter(
                   (n) =>
@@ -197,9 +197,9 @@ function AMGroundFloor({
                       strokeWidth={3}
                     />
                   )
-                )}
+                )} */}
 
-            {/* {nodes.map((n) =>
+            {nodes.map((n) =>
               n.type === 'entrance' ? (
                 <ellipse
                   key={n.id}
@@ -224,7 +224,7 @@ function AMGroundFloor({
                   strokeWidth={3}
                 />
               )
-            )} */}
+            )}
 
             {/* Draw route line */}
             <AMGFPathNodes route={activeNodeIds} nodes={nodes} />
