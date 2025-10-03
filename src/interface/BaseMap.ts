@@ -24,7 +24,13 @@ export interface IEdges {
 }
 
 export type Edge = { id: string; from: string; to: string; d?: string | null };
-export type Place = { id: string; name: string; nearNodes: string[]; entranceNode: string, path?: string };
+export type Place = {
+  id: string;
+  name: string;
+  entranceNodes: string[];
+  entranceNode: string;
+  path?: string;
+};
 
 export interface Graph {
   nodes: INodes[];

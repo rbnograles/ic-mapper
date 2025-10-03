@@ -66,7 +66,7 @@ function AMGroundFloor({
 
     // ✅ Zoom OUT when a type is highlighted
     const timeout = setTimeout(() => {
-      transformRef.current.setTransform(0, 0, 3.2, 800);
+      transformRef.current.setTransform(350, 200, 3, 800);
       // 👆 resets pan & zoom out
     }, 200);
 

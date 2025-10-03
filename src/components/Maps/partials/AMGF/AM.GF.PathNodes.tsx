@@ -46,7 +46,7 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
       />
 
       {/* Start node marker — only if type === circle */}
-      {startNode?.type === 'circle' && (
+      {startNode?.type === 'ellipse' && (
         <circle
           cx={startNode.x}
           cy={startNode.y}
@@ -58,10 +58,10 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
       )}
 
       {/* End node pin — only if type === circle */}
-      {endNode?.type === 'circle' && (
+      {endNode?.type === 'ellipse' && (
         <foreignObject
           x={(endNode.x ?? 0) - 44}
-          y={(endNode.y ?? 0)  - 80}
+          y={(endNode.y ?? 0) - 80}
           width={300}
           height={300}
           overflow="visible"
