@@ -75,7 +75,7 @@ const AMGroundFloorBase = memo(
       <Fragment>
         <g
           key={p.id}
-          onClick={p.type !== 'NotClickable' && p.type !== 'Park' ? () => onClick?.(p) : undefined}
+          onClick={p.type !== 'NotClickable' && p.name !== 'Park' ? () => onClick?.(p) : undefined}
         >
           {/* ---- Path ---- */}
           <path
