@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { line, curveCatmullRom } from 'd3-shape';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import type { INodes } from '../../../../interface/BaseMap';
 import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
@@ -25,32 +25,43 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
 
   const startNode = routeNodes[0];
   const endNode = routeNodes[routeNodes.length - 1];
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  console.log(endNode);
+  const pathRef = useRef<SVGPathElement>(null);
+  const [pathLength, setPathLength] = useState(1000);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, [pathData]);
+
   return (
     <ThemeProvider theme={theme}>
       <g id="current-route">
         {/* Animated flowing path */}
         <motion.path
+          ref={pathRef}
           d={pathData}
-          stroke="#FF0000"
+          stroke="#7B48FF"
           strokeWidth={15}
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeDasharray="10 20"
-          initial={{ strokeDashoffset: 1000 }}
-          animate={{ strokeDashoffset: 0 }}
+          strokeDasharray="10 30"
+          animate={{
+            strokeDashoffset: [0, -pathLength], // move dash forward
+          }}
           transition={{
             repeat: Infinity,
             ease: 'linear',
-            duration: 10,
+            duration: 10, // speed of animation
           }}
         />
 
-        {/* Start node marker — only if type === circle */}
-        {startNode?.type === 'ellipse' && (
+        {/* Start node marker (only if entrance) */}
+        {startNode?.type === 'entrance' && (
           <circle
             cx={startNode.x}
             cy={startNode.y}
@@ -61,11 +72,11 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
           />
         )}
 
-        {/* End node pin — only if type === circle */}
-
-        {endNode?.type === 'ellipse' && (
+        {/* End node pin (only if entrance) */}
+        {endNode?.type === 'entrance' && (
           <g transform={`translate(${(endNode.x ?? 0) - 43}, ${(endNode.y ?? 0) - 94})`}>
             <FaMapMarkerAlt
+              className="bounce"
               size={isMobile ? 90 : 85} // scale marker for mobile
               color="red"
             />

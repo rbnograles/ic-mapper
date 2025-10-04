@@ -8,8 +8,8 @@ export interface PathItem {
 
 export interface INodes {
   id: string;
-  x?: number;
-  y?: number;
+  x: number;
+  y: number;
   rx?: number;
   ry?: number;
   cx?: number;
@@ -18,12 +18,6 @@ export interface INodes {
   neighbors: string[];
 }
 
-export interface IEdges {
-  id: string;
-  d: string;
-}
-
-export type Edge = { id: string; from: string; to: string; d?: string | null };
 export type Place = {
   id: string;
   name: string;
@@ -34,5 +28,6 @@ export type Place = {
 
 export interface Graph {
   nodes: INodes[];
+  entrances: INodes[];
   places: Place[];
 }

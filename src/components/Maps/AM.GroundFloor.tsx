@@ -19,6 +19,7 @@ function AMGroundFloor({
   handleSliderPathClick,
   activeNodeIds,
   nodes,
+  entrances,
 }: {
   highlightId: string | null;
   highlightName: string | null;
@@ -28,6 +29,7 @@ function AMGroundFloor({
   handleSliderPathClick?: () => void;
   activeNodeIds: string[];
   nodes: INodes[];
+  entrances: INodes[];
 }) {
   const theme = useTheme();
   const transformRef = useRef<any>(null);
@@ -171,7 +173,7 @@ function AMGroundFloor({
 
             {/* Draw nodes */}
             {activeNodeIds.length >= 2 &&
-              nodes
+              [...nodes, ...entrances]
                 .filter(
                   (n) =>
                     n.id === activeNodeIds[0] || // ✅ first node
@@ -182,11 +184,11 @@ function AMGroundFloor({
                     <ellipse
                       key={n.id}
                       id={n.id}
-                      cx={n.cx}
-                      cy={n.cy}
-                      rx={n.rx ?? 20} // default if missing
+                      cx={n.x}
+                      cy={n.y}
+                      rx={n.rx ?? 20}
                       ry={n.ry ?? 20}
-                      fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'} // start=green, end=white
+                      fill={activeNodeIds.includes(n.id) ? '#4CAF50' : '#FFC107'} // entrance = yellow by default
                       stroke="black"
                       strokeWidth={3}
                     />
@@ -196,8 +198,8 @@ function AMGroundFloor({
                       id={n.id}
                       cx={n.x}
                       cy={n.y}
-                      r={24}
-                      fill={n.id === activeNodeIds[0] ? '#4CAF50' : 'white'}
+                      r={20}
+                      fill={activeNodeIds.includes(n.id) ? '#4CAF50' : 'white'}
                       stroke="black"
                       strokeWidth={3}
                     />
@@ -205,7 +207,7 @@ function AMGroundFloor({
                 )}
 
             {/* Draw route line */}
-            <AMGFPathNodes route={activeNodeIds} nodes={nodes} />
+            <AMGFPathNodes route={activeNodeIds} nodes={[...nodes, ...entrances]} />
           </g>
         </svg>
       </TransformComponent>

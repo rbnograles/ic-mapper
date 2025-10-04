@@ -17,7 +17,8 @@ import BottomBar from './components/Navigations/BottomBar';
 import AMGroundFloor from './components/Maps/AM.GroundFloor';
 //import AM3rdFloor from './components/Maps/AM.3rdFloor';
 import SearchAppBar from './components/Navigations/SearchAppBar';
-import MapData from './components/Data/GroupFloor.json';
+import MapData from './components/Data/AyalaMalls/GroundFloor/GroundFloor.json';
+import NodeData from './components/Data/AyalaMalls/GroundFloor/GroundFloorNodes.json';
 
 import { findPathBetweenPlaces } from './components/util/routing';
 import type { Graph, PathItem } from './interface/BaseMap';
@@ -63,7 +64,8 @@ export default function App() {
 
   // Maps data
   const maps = useMemo(() => [...MapData.places], []);
-  const nodes = useMemo(() => [...MapData.nodes], []);
+  const nodes = useMemo(() => [...NodeData.nodes], []);
+  const entrances = useMemo(() => [...NodeData.entrances], []);
 
   const uniqueOptions = useMemo(
     () =>
@@ -74,7 +76,11 @@ export default function App() {
   );
 
   const handleRoute = (from: string, to: string) => {
-    const path = findPathBetweenPlaces(MapData as unknown as Graph, from, to);
+    // re-construct the groundfloor map
+    const groundFloorMap = { nodes: nodes, entrances: entrances, places: maps };
+
+    const path = findPathBetweenPlaces(groundFloorMap as unknown as Graph, from, to);
+    console.log(path);
     if (!path) {
       setActiveNodeIds([]);
       return;
@@ -110,6 +116,7 @@ export default function App() {
               handleSliderPathClick={handleSliderPathClick}
               activeNodeIds={activeNodeIds}
               nodes={nodes}
+              entrances={entrances}
             />
           )}
           {selectedMap === 'third' && (
