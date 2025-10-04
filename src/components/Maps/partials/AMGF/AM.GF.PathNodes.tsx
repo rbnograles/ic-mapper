@@ -56,7 +56,7 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
           transition={{
             repeat: Infinity,
             ease: 'linear',
-            duration: 10, // speed of animation
+            duration: 20, // speed of animation
           }}
         />
 
