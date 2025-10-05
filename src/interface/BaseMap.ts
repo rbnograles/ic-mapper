@@ -31,3 +31,16 @@ export interface Graph {
   entrances: INodes[];
   places: Place[];
 }
+
+export interface IBaseP {
+  id: string;
+  name: string;
+  path: string;
+  baseFill?: string;
+  strokeWidth?: string | number;
+  icon?: any;
+  type?: string;
+  isTypeHighlighted: boolean;
+  centerX: number | undefined;
+  centerY: number | undefined;
+}

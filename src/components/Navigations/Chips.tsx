@@ -3,7 +3,6 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import WcIcon from '@mui/icons-material/Wc';
 import RoomServiceIcon from '@mui/icons-material/RoomService';
 import ElevatorIcon from '@mui/icons-material/Elevator';
-import EscalatorIcon from '@mui/icons-material/Escalator';
 import DoorFrontIcon from '@mui/icons-material/DoorFront';
 import ParkIcon from '@mui/icons-material/Park';
 import { Stack, Chip, ThemeProvider, CssBaseline } from '@mui/material';
@@ -16,6 +15,7 @@ import { FaSignsPost } from 'react-icons/fa6';
 import { MdEmojiEvents } from 'react-icons/md';
 
 import theme from '../../styles/theme';
+import { GrEscalator } from 'react-icons/gr';
 
 export const iconMap: Record<string, (style?: React.CSSProperties) => JSX.Element> = {
   'Food & Beverage': (style = {}) => (
@@ -28,7 +28,7 @@ export const iconMap: Record<string, (style?: React.CSSProperties) => JSX.Elemen
   ),
   Concierge: (style = {}) => <RoomServiceIcon style={{ color: 'white', ...style }} />,
   Elevator: (style = {}) => <ElevatorIcon style={{ color: 'white', ...style }} />,
-  ESCALATOR: (style = {}) => <EscalatorIcon style={{ color: 'white', ...style }} />,
+  Escalator: (style = {}) => <GrEscalator style={{ color: 'white', ...style }} />,
   'Entrance/Exit': (style = {}) => <DoorFrontIcon style={{ color: 'white', ...style }} />,
   Park: (style = {}) => <ParkIcon style={{ color: 'white', ...style }} />,
   'Transport Terminal': (style = {}) => <FaBus style={{ color: 'white', ...style }} />,

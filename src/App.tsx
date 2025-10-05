@@ -165,6 +165,7 @@ export default function App() {
     }
 
     setActiveNodeIds(orderedNodes);
+    setHighlightId(from);
   };
 
   const getLocationFromHistory = (history: any) => {

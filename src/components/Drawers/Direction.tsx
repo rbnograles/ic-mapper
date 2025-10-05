@@ -49,7 +49,7 @@ const Direction = ({
         onClose={() => setDirectionOpen(false)}
         PaperProps={{
           sx: {
-            width: isMobile ? '100vw' : 400,
+            width: isMobile ? '100vw' : 430,
             display: 'flex',
             flexDirection: 'column',
             height: '100dvh', // ✅ Prevent overlap when keyboard opens

@@ -14,7 +14,7 @@ const style = {
 
 const ICON_MAP: Record<string, JSX.Element> = {
   location: <LocationOnIcon style={style.default} />,
-  escalator: <GrEscalator style={style.default} />,
+  Escalator: <GrEscalator style={style.default} />,
   door: <FaDoorOpen style={style.default} />,
   elevator: <FaElevator style={style.default} />,
   restroom: <FaRestroom style={style.default} />,
