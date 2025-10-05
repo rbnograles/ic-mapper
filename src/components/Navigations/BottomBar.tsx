@@ -74,7 +74,7 @@ export default function BottomBar({
           style={{ padding: 10 }}
         >
           <BottomNavigationAction label="Explore" icon={<LocationOn />} />
-          <BottomNavigationAction label="Maps" icon={<FaMap />} />
+          <BottomNavigationAction label="Maps" icon={<FaMap style={{ fontSize: 22 }} />} />
           <BottomNavigationAction label="Recents" icon={<Restore />} />
           <BottomNavigationAction label="Save" icon={<Bookmark />} />
         </BottomNavigation>

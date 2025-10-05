@@ -1,4 +1,4 @@
-import type { Graph, Place, INodes } from '../../interface/BaseMap';
+import type { Graph, Place, INodes } from '../../../interface/BaseMap';
 
 /**
  * Lightweight Priority Queue (min-heap)
@@ -178,7 +178,7 @@ function findNearestNode(graph: Graph, point: { x: number; y: number }): string 
 export function findPathBetweenPlaces(graph: Graph, placeA: string, placeB: string) {
   const p1 = graph.places.find((p) => p.name === placeA);
   const p2 = graph.places.find((p) => p.name === placeB);
-
+  
   if (!p1 || !p2) {
     console.warn('Place not found', { placeA, placeB });
     return null;
