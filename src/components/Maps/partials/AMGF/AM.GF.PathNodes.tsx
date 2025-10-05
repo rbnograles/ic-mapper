@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+// AMGFPathNodes.tsx (replace the file contents with this)
+import { motion, useAnimation } from 'framer-motion';
 import { line, curveCatmullRom } from 'd3-shape';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { memo, useEffect, useRef, useState } from 'react';
@@ -13,14 +14,13 @@ interface AMGFPathNodesProps {
 const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
   if (!route || route.length < 2) return null;
 
-  // Extract coordinates of route nodes
+  // Extract coordinates of route nodes in the given order
   const routeNodes = route
     .map((id) => nodes.find((n) => n.id === id))
     .filter((n): n is INodes => !!n);
 
   const points = routeNodes.map((n) => [n.x, n.y] as [number, number]);
 
-  // Smooth line generator
   const lineGenerator = line<[number, number]>()
     .x((d) => d[0])
     .y((d) => d[1])
@@ -33,21 +33,63 @@ const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const pathRef = useRef<SVGPathElement>(null);
-  const [pathLength, setPathLength] = useState(1000);
+  const pathRef = useRef<SVGPathElement | null>(null);
+  const [pathLength, setPathLength] = useState(0);
 
+  const controls = useAnimation();
+
+  // ensure pathLength is read after the SVG path is laid out
   useEffect(() => {
-    if (pathRef.current) {
-      setPathLength(pathRef.current.getTotalLength());
+    if (!pathRef.current) {
+      setPathLength(0);
+      return;
     }
-  }, [pathData]);
+    // use requestAnimationFrame to ensure DOM has rendered the new path
+    const handle = requestAnimationFrame(() => {
+      try {
+        const length = pathRef.current?.getTotalLength() ?? 0;
+        setPathLength(length);
+      } catch (err) {
+        // fallback
+        setPathLength(0);
+      }
+    });
+
+    return () => cancelAnimationFrame(handle);
+  }, [pathData]); // recalc whenever pathData changes
+
+  // restart / control animation whenever pathLength or the route changes.
+  // Use route.join to detect swapped order.
+  useEffect(() => {
+    if (!pathLength) return;
+
+    // Decide direction: you can choose which end is "start".
+    // We'll animate from 0 -> -pathLength (flowing forward).
+    // If you'd instead want reversed flow when swapped, flip these values.
+    const from = 0;
+    const to = -pathLength;
+
+    controls.start({
+      strokeDashoffset: [from, to],
+      transition: {
+        repeat: Infinity,
+        ease: 'linear',
+        duration: 20,
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathLength, route.join('-')]); // include route order so swapping restarts animation
 
   return (
     <ThemeProvider theme={theme}>
       <g id="current-route">
-        {/* Animated flowing path */}
+        {/* Animated flowing path
+            - Use key based on pathData so React remounts the element when pathData changes.
+            - Use controls (animate={controls}) instead of static animate prop.
+        */}
         <motion.path
           ref={pathRef}
+          key={route.join('-') /* forces remount when node order changes */}
           d={pathData}
           stroke="#7B48FF"
           strokeWidth={25}
@@ -55,14 +97,8 @@ const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray="10 50"
-          animate={{
-            strokeDashoffset: [0, -pathLength], // move dash forward
-          }}
-          transition={{
-            repeat: Infinity,
-            ease: 'linear',
-            duration: 20, // speed of animation
-          }}
+          initial={{ strokeDashoffset: 0 }}
+          animate={controls}
         />
 
         {/* Start node marker (only if entrance) */}
@@ -80,11 +116,7 @@ const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
         {/* End node pin (only if entrance) */}
         {endNode?.type === 'entrance' && (
           <g transform={`translate(${(endNode.x ?? 0) - 43}, ${(endNode.y ?? 0) - 94})`}>
-            <FaMapMarkerAlt
-              className="bounce"
-              size={isMobile ? 90 : 85} // scale marker for mobile
-              color="red"
-            />
+            <FaMapMarkerAlt className="bounce" size={isMobile ? 90 : 85} color="red" />
           </g>
         )}
       </g>

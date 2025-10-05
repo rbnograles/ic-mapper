@@ -97,16 +97,29 @@ export default function App() {
 
     const floorMap = { nodes, entrances, places: maps };
 
-    const key = `route-cache-${selectedMap}-${from}-${to}`;
-    const reverseKey = `route-cache-${selectedMap}-${to}-${from}`;
+    // use encodeURIComponent to avoid characters breaking keys
+    const key = `route-cache-${selectedMap}-${encodeURIComponent(from)}-${encodeURIComponent(to)}`;
+    const reverseKey = `route-cache-${selectedMap}-${encodeURIComponent(to)}-${encodeURIComponent(from)}`;
 
-    const cached = localStorage.getItem(key) || localStorage.getItem(reverseKey);
-    if (cached) {
+    // detect which key is present
+    const cachedKey = localStorage.getItem(key)
+      ? key
+      : localStorage.getItem(reverseKey)
+        ? reverseKey
+        : null;
+
+    if (cachedKey) {
       try {
-        const { nodes: cachedNodes } = JSON.parse(cached);
+        const parsed = JSON.parse(localStorage.getItem(cachedKey) as string);
+        const cachedNodes: string[] = parsed?.nodes ?? [];
+
         if (Array.isArray(cachedNodes) && cachedNodes.length) {
-          setActiveNodeIds(cachedNodes);
-          console.log(`✅ Using cached route for ${from} ↔ ${to}`);
+          // if we read the reverseKey, reverse the nodes so they reflect `from -> to`
+          const nodesToUse = cachedKey === reverseKey ? [...cachedNodes].reverse() : cachedNodes;
+          setActiveNodeIds(nodesToUse);
+          console.log(
+            `✅ Using cached route for ${from} ↔ ${to} (from ${cachedKey === key ? 'key' : 'reverseKey'})`
+          );
           return;
         }
       } catch (err) {
@@ -114,6 +127,7 @@ export default function App() {
       }
     }
 
+    // compute new path
     const path = findPathBetweenPlaces(floorMap as unknown as Graph, from, to);
 
     if (!path || !path.nodes) {
@@ -122,20 +136,35 @@ export default function App() {
       return;
     }
 
+    // canonical route nodes should be in `from -> to` order
+    const orderedNodes = path.nodes;
+
     const routeData = {
       from,
       to,
-      floor: floors.map((f) => {
-        if (selectedMap === f.key) {
-          return f.name;
-        }
-      }),
-      nodes: path.nodes,
+      floor: floors.find((f) => selectedMap === f.key)?.name ?? selectedMap,
+      nodes: orderedNodes,
       timestamp: Date.now(),
     };
 
-    localStorage.setItem(key, JSON.stringify(routeData));
-    setActiveNodeIds(path.nodes);
+    // store both directions: key (from->to) and reverseKey (to->from with reversed nodes)
+    try {
+      localStorage.setItem(key, JSON.stringify(routeData));
+
+      // prepare reverse entry so future lookups find correct-order nodes
+      const reverseRouteData = {
+        from: to,
+        to: from,
+        floor: routeData.floor,
+        nodes: [...orderedNodes].reverse(),
+        timestamp: Date.now(),
+      };
+      localStorage.setItem(reverseKey, JSON.stringify(reverseRouteData));
+    } catch (err) {
+      console.warn('⚠️ Failed to store route in cache:', err);
+    }
+
+    setActiveNodeIds(orderedNodes);
   };
 
   const getLocationFromHistory = (history: any) => {
