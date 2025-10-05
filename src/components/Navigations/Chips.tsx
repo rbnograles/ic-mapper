@@ -8,29 +8,37 @@ import DoorFrontIcon from '@mui/icons-material/DoorFront';
 import ParkIcon from '@mui/icons-material/Park';
 import { Stack, Chip, ThemeProvider, CssBaseline } from '@mui/material';
 import type { JSX } from 'react';
-import { FaBus, FaRunning, FaServer } from 'react-icons/fa';
-import { FaLocationArrow, FaMasksTheater, FaStairs } from 'react-icons/fa6';
+import { FaBus, FaRunning } from 'react-icons/fa';
+import { FaHandHoldingHand, FaLocationArrow, FaMasksTheater, FaStairs } from 'react-icons/fa6';
 import { BsBank2 } from 'react-icons/bs';
 import { MdHotel } from 'react-icons/md';
+import { FaSignsPost } from 'react-icons/fa6';
+import { MdEmojiEvents } from 'react-icons/md';
 
 import theme from '../../styles/theme';
 
-const iconMap: Record<string, JSX.Element> = {
-  'Food & Beverage': <FlatwareIcon style={{ color: 'white', fontSize: 15 }} />,
-  Retail: <StorefrontIcon style={{ color: 'white' }} />,
-  Restroom: <WcIcon style={{ color: 'white' }} />,
-  Services: <FaServer style={{ color: 'white', fontSize: 15 }} />,
-  Concierge: <RoomServiceIcon style={{ color: 'white' }} />,
-  Elevator: <ElevatorIcon style={{ color: 'white' }} />,
-  ESCALATOR: <EscalatorIcon style={{ color: 'white' }} />,
-  'Entrance/Exit': <DoorFrontIcon style={{ color: 'white' }} />,
-  Park: <ParkIcon style={{ color: 'white' }} />,
-  'Transport Terminal': <FaBus style={{ color: 'white' }} />,
-  Stairs: <FaStairs style={{ color: 'white' }} />,
-  Bank: <BsBank2 style={{ color: 'white' }} />,
-  Entertainment: <FaMasksTheater style={{ color: 'white' }} />,
-  'Fire Exit': <FaRunning style={{ color: 'white' }} />,
-  Hotel: <MdHotel style={{ color: 'white' }} />,
+export const iconMap: Record<string, (style?: React.CSSProperties) => JSX.Element> = {
+  'Food & Beverage': (style = {}) => (
+    <FlatwareIcon style={{ color: 'white', fontSize: 15, ...style }} />
+  ),
+  Retail: (style = {}) => <StorefrontIcon style={{ color: 'white', ...style }} />,
+  Restroom: (style = {}) => <WcIcon style={{ color: 'white', ...style }} />,
+  Services: (style = {}) => (
+    <FaHandHoldingHand style={{ color: 'white', fontSize: 15, ...style }} />
+  ),
+  Concierge: (style = {}) => <RoomServiceIcon style={{ color: 'white', ...style }} />,
+  Elevator: (style = {}) => <ElevatorIcon style={{ color: 'white', ...style }} />,
+  ESCALATOR: (style = {}) => <EscalatorIcon style={{ color: 'white', ...style }} />,
+  'Entrance/Exit': (style = {}) => <DoorFrontIcon style={{ color: 'white', ...style }} />,
+  Park: (style = {}) => <ParkIcon style={{ color: 'white', ...style }} />,
+  'Transport Terminal': (style = {}) => <FaBus style={{ color: 'white', ...style }} />,
+  Stairs: (style = {}) => <FaStairs style={{ color: 'white', ...style }} />,
+  Bank: (style = {}) => <BsBank2 style={{ color: 'white', ...style }} />,
+  Entertainment: (style = {}) => <FaMasksTheater style={{ color: 'white', ...style }} />,
+  'Fire Exit': (style = {}) => <FaRunning style={{ color: 'white', ...style }} />,
+  Hotel: (style = {}) => <MdHotel style={{ color: 'white', ...style }} />,
+  Landmark: (style = {}) => <FaSignsPost style={{ color: 'white', ...style }} />,
+  'Activity Center': (style = {}) => <MdEmojiEvents style={{ color: 'white', ...style }} />,
 };
 
 type ChipsProps = {
@@ -38,7 +46,7 @@ type ChipsProps = {
   types: string[]; // Pass in the unique types array
 };
 
-export default function Chips({ handleClick, types }: ChipsProps) {
+export const Chips = ({ handleClick, types }: ChipsProps) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -58,7 +66,16 @@ export default function Chips({ handleClick, types }: ChipsProps) {
             key={type}
             label={type}
             onClick={() => handleClick(type)}
-            icon={iconMap[type] ?? <FaLocationArrow style={{ color: 'white' }} />} // fallback icon
+            icon={
+              iconMap[type] ? (
+                iconMap[type]({
+                  color: 'white',
+                  fontSize: 20,
+                })
+              ) : (
+                <FaLocationArrow style={{ color: 'white' }} />
+              )
+            } // fallback icon
             clickable
             variant="filled"
             sx={{
@@ -78,4 +95,4 @@ export default function Chips({ handleClick, types }: ChipsProps) {
       </Stack>
     </ThemeProvider>
   );
-}
+};

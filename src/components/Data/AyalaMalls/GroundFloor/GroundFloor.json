@@ -8,9 +8,8 @@
       "entranceNode": "Ellipse 363_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 363_2"
-      ]
+      "entranceNodes": ["Ellipse 363_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_2",
@@ -20,7 +19,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_3",
@@ -30,9 +30,8 @@
       "entranceNode": "Ellipse 358_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 358_2"
-      ]
+      "entranceNodes": ["Ellipse 358_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_4",
@@ -42,19 +41,19 @@
       "entranceNode": "Ellipse 503_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 503_2"
-      ]
+      "entranceNodes": ["Ellipse 503_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_5",
       "name": "ASEAN ENTRANCE",
       "path": "M3464.25 9013.65V8978.85C3464.25 8976.08 3466.49 8973.85 3469.25 8973.85H3790.98C3793.74 8973.85 3795.98 8976.08 3795.98 8978.85V9013.65C3795.98 9016.41 3793.74 9018.65 3790.98 9018.65H3469.25C3466.49 9018.65 3464.25 9016.41 3464.25 9013.65Z",
       "type": "Entrance/Exit",
-      "entranceNode": "",
+      "entranceNode": "Ellipse 364_2_2",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": ["Ellipse 297"]
+      "entranceNodes": ["Ellipse 364_2_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_6",
@@ -64,9 +63,8 @@
       "entranceNode": "Ellipse 364_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 364_2"
-      ]
+      "entranceNodes": ["Ellipse 364_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_7",
@@ -76,7 +74,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_8",
@@ -86,31 +85,28 @@
       "entranceNode": "Ellipse 360_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 360_2"
-      ]
+      "entranceNodes": ["Ellipse 360_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_9",
       "name": "PENSHOPPE",
       "path": "M4297.15 8704.08H3836.25C3833.49 8704.08 3831.25 8701.84 3831.25 8699.08V7821.62C3831.25 7818.86 3833.49 7816.62 3836.25 7816.62H4357.2C4359.96 7816.62 4362.2 7814.38 4362.2 7811.62V7708.19C4362.2 7705.42 4364.44 7703.19 4367.2 7703.19H4551.66C4554.42 7703.19 4556.66 7700.95 4556.66 7698.19V7650.04C4556.66 7647.28 4558.9 7645.04 4561.66 7645.04H4611.71C4614.48 7645.04 4616.71 7647.28 4616.71 7650.04V7698.19C4616.71 7700.95 4618.95 7703.19 4621.71 7703.19H4736.59C4739.35 7703.19 4741.59 7705.42 4741.59 7708.19V7890.74C4741.59 7893.5 4743.83 7895.74 4746.59 7895.74H4863.37C4866.13 7895.74 4868.37 7897.98 4868.37 7900.74V8049.93C4868.37 8052.69 4870.61 8054.93 4873.37 8054.93H5019.7C5022.46 8054.93 5024.7 8052.69 5024.7 8049.93V7967.47C5024.7 7964.7 5026.94 7962.47 5029.7 7962.47H5209.39C5212.15 7962.47 5214.39 7964.7 5214.39 7967.47L5210.01 8578.88C5210 8579.62 5209.93 8580.38 5209.7 8581.08C5207.2 8588.67 5198.64 8590.5 5196 8590.5L4652.5 8586C4649.74 8586 4635.78 8582.76 4635.78 8580V8429.78C4635.78 8427.02 4633.54 8424.78 4630.78 8424.78H4621.71C4618.95 8424.78 4616.71 8422.54 4616.71 8419.78V8338.27C4616.71 8335.51 4614.48 8333.27 4611.71 8333.27H4367.2C4364.44 8333.27 4362.2 8335.51 4362.2 8338.27V8457.91C4362.2 8460.67 4359.96 8462.91 4357.2 8462.91H4307.15C4304.39 8462.91 4302.15 8465.15 4302.15 8467.91V8699.08C4302.15 8701.84 4299.91 8704.08 4297.15 8704.08Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 361_2"
-      ],
+      "type": "Retail",
+      "entranceNodes": ["Ellipse 361_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_10",
       "name": "SEDA HOTEL",
       "path": "M5296.37 7934.99V7682.85C5296.37 7680.08 5298.61 7677.85 5301.37 7677.85H5951.96C5954.72 7677.85 5956.96 7680.08 5956.96 7682.85V7837.76C5956.96 7840.52 5954.72 7842.76 5951.96 7842.76H5840.9C5838.14 7842.76 5835.9 7844.87 5835.9 7847.63V8793.67C5835.9 8794 5835.93 8794.26 5836 8794.58C5867.42 8947.99 6007.78 8976.64 6079.24 8971.83C6082.18 8971.63 6084.69 8973.94 6084.69 8976.89V9443C6084.69 9445.76 6082.45 9448 6079.69 9448H4713.22C4710.46 9448 4708.22 9445.76 4708.22 9443V9322.41C4708.22 9319.65 4710.46 9317.41 4713.22 9317.41H4847.16C4849.92 9317.41 4852.16 9315.17 4852.16 9312.41V9200.39C4852.16 9197.63 4849.92 9195.39 4847.16 9195.39H4769.46C4766.7 9195.39 4764.46 9193.15 4764.46 9190.39V9160.36C4764.46 9157.6 4762.23 9155.36 4759.46 9155.36H4677.95C4675.19 9155.36 4672.95 9157.6 4672.95 9160.36V9190.39C4672.95 9193.15 4670.72 9195.39 4667.95 9195.39H4638.87C4636.11 9195.39 4633.87 9193.15 4633.87 9190.39V8601.76C4633.87 8599 4636.11 8596.76 4638.87 8596.76H5215.11C5217.87 8596.76 5220.11 8594.52 5220.11 8591.76V7944.99C5220.11 7942.22 5222.35 7939.99 5225.11 7939.99H5291.37C5294.13 7939.99 5296.37 7937.75 5296.37 7934.99Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 362_2"
-      ],
+      "type": "Hotel",
+      "entranceNodes": ["Ellipse 362_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_11",
@@ -120,9 +116,8 @@
       "entranceNode": "Ellipse 356_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 356_2"
-      ]
+      "entranceNodes": ["Ellipse 356_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_12",
@@ -132,9 +127,8 @@
       "entranceNode": "Ellipse 353_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 353_2"
-      ]
+      "entranceNodes": ["Ellipse 353_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_13",
@@ -146,9 +140,8 @@
       "baseFill": "#F66E19",
       "icon": "fire",
       "centerY": 40,
-      "entranceNodes": [
-        "Ellipse 515_2"
-      ]
+      "entranceNodes": ["Ellipse 515_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_14",
@@ -158,33 +151,30 @@
       "entranceNode": "Ellipse 354_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 354_2"
-      ]
+      "entranceNodes": ["Ellipse 354_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_15",
       "name": "VPOP",
       "path": "M4893 7135.25L4891.52 6146.51C4891.51 6140.99 4895.99 6136.5 4901.52 6136.5H4915H6216.5C6219.27 6136.5 6227.52 6140.24 6227.52 6143V7172.43C6227.52 7175.19 6225.29 7177.43 6222.52 7177.43L6094.35 7175.47C6088.88 7175.39 6084.5 7170.93 6084.5 7165.47V6952C6084.5 6946.48 6080.02 6942 6074.5 6942H5923.5H5914C5908.48 6942 5904 6946.37 5903.99 6951.89C5903.96 6992.03 5903.66 7140.25 5901.28 7140.25H4898C4895.24 7140.25 4893 7138.01 4893 7135.25Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 429_2"
-      ],
+      "type": "Retail",
+      "entranceNodes": ["Ellipse 429_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_16",
       "name": "Fire Exit",
       "path": "M5909 7171.77V6953C5909 6950.23 5911.23 6948 5914 6948H6073.67C6076.43 6948 6078.67 6950.23 6078.67 6953V7171.77C6078.67 7174.53 6076.43 7176.77 6073.67 7176.77H5914C5911.23 7176.77 5909 7174.53 5909 7171.77Z",
       "type": "Fire Exit",
-      "entranceNodes": [
-        "Ellipse 516_2"
-      ],
+      "entranceNodes": ["Ellipse 516_2"],
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "icon": "fire",
-      "centerY": 40
+      "centerY": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_17",
@@ -194,35 +184,32 @@
       "entranceNode": "Ellipse 355_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 355_2"
-      ]
+      "entranceNodes": ["Ellipse 355_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_18",
       "name": "Fire Exit",
       "path": "M4179 6430.56H4354.88C4357.64 6430.56 4359.88 6428.32 4359.88 6425.56V6080C4359.88 6077.24 4357.64 6075 4354.88 6075H4273.37C4270.61 6075 4268.37 6077.24 4268.37 6080V6190.11C4268.37 6192.87 4266.13 6195.11 4263.37 6195.11H4179C4176.24 6195.11 4174 6197.35 4174 6200.11V6425.56C4174 6428.32 4176.24 6430.56 4179 6430.56Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 514_2"
-      ],
+      "type": "Fire Exit",
+      "entranceNodes": ["Ellipse 514_2"],
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "icon": "fire",
-      "centerY": 20
+      "centerY": 20,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_19",
       "name": "ESCALATOR",
       "path": "M4517.11 6152H4407C4404.24 6152 4402 6154.24 4402 6157V6361.47C4402 6364.24 4404.24 6366.47 4407 6366.47H4517.11C4519.87 6366.47 4522.11 6364.24 4522.11 6361.47V6157C4522.11 6154.24 4519.87 6152 4517.11 6152Z",
       "type": "ESCALATOR",
-      "entranceNodes": [
-        "Ellipse 495_2"
-      ],
+      "entranceNodes": ["Ellipse 495_2"],
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
       "icon": "escalator",
-      "centerY": 30
+      "centerY": 30,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_20",
@@ -232,9 +219,8 @@
       "entranceNode": "Ellipse 372_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 372_2"
-      ]
+      "entranceNodes": ["Ellipse 372_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_21",
@@ -244,9 +230,8 @@
       "entranceNode": "Ellipse 346_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 346_2"
-      ]
+      "entranceNodes": ["Ellipse 346_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_22",
@@ -256,11 +241,10 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 357_2"
-      ],
+      "entranceNodes": ["Ellipse 357_2"],
       "icon": "fire",
-      "centerY": 40
+      "centerY": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_23",
@@ -270,7 +254,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_24",
@@ -280,9 +265,8 @@
       "entranceNode": "Ellipse 352_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 352_2"
-      ]
+      "entranceNodes": ["Ellipse 352_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_25",
@@ -292,9 +276,8 @@
       "entranceNode": "Ellipse 351_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 351_2"
-      ]
+      "entranceNodes": ["Ellipse 351_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_26",
@@ -304,9 +287,8 @@
       "entranceNode": "Ellipse 350_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 350_2"
-      ]
+      "entranceNodes": ["Ellipse 350_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_27",
@@ -316,11 +298,10 @@
       "entranceNode": "Ellipse 432_2",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": [
-        "Ellipse 432_2"
-      ],
+      "entranceNodes": ["Ellipse 432_2"],
       "centerY": 20,
-      "icon": "restroom"
+      "icon": "restroom",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_28",
@@ -330,23 +311,21 @@
       "entranceNode": "Ellipse 431_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 431_2"
-      ],
+      "entranceNodes": ["Ellipse 431_2"],
       "icon": "elevator",
-      "centerY": 30
+      "centerY": 30,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_29",
-      "name": "ATM Near Lush",
+      "name": "ATM Near LLao LLao",
       "path": "M3135.16 6174.2H3085.1C3082.34 6174.2 3080.1 6176.44 3080.1 6179.2V6213.05C3080.1 6215.81 3082.34 6218.05 3085.1 6218.05H3135.16C3137.92 6218.05 3140.16 6215.81 3140.16 6213.05V6179.2C3140.16 6176.44 3137.92 6174.2 3135.16 6174.2Z",
       "type": "Bank",
       "entranceNode": "Ellipse 430_2",
       "description": "Place description goes in here...",
       "baseFill": "#7B48FF",
-      "entranceNodes": [
-        "Ellipse 430_2"
-      ]
+      "entranceNodes": ["Ellipse 430_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_30",
@@ -356,9 +335,8 @@
       "entranceNode": "Ellipse 349_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 349_2"
-      ]
+      "entranceNodes": ["Ellipse 349_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_31",
@@ -368,9 +346,8 @@
       "entranceNode": "Ellipse 348_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 348_2"
-      ]
+      "entranceNodes": ["Ellipse 348_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_32",
@@ -380,11 +357,10 @@
       "entranceNode": "Ellipse 433_2",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 433_2"
-      ],
+      "entranceNodes": ["Ellipse 433_2"],
       "icon": "fire",
-      "centerY": 40
+      "centerY": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_33",
@@ -394,9 +370,8 @@
       "entranceNode": "Ellipse 347_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 347_2"
-      ]
+      "entranceNodes": ["Ellipse 347_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_34",
@@ -406,9 +381,8 @@
       "entranceNode": "Ellipse 344_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 344_2"
-      ]
+      "entranceNodes": ["Ellipse 344_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_35",
@@ -418,9 +392,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 504_2"
-      ]
+      "entranceNodes": ["Ellipse 504_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_36",
@@ -430,9 +403,8 @@
       "entranceNode": "Ellipse 373_2",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 373_2"
-      ]
+      "entranceNodes": ["Ellipse 373_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_37",
@@ -442,7 +414,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_38",
@@ -453,10 +426,9 @@
       "entranceNode": "Ellipse 496_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 496_2"
-      ],
-      "centerY": -5
+      "entranceNodes": ["Ellipse 496_2"],
+      "centerY": -5,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_39",
@@ -466,9 +438,8 @@
       "entranceNode": "Ellipse 371_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 371_2"
-      ]
+      "entranceNodes": ["Ellipse 371_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_40",
@@ -478,9 +449,8 @@
       "entranceNode": "Ellipse 370_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 370_2"
-      ]
+      "entranceNodes": ["Ellipse 370_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_41",
@@ -490,9 +460,8 @@
       "entranceNode": "Ellipse 369_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 369_2"
-      ]
+      "entranceNodes": ["Ellipse 369_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_42",
@@ -502,9 +471,8 @@
       "entranceNode": "Ellipse 368_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 368_2"
-      ]
+      "entranceNodes": ["Ellipse 368_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_43",
@@ -514,9 +482,8 @@
       "entranceNode": "Ellipse 367_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 367_2"
-      ]
+      "entranceNodes": ["Ellipse 367_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_44",
@@ -526,7 +493,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_45",
@@ -536,7 +504,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_46",
@@ -546,9 +515,8 @@
       "entranceNode": "Ellipse 365_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 365_2"
-      ]
+      "entranceNodes": ["Ellipse 365_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_47",
@@ -558,9 +526,8 @@
       "entranceNode": "Ellipse 366_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 366_2"
-      ]
+      "entranceNodes": ["Ellipse 366_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_48",
@@ -570,11 +537,10 @@
       "entranceNode": "Ellipse 494_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 494_2"
-      ],
+      "entranceNodes": ["Ellipse 494_2"],
       "icon": "escalator",
-      "centerY": 30
+      "centerY": 30,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_49",
@@ -584,9 +550,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 345_2"
-      ]
+      "entranceNodes": ["Ellipse 345_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_50",
@@ -596,9 +561,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 376_2"
-      ]
+      "entranceNodes": ["Ellipse 376_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_51",
@@ -608,12 +572,11 @@
       "entranceNode": "Ellipse 434_2",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 434_2"
-      ],
+      "entranceNodes": ["Ellipse 434_2"],
       "icon": "fire",
       "centerY": 50,
-      "centerX": 30
+      "centerX": 30,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_52",
@@ -623,9 +586,8 @@
       "entranceNode": "Ellipse 377_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 377_2"
-      ]
+      "entranceNodes": ["Ellipse 377_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_53",
@@ -636,9 +598,8 @@
       "entranceNode": "Ellipse 497_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 497_2"
-      ]
+      "entranceNodes": ["Ellipse 497_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_54",
@@ -648,9 +609,8 @@
       "entranceNode": "Ellipse 375_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 375_2"
-      ]
+      "entranceNodes": ["Ellipse 375_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_55",
@@ -660,9 +620,8 @@
       "entranceNode": "Ellipse 381_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 381_2"
-      ]
+      "entranceNodes": ["Ellipse 381_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_56",
@@ -672,9 +631,8 @@
       "entranceNode": "Ellipse 382_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 382_2"
-      ]
+      "entranceNodes": ["Ellipse 382_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_57",
@@ -684,9 +642,8 @@
       "entranceNode": "Ellipse 383_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 383_2"
-      ]
+      "entranceNodes": ["Ellipse 383_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_58",
@@ -696,9 +653,8 @@
       "entranceNode": "Ellipse 384_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 384_2"
-      ]
+      "entranceNodes": ["Ellipse 384_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_59",
@@ -708,7 +664,8 @@
       "entranceNode": "Ellipse 385_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_60",
@@ -718,7 +675,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_61",
@@ -728,9 +686,8 @@
       "entranceNode": "Ellipse 392_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 392_2"
-      ]
+      "entranceNodes": ["Ellipse 392_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_62",
@@ -740,9 +697,8 @@
       "entranceNode": "Ellipse 393_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 393_2"
-      ]
+      "entranceNodes": ["Ellipse 393_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_63",
@@ -752,9 +708,8 @@
       "entranceNode": "Ellipse 394_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 394_2"
-      ]
+      "entranceNodes": ["Ellipse 394_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_64",
@@ -764,9 +719,8 @@
       "entranceNode": "Ellipse 395_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 395_2"
-      ]
+      "entranceNodes": ["Ellipse 395_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_65",
@@ -776,9 +730,8 @@
       "entranceNode": "Ellipse 396_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 396_2"
-      ]
+      "entranceNodes": ["Ellipse 396_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_66",
@@ -788,9 +741,8 @@
       "entranceNode": "Ellipse 397_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 397_2"
-      ]
+      "entranceNodes": ["Ellipse 397_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_67",
@@ -800,7 +752,8 @@
       "entranceNode": "Ellipse 398_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_68",
@@ -810,9 +763,8 @@
       "entranceNode": "Ellipse 399_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 399_2"
-      ]
+      "entranceNodes": ["Ellipse 399_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_69",
@@ -822,9 +774,8 @@
       "entranceNode": "Ellipse 400_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 400_2"
-      ]
+      "entranceNodes": ["Ellipse 400_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_70",
@@ -834,9 +785,8 @@
       "entranceNode": "Ellipse 401_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 401_2"
-      ]
+      "entranceNodes": ["Ellipse 401_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_71",
@@ -849,9 +799,8 @@
       "entranceNode": "Ellipse 499_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 499_2"
-      ]
+      "entranceNodes": ["Ellipse 499_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_72",
@@ -861,9 +810,8 @@
       "entranceNode": "Ellipse 402_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 402_2"
-      ]
+      "entranceNodes": ["Ellipse 402_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_73",
@@ -873,9 +821,8 @@
       "entranceNode": "Ellipse 403_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 403_2"
-      ]
+      "entranceNodes": ["Ellipse 403_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_74",
@@ -885,9 +832,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 526_2"
-      ]
+      "entranceNodes": ["Ellipse 526_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_75",
@@ -897,9 +843,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 527_2"
-      ]
+      "entranceNodes": ["Ellipse 527_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_76",
@@ -909,9 +854,8 @@
       "entranceNode": "Ellipse 380_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 380_2"
-      ]
+      "entranceNodes": ["Ellipse 380_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_77",
@@ -921,9 +865,8 @@
       "entranceNode": "Ellipse 386_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 386_2"
-      ]
+      "entranceNodes": ["Ellipse 386_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_78",
@@ -933,9 +876,8 @@
       "entranceNode": "Ellipse 387_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 387_2"
-      ]
+      "entranceNodes": ["Ellipse 387_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_79",
@@ -945,42 +887,38 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 388_2"
-      ]
+      "entranceNodes": ["Ellipse 388_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_80",
       "name": "PARFOIS",
       "path": "M4635.29 3086.27L4365.2 2831.51C4363.16 2829.58 4363.1 2826.35 4365.08 2824.35L4468.33 2720.14C4470.28 2718.17 4473.45 2718.16 4475.41 2720.11L4703.9 2947.01C4704.84 2947.94 4706.11 2948.46 4707.43 2948.46H4872.76C4875.58 2948.46 4877.84 2950.78 4877.76 2953.6L4874.22 3082.77C4874.15 3085.48 4871.93 3087.63 4869.22 3087.63H4638.72C4637.44 3087.63 4636.21 3087.14 4635.29 3086.27Z",
       "type": "Retail",
-      "entranceNodes": [
-        "Ellipse 389_2"
-      ],
+      "entranceNodes": ["Ellipse 389_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_81",
       "name": "ELEVATIONE",
       "path": "M4714.44 2925.15L4492.07 2707.35C4490.09 2705.41 4490.06 2702.23 4492.01 2700.26L4595.43 2595.88C4597.34 2593.95 4600.43 2593.9 4602.41 2595.75L4775.41 2758.36C4776.34 2759.23 4777.56 2759.72 4778.84 2759.72H4909.12C4911.88 2759.72 4914.12 2761.96 4914.12 2764.72V2854.81C4914.12 2857.57 4911.88 2859.81 4909.12 2859.81H4884.81C4882.04 2859.81 4879.81 2862.05 4879.81 2864.81V2925.23C4879.81 2928.04 4877.5 2930.29 4874.69 2930.23L4717.82 2926.58C4716.55 2926.55 4715.35 2926.04 4714.44 2925.15Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 390_2"
-      ],
+      "type": "Retail",
+      "entranceNodes": ["Ellipse 390_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_82",
       "name": "THE BODY SHOP",
       "path": "M4785.9 2738.36L4619.25 2583.18C4617.19 2581.26 4617.12 2578.01 4619.11 2576L4771.36 2422.34C4773.36 2420.32 4776.63 2420.37 4778.57 2422.44L4865.12 2515.2C4865.98 2516.13 4866.46 2517.35 4866.46 2518.61V2574.67C4866.46 2577.43 4868.7 2579.67 4871.46 2579.67H4905.31C4908.07 2579.67 4910.31 2581.91 4910.31 2584.67V2734.7C4910.31 2737.46 4908.07 2739.7 4905.31 2739.7H4789.31C4788.05 2739.7 4786.83 2739.22 4785.9 2738.36Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 391_2"
-      ],
+      "type": "Retail",
+      "entranceNodes": ["Ellipse 391_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_83",
@@ -990,10 +928,8 @@
       "entranceNode": "Ellipse 405_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 405_2",
-        "Ellipse 500_2"
-      ]
+      "entranceNodes": ["Ellipse 405_2", "Ellipse 500_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_84",
@@ -1005,19 +941,19 @@
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
       "entranceNodes": [],
-      "centerY": 50
+      "centerY": 50,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_85",
-      "name": "NONOÃ¢ÂÂS",
+      "name": "NONO'S",
       "path": "M5712.93 2426.09V2073.54C5712.93 2070.78 5715.17 2068.63 5717.93 2068.63H6218.86C6221.63 2068.63 6223.86 2070.86 6223.86 2073.63V2421.1C6223.86 2423.85 6221.73 2426.09 6218.98 2426.1C6047.13 2426.41 5712.93 2426.84 5712.93 2426.09Z",
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 404_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 404_2"
-      ]
+      "entranceNodes": ["Ellipse 404_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_86",
@@ -1027,9 +963,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 521_2"
-      ]
+      "entranceNodes": ["Ellipse 521_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_87",
@@ -1041,9 +976,8 @@
       "baseFill": "#F66E19",
       "icon": "fire",
       "centerY": -10,
-      "entranceNodes": [
-        "Ellipse 523_2"
-      ]
+      "entranceNodes": ["Ellipse 523_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_88",
@@ -1053,9 +987,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 524_2"
-      ]
+      "entranceNodes": ["Ellipse 524_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_89",
@@ -1065,9 +998,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#A7A1A1",
-      "entranceNodes": [
-        "Ellipse 525_2"
-      ]
+      "entranceNodes": ["Ellipse 525_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_90",
@@ -1077,9 +1009,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 522_2"
-      ]
+      "entranceNodes": ["Ellipse 522_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_91",
@@ -1089,9 +1020,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 520_2"
-      ]
+      "entranceNodes": ["Ellipse 520_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_92",
@@ -1101,9 +1031,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 512_2"
-      ]
+      "entranceNodes": ["Ellipse 512_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_93",
@@ -1113,7 +1042,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#A7A1A1",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_94",
@@ -1123,9 +1053,8 @@
       "entranceNode": "Ellipse 408_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 408_2"
-      ]
+      "entranceNodes": ["Ellipse 408_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_95",
@@ -1135,9 +1064,8 @@
       "entranceNode": "Ellipse 409_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 409_2"
-      ]
+      "entranceNodes": ["Ellipse 409_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_96",
@@ -1150,9 +1078,8 @@
       "icon": "restroom",
       "centerY": 40,
       "centerX": 40,
-      "entranceNodes": [
-        "Ellipse 511_2"
-      ]
+      "entranceNodes": ["Ellipse 511_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_97",
@@ -1162,7 +1089,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_98",
@@ -1175,9 +1103,8 @@
       "centerX": 50,
       "centerY": 40,
       "icon": "fire",
-      "entranceNodes": [
-        "Ellipse 510_2"
-      ]
+      "entranceNodes": ["Ellipse 510_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_99",
@@ -1187,9 +1114,8 @@
       "entranceNode": "Ellipse 406_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 406_2"
-      ]
+      "entranceNodes": ["Ellipse 406_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_100",
@@ -1199,9 +1125,8 @@
       "entranceNode": "Ellipse 407_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 407_2"
-      ]
+      "entranceNodes": ["Ellipse 407_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_101",
@@ -1214,31 +1139,28 @@
       "entranceNode": "Ellipse 498_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 498_2"
-      ]
+      "entranceNodes": ["Ellipse 498_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_102",
       "name": "MCDONALD'S",
       "path": "M3751.44 2746.01L3370.42 3107.59C3369.46 3108.5 3368.18 3109 3366.85 3109H3350.64C3347.82 3109 3345.53 3106.76 3345.53 3104V3093.97C3345.53 3091.2 3343.23 3088.96 3340.41 3088.96H2748.11C2745.29 3088.96 2743 3086.73 2743 3083.96V2636C2743 2633.24 2745.29 2631 2748.11 2631H3648.44C3649.88 2631 3651.24 2631.59 3652.21 2632.63L3751.66 2739.05C3753.53 2741.04 3753.43 2744.13 3751.44 2746.01Z",
       "type": "Food & Beverage",
-      "entranceNodes": [
-        "Ellipse 410_2"
-      ],
+      "entranceNodes": ["Ellipse 410_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_103",
       "name": "UNCLE JOHN'S",
       "path": "M3314.82 2603H2748.18C2745.32 2603 2743 2600.77 2743 2598.03V2487.62C2743 2484.87 2745.32 2482.65 2748.18 2482.65H3191.31C3194.17 2482.65 3196.49 2480.42 3196.49 2477.67V2462.97C3196.49 2460.23 3198.81 2458 3201.67 2458H3314.82C3317.68 2458 3320 2460.23 3320 2462.97V2598.03C3320 2600.77 3317.68 2603 3314.82 2603Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 411_2"
-      ],
+      "type": "Food & Beverage",
+      "entranceNodes": ["Ellipse 411_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_104",
@@ -1248,9 +1170,8 @@
       "entranceNode": "Ellipse 419_2",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": [
-        "Ellipse 419_2"
-      ]
+      "entranceNodes": ["Ellipse 419_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_105",
@@ -1259,9 +1180,8 @@
       "type": "Restroom",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": [
-        "Ellipse 417_2"
-      ]
+      "entranceNodes": ["Ellipse 417_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_106",
@@ -1271,12 +1191,11 @@
       "entranceNode": "Ellipse 418_2",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": [
-        "Ellipse 418_2"
-      ],
+      "entranceNodes": ["Ellipse 418_2"],
       "icon": "restroom",
       "centerY": 65,
-      "centerX": 40
+      "centerX": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_107",
@@ -1288,9 +1207,8 @@
       "baseFill": "#F66E19",
       "icon": "fire",
       "centerY": 40,
-      "entranceNodes": [
-        "Ellipse 416_2"
-      ]
+      "entranceNodes": ["Ellipse 416_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_108",
@@ -1300,9 +1218,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 413_2"
-      ]
+      "entranceNodes": ["Ellipse 413_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_109",
@@ -1312,9 +1229,8 @@
       "entranceNode": "Ellipse 414_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 414_2"
-      ]
+      "entranceNodes": ["Ellipse 414_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_110",
@@ -1324,9 +1240,8 @@
       "entranceNode": "Ellipse 415_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 415_2"
-      ]
+      "entranceNodes": ["Ellipse 415_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_111",
@@ -1338,9 +1253,8 @@
       "baseFill": "#F66E19",
       "icon": "fire",
       "centerY": 40,
-      "entranceNodes": [
-        "Ellipse 528_2"
-      ]
+      "entranceNodes": ["Ellipse 528_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_112",
@@ -1350,9 +1264,8 @@
       "entranceNode": "Ellipse 421_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 421_2"
-      ]
+      "entranceNodes": ["Ellipse 421_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_113",
@@ -1362,9 +1275,8 @@
       "entranceNode": "Ellipse 420_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 420_2"
-      ]
+      "entranceNodes": ["Ellipse 420_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_114",
@@ -1374,9 +1286,8 @@
       "entranceNode": "Ellipse 422_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 422_2"
-      ]
+      "entranceNodes": ["Ellipse 422_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_115",
@@ -1386,9 +1297,8 @@
       "entranceNode": "Ellipse 423_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 423_2"
-      ]
+      "entranceNodes": ["Ellipse 423_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_116",
@@ -1398,9 +1308,8 @@
       "entranceNode": "Ellipse 424_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 424_2"
-      ]
+      "entranceNodes": ["Ellipse 424_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_117",
@@ -1410,9 +1319,8 @@
       "entranceNode": "Ellipse 427_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 427_2"
-      ]
+      "entranceNodes": ["Ellipse 427_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_118",
@@ -1422,9 +1330,8 @@
       "entranceNode": "Ellipse 428_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 428_2"
-      ]
+      "entranceNodes": ["Ellipse 428_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_119",
@@ -1434,9 +1341,8 @@
       "entranceNode": "Ellipse 426_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 426_2"
-      ]
+      "entranceNodes": ["Ellipse 426_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_120",
@@ -1446,20 +1352,18 @@
       "entranceNode": "Ellipse 425_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 425_2"
-      ]
+      "entranceNodes": ["Ellipse 425_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_121",
       "name": "TRANSPORT TERMINAL",
       "path": "M1270.37 3297.87L1094.22 3121.73C1093.79 3121.3 1093.45 3120.8 1093.2 3120.24L1085.44 3103C1085.15 3102.35 1085 3101.68 1085 3100.97C1086.89 2597.36 1089.52 1571.81 1085.13 1452.31C1085.04 1450.08 1086.46 1448.65 1088.51 1447.76C1119.41 1434.5 1164.33 1379.17 1185.65 1349.4C1187 1347.51 1186.84 1344.93 1185.27 1343.2L1124.94 1276.35C1122.04 1273.13 1124.32 1268 1128.65 1268H2048.52C2051.27 1268 2053.5 1270.07 2053.52 1272.82C2058.28 1880.42 2064.89 3101.61 2053.48 3163.98C2042.04 3265.4 1961.02 3296.48 1921.93 3299.34H1273.9C1272.57 3299.34 1271.3 3298.81 1270.37 3297.87Z",
       "type": "Transport Terminal",
-      "entranceNodes": [
-        "Ellipse 412_2"
-      ],
+      "entranceNodes": ["Ellipse 412_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_122",
@@ -1469,9 +1373,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 378_2"
-      ]
+      "entranceNodes": ["Ellipse 378_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_123",
@@ -1481,9 +1384,8 @@
       "entranceNode": "Ellipse 379_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 378_2_2"
-      ]
+      "entranceNodes": ["Ellipse 378_2_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_124",
@@ -1496,9 +1398,8 @@
       "icon": "fire",
       "centerY": 50,
       "centerX": -40,
-      "entranceNodes": [
-        "Ellipse 379_2"
-      ]
+      "entranceNodes": ["Ellipse 379_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_125",
@@ -1508,7 +1409,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_126",
@@ -1518,7 +1420,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_127",
@@ -1528,7 +1431,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_128",
@@ -1538,7 +1442,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_129",
@@ -1548,7 +1453,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_130",
@@ -1558,7 +1464,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_131",
@@ -1568,7 +1475,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_132",
@@ -1578,7 +1486,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_133",
@@ -1588,7 +1497,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_134",
@@ -1598,7 +1508,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_135",
@@ -1608,7 +1519,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_136",
@@ -1618,7 +1530,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_137",
@@ -1628,7 +1541,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_151",
@@ -1638,7 +1552,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_152",
@@ -1648,7 +1563,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_153",
@@ -1658,7 +1574,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_157",
@@ -1668,7 +1585,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_158",
@@ -1678,9 +1596,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#858383",
-      "entranceNodes": [
-        "Ellipse 374_2"
-      ]
+      "entranceNodes": ["Ellipse 374_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_159",
@@ -1690,7 +1607,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_160",
@@ -1700,7 +1618,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_161",
@@ -1710,7 +1629,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_162",
@@ -1720,7 +1640,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_163",
@@ -1730,7 +1651,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_164",
@@ -1740,7 +1662,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_165",
@@ -1750,7 +1673,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_166",
@@ -1760,7 +1684,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_167",
@@ -1770,7 +1695,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_168",
@@ -1780,7 +1706,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_169",
@@ -1790,7 +1717,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_170",
@@ -1800,7 +1728,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_171",
@@ -1810,7 +1739,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#758F7D",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_185",
@@ -1820,7 +1750,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_186",
@@ -1830,7 +1761,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_187",
@@ -1840,9 +1772,8 @@
       "entranceNode": "Ellipse 451_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 451_2"
-      ]
+      "entranceNodes": ["Ellipse 451_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_188",
@@ -1852,9 +1783,8 @@
       "entranceNode": "Ellipse 450_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 450_2"
-      ]
+      "entranceNodes": ["Ellipse 450_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_189",
@@ -1864,7 +1794,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_190",
@@ -1874,7 +1805,8 @@
       "entranceNode": "Ellipse 493_2",
       "description": "Place description goes in here...",
       "entranceNodes": [],
-      "baseFill": "#1691B3"
+      "baseFill": "#1691B3",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_191",
@@ -1884,21 +1816,21 @@
       "entranceNode": "Ellipse 492_2",
       "description": "Place description goes in here...",
       "entranceNodes": [],
-      "baseFill": "#1691B3"
+      "baseFill": "#1691B3",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_192",
       "name": "Restroom",
       "path": "M8387 2609.99V2371.77C8387 2369.01 8388.97 2366.76 8391.41 2366.76L8592.5 2368.5V2359.5V2306V2240.5V2235H8661.5C8663.94 2235 8665.9 2237.24 8665.9 2240.01V2325.47C8665.9 2328.24 8667.88 2330.47 8670.31 2330.47H8776.59C8779.03 2330.47 8781 2332.72 8781 2335.48V2609.99C8781 2612.76 8779.03 2615 8776.59 2615H8391.41C8388.97 2615 8387 2612.76 8387 2609.99Z",
       "type": "Restroom",
-      "entranceNodes": [
-        "Ellipse 452_2"
-      ],
+      "entranceNodes": ["Ellipse 452_2"],
       "description": "Place description goes in here...",
       "icon": "restroom",
       "centerY": 0,
       "centerX": 40,
-      "baseFill": "#1691B3"
+      "baseFill": "#1691B3",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_193",
@@ -1909,18 +1841,19 @@
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
       "centerY": 40,
-      "centerX": 40
+      "centerX": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_194",
-      "name": "ATM Near LLao LLao",
+      "name": "ATM Near Lush",
       "path": "M8866.71 2111H8830C8827.24 2111 8825 2113.24 8825 2116V2255.65C8825 2258.42 8827.24 2260.65 8830 2260.65H8866.71C8869.47 2260.65 8871.71 2258.42 8871.71 2255.65V2116C8871.71 2113.24 8869.47 2111 8866.71 2111Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 454_2"
-      ],
+      "type": "Bank",
+      "entranceNode": "Ellipse 454_2",
+      "entranceNodes": ["Ellipse 454_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_195",
@@ -1930,9 +1863,8 @@
       "entranceNode": "Ellipse 449_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 449_2"
-      ]
+      "entranceNodes": ["Ellipse 449_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_196",
@@ -1942,57 +1874,52 @@
       "entranceNode": "Ellipse 448_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 448_2"
-      ]
+      "entranceNodes": ["Ellipse 448_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_197",
       "name": "Fire Exit",
       "path": "M9066.52 2377H8870.48C8868.01 2377 8866 2379.24 8866 2382V2514C8866 2516.76 8868.01 2519 8870.48 2519H9066.52C9068.99 2519 9071 2516.76 9071 2514V2382C9071 2379.24 9068.99 2377 9066.52 2377Z",
       "type": "Fire Exit",
-      "entranceNodes": [
-        "Ellipse 519_2"
-      ],
+      "entranceNodes": ["Ellipse 519_2"],
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "icon": "fire",
-      "centerY": 50
+      "centerY": 50,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_198",
       "name": "Fire Exit",
       "path": "M7543.53 2647H7442C7439.24 2647 7437 2649.24 7437 2652V3097.65C7437 3100.41 7439.24 3102.65 7442 3102.65H7543.53C7546.29 3102.65 7548.53 3104.89 7548.53 3107.65V3127.2C7548.53 3129.96 7550.76 3132.2 7553.53 3132.2H7612.16C7614.92 3132.2 7617.16 3129.96 7617.16 3127.2V2859.81C7617.16 2857.05 7614.92 2854.81 7612.16 2854.81H7553.53C7550.76 2854.81 7548.53 2852.57 7548.53 2849.81V2652C7548.53 2649.24 7546.29 2647 7543.53 2647Z",
       "type": "Fire Exit",
-      "entranceNodes": [
-        "Ellipse 459_2"
-      ],
+      "entranceNodes": ["Ellipse 459_2"],
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "icon": "fire",
-      "centerY": 10
+      "centerY": 10,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_199",
       "name": "SHABURI",
       "path": "M7553 2636.04V2606C7553 2603.24 7555.24 2601 7558 2601H7794.89C7797.65 2601 7799.89 2603.24 7799.89 2606V3293.77C7799.89 3296.53 7797.65 3298.77 7794.89 3298.77H7558C7555.24 3298.77 7553 3296.53 7553 3293.77V3143.62C7553 3140.86 7555.24 3138.62 7558 3138.62H7627.12C7629.88 3138.62 7632.12 3136.38 7632.12 3133.62V2849.07C7632.12 2846.31 7629.88 2844.07 7627.12 2844.07H7573.25C7570.49 2844.07 7568.25 2841.84 7568.25 2839.07V2646.04C7568.25 2643.27 7566.01 2641.04 7563.25 2641.04H7558C7555.24 2641.04 7553 2638.8 7553 2636.04Z",
       "type": "Food & Beverage",
-      "entranceNodes": [
-        "Ellipse 459_2"
-      ],
+      "entranceNodes": ["Ellipse 459_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_200",
       "name": "WATAMI",
       "path": "M7820 3291.77V2604C7820 2601.24 7822.23 2599 7825 2599H7878.86C7881.62 2599 7883.86 2601.24 7883.86 2604V2629.27C7883.86 2632.03 7886.1 2634.27 7888.86 2634.27H8053.3C8056.07 2634.27 8058.3 2636.51 8058.3 2639.27V3291.77C8058.3 3294.53 8056.07 3296.77 8053.3 3296.77H7825C7822.23 3296.77 7820 3294.53 7820 3291.77Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 458_2"
-      ],
+      "type": "Food & Beverage",
+      "entranceNodes": ["Ellipse 458_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_201",
@@ -2002,31 +1929,28 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 457_2"
-      ]
+      "entranceNodes": ["Ellipse 457_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_202",
       "name": "TEXAS ROADHOUSE",
       "path": "M8339.09 2641.75V3315.22C8339.09 3317.98 8341.33 3320.22 8344.09 3320.22H8460.4C8462.53 3320.22 8464.43 3318.87 8465.13 3316.85L8513.57 3152.44C8515.17 3147.01 8520.96 3143.99 8526.33 3145.78L8536 3149L8721 3215C8722.76 3215.73 8736.07 3205.25 8737.5 3204L8877.6 3082.45C8879.72 3080.59 8879.89 3077.35 8877.96 3075.28L8842.79 3037.6C8841.92 3036.67 8841.44 3035.45 8841.44 3034.19V2641.75C8841.44 2638.99 8839.2 2636.75 8836.44 2636.75H8344.09C8341.33 2636.75 8339.09 2638.99 8339.09 2641.75Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 456_2"
-      ],
+      "type": "Food & Beverage",
+      "entranceNodes": ["Ellipse 456_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_203",
       "name": "KATHERINE'S CAFE",
       "path": "M8952 2963.99V2545.64C8952 2542.87 8954.37 2540.65 8957.3 2540.65H9089.04C9091.97 2540.65 9094.33 2538.41 9094.33 2535.65V2378C9094.33 2375.23 9096.71 2373 9099.63 2373H9373.73C9376.65 2373 9379.02 2375.23 9379.02 2378V2481.18C9379.02 2482.65 9379.7 2484.04 9380.88 2484.99L9429.14 2523.78C9431.5 2525.68 9431.64 2529.07 9429.42 2531.13L8961.01 2967.55C8957.67 2970.67 8952 2968.43 8952 2963.99Z",
       "type": "Food & Beverage",
-      "entranceNodes": [
-        "Ellipse 455_2"
-      ],
+      "entranceNodes": ["Ellipse 455_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_204",
@@ -2036,7 +1960,8 @@
       "entranceNode": "Ellipse 442_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_205",
@@ -2046,9 +1971,8 @@
       "entranceNode": "Ellipse 443_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 443_2"
-      ]
+      "entranceNodes": ["Ellipse 443_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_206",
@@ -2058,7 +1982,8 @@
       "entranceNode": "Ellipse 444_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_207",
@@ -2068,9 +1993,8 @@
       "entranceNode": "Ellipse 445_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 445_2"
-      ]
+      "entranceNodes": ["Ellipse 445_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_208",
@@ -2080,9 +2004,8 @@
       "entranceNode": "Ellipse 446_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 446_2"
-      ]
+      "entranceNodes": ["Ellipse 446_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_209",
@@ -2092,7 +2015,8 @@
       "entranceNode": "Ellipse 447_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_210",
@@ -2102,9 +2026,8 @@
       "entranceNode": "Ellipse 435_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 435_2"
-      ]
+      "entranceNodes": ["Ellipse 435_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_211",
@@ -2114,9 +2037,8 @@
       "entranceNode": "Ellipse 436_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 436_2"
-      ]
+      "entranceNodes": ["Ellipse 436_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_212",
@@ -2126,7 +2048,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#A7A1A1",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_213",
@@ -2136,9 +2059,8 @@
       "entranceNode": "Ellipse 437_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 437_2"
-      ]
+      "entranceNodes": ["Ellipse 437_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_214",
@@ -2148,9 +2070,8 @@
       "entranceNode": "Ellipse 438_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 438_2"
-      ]
+      "entranceNodes": ["Ellipse 438_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_215",
@@ -2160,7 +2081,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_216",
@@ -2170,9 +2092,8 @@
       "entranceNode": "Ellipse 440_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 440_2"
-      ]
+      "entranceNodes": ["Ellipse 440_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_217",
@@ -2182,9 +2103,8 @@
       "entranceNode": "Ellipse 441_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 441_2"
-      ]
+      "entranceNodes": ["Ellipse 441_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_218",
@@ -2194,7 +2114,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_219",
@@ -2204,7 +2125,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_220",
@@ -2214,9 +2136,8 @@
       "entranceNode": "Ellipse 477_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 477_2"
-      ]
+      "entranceNodes": ["Ellipse 477_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_221",
@@ -2226,9 +2147,8 @@
       "entranceNode": "Ellipse 476_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 476_2"
-      ]
+      "entranceNodes": ["Ellipse 476_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_222",
@@ -2238,9 +2158,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 475_2"
-      ]
+      "entranceNodes": ["Ellipse 475_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_223",
@@ -2250,9 +2169,8 @@
       "entranceNode": "Ellipse 474_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 474_2"
-      ]
+      "entranceNodes": ["Ellipse 474_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_224_A",
@@ -2262,11 +2180,10 @@
       "entranceNode": "Ellipse 502_2",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 502_2"
-      ],
+      "entranceNodes": ["Ellipse 502_2"],
       "centerY": 40,
-      "icon": "fire"
+      "icon": "fire",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_225",
@@ -2276,11 +2193,10 @@
       "entranceNode": "Ellipse 501_2",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": [
-        "Ellipse 501_2"
-      ],
+      "entranceNodes": ["Ellipse 501_2"],
       "icon": "restroom",
-      "centerY": 40
+      "centerY": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_226",
@@ -2290,9 +2206,8 @@
       "entranceNode": "Ellipse 473_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 473_2"
-      ]
+      "entranceNodes": ["Ellipse 473_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_227",
@@ -2302,9 +2217,8 @@
       "entranceNode": "Ellipse 472_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 472_2"
-      ]
+      "entranceNodes": ["Ellipse 472_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_228",
@@ -2314,9 +2228,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 471_2"
-      ]
+      "entranceNodes": ["Ellipse 471_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_229",
@@ -2328,21 +2241,21 @@
       "baseFill": "#DFB133",
       "icon": "elevator",
       "centerY": 50,
-      "entranceNodes": [
-        "Ellipse 518_2"
-      ]
+      "entranceNodes": ["Ellipse 518_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_230",
       "name": "Fire Exit",
       "path": "M9898.33 3296.34L9999.39 3196.95C10001.4 3195.01 10004.5 3195.04 10006.5 3197.01L10165.8 3359.02C10167.7 3360.98 10167.7 3364.15 10165.7 3366.09L10064.7 3465.48C10062.7 3467.42 10059.5 3467.39 10057.6 3465.42L9898.27 3303.41C9896.33 3301.44 9896.36 3298.28 9898.33 3296.34Z",
       "type": "Fire Exit",
-      "entranceNode": "",
+      "entranceNode": "Ellipse 461_2",
       "icon": "fire",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "centerY": 40,
-      "entranceNodes": []
+      "entranceNodes": ["Ellipse 461_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_231",
@@ -2352,9 +2265,8 @@
       "entranceNode": "Ellipse 470_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 470_2"
-      ]
+      "entranceNodes": ["Ellipse 470_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_232",
@@ -2364,7 +2276,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_233",
@@ -2374,9 +2287,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 469_2"
-      ]
+      "entranceNodes": ["Ellipse 469_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_234",
@@ -2388,19 +2300,19 @@
       "baseFill": "#F66E19",
       "icon": "fire",
       "centerY": 40,
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_235",
       "name": "MANGO TREE BISTRO",
       "path": "M9496.06 3400.17L9725.59 3172.94C9727.55 3171 9730.72 3171.01 9732.66 3172.97L10045.4 3488.93C10047.4 3490.89 10047.4 3494.06 10045.4 3496L9815.87 3723.23C9813.91 3725.17 9810.74 3725.16 9808.8 3723.2L9496.02 3407.24C9494.08 3405.28 9494.09 3402.11 9496.06 3400.17Z",
       "type": "Food & Beverage",
-      "entranceNode": "Ellipse 461_2",
+      "entranceNode": "Ellipse 461_2_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 461_2"
-      ]
+      "entranceNodes": ["Ellipse 461_2_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_236",
@@ -2410,7 +2322,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_237",
@@ -2420,31 +2333,28 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 463_2"
-      ]
+      "entranceNodes": ["Ellipse 463_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_238",
       "name": "ADIDAS ORIGINALS",
       "path": "M10504.6 3785.16L10794.2 3498.4C10796.2 3496.48 10799.3 3496.47 10801.3 3498.37L11032.4 3723.87C11033.3 3724.81 11033.9 3726.1 11033.9 3727.45V4235.07C11033.9 4237.83 11031.6 4240.07 11028.9 4240.07H10950C10948.6 4240.07 10947.4 4239.54 10946.4 4238.59L10504.5 3792.23C10502.6 3790.27 10502.6 3787.1 10504.6 3785.16Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 467_2"
-      ],
+      "type": "Food & Beverage",
+      "entranceNodes": ["Ellipse 467_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_239",
       "name": "FELY J'S KITCHEN",
       "path": "M9099.52 3100.41L9378.46 2831.69C9380.39 2829.83 9383.46 2829.83 9385.39 2831.69L9718.53 3152.7C9720.56 3154.65 9720.57 3157.89 9718.57 3159.87L9486.5 3388.23C9484.55 3390.16 9481.4 3390.15 9479.46 3388.21L9344.31 3253.05C9343.37 3252.11 9342.1 3251.59 9340.77 3251.59H9237.29C9235.91 3251.59 9234.59 3251.02 9233.65 3250.02L9099.35 3107.44C9097.47 3105.44 9097.54 3102.31 9099.52 3100.41Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 460_2"
-      ],
+      "type": "Food & Beverage",
+      "entranceNodes": ["Ellipse 460_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_240",
@@ -2454,9 +2364,8 @@
       "entranceNode": "Ellipse 464_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 464_2"
-      ]
+      "entranceNodes": ["Ellipse 464_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_241",
@@ -2466,7 +2375,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#D7D4D4",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_242",
@@ -2476,7 +2386,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#D7D4D4",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_246",
@@ -2486,9 +2397,8 @@
       "entranceNode": "Ellipse 465_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 465_2"
-      ]
+      "entranceNodes": ["Ellipse 465_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_247",
@@ -2498,9 +2408,8 @@
       "entranceNode": "Ellipse 466_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 466_2"
-      ]
+      "entranceNodes": ["Ellipse 466_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_248",
@@ -2510,9 +2419,8 @@
       "entranceNode": "Ellipse 468_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 468_2"
-      ]
+      "entranceNodes": ["Ellipse 468_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_249",
@@ -2522,7 +2430,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_250",
@@ -2532,7 +2441,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_251",
@@ -2542,11 +2452,10 @@
       "entranceNode": "Ellipse 490_2",
       "description": "Place description goes in here...",
       "baseFill": "#1691B3",
-      "entranceNodes": [
-        "Ellipse 490_2"
-      ],
+      "entranceNodes": ["Ellipse 490_2"],
       "icon": "restroom",
-      "centerY": 50
+      "centerY": 50,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_252",
@@ -2556,11 +2465,10 @@
       "entranceNode": "Ellipse 491_2",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 491_2"
-      ],
+      "entranceNodes": ["Ellipse 491_2"],
       "icon": "fire",
-      "centerY": 50
+      "centerY": 50,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_253",
@@ -2570,7 +2478,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#A7A1A1",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_254",
@@ -2581,10 +2490,9 @@
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "icon": "fire",
-      "entranceNodes": [
-        "Ellipse 487_2"
-      ],
-      "centerY": 40
+      "entranceNodes": ["Ellipse 487_2"],
+      "centerY": 40,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_255",
@@ -2594,7 +2502,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_256",
@@ -2604,9 +2513,8 @@
       "entranceNode": "Ellipse 486_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 486_2"
-      ]
+      "entranceNodes": ["Ellipse 486_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_257",
@@ -2616,9 +2524,8 @@
       "entranceNode": "Ellipse 485_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 485_2"
-      ]
+      "entranceNodes": ["Ellipse 485_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_258",
@@ -2628,33 +2535,30 @@
       "entranceNode": "Ellipse 488_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 488_2"
-      ]
+      "entranceNodes": ["Ellipse 488_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_259",
       "name": "Fire Exit",
       "path": "M10373.3 5470.48V5064.87C10373.3 5062.11 10371 5059.87 10368.3 5059.87H10350.6C10349 5059.87 10339 5059.87 10331 5059.87C10325.5 5059.87 10321 5064.35 10321 5069.87V5134V5201.5C10321 5204.88 10318.3 5207.62 10314.9 5207.62H10133.3C10130.5 5207.62 10128.3 5209.83 10128.3 5212.57L10125.5 5470.43C10125.5 5473.21 10127.7 5475.48 10130.5 5475.48H10368.3C10371 5475.48 10373.3 5473.24 10373.3 5470.48Z",
       "type": "Fire Exit",
-      "entranceNodes": [
-        "Ellipse 517_2"
-      ],
+      "entranceNodes": ["Ellipse 517_2"],
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
       "icon": "fire",
-      "centerY": -20
+      "centerY": -20,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_260",
       "name": "TGIF",
       "path": "M10306.1 5060H9611.87C9609.18 5060 9607 5062.24 9607 5064.99V5470.01C9607 5472.76 9609.18 5475 9611.87 5475H10092.5C10095.3 5475 10097.4 5472.76 10097.4 5470.01V5197.3C10097.4 5194.54 10099.6 5192.31 10102.3 5192.31H10306.1C10308.9 5192.31 10311 5190.07 10311 5187.31V5064.99C10311 5062.24 10308.9 5060 10306.1 5060Z",
-      "type": "Building",
-      "entranceNodes": [
-        "Ellipse 484_2"
-      ],
+      "type": "Food & Beverage",
+      "entranceNodes": ["Ellipse 484_2"],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF"
+      "baseFill": "#FFFFFF",
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_262",
@@ -2664,9 +2568,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 505_2"
-      ]
+      "entranceNodes": ["Ellipse 505_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_263",
@@ -2676,7 +2579,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_264",
@@ -2686,7 +2590,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_265",
@@ -2696,7 +2601,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_266",
@@ -2706,7 +2612,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_267",
@@ -2716,7 +2623,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_268",
@@ -2726,7 +2634,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_269",
@@ -2736,7 +2645,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_270",
@@ -2746,9 +2656,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 506_2"
-      ]
+      "entranceNodes": ["Ellipse 506_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_271",
@@ -2758,9 +2667,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 507_2"
-      ]
+      "entranceNodes": ["Ellipse 507_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_272",
@@ -2770,9 +2678,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 509_2"
-      ]
+      "entranceNodes": ["Ellipse 509_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_273",
@@ -2782,9 +2689,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 508_2"
-      ]
+      "entranceNodes": ["Ellipse 508_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_274",
@@ -2794,7 +2700,8 @@
       "entranceNode": "Ellipse 482_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_275",
@@ -2804,7 +2711,8 @@
       "entranceNode": "Ellipse 481_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_276",
@@ -2814,7 +2722,8 @@
       "entranceNode": "Ellipse 480_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_277",
@@ -2824,11 +2733,10 @@
       "entranceNode": "Ellipse 483_2",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [
-        "Ellipse 483_2"
-      ],
+      "entranceNodes": ["Ellipse 483_2"],
       "icon": "escalator",
-      "centerY": 50
+      "centerY": 50,
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_278",
@@ -2838,7 +2746,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": []
+      "entranceNodes": [],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_279",
@@ -2848,7 +2757,8 @@
       "entranceNode": "Ellipse 374_2",
       "description": "Place description goes in here...",
       "baseFill": "#A0D9F3",
-      "entranceNodes": ["Ellipse 374_2"]
+      "entranceNodes": ["Ellipse 374_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "Vector 223",
@@ -2858,9 +2768,8 @@
       "entranceNode": "Ellipse 489_2",
       "description": "Place description goes in here...",
       "baseFill": "#858383",
-      "entranceNodes": [
-        "Ellipse 489_2"
-      ]
+      "entranceNodes": ["Ellipse 489_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_280",
@@ -2870,9 +2779,8 @@
       "entranceNode": "Ellipse 478_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 478_2"
-      ]
+      "entranceNodes": ["Ellipse 478_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_281",
@@ -2882,9 +2790,8 @@
       "entranceNode": "Ellipse 479_2",
       "description": "Place description goes in here...",
       "baseFill": "white",
-      "entranceNodes": [
-        "Ellipse 479_2"
-      ]
+      "entranceNodes": ["Ellipse 479_2"],
+      "floor": "Ayala Malls Ground Floor"
     },
     {
       "id": "BLDG_224",
@@ -2894,9 +2801,8 @@
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#F66E19",
-      "entranceNodes": [
-        "Ellipse 529_2"
-      ]
+      "entranceNodes": ["Ellipse 529_2"],
+      "floor": "Ayala Malls Ground Floor"
     }
   ]
 }

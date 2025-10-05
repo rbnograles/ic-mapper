@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   AppBar,
   Box,
@@ -8,16 +8,21 @@ import {
   useMediaQuery,
   CssBaseline,
   IconButton,
+  CircularProgress,
 } from '@mui/material';
 import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import LocationPinIcon from '@mui/icons-material/LocationPin';
-import uniqueTypes from '../Data/unique_types.json';
-import { FaDirections } from 'react-icons/fa';
-import Direction from '../Drawers/Direction';
-import Chips from './Chips';
-import type { PathItem } from '../../interface/BaseMap';
 
+import { FaDirections } from 'react-icons/fa';
+import uniqueTypes from '../Data/unique_types.json';
+import Direction from '../Drawers/Direction';
+import { Chips, iconMap } from './Chips';
+import type { PathItem } from '../../interface/BaseMap';
+import { useLazyMapData } from '../hooks/useLazyMapData';
+
+// ====================
+// Styled Components
+// ====================
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: 10,
@@ -48,63 +53,89 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
+// ====================
+// Utility
+// ====================
 const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toUpperCase());
 
+// ====================
+// Main Component
+// ====================
 export default function SearchAppBar({
-  options,
   onSelect,
   handleChipClick,
   handlePathSearchBehavior,
   handleRoute,
+  getLocationFromHistory,
 }: {
-  options: any[];
   onSelect: (item: any, type?: 'A' | 'B') => void;
   handleChipClick: (type: string) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
   handleRoute: (from: string, to: string) => void;
   pathItem: PathItem;
+  getLocationFromHistory: (history: any) => void;
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const pathItem: PathItem = {
-    name: '',
-    id: '',
-  };
+
+  const pathItem: PathItem = { name: '', id: '' };
   const [directionOpen, setDirectionOpen] = useState(false);
   const [pointA, setPointA] = useState<PathItem>(pathItem);
   const [pointB, setPointB] = useState<PathItem>(pathItem);
 
+  // ====================
+  // Lazy search data
+  // ====================
+  const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
+    'ground',
+    20
+  );
+
+  const [query, setQuery] = useState('');
+  const [displayOptions, setDisplayOptions] = useState<any[]>([]);
+
+  // ✅ Debounced search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!query.trim()) setDisplayOptions(visiblePlaces);
+      else setDisplayOptions(search(query));
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [query, visiblePlaces]);
+
+  // ====================
+  // Point Handling
+  // ====================
   const setPointAMethod = (val: any) => {
     setPointA(val);
-    if (pointB.name !== '' && val) {
+    if (pointB.name && val) {
       handleRoute(val.name, pointB.name);
       setDirectionOpen(false);
     }
+    saveToCache(val);
   };
 
   const setPointBMethod = (val: any) => {
     setPointB(val);
-    if (pointA.name !== '' && val) {
+    if (pointA.name && val) {
       handleRoute(pointA.name, val.name);
       setDirectionOpen(false);
     }
+    saveToCache(val);
   };
 
-  // ✅ Swap A and B without overrides
   const handleSwapPoints = () => {
     if (!pointA && !pointB) return;
-    const temp = pointA;
     const newA = pointB;
-    const newB = temp;
-
+    const newB = pointA;
     setPointA(newA);
     setPointB(newB);
-
-    if (newA && newB) {
-      handleRoute(newA.name, newB.name);
-    }
+    if (newA && newB) handleRoute(newA.name, newB.name);
   };
 
+  // ====================
+  // Search Bar Renderer
+  // ====================
   const renderSearchBar = (placeholder: string, value: any, onChange: (val: any) => void) => (
     <Search
       sx={{
@@ -120,9 +151,26 @@ export default function SearchAppBar({
         freeSolo
         blurOnSelect
         value={value}
-        options={options}
+        options={displayOptions}
+        loading={loading}
+        filterOptions={(x) => x}
         getOptionLabel={(opt) => (opt?.name ? capitalizeWords(opt.name.toLowerCase()) : '')}
-        onChange={(_, val) => onChange(val)}
+        onChange={(_, val) => {
+          onChange(val);
+          saveToCache(val);
+        }}
+        onInputChange={(_, val) => setQuery(val)}
+        onFocus={() => {
+          setDisplayOptions(visiblePlaces);
+        }}
+        ListboxProps={{
+          onScroll: (e) => {
+            const listbox = e.currentTarget;
+            if (hasMore && listbox.scrollTop + listbox.clientHeight >= listbox.scrollHeight - 10) {
+              loadMore();
+            }
+          },
+        }}
         sx={{ flex: 1 }}
         slotProps={{
           popper: {
@@ -151,13 +199,22 @@ export default function SearchAppBar({
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              <LocationPinIcon sx={{ mr: 1, color: theme.palette.secondary.main }} />
+              {iconMap[option.type]?.({
+                color: theme.palette.primary.main,
+                fontSize: 24,
+                marginRight: 5,
+              })}
               <Box>
                 <Box sx={{ fontWeight: 500, fontSize: isMobile ? 14 : 16 }}>
                   {capitalizeWords(option.name.toLowerCase())}
                 </Box>
-                <Box sx={{ fontSize: isMobile ? 12 : 13, color: 'text.secondary' }}>
-                  {option.type ?? 'Unknown'}
+                <Box
+                  sx={{
+                    fontSize: isMobile ? 12 : 13,
+                    color: 'text.secondary',
+                  }}
+                >
+                  {option.floor ?? 'Unknown'}
                 </Box>
               </Box>
             </Box>
@@ -169,11 +226,19 @@ export default function SearchAppBar({
             style={{ padding: 10 }}
             placeholder={directionOpen ? `${placeholder}` : placeholder}
             variant="standard"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                  {params.InputProps.endAdornment}
+                </>
+              ),
+            }}
           />
         )}
       />
 
-      {/* ✅ Direction button INSIDE the search bar */}
       {!directionOpen && (
         <IconButton onClick={() => setDirectionOpen(true)} sx={{ ml: 1 }}>
           <FaDirections style={{ fontSize: 28, color: theme.palette.secondary.main }} />
@@ -182,6 +247,9 @@ export default function SearchAppBar({
     </Search>
   );
 
+  // ====================
+  // Render Component
+  // ====================
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -203,7 +271,7 @@ export default function SearchAppBar({
               gap: 2,
             }}
           >
-            {renderSearchBar('Search for a place', pointA, (val) => {
+            {renderSearchBar('Search for a place or type', pointA, (val) => {
               setPointA(val);
               onSelect(val, 'A');
             })}
@@ -224,6 +292,7 @@ export default function SearchAppBar({
           pointA={pointA}
           pointB={pointB}
           handleSwapPoints={handleSwapPoints}
+          getLocationFromHistory={getLocationFromHistory}
         />
       </Box>
     </ThemeProvider>

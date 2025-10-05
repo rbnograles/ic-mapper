@@ -5,7 +5,12 @@ import { memo, useEffect, useRef, useState } from 'react';
 import type { INodes } from '../../../../interface/BaseMap';
 import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
-const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) => {
+interface AMGFPathNodesProps {
+  route: string[];
+  nodes: INodes[];
+}
+
+const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
   if (!route || route.length < 2) return null;
 
   // Extract coordinates of route nodes
@@ -45,11 +50,11 @@ const AMGFPathNodes = ({ route, nodes }: { route: string[]; nodes: INodes[] }) =
           ref={pathRef}
           d={pathData}
           stroke="#7B48FF"
-          strokeWidth={15}
+          strokeWidth={25}
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeDasharray="10 30"
+          strokeDasharray="10 50"
           animate={{
             strokeDashoffset: [0, -pathLength], // move dash forward
           }}

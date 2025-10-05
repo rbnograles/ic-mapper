@@ -1,5 +1,5 @@
 // App.tsx
-import { useState, useMemo, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   CssBaseline,
@@ -14,30 +14,36 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './styles/theme';
 import { layoutStyles } from './styles/layoutStyles';
 import BottomBar from './components/Navigations/BottomBar';
-import AMGroundFloor from './components/Maps/AM.GroundFloor';
-//import AM3rdFloor from './components/Maps/AM.3rdFloor';
 import SearchAppBar from './components/Navigations/SearchAppBar';
-import MapData from './components/Data/AyalaMalls/GroundFloor/GroundFloor.json';
-import NodeData from './components/Data/AyalaMalls/GroundFloor/GroundFloorNodes.json';
-
-import { findPathBetweenPlaces } from './components/util/routing';
+import { findPathBetweenPlaces } from './components/util/core/routing';
+import { loadMapData } from './components/util/core/mapLoader';
 import type { Graph, PathItem } from './interface/BaseMap';
 
+// import other floor components here
+import { floors } from './components/Maps/partials/floors'; // floor array: { key, name, component }
+
 export default function App() {
-  // Map Highlight State
+  // 🗺️ Highlight + filter states
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [highlightName, setHighlightName] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [pathItem, setPathItems] = useState<PathItem>({ name: '', id: '' });
   const [activeNodeIds, setActiveNodeIds] = useState<string[]>([]);
 
-  // Slider State
+  // 🎚️ Slider
   const [expanded, setExpanded] = useState(false);
 
-  // Drawer State for Maps
+  // 🧭 Map Drawer
   const [mapsDrawerOpen, setMapsDrawerOpen] = useState(false);
-  const [selectedMap, setSelectedMap] = useState<'ground' | 'third'>('ground');
+  const [selectedMap, setSelectedMap] = useState(floors[0].key);
 
+  // 🧱 Data states
+  const [maps, setMaps] = useState<any[]>([]);
+  const [nodes, setNodes] = useState<any[]>([]);
+  const [entrances, setEntrances] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // 🧠 Helpers
   const resetHighlight = () => {
     setHighlightId(null);
     setHighlightName(null);
@@ -62,75 +68,133 @@ export default function App() {
   const handleSliderPathClick = () => setExpanded(true);
   const handleSliderClose = () => setExpanded(false);
 
-  // Maps data
-  const maps = useMemo(() => [...MapData.places], []);
-  const nodes = useMemo(() => [...NodeData.nodes], []);
-  const entrances = useMemo(() => [...NodeData.entrances], []);
+  // 🧭 Load map + node data dynamically when floor changes
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
 
-  const uniqueOptions = useMemo(
-    () =>
-      maps
-        .filter((item) => item.name !== 'NotClickable')
-        .filter((item, index, self) => index === self.findIndex((t) => t.name === item.name)),
-    [maps]
-  );
+    loadMapData(selectedMap)
+      .then((data) => {
+        if (!isMounted) return;
+        setMaps(data.places);
+        setNodes(data.nodes);
+        setEntrances(data.entrances);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error loading map data:', err);
+        if (isMounted) setLoading(false);
+      });
 
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedMap]);
+
+  // 🚏 Pathfinding with caching
   const handleRoute = (from: string, to: string) => {
-    // re-construct the groundfloor map
-    const groundFloorMap = { nodes: nodes, entrances: entrances, places: maps };
+    if (!from || !to) return;
 
-    const path = findPathBetweenPlaces(groundFloorMap as unknown as Graph, from, to);
-    console.log(path);
-    if (!path) {
+    const floorMap = { nodes, entrances, places: maps };
+
+    const key = `route-cache-${selectedMap}-${from}-${to}`;
+    const reverseKey = `route-cache-${selectedMap}-${to}-${from}`;
+
+    const cached = localStorage.getItem(key) || localStorage.getItem(reverseKey);
+    if (cached) {
+      try {
+        const { nodes: cachedNodes } = JSON.parse(cached);
+        if (Array.isArray(cachedNodes) && cachedNodes.length) {
+          setActiveNodeIds(cachedNodes);
+          console.log(`✅ Using cached route for ${from} ↔ ${to}`);
+          return;
+        }
+      } catch (err) {
+        console.warn('⚠️ Failed to parse cached route:', err);
+      }
+    }
+
+    const path = findPathBetweenPlaces(floorMap as unknown as Graph, from, to);
+
+    if (!path || !path.nodes) {
+      console.warn('❌ No route found between', from, 'and', to);
       setActiveNodeIds([]);
       return;
     }
-    setActiveNodeIds(path.nodes ?? []);
+
+    const routeData = {
+      from,
+      to,
+      floor: floors.map((f) => {
+        if (selectedMap === f.key) {
+          return f.name;
+        }
+      }),
+      nodes: path.nodes,
+      timestamp: Date.now(),
+    };
+
+    localStorage.setItem(key, JSON.stringify(routeData));
+    setActiveNodeIds(path.nodes);
+  };
+
+  const getLocationFromHistory = (history: any) => {
+    if (history.type === 'Route') {
+      setActiveNodeIds(history.raw.nodes);
+      return;
+    }
+
+    handlePathSelect(history);
   };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={layoutStyles.appRoot}>
-        {/* 🔍 Top Search */}
+        {/* 🔍 Search Bar */}
         <Box sx={layoutStyles.fixedTop}>
           <SearchAppBar
-            options={uniqueOptions}
             onSelect={handlePathSelect}
             handleChipClick={handleChipClick}
             handlePathSearchBehavior={handlePathSearchBehavior}
             handleRoute={handleRoute}
             pathItem={pathItem}
+            getLocationFromHistory={getLocationFromHistory}
           />
         </Box>
 
         {/* 🗺️ Map Container */}
         <Box sx={layoutStyles.mapContainer}>
-          {selectedMap === 'ground' && (
-            <AMGroundFloor
-              highlightId={highlightId}
-              highlightName={highlightName}
-              selectedType={selectedType}
-              map={maps}
-              onClick={handlePathSelect}
-              handleSliderPathClick={handleSliderPathClick}
-              activeNodeIds={activeNodeIds}
-              nodes={nodes}
-              entrances={entrances}
-            />
-          )}
-          {selectedMap === 'third' && (
-            <Fragment>Map 3</Fragment>
-            // <AM3rdFloor
-            //   highlightId={highlightId}
-            //   highlightName={highlightName}
-            //   selectedType={selectedType}
-            //   map={maps}
-            //   onClick={handlePathSelect}
-            //   handleSliderPathClick={handleSliderPathClick}
-            //   activeNodeIds={activeNodeIds}
-            //   nodes={nodes}
-            // />
+          {loading ? (
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+              }}
+            >
+              Loading {selectedMap} map…
+            </Box>
+          ) : (
+            <>
+              {floors.map((floor: any) =>
+                selectedMap === floor.key ? (
+                  <floor.component
+                    key={floor.key}
+                    highlightId={highlightId}
+                    highlightName={highlightName}
+                    selectedType={selectedType}
+                    map={maps}
+                    onClick={handlePathSelect}
+                    handleSliderPathClick={handleSliderPathClick}
+                    activeNodeIds={activeNodeIds}
+                    nodes={nodes}
+                    entrances={entrances}
+                  />
+                ) : null
+              )}
+            </>
           )}
         </Box>
 
@@ -140,36 +204,27 @@ export default function App() {
             expanded={expanded}
             handleSliderClose={handleSliderClose}
             pathItem={pathItem}
-            onMapsClick={() => setMapsDrawerOpen(true)} // 👈 trigger drawer
+            onMapsClick={() => setMapsDrawerOpen(true)}
           />
         </Box>
 
-        {/* 📂 Drawer for Maps */}
+        {/* 🗂️ Map Drawer */}
         <Drawer anchor="left" open={mapsDrawerOpen} onClose={() => setMapsDrawerOpen(false)}>
           <Box sx={{ width: 250, p: 2 }}>
             <List>
-              <ListItem disablePadding>
-                <ListItemButton
-                  selected={selectedMap === 'ground'}
-                  onClick={() => {
-                    setSelectedMap('ground');
-                    setMapsDrawerOpen(false);
-                  }}
-                >
-                  <ListItemText primary="Ground Floor" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  selected={selectedMap === 'third'}
-                  onClick={() => {
-                    setSelectedMap('third');
-                    setMapsDrawerOpen(false);
-                  }}
-                >
-                  <ListItemText primary="3rd Floor" />
-                </ListItemButton>
-              </ListItem>
+              {floors.map((floor: any) => (
+                <ListItem key={floor.key} disablePadding>
+                  <ListItemButton
+                    selected={selectedMap === floor.key}
+                    onClick={() => {
+                      setSelectedMap(floor.key);
+                      setMapsDrawerOpen(false);
+                    }}
+                  >
+                    <ListItemText primary={floor.name} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
             </List>
           </Box>
         </Drawer>
