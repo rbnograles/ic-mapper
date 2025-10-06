@@ -217,8 +217,11 @@ function parseSvgToJson(svgFile, oldJsonPath) {
 
 // --- run ---
 const svgPath = '../../../assets/AyalaMallsMap/GroundFloor.svg';
-const oldJson = './oldPlaces.json';
+const oldJson = '../../Data/AyalaMalls/GroundFloor/GroundFloor.json';
 
 const result = parseSvgToJson(svgPath, oldJson);
-fs.writeFileSync('places.merged.json', JSON.stringify(result, null, 2));
-console.log('✅ places.merged.json generated (merged by path/id, cleaned, deduped).');
+fs.writeFileSync(
+  '../../Data/AyalaMalls/GroundFloor/GroundFloor.json',
+  JSON.stringify(result, null, 2)
+);
+console.log(`✅ {oldJson} (merged by path/id, cleaned, deduped).`);

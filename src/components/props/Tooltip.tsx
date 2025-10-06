@@ -1,4 +1,4 @@
-import type { IBaseP } from '../../../interface/BaseMap';
+import type { IBaseP } from '../../interface/BaseMap';
 
 export const Tooltip = ({
   tooltipWidth,

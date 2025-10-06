@@ -4,6 +4,15 @@ export interface PathItem {
   type?: string;
   img?: string;
   description?: string;
+  schedule?: ISchedule[];
+}
+
+export interface ISchedule {
+  time: string;
+  date: string;
+  volunteers: string[];
+  guide: string;
+  congregation: string;
 }
 
 export interface INodes {

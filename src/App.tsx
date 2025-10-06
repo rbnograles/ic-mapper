@@ -15,12 +15,12 @@ import theme from './styles/theme';
 import { layoutStyles } from './styles/layoutStyles';
 import BottomBar from './components/Navigations/BottomBar';
 import SearchAppBar from './components/Navigations/SearchAppBar';
-import { findPathBetweenPlaces } from './components/util/core/routing';
 import { loadMapData } from './components/util/core/mapLoader';
-import type { Graph, PathItem } from './interface/BaseMap';
+import type { PathItem } from './interface/BaseMap';
 
 // import other floor components here
 import { floors } from './components/Maps/partials/floors'; // floor array: { key, name, component }
+import useRouteMapHandler from './components/hooks/useRouteMapHandler';
 
 export default function App() {
   // 🗺️ Highlight + filter states
@@ -93,79 +93,17 @@ export default function App() {
 
   // 🚏 Pathfinding with caching
   const handleRoute = (from: string, to: string) => {
-    if (!from || !to) return;
-
-    const floorMap = { nodes, entrances, places: maps };
-
-    // use encodeURIComponent to avoid characters breaking keys
-    const key = `route-cache-${selectedMap}-${encodeURIComponent(from)}-${encodeURIComponent(to)}`;
-    const reverseKey = `route-cache-${selectedMap}-${encodeURIComponent(to)}-${encodeURIComponent(from)}`;
-
-    // detect which key is present
-    const cachedKey = localStorage.getItem(key)
-      ? key
-      : localStorage.getItem(reverseKey)
-        ? reverseKey
-        : null;
-
-    if (cachedKey) {
-      try {
-        const parsed = JSON.parse(localStorage.getItem(cachedKey) as string);
-        const cachedNodes: string[] = parsed?.nodes ?? [];
-
-        if (Array.isArray(cachedNodes) && cachedNodes.length) {
-          // if we read the reverseKey, reverse the nodes so they reflect `from -> to`
-          const nodesToUse = cachedKey === reverseKey ? [...cachedNodes].reverse() : cachedNodes;
-          setActiveNodeIds(nodesToUse);
-          console.log(
-            `✅ Using cached route for ${from} ↔ ${to} (from ${cachedKey === key ? 'key' : 'reverseKey'})`
-          );
-          return;
-        }
-      } catch (err) {
-        console.warn('⚠️ Failed to parse cached route:', err);
-      }
-    }
-
-    // compute new path
-    const path = findPathBetweenPlaces(floorMap as unknown as Graph, from, to);
-
-    if (!path || !path.nodes) {
-      console.warn('❌ No route found between', from, 'and', to);
-      setActiveNodeIds([]);
-      return;
-    }
-
-    // canonical route nodes should be in `from -> to` order
-    const orderedNodes = path.nodes;
-
-    const routeData = {
+    // modular route mapping to avoid clamping huge logic in App
+    return useRouteMapHandler(
       from,
       to,
-      floor: floors.find((f) => selectedMap === f.key)?.name ?? selectedMap,
-      nodes: orderedNodes,
-      timestamp: Date.now(),
-    };
-
-    // store both directions: key (from->to) and reverseKey (to->from with reversed nodes)
-    try {
-      localStorage.setItem(key, JSON.stringify(routeData));
-
-      // prepare reverse entry so future lookups find correct-order nodes
-      const reverseRouteData = {
-        from: to,
-        to: from,
-        floor: routeData.floor,
-        nodes: [...orderedNodes].reverse(),
-        timestamp: Date.now(),
-      };
-      localStorage.setItem(reverseKey, JSON.stringify(reverseRouteData));
-    } catch (err) {
-      console.warn('⚠️ Failed to store route in cache:', err);
-    }
-
-    setActiveNodeIds(orderedNodes);
-    setHighlightId(from);
+      nodes,
+      entrances,
+      maps,
+      selectedMap,
+      setActiveNodeIds,
+      setHighlightId
+    );
   };
 
   const getLocationFromHistory = (history: any) => {

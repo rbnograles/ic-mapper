@@ -8,7 +8,13 @@ import ParkIcon from '@mui/icons-material/Park';
 import { Stack, Chip, ThemeProvider, CssBaseline } from '@mui/material';
 import type { JSX } from 'react';
 import { FaBus, FaRunning } from 'react-icons/fa';
-import { FaHandHoldingHand, FaLocationArrow, FaMasksTheater, FaStairs } from 'react-icons/fa6';
+import {
+  FaHandHoldingHand,
+  FaLocationArrow,
+  FaMasksTheater,
+  FaPeopleArrows,
+  FaStairs,
+} from 'react-icons/fa6';
 import { BsBank2 } from 'react-icons/bs';
 import { MdHotel } from 'react-icons/md';
 import { FaSignsPost } from 'react-icons/fa6';
@@ -39,6 +45,9 @@ export const iconMap: Record<string, (style?: React.CSSProperties) => JSX.Elemen
   Hotel: (style = {}) => <MdHotel style={{ color: 'white', ...style }} />,
   Landmark: (style = {}) => <FaSignsPost style={{ color: 'white', ...style }} />,
   'Activity Center': (style = {}) => <MdEmojiEvents style={{ color: 'white', ...style }} />,
+  "Jehovah's Witnesses Carts": (style = {}) => (
+    <FaPeopleArrows style={{ color: 'white', ...style }} />
+  ),
 };
 
 type ChipsProps = {

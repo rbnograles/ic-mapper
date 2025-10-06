@@ -7,6 +7,7 @@ import { FaElevator } from 'react-icons/fa6';
 import { FaBoxesStacked } from 'react-icons/fa6';
 import { GrEscalator } from 'react-icons/gr';
 import { PiStairsFill } from 'react-icons/pi';
+import Cart from '../props/Cart';
 
 const style = {
   default: { color: 'white', fontSize: 84 },
@@ -22,6 +23,7 @@ const ICON_MAP: Record<string, JSX.Element> = {
   box: <FaBoxesStacked style={style.default} />,
   stairs: <PiStairsFill style={style.default} />,
   fire: <FaRunning style={style.default} />,
+  "Jehovah's Witnesses Carts": <Cart />,
 };
 
 export default ICON_MAP;
