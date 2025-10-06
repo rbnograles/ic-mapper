@@ -27,7 +27,8 @@ export default function BottomBar({
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('lg', 'xl'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const [value, setValue] = useState(0);
 
   return (
@@ -44,9 +45,9 @@ export default function BottomBar({
         sx={{
           position: 'fixed',
           bottom: isMobile ? 0 : 24,
-          left: isMobile ? 0 : isTablet ? 'calc(50% - 250px)' : 24,
-          right: isMobile ? 0 : isTablet ? 'calc(50% - 250px)' : 24,
-          width: isTablet ? 500 : 'auto',
+          left: isMobile ? 0 : isTablet || isDesktop ? 'calc(50% - 250px)' : 24,
+          right: isMobile ? 0 : isTablet || isDesktop ? 'calc(50% - 250px)' : 24,
+          width: isTablet || isDesktop ? 550 : 'auto',
           borderRadius: isMobile ? '24px 24px 0 0' : 50,
           zIndex: 1200,
         }}

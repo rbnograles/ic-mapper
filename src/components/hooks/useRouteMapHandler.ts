@@ -1,5 +1,5 @@
 import type { SetStateAction} from 'react';
-import { findPathBetweenPlaces } from '../util/core/routing';
+import { findPathBetweenPlacesOptimized } from '../util/core/routing';
 import { floors } from '../Maps/partials/floors';
 import type { Graph } from '../../interface/BaseMap';
 
@@ -8,10 +8,10 @@ export default function useRouteMapHandler(
   to: string,
   nodes: any[],
   entrances: any[],
-  maps: any[], 
+  maps: any[],
   selectedMap: string,
   setActiveNodeIds: (value: SetStateAction<string[]>) => void,
-  setHighlightId: (value: React.SetStateAction<string | null>) => void 
+  setHighlightId: (value: React.SetStateAction<string | null>) => void
 ) {
   if (!from || !to) return;
 
@@ -48,7 +48,7 @@ export default function useRouteMapHandler(
   }
 
   // compute new path
-  const path = findPathBetweenPlaces(floorMap as unknown as Graph, from, to);
+  const path = findPathBetweenPlacesOptimized(floorMap as unknown as Graph, from, to);
 
   if (!path || !path.nodes) {
     console.warn('❌ No route found between', from, 'and', to);

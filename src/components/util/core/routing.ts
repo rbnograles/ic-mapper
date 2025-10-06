@@ -42,10 +42,8 @@ class MinHeap<T> {
       let left = 2 * i + 1;
       let right = 2 * i + 2;
       let smallest = i;
-      if (left < length && this.heap[left].key < this.heap[smallest].key)
-        smallest = left;
-      if (right < length && this.heap[right].key < this.heap[smallest].key)
-        smallest = right;
+      if (left < length && this.heap[left].key < this.heap[smallest].key) smallest = left;
+      if (right < length && this.heap[right].key < this.heap[smallest].key) smallest = right;
       if (smallest === i) break;
       this.heap[i] = this.heap[smallest];
       i = smallest;
@@ -173,16 +171,82 @@ function findNearestNode(graph: Graph, point: { x: number; y: number }): string 
 }
 
 /**
- * Path between two places (optimized with prebuilt adjacency)
+ * Single-source Dijkstra (returns distances and predecessors for path reconstruction)
+ * - graph: your graph object (only needed if you want to build adjacency here)
+ * - startNode: node id to start from
+ * - prebuiltAdj: optional adjacency list to reuse (recommended)
  */
-export function findPathBetweenPlaces(graph: Graph, placeA: string, placeB: string) {
-  const p1 = graph.places.find((p) => p.name === placeA);
-  const p2 = graph.places.find((p) => p.name === placeB);
-  
-  if (!p1 || !p2) {
-    console.warn('Place not found', { placeA, placeB });
+export function findShortestPathSingleSource(
+  graph: Graph,
+  startNode: string,
+  prebuiltAdj?: AdjList
+): { dist: Record<string, number>; prev: Record<string, string | null> } | null {
+  const adj = prebuiltAdj ?? buildAdjacency(graph);
+
+  if (!adj[startNode]) {
+    // start not in adjacency
     return null;
   }
+
+  const dist: Record<string, number> = {};
+  const prev: Record<string, string | null> = {};
+
+  // init
+  for (const id in adj) {
+    dist[id] = Infinity;
+    prev[id] = null;
+  }
+  dist[startNode] = 0;
+
+  const open = new MinHeap<string>();
+  open.push(0, startNode);
+
+  while (open.size > 0) {
+    const u = open.pop()!;
+    // If we've popped a node whose current stored dist is larger than recorded dist,
+    // skip it (stale heap entry).
+    const du = dist[u];
+    if (!isFinite(du)) continue;
+
+    // relax neighbors
+    for (const { to, weight } of adj[u] ?? []) {
+      const alt = du + weight;
+      if (alt < (dist[to] ?? Infinity)) {
+        dist[to] = alt;
+        prev[to] = u;
+        open.push(alt, to);
+      }
+    }
+  }
+
+  return { dist, prev };
+}
+
+/**
+ * Path between two places (optimized with prebuilt adjacency)
+ */
+/**
+ * Optimized: Path between two places (handles multiple same-name destinations).
+ * - Caches entrance->pathNodes resolution
+ * - Runs shortest-path search once per start node and reuses results for all candidate end nodes
+ */
+export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, placeB: string) {
+  // find source place (keep first match for source; can be made symmetric later)
+  const p1 = graph.places.find((p) => p.name === placeA);
+  if (!p1) {
+    console.warn('Source place not found', { placeA });
+    return null;
+  }
+
+  const p2Candidates = graph.places.filter((p) => p.name === placeB);
+  if (!p2Candidates || p2Candidates.length === 0) {
+    console.warn('Destination place(s) not found', { placeB });
+    return null;
+  }
+
+  // ---------- 1) CACHES ----------
+  // cache for entranceId -> resolved path node ids
+  const entranceToPathNodesCache = new Map<string, string[]>();
 
   const getEntranceIds = (p: Place): string[] => {
     if (Array.isArray(p.entranceNodes) && p.entranceNodes.length > 0)
@@ -190,51 +254,165 @@ export function findPathBetweenPlaces(graph: Graph, placeA: string, placeB: stri
     return [];
   };
 
-  const resolveEntranceToPathNodes = (entranceIds: string[]): string[] => {
+  const resolveEntranceToPathNodes = (entranceIds: string[]) => {
     const pathNodes: string[] = [];
     for (const id of entranceIds) {
+      if (entranceToPathNodesCache.has(id)) {
+        pathNodes.push(...(entranceToPathNodesCache.get(id) || []));
+        continue;
+      }
+
       const entrance = graph.entrances?.find((e) => e.id === id);
-      if (!entrance) continue;
-      const neighborPaths =
+      if (!entrance) {
+        entranceToPathNodesCache.set(id, []);
+        continue;
+      }
+
+      let neighborPaths =
         entrance.neighbors?.filter((nid) => graph.nodes.some((n) => n.id === nid)) || [];
+
       if (neighborPaths.length === 0) {
         const nearest = findNearestNode(graph, { x: entrance.x, y: entrance.y });
         if (nearest) neighborPaths.push(nearest);
       }
+
+      neighborPaths = [...new Set(neighborPaths)];
+      entranceToPathNodesCache.set(id, neighborPaths);
       pathNodes.push(...neighborPaths);
     }
     return [...new Set(pathNodes)];
   };
 
-  const entranceA = getEntranceIds(p1);
-  const entranceB = getEntranceIds(p2);
-  const startNodes = resolveEntranceToPathNodes(entranceA);
-  const endNodes = resolveEntranceToPathNodes(entranceB);
+  // helper to map a path-node back to the best entrance id (cached)
+  const nodeToEntranceCache = new Map<string, string>(); // nodeId -> entranceId
+  const findEntranceIdForNode = (entranceIds: string[], nodeId: string) => {
+    // try cached mapping first
+    if (nodeToEntranceCache.has(nodeId)) {
+      const cached = nodeToEntranceCache.get(nodeId)!;
+      if (entranceIds.includes(cached)) return cached;
+    }
 
-  if (startNodes.length === 0 || endNodes.length === 0) {
-    console.warn('No valid path nodes for one or both places', {
-      p1,
-      p2,
-      entranceA,
-      entranceB,
-    });
+    for (const id of entranceIds) {
+      const entranceNodes = entranceToPathNodesCache.get(id) || resolveEntranceToPathNodes([id]);
+      if (entranceNodes.includes(nodeId)) {
+        nodeToEntranceCache.set(nodeId, id);
+        return id;
+      }
+      // fallback: nearest
+      const entrance = graph.entrances?.find((e) => e.id === id);
+      if (entrance) {
+        const nearest = findNearestNode(graph, { x: entrance.x, y: entrance.y });
+        if (nearest === nodeId) {
+          nodeToEntranceCache.set(nodeId, id);
+          return id;
+        }
+      }
+    }
+    // fallback to first entrance id
+    const fallback = entranceIds[0] || '';
+    if (fallback) nodeToEntranceCache.set(nodeId, fallback);
+    return fallback;
+  };
+
+  // ---------- 2) Resolve start nodes once ----------
+  const entranceAIds = getEntranceIds(p1);
+  const startNodes = resolveEntranceToPathNodes(entranceAIds);
+  if (startNodes.length === 0) {
+    console.warn('No valid start path nodes for source place', { p1, entranceAIds });
     return null;
   }
 
   const adj = buildAdjacency(graph);
-  let best: { nodes: string[]; distance: number } | null = null;
 
+  // ---------- 3) Pre-resolve end nodes per candidate (with caching) ----------
+  // Keep a small list of candidate objects with resolved endNodes and entranceIds
+  const candidatesResolved = p2Candidates
+    .map((candidate) => {
+      const candidateEntranceIds = getEntranceIds(candidate);
+      const endNodes = resolveEntranceToPathNodes(candidateEntranceIds);
+      return {
+        candidate,
+        candidateEntranceIds,
+        endNodes,
+      };
+    })
+    .filter((c) => c.endNodes.length > 0);
+
+  if (candidatesResolved.length === 0) {
+    console.warn('No valid end path nodes for any destination candidate', { placeB });
+    return null;
+  }
+
+  // ---------- 4) MAIN OPTIMIZATION ----------
+  // Instead of findShortestPath for every (s,t), run shortest-path once per start node s.
+  // We'll assume findShortestPath can return distances to all nodes (if not, replace with a Dijkstra that does).
+  // If your findShortestPath only computes path between two nodes, implement a single-source Dijkstra that returns dist[] & prev[].
+
+  let overallBest: {
+    candidate: Place;
+    nodes: string[];
+    distance: number;
+    startEntranceId: string;
+    endEntranceId: string;
+  } | null = null;
+
+  // If you have a multi-source Dijkstra implementation, you can run it once from all startNodes (virtual source trick).
+  // For simplicity we run single-source Dijkstra per start node here (much faster than previously repeated calls).
   for (const s of startNodes) {
-    for (const t of endNodes) {
-      const res = findShortestPath(graph, s, t, adj);
-      if (!res.nodes.length) continue;
-      if (!best || res.distance < best.distance) best = res;
+    // assume findShortestPathSingleSource returns { dist: Record<nodeId,number>, prev: Record<nodeId, string|null> }
+    const singleSourceRes = findShortestPathSingleSource(graph, s, adj);
+    if (!singleSourceRes) continue;
+    const { dist, prev } = singleSourceRes;
+
+    // evaluate all candidates/endNodes
+    for (const { candidate, candidateEntranceIds, endNodes } of candidatesResolved) {
+      // find best end node (t) for this candidate given precomputed dist[]
+      let bestT: { nodeId: string; distance: number } | null = null;
+      for (const t of endNodes) {
+        const d = dist[t];
+        if (typeof d !== 'number' || !isFinite(d)) continue;
+        if (!bestT || d < bestT.distance) bestT = { nodeId: t, distance: d };
+      }
+      if (!bestT) continue;
+
+      // reconstruct path from s -> bestT.nodeId using prev
+      const nodesPath: string[] = [];
+      let cur: string | null = bestT.nodeId;
+      while (cur) {
+        nodesPath.push(cur);
+        cur = prev[cur] || null;
+      }
+      nodesPath.reverse(); // now s..t
+
+      // map s,t back to entrances
+      const startEntranceId = findEntranceIdForNode(entranceAIds, s);
+      const endEntranceId = findEntranceIdForNode(candidateEntranceIds, bestT.nodeId);
+
+      if (!overallBest || bestT.distance < overallBest.distance) {
+        overallBest = {
+          candidate,
+          nodes: nodesPath,
+          distance: bestT.distance,
+          startEntranceId,
+          endEntranceId,
+        };
+      }
     }
   }
 
-  if (!best) return null;
+  if (!overallBest) {
+    console.warn('No route found to any candidate destination', { placeA, placeB });
+    return null;
+  }
+
   return {
-    nodes: [entranceA[0], ...best.nodes, entranceB[0]],
-    distance: best.distance,
+    nodes: [overallBest.startEntranceId, ...overallBest.nodes, overallBest.endEntranceId],
+    distance: overallBest.distance,
+    chosenDestination: {
+      id: overallBest.candidate.id,
+      name: overallBest.candidate.name,
+      floor: overallBest.candidate.floor,
+      centroid: overallBest.candidate.centroid,
+    },
   };
 }

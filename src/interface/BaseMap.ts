@@ -33,7 +33,10 @@ export type Place = {
   entranceNodes: string[];
   entranceNode: string;
   path?: string;
+  centroid: any;
+  floor: any;
 };
+
 
 export interface Graph {
   nodes: INodes[];

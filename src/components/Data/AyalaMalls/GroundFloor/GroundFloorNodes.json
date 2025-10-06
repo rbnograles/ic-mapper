@@ -598,9 +598,12 @@
       "ry": 16.5,
       "type": "circle",
       "neighbors": [
+        "Ellipse 991_2",
+        "Ellipse 992_2",
         "Ellipse 919",
         "Ellipse 920",
         "Ellipse 921",
+        "Ellipse 993_2",
         "Ellipse 500_2"
       ]
     },
@@ -613,10 +616,250 @@
       "type": "circle",
       "neighbors": [
         "Ellipse 918",
+        "Ellipse 991_2",
+        "Ellipse 992_2",
         "Ellipse 920",
         "Ellipse 921",
         "Ellipse 922",
         "Ellipse 500_2"
+      ]
+    },
+    {
+      "id": "Ellipse 991_2",
+      "x": 6143.5,
+      "y": 3447.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 918",
+        "Ellipse 992_2",
+        "Ellipse 919",
+        "Ellipse 920",
+        "Ellipse 921",
+        "Ellipse 993_2",
+        "Ellipse 994",
+        "Ellipse 500_2"
+      ]
+    },
+    {
+      "id": "Ellipse 992_2",
+      "x": 6260.5,
+      "y": 3423.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 918",
+        "Ellipse 991_2",
+        "Ellipse 919",
+        "Ellipse 920",
+        "Ellipse 921",
+        "Ellipse 995",
+        "Ellipse 993_2",
+        "Ellipse 994",
+        "Ellipse 500_2"
+      ]
+    },
+    {
+      "id": "Ellipse 993_2",
+      "x": 6345.5,
+      "y": 3343.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 918",
+        "Ellipse 991_2",
+        "Ellipse 992_2",
+        "Ellipse 995",
+        "Ellipse 994",
+        "Ellipse 500_2"
+      ]
+    },
+    {
+      "id": "Ellipse 994",
+      "x": 6340.5,
+      "y": 3226.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 991_2",
+        "Ellipse 992_2",
+        "Ellipse 995",
+        "Ellipse 996",
+        "Ellipse 993_2",
+        "Ellipse 500_2"
+      ]
+    },
+    {
+      "id": "Ellipse 995",
+      "x": 6335.5,
+      "y": 3109.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 992_2",
+        "Ellipse 996",
+        "Ellipse 997",
+        "Ellipse 993_2",
+        "Ellipse 994"
+      ]
+    },
+    {
+      "id": "Ellipse 996",
+      "x": 6330.5,
+      "y": 2992.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 998",
+        "Ellipse 995",
+        "Ellipse 997",
+        "Ellipse 994"
+      ]
+    },
+    {
+      "id": "Ellipse 997",
+      "x": 6335.5,
+      "y": 2875.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 998",
+        "Ellipse 999",
+        "Ellipse 995",
+        "Ellipse 996"
+      ]
+    },
+    {
+      "id": "Ellipse 998",
+      "x": 6340.5,
+      "y": 2758.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 999",
+        "Ellipse 1000",
+        "Ellipse 996",
+        "Ellipse 997"
+      ]
+    },
+    {
+      "id": "Ellipse 999",
+      "x": 6345.5,
+      "y": 2641.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1001",
+        "Ellipse 998",
+        "Ellipse 1000",
+        "Ellipse 997"
+      ]
+    },
+    {
+      "id": "Ellipse 1000",
+      "x": 6350.5,
+      "y": 2524.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1001",
+        "Ellipse 1002",
+        "Ellipse 998",
+        "Ellipse 999"
+      ]
+    },
+    {
+      "id": "Ellipse 1001",
+      "x": 6355.5,
+      "y": 2407.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1002",
+        "Ellipse 1003",
+        "Ellipse 999",
+        "Ellipse 1000"
+      ]
+    },
+    {
+      "id": "Ellipse 1002",
+      "x": 6360.5,
+      "y": 2290.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1004",
+        "Ellipse 1001",
+        "Ellipse 1003",
+        "Ellipse 1000"
+      ]
+    },
+    {
+      "id": "Ellipse 1003",
+      "x": 6365.5,
+      "y": 2173.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 127",
+        "Ellipse 1004",
+        "Ellipse 1005",
+        "Ellipse 1001",
+        "Ellipse 1002"
+      ]
+    },
+    {
+      "id": "Ellipse 1004",
+      "x": 6370.5,
+      "y": 2056.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 127",
+        "Ellipse 105",
+        "Ellipse 1005",
+        "Ellipse 108",
+        "Ellipse 109",
+        "Ellipse 110",
+        "Ellipse 111",
+        "Ellipse 1002",
+        "Ellipse 1003",
+        "Ellipse 526_2"
+      ]
+    },
+    {
+      "id": "Ellipse 1005",
+      "x": 6375.5,
+      "y": 1939.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 127",
+        "Ellipse 105",
+        "Ellipse 106",
+        "Ellipse 1004",
+        "Ellipse 108",
+        "Ellipse 109",
+        "Ellipse 110",
+        "Ellipse 111",
+        "Ellipse 1003",
+        "Ellipse 112",
+        "Ellipse 526_2"
       ]
     },
     {
@@ -629,6 +872,8 @@
       "neighbors": [
         "Ellipse 481",
         "Ellipse 918",
+        "Ellipse 991_2",
+        "Ellipse 992_2",
         "Ellipse 919",
         "Ellipse 921",
         "Ellipse 922",
@@ -646,6 +891,8 @@
       "neighbors": [
         "Ellipse 481",
         "Ellipse 918",
+        "Ellipse 991_2",
+        "Ellipse 992_2",
         "Ellipse 919",
         "Ellipse 920",
         "Ellipse 922",
@@ -2558,7 +2805,9 @@
         "Ellipse 431",
         "Ellipse 909",
         "Ellipse 911",
-        "Ellipse 912"
+        "Ellipse 912",
+        "Ellipse 1017",
+        "Ellipse 1018"
       ]
     },
     {
@@ -2572,7 +2821,10 @@
         "Ellipse 909",
         "Ellipse 910",
         "Ellipse 913",
-        "Ellipse 912"
+        "Ellipse 912",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 1018"
       ]
     },
     {
@@ -2586,7 +2838,12 @@
         "Ellipse 910",
         "Ellipse 911",
         "Ellipse 913",
-        "Ellipse 914"
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 1018",
+        "Ellipse 914",
+        "Ellipse 1014"
       ]
     },
     {
@@ -2599,8 +2856,14 @@
       "neighbors": [
         "Ellipse 911",
         "Ellipse 912",
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 1018",
         "Ellipse 914",
-        "Ellipse 915"
+        "Ellipse 915",
+        "Ellipse 1013",
+        "Ellipse 1014"
       ]
     },
     {
@@ -2613,9 +2876,14 @@
       "neighbors": [
         "Ellipse 913",
         "Ellipse 912",
+        "Ellipse 1015",
+        "Ellipse 1016",
         "Ellipse 915",
         "Ellipse 916",
-        "Ellipse 976"
+        "Ellipse 976",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1014"
       ]
     },
     {
@@ -4764,6 +5032,7 @@
         "Ellipse 978",
         "Ellipse 977",
         "Ellipse 975",
+        "Ellipse 1007",
         "Ellipse 490",
         "Ellipse 491",
         "Ellipse 493",
@@ -4781,8 +5050,12 @@
         "Ellipse 978",
         "Ellipse 975",
         "Ellipse 492",
+        "Ellipse 1007",
+        "Ellipse 1008",
+        "Ellipse 1009",
         "Ellipse 491",
         "Ellipse 494",
+        "Ellipse 1006",
         "Ellipse 495"
       ]
     },
@@ -4795,9 +5068,261 @@
       "type": "circle",
       "neighbors": [
         "Ellipse 492",
+        "Ellipse 1007",
+        "Ellipse 1008",
+        "Ellipse 1009",
         "Ellipse 493",
+        "Ellipse 1006",
         "Ellipse 495",
         "Ellipse 496"
+      ]
+    },
+    {
+      "id": "Ellipse 1006",
+      "x": 8117.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1007",
+        "Ellipse 1008",
+        "Ellipse 1009",
+        "Ellipse 1010",
+        "Ellipse 493",
+        "Ellipse 494",
+        "Ellipse 495",
+        "Ellipse 496"
+      ]
+    },
+    {
+      "id": "Ellipse 1007",
+      "x": 8031.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1011",
+        "Ellipse 492",
+        "Ellipse 1008",
+        "Ellipse 1009",
+        "Ellipse 1010",
+        "Ellipse 493",
+        "Ellipse 494",
+        "Ellipse 1006",
+        "Ellipse 495"
+      ]
+    },
+    {
+      "id": "Ellipse 1008",
+      "x": 7945.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1011",
+        "Ellipse 1012",
+        "Ellipse 1007",
+        "Ellipse 1009",
+        "Ellipse 1010",
+        "Ellipse 493",
+        "Ellipse 494",
+        "Ellipse 1006",
+        "Ellipse 495"
+      ]
+    },
+    {
+      "id": "Ellipse 1009",
+      "x": 7859.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1011",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1007",
+        "Ellipse 1008",
+        "Ellipse 1010",
+        "Ellipse 493",
+        "Ellipse 494",
+        "Ellipse 1006"
+      ]
+    },
+    {
+      "id": "Ellipse 1010",
+      "x": 7773.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1011",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1014",
+        "Ellipse 1007",
+        "Ellipse 1008",
+        "Ellipse 1009",
+        "Ellipse 1006"
+      ]
+    },
+    {
+      "id": "Ellipse 1011",
+      "x": 7687.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1015",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1014",
+        "Ellipse 1007",
+        "Ellipse 1008",
+        "Ellipse 1009",
+        "Ellipse 1010"
+      ]
+    },
+    {
+      "id": "Ellipse 1012",
+      "x": 7601.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 914",
+        "Ellipse 1011",
+        "Ellipse 1013",
+        "Ellipse 1014",
+        "Ellipse 1008",
+        "Ellipse 1009",
+        "Ellipse 1010"
+      ]
+    },
+    {
+      "id": "Ellipse 1013",
+      "x": 7515.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 913",
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 914",
+        "Ellipse 1011",
+        "Ellipse 1012",
+        "Ellipse 1014",
+        "Ellipse 1009",
+        "Ellipse 1010"
+      ]
+    },
+    {
+      "id": "Ellipse 1014",
+      "x": 7429.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 913",
+        "Ellipse 912",
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 1018",
+        "Ellipse 914",
+        "Ellipse 1011",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1010"
+      ]
+    },
+    {
+      "id": "Ellipse 1015",
+      "x": 7343.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 913",
+        "Ellipse 912",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 1018",
+        "Ellipse 914",
+        "Ellipse 1011",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1014"
+      ]
+    },
+    {
+      "id": "Ellipse 1016",
+      "x": 7257.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 911",
+        "Ellipse 913",
+        "Ellipse 912",
+        "Ellipse 1015",
+        "Ellipse 1017",
+        "Ellipse 1018",
+        "Ellipse 914",
+        "Ellipse 1012",
+        "Ellipse 1013",
+        "Ellipse 1014"
+      ]
+    },
+    {
+      "id": "Ellipse 1017",
+      "x": 7171.5,
+      "y": 5094.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 910",
+        "Ellipse 911",
+        "Ellipse 913",
+        "Ellipse 912",
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 1018",
+        "Ellipse 1013",
+        "Ellipse 1014"
+      ]
+    },
+    {
+      "id": "Ellipse 1018",
+      "x": 7136.5,
+      "y": 5049.5,
+      "rx": 16.5,
+      "ry": 16.5,
+      "type": "circle",
+      "neighbors": [
+        "Ellipse 910",
+        "Ellipse 911",
+        "Ellipse 913",
+        "Ellipse 912",
+        "Ellipse 1015",
+        "Ellipse 1016",
+        "Ellipse 1017",
+        "Ellipse 1014"
       ]
     },
     {
@@ -4808,8 +5333,11 @@
       "ry": 16.5,
       "type": "circle",
       "neighbors": [
+        "Ellipse 1007",
+        "Ellipse 1008",
         "Ellipse 493",
         "Ellipse 494",
+        "Ellipse 1006",
         "Ellipse 496",
         "Ellipse 497",
         "Ellipse 498",
@@ -4825,6 +5353,7 @@
       "type": "circle",
       "neighbors": [
         "Ellipse 494",
+        "Ellipse 1006",
         "Ellipse 495",
         "Ellipse 497",
         "Ellipse 498",
@@ -18202,8 +18731,11 @@
         "Ellipse 126",
         "Ellipse 105",
         "Ellipse 106",
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 109",
+        "Ellipse 1003",
         "Ellipse 526_2",
         "Ellipse 403_2",
         "Ellipse 404_2"
@@ -18531,6 +19063,8 @@
         "Ellipse 125",
         "Ellipse 126",
         "Ellipse 106",
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 109",
         "Ellipse 523_2",
@@ -18557,6 +19091,8 @@
         "Ellipse 126",
         "Ellipse 105",
         "Ellipse 106",
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 109",
         "Ellipse 110",
         "Ellipse 111",
@@ -18577,6 +19113,8 @@
         "Ellipse 127",
         "Ellipse 105",
         "Ellipse 106",
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 110",
         "Ellipse 111",
@@ -18592,6 +19130,8 @@
       "ry": 16.5,
       "type": "circle",
       "neighbors": [
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 109",
         "Ellipse 111",
@@ -18608,6 +19148,8 @@
       "ry": 16.5,
       "type": "circle",
       "neighbors": [
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 109",
         "Ellipse 110",
@@ -18624,6 +19166,7 @@
       "ry": 16.5,
       "type": "circle",
       "neighbors": [
+        "Ellipse 1005",
         "Ellipse 109",
         "Ellipse 110",
         "Ellipse 111",
@@ -20568,6 +21111,7 @@
         "Ellipse 125",
         "Ellipse 126",
         "Ellipse 105",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 109",
         "Ellipse 523_2",
@@ -25326,6 +25870,8 @@
         "Ellipse 126",
         "Ellipse 105",
         "Ellipse 106",
+        "Ellipse 1004",
+        "Ellipse 1005",
         "Ellipse 108",
         "Ellipse 109",
         "Ellipse 110"
@@ -27009,8 +27555,12 @@
       "type": "entrance",
       "neighbors": [
         "Ellipse 918",
+        "Ellipse 991_2",
+        "Ellipse 992_2",
         "Ellipse 919",
-        "Ellipse 920"
+        "Ellipse 920",
+        "Ellipse 993_2",
+        "Ellipse 994"
       ]
     },
     {
