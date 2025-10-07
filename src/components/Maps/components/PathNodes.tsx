@@ -3,15 +3,15 @@ import { motion, useAnimation } from 'framer-motion';
 import { line, curveCatmullRom } from 'd3-shape';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { memo, useEffect, useRef, useState } from 'react';
-import type { INodes } from '../../../../interface/BaseMap';
+import type { INodes } from '../../../interface/BaseMap';
 import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
-interface AMGFPathNodesProps {
+interface PathNodesProps {
   route: string[];
   nodes: INodes[];
 }
 
-const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
+const PathNodes = ({ route, nodes }: PathNodesProps) => {
   if (!route || route.length < 2) return null;
 
   // Extract coordinates of route nodes in the given order
@@ -124,4 +124,4 @@ const AMGFPathNodes = ({ route, nodes }: AMGFPathNodesProps) => {
   );
 };
 
-export default memo(AMGFPathNodes);
+export default memo(PathNodes);

@@ -1,4 +1,3 @@
-// parseSvgToJson.js
 import fs from 'fs';
 import { DOMParser } from 'xmldom';
 import bounds from 'svg-path-bounds';
@@ -68,7 +67,7 @@ function isPointInPolygon(point, polygon, tolerance = 10) {
       yj = polygon[j].y;
 
     const intersect =
-      yi > point.y !== yj > point.y && point.x < ((xj - xi) * (point.y - yi)) / (yj - yi) + xi;
+      ~yi > point.y !== yj > point.y && point.x < ((xj - xi) * (point.y - yi)) / (yj - yi) + xi;
     if (intersect) inside = !inside;
 
     // edge tolerance
@@ -212,16 +211,23 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     '⚠️ Unmatched old items:',
     unmatchedOld.map((x) => x.id)
   );
-  return { places: merged };
+  return {
+    places: merged,
+    // buildingMarks: labels.length ? labels : [],
+    // roadMarks: roadMarksLabels.length ? roadMarksLabels : [],
+    // mapBoundaries: boundaryLabels.length ? boundaryLabels : [],
+  };
 }
 
 // --- run ---
-const svgPath = '../../../assets/AyalaMallsMap/GroundFloor.svg';
-const oldJson = '../../Data/AyalaMalls/GroundFloor/GroundFloor.json';
+const svgPath = '../../../assets/AyalaMallsMap/3RDFLoor.svg';
+const oldJson = '../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json';
 
 const result = parseSvgToJson(svgPath, oldJson);
+
 fs.writeFileSync(
-  '../../Data/AyalaMalls/GroundFloor/GroundFloor.json',
-  JSON.stringify(result, null, 2)
+  '../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json',
+  JSON.stringify({ places: result.places }, null, 2)
 );
+
 console.log(`✅ {oldJson} (merged by path/id, cleaned, deduped).`);

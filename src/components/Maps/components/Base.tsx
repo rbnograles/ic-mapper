@@ -21,7 +21,7 @@ type MapRegionProps = {
   isTypeHighlighted?: boolean;
 };
 
-const AMGroundFloorBase = memo(
+const FloorBase = memo(
   function MapRegion({
     p,
     highlightName,
@@ -125,4 +125,4 @@ const AMGroundFloorBase = memo(
     prev.centers === next.centers
 );
 
-export default AMGroundFloorBase;
+export default FloorBase;

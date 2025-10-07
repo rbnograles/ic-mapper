@@ -1,5 +1,5 @@
 // App.tsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Box,
   CssBaseline,
@@ -18,9 +18,14 @@ import SearchAppBar from './components/Navigations/SearchAppBar';
 import { loadMapData } from './components/util/core/mapLoader';
 import type { PathItem } from './interface/BaseMap';
 
-// import other floor components here
-import { floors } from './components/Maps/partials/floors'; // floor array: { key, name, component }
-import useRouteMapHandler from './components/hooks/useRouteMapHandler';
+// floors: [{ key, name, assets? }]
+import { floors } from './components/Maps/partials/floors';
+
+// Reuse single map component for all floors
+import BaseMap from './components/Maps';
+
+// plain function (not a hook)
+import { routeMapHandler } from './components/hooks/useRouteMapHandler';
 
 export default function App() {
   // 🗺️ Highlight + filter states
@@ -41,6 +46,9 @@ export default function App() {
   const [maps, setMaps] = useState<any[]>([]);
   const [nodes, setNodes] = useState<any[]>([]);
   const [entrances, setEntrances] = useState<any[]>([]);
+  const [buidingMarks, setbuidingMarks] = useState<any[]>([]);
+  const [roadMarks, setRoadMarks] = useState<any[]>([]);
+  const [boundaries, setboundaries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // 🧠 Helpers
@@ -79,6 +87,9 @@ export default function App() {
         setMaps(data.places);
         setNodes(data.nodes);
         setEntrances(data.entrances);
+        setbuidingMarks(data.buidingMarks ?? []);
+        setRoadMarks(data.roadMarks ?? []);
+        setboundaries(data.boundaries ?? []);
         setLoading(false);
       })
       .catch((err) => {
@@ -91,10 +102,9 @@ export default function App() {
     };
   }, [selectedMap]);
 
-  // 🚏 Pathfinding with caching
+  // 🚏 Pathfinding with caching — plain function that accepts current state
   const handleRoute = (from: string, to: string) => {
-    // modular route mapping to avoid clamping huge logic in App
-    return useRouteMapHandler(
+    return routeMapHandler(
       from,
       to,
       nodes,
@@ -115,6 +125,11 @@ export default function App() {
     handlePathSelect(history);
   };
 
+  // Find current floor object once (memoized)
+  const selectedFloor = useMemo(() => floors.find((f) => f.key === selectedMap), [selectedMap]);
+
+  // Always reuse the same AMGroundFloor component instance.
+  // Pass optional `assets` so a floor can override visuals if necessary.
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -145,24 +160,23 @@ export default function App() {
               Loading {selectedMap} map…
             </Box>
           ) : (
-            <>
-              {floors.map((floor: any) =>
-                selectedMap === floor.key ? (
-                  <floor.component
-                    key={floor.key}
-                    highlightId={highlightId}
-                    highlightName={highlightName}
-                    selectedType={selectedType}
-                    map={maps}
-                    onClick={handlePathSelect}
-                    handleSliderPathClick={handleSliderPathClick}
-                    activeNodeIds={activeNodeIds}
-                    nodes={nodes}
-                    entrances={entrances}
-                  />
-                ) : null
-              )}
-            </>
+            <BaseMap
+              // reuse the same component for all floors
+              highlightId={highlightId}
+              highlightName={highlightName}
+              selectedType={selectedType}
+              map={maps}
+              onClick={handlePathSelect}
+              handleSliderPathClick={handleSliderPathClick}
+              activeNodeIds={activeNodeIds}
+              nodes={nodes}
+              entrances={entrances}
+              boundaries={boundaries}
+              buidingMarks={buidingMarks}
+              roadMarks={roadMarks}
+              floorKey={selectedMap}
+              assets={selectedFloor?.assets}
+            />
           )}
         </Box>
 

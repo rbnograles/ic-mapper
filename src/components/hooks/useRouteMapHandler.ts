@@ -1,65 +1,90 @@
-import type { SetStateAction} from 'react';
+// components/hooks/routeMapHandler.ts
+import type { Dispatch, SetStateAction } from 'react';
 import { findPathBetweenPlacesOptimized } from '../util/core/routing';
 import { floors } from '../Maps/partials/floors';
 import type { Graph } from '../../interface/BaseMap';
 
-export default function useRouteMapHandler(
+type RouteResult = {
+  from: string;
+  to: string;
+  floor: string;
+  nodes: string[];
+  timestamp: number;
+} | null;
+
+/**
+ * Plain function (NOT a hook) that computes a route between two places,
+ * caches results in localStorage (both directions), and updates supplied setters.
+ *
+ * Returns the ordered nodes (from -> to) or null if no route.
+ */
+export async function routeMapHandler(
   from: string,
   to: string,
   nodes: any[],
   entrances: any[],
   maps: any[],
   selectedMap: string,
-  setActiveNodeIds: (value: SetStateAction<string[]>) => void,
-  setHighlightId: (value: React.SetStateAction<string | null>) => void
-) {
-  if (!from || !to) return;
+  setActiveNodeIds: Dispatch<SetStateAction<string[]>>,
+  setHighlightId: Dispatch<SetStateAction<string | null>>
+): Promise<string[] | null> {
+  if (!from || !to) return null;
 
-  const floorMap = { nodes, entrances, places: maps };
+  const floorMap = { nodes, entrances, places: maps } as unknown as Graph;
 
-  // use encodeURIComponent to avoid characters breaking keys
+  const safeLocalStorageAvailable =
+    typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+
   const key = `route-cache-${selectedMap}-${encodeURIComponent(from)}-${encodeURIComponent(to)}`;
   const reverseKey = `route-cache-${selectedMap}-${encodeURIComponent(to)}-${encodeURIComponent(from)}`;
 
-  // detect which key is present
-  const cachedKey = localStorage.getItem(key)
-    ? key
-    : localStorage.getItem(reverseKey)
-      ? reverseKey
-      : null;
-
-  if (cachedKey) {
+  // Check cache (both directions)
+  if (safeLocalStorageAvailable) {
     try {
-      const parsed = JSON.parse(localStorage.getItem(cachedKey) as string);
-      const cachedNodes: string[] = parsed?.nodes ?? [];
+      const cachedRaw = window.localStorage.getItem(key) ?? window.localStorage.getItem(reverseKey);
+      const cachedKey = window.localStorage.getItem(key)
+        ? key
+        : window.localStorage.getItem(reverseKey)
+          ? reverseKey
+          : null;
 
-      if (Array.isArray(cachedNodes) && cachedNodes.length) {
-        // if we read the reverseKey, reverse the nodes so they reflect `from -> to`
-        const nodesToUse = cachedKey === reverseKey ? [...cachedNodes].reverse() : cachedNodes;
-        setActiveNodeIds(nodesToUse);
-        console.log(
-          `✅ Using cached route for ${from} ↔ ${to} (from ${cachedKey === key ? 'key' : 'reverseKey'})`
-        );
-        return;
+      if (cachedRaw && cachedKey) {
+        try {
+          const parsed = JSON.parse(cachedRaw) as RouteResult;
+          const cachedNodes = parsed?.nodes ?? [];
+
+          if (Array.isArray(cachedNodes) && cachedNodes.length) {
+            // If we read the reverseKey, reverse the nodes so they reflect `from -> to`
+            const nodesToUse = cachedKey === reverseKey ? [...cachedNodes].reverse() : cachedNodes;
+            setActiveNodeIds(nodesToUse);
+            console.log(
+              `✅ Using cached route for ${from} ↔ ${to} (from ${cachedKey === key ? 'key' : 'reverseKey'})`
+            );
+            // ensure highlight set to destination
+            setHighlightId(to);
+            return nodesToUse;
+          }
+        } catch (err) {
+          console.warn('⚠️ Failed to parse cached route:', err);
+        }
       }
     } catch (err) {
-      console.warn('⚠️ Failed to parse cached route:', err);
+      console.warn('⚠️ localStorage access error while reading cache:', err);
     }
   }
 
-  // compute new path
-  const path = findPathBetweenPlacesOptimized(floorMap as unknown as Graph, from, to);
+  // Compute path
+  const path = findPathBetweenPlacesOptimized(floorMap, from, to);
 
-  if (!path || !path.nodes) {
+  if (!path || !Array.isArray(path.nodes) || path.nodes.length === 0) {
     console.warn('❌ No route found between', from, 'and', to);
     setActiveNodeIds([]);
-    return;
+    return null;
   }
 
-  // canonical route nodes should be in `from -> to` order
   const orderedNodes = path.nodes;
 
-  const routeData = {
+  const routeData: RouteResult = {
     from,
     to,
     floor: floors.find((f) => selectedMap === f.key)?.name ?? selectedMap,
@@ -67,23 +92,27 @@ export default function useRouteMapHandler(
     timestamp: Date.now(),
   };
 
-  // store both directions: key (from->to) and reverseKey (to->from with reversed nodes)
-  try {
-    localStorage.setItem(key, JSON.stringify(routeData));
+  // store both directions: key and reverseKey
+  if (safeLocalStorageAvailable) {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(routeData));
 
-    // prepare reverse entry so future lookups find correct-order nodes
-    const reverseRouteData = {
-      from: to,
-      to: from,
-      floor: routeData.floor,
-      nodes: [...orderedNodes].reverse(),
-      timestamp: Date.now(),
-    };
-    localStorage.setItem(reverseKey, JSON.stringify(reverseRouteData));
-  } catch (err) {
-    console.warn('⚠️ Failed to store route in cache:', err);
+      const reverseRouteData: RouteResult = {
+        from: to,
+        to: from,
+        floor: routeData!.floor,
+        nodes: [...orderedNodes].reverse(),
+        timestamp: Date.now(),
+      };
+      window.localStorage.setItem(reverseKey, JSON.stringify(reverseRouteData));
+    } catch (err) {
+      console.warn('⚠️ Failed to store route in cache:', err);
+    }
   }
 
+  // update state
   setActiveNodeIds(orderedNodes);
   setHighlightId(to);
+
+  return orderedNodes;
 }

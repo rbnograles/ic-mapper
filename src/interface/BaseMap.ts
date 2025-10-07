@@ -37,6 +37,11 @@ export type Place = {
   floor: any;
 };
 
+export type Labels = {
+  name: string;
+  path: string;
+  fill: string;
+};
 
 export interface Graph {
   nodes: INodes[];
