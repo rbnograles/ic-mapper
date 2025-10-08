@@ -65,7 +65,7 @@ const FloorBase = memo(
                       isNameHighlighted || isTypeHighlighted
                         ? 'black'
                         : (iconElement.props.style as React.CSSProperties)?.color,
-                    fontSize: 100
+                    fontSize: 100,
                   },
                 }
               : {}),
@@ -84,14 +84,14 @@ const FloorBase = memo(
             d={p.path}
             fill={p.type !== 'NotClickable' ? fillColor : '#B8B6B6'}
             stroke={p.type !== 'NotClickable' && p.type !== 'Park' ? strokeColor : 'black'}
-            strokeWidth={p.type !== 'NotClickable' ? strokeWidth : 0}
+            strokeWidth={p.type !== 'NotClickable' ? strokeWidth : 1}
             style={{
               transformBox: 'fill-box',
               transformOrigin: 'center',
               transition: 'transform 0.4s ease-in-out, fill 0.3s ease',
             }}
           />
-           
+
           {/* ---- Center Icon ---- */}
           {centers[p.id] && iconNode && (
             <foreignObject

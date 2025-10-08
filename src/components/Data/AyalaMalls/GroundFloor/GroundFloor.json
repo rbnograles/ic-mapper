@@ -4046,10 +4046,10 @@
       "type": "Escalator",
       "entranceNode": "Ellipse 483_2",
       "description": "Place description goes in here...",
-      "baseFill": "#DFB133",
       "entranceNodes": [
         "Ellipse 483_2"
       ],
+      "baseFill": "#DFB133",
       "icon": "Escalator",
       "centerY": 50,
       "floor": "Ayala Malls Ground Floor",

@@ -304,13 +304,13 @@ function parseSvgToJson(svgFile, oldJsonPath) {
 }
 
 // --- run ---
-const svgPath = '../../../assets/AyalaMallsMap/3RDFLoor.svg';
-const oldJson = '../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json';
+const svgPath = '../../../assets/AyalaMallsMap/5th Floor.svg';
+const oldJson = '../../Data/AyalaMalls/FifthFloor/FifthFloor.json';
 
 const result = parseSvgToJson(svgPath, oldJson);
 
 fs.writeFileSync(
-  '../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json',
+  '../../Data/AyalaMalls/FifthFloor/FifthFloor.json',
   JSON.stringify({ places: result.places }, null, 2)
 );
 

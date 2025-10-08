@@ -10,7 +10,7 @@ const delProp = () => {
         : { places: [] };
 
     const map = oldData.places.map(d => {
-        delete d.nearNodes;
+        delete d.basefill;
         return d;
     })
 
