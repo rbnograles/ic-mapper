@@ -16,7 +16,7 @@ import { layoutStyles } from './styles/layoutStyles';
 import BottomBar from './components/Navigations/BottomBar';
 import SearchAppBar from './components/Navigations/SearchAppBar';
 import { loadMapData } from './components/util/core/mapLoader';
-import type { PathItem } from './interface/BaseMap';
+import type { PathItem } from './interface';
 
 // floors: [{ key, name, assets? }]
 import { floors } from './components/Maps/partials/floors';
@@ -137,6 +137,7 @@ export default function App() {
         {/* 🔍 Search Bar */}
         <Box sx={layoutStyles.fixedTop}>
           <SearchAppBar
+            selectedMap={selectedMap}
             onSelect={handlePathSelect}
             handleChipClick={handleChipClick}
             handlePathSearchBehavior={handlePathSearchBehavior}
@@ -200,7 +201,12 @@ export default function App() {
                     selected={selectedMap === floor.key}
                     onClick={() => {
                       setSelectedMap(floor.key);
+                      setHighlightId(null);
+                      setHighlightName(null);
                       setMapsDrawerOpen(false);
+                      setExpanded(false);
+                      setActiveNodeIds([]);
+                      setPathItems({ id: '', name: '' });
                     }}
                   >
                     <ListItemText primary={floor.name} />

@@ -9,7 +9,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import { useState } from 'react';
-import type { PathItem } from '../../interface/BaseMap';
+import type { PathItem } from '../../interface';
 import BottomSlider from '../Drawers/BottomSlider';
 import { FaMap } from 'react-icons/fa';
 

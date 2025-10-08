@@ -1,6 +1,6 @@
 import { Box, Typography, IconButton, Divider, Stack, SwipeableDrawer } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import type { PathItem } from '../../interface/BaseMap';
+import type { PathItem } from '../../interface';
 
 function BottomSlider({
   isMobile,
@@ -20,6 +20,12 @@ function BottomSlider({
       onClose={handleSliderClose}
       onOpen={() => {}}
       disableSwipeToOpen={false}
+      hideBackdrop // ✅ removes backdrop overlay
+      ModalProps={{
+        keepMounted: true,
+        disableEnforceFocus: true, // ✅ allow focus outside drawer
+        BackdropProps: { invisible: true },
+      }}
       PaperProps={{
         sx: {
           borderRadius: isMobile ? '24px 24px 0 0' : '10px 0 0 10px',
@@ -30,7 +36,12 @@ function BottomSlider({
           boxShadow: 8,
           display: 'flex',
           flexDirection: 'column',
+          pointerEvents: 'auto', // ✅ only drawer itself catches clicks
         },
+      }}
+      sx={{
+        pointerEvents: 'none', // ✅ drawer wrapper is click-through
+        '& .MuiDrawer-paper': { pointerEvents: 'auto' }, // ✅ only paper is interactive
       }}
     >
       {/* Drag handle */}
@@ -65,7 +76,8 @@ function BottomSlider({
             <Typography variant="h6" fontWeight="bold" mb={1} textAlign="center">
               {pathItem.name}
             </Typography>
-
+            {/* Remove this below after fixing all map details */}
+            <p>{pathItem.id}</p> 
             {pathItem.img && (
               <Box
                 component="img"

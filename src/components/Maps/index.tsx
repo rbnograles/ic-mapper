@@ -3,7 +3,7 @@ import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import MapFloatingIcons from '../Navigations/MapFloatingIcons';
 import ICON_MAP from '../util/iconMapper';
-import type { INodes, Labels } from '../../interface/BaseMap';
+import type { INodes, Labels } from '../../interface';
 
 /* DEFAULT (ground-floor) visuals — keep these as defaults so current behavior is unchanged */
 import Boundaries from './components/Boundaries';
@@ -46,14 +46,14 @@ function AMGroundFloor({
   activeNodeIds: string[];
   nodes: INodes[];
   entrances: INodes[];
-   boundaries: Labels[];
+  boundaries: Labels[];
   buidingMarks: Labels[];
   roadMarks: Labels[];
   floorKey?: string;
   assets?: AssetComponents;
 }) {
   // Merge defaults with overrides
-  const { ICON_MAP: ICONS = ICON_MAP, viewBox = '0 0 14779 10635' } = assets ?? {};
+  const { ICON_MAP: ICONS = ICON_MAP, viewBox = '0 0 14779 10835' } = assets ?? {};
 
   const transformRef = useRef<any>(null);
 

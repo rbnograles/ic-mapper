@@ -17,7 +17,7 @@ import { FaDirections } from 'react-icons/fa';
 import uniqueTypes from '../Data/unique_types.json';
 import Direction from '../Drawers/Direction';
 import { Chips, iconMap } from './Chips';
-import type { PathItem } from '../../interface/BaseMap';
+import type { PathItem } from '../../interface';
 import { useLazyMapData } from '../hooks/useLazyMapData';
 
 // ====================
@@ -62,12 +62,14 @@ const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toU
 // Main Component
 // ====================
 export default function SearchAppBar({
+  selectedMap,
   onSelect,
   handleChipClick,
   handlePathSearchBehavior,
   handleRoute,
   getLocationFromHistory,
 }: {
+  selectedMap: string;
   onSelect: (item: any, type?: 'A' | 'B') => void;
   handleChipClick: (type: string) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
@@ -87,7 +89,7 @@ export default function SearchAppBar({
   // Lazy search data
   // ====================
   const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
-    'ground',
+    selectedMap,
     20
   );
 

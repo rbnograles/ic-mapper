@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { Labels } from '../../../interface/BaseMap';
+import type { Labels } from '../../../interface';
 
 const BuildingMarks = ({ buidingMarks }: { buidingMarks: Labels[] }) => {
   return (

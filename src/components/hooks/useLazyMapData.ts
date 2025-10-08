@@ -9,7 +9,7 @@ interface Place {
   [key: string]: any;
 }
 
-export function useLazyMapData(floor: 'ground' | 'third', initialLimit = 20) {
+export function useLazyMapData(floor: string, initialLimit = 20) {
   const [allPlaces, setAllPlaces] = useState<Place[]>([]);
   const [visiblePlaces, setVisiblePlaces] = useState<Place[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,21 +35,16 @@ export function useLazyMapData(floor: 'ground' | 'third', initialLimit = 20) {
   // =====================
   const normalizeName = (name: string) => name.trim().toLowerCase();
 
-  const filterPlaces = useCallback(
-    (places: Place[]) => {
-      // remove unwanted and duplicate names
-      const seen = new Set<string>();
-      return places.filter((p) => {
-        const valid =
-          p.name !== 'Unknown' &&
-          p.name !== 'NotClickable' &&
-          !seen.has(normalizeName(p.name));
-        if (valid) seen.add(normalizeName(p.name));
-        return valid;
-      });
-    },
-    []
-  );
+  const filterPlaces = useCallback((places: Place[]) => {
+    // remove unwanted and duplicate names
+    const seen = new Set<string>();
+    return places.filter((p) => {
+      const valid =
+        p.name !== 'Unknown' && p.name !== 'NotClickable' && !seen.has(normalizeName(p.name));
+      if (valid) seen.add(normalizeName(p.name));
+      return valid;
+    });
+  }, []);
 
   // =====================
   // Load Map Data
@@ -100,20 +95,14 @@ export function useLazyMapData(floor: 'ground' | 'third', initialLimit = 20) {
       const q = query.trim().toLowerCase();
       if (!q) return visiblePlaces;
 
-      const filtered = allPlaces.filter(
-        (p) => p.name !== 'Unknown' && p.name !== 'NotClickable'
-      );
+      const filtered = allPlaces.filter((p) => p.name !== 'Unknown' && p.name !== 'NotClickable');
 
-      const typeMatchExists = filtered.some((p) =>
-        p.type?.toLowerCase().includes(q)
-      );
+      const typeMatchExists = filtered.some((p) => p.type?.toLowerCase().includes(q));
 
       const matches = typeMatchExists
         ? filtered.filter((p) => p.type?.toLowerCase().includes(q))
         : filtered.filter(
-            (p) =>
-              p.name?.toLowerCase().includes(q) ||
-              p.type?.toLowerCase().includes(q)
+            (p) => p.name?.toLowerCase().includes(q) || p.type?.toLowerCase().includes(q)
           );
 
       // ✅ Deduplicate by name
@@ -131,21 +120,13 @@ export function useLazyMapData(floor: 'ground' | 'third', initialLimit = 20) {
   // =====================
   const saveToCache = useCallback(
     (selectedPlace: Place) => {
-
       if (!selectedPlace) return;
 
       const key = normalizeName(selectedPlace.name);
       const current = cacheRef.current[key] || [];
 
       // ✅ prevent duplicates (same name or same ID)
-      if (
-        current.some(
-          (p) =>
-            normalizeName(p.name) === key ||
-            p.id === selectedPlace.id
-        )
-      )
-        return;
+      if (current.some((p) => normalizeName(p.name) === key || p.id === selectedPlace.id)) return;
 
       const updated = {
         ...cacheRef.current,

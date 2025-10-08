@@ -20,5 +20,15 @@ export const floors = [
       // viewBox: '0 0 12000 9000',
     },
   },
+  {
+    key: 'fourth',
+    name: 'Ayala Malls 4th Floor',
+    assets: {
+      // if you have specialized components for the 3rd floor, pass them here
+      // Boundaries: AM3FMapBoundaries,
+      // Base: AM3FMapBase,
+      // viewBox: '0 0 12000 9000',
+    },
+  },
   // more floors...
 ];

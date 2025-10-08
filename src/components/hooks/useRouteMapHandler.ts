@@ -2,7 +2,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { findPathBetweenPlacesOptimized } from '../util/core/routing';
 import { floors } from '../Maps/partials/floors';
-import type { Graph } from '../../interface/BaseMap';
+import type { Graph } from '../../interface';
 
 type RouteResult = {
   from: string;

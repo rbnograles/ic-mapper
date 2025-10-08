@@ -33,6 +33,22 @@ export async function loadMapData(floor: any) {
       };
     }
 
+    case 'fourth': {
+      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
+        import('../../Data/AyalaMalls/FourthFloor/FourthFloor.json'),
+        import('../../Data/AyalaMalls/FourthFloor/FourthFloorNodes.json'),
+        import('../../Data/AyalaMalls/FourthFloor/FourthFloorLabels.json'),
+      ]);
+      return {
+        places: mapData.places,
+        nodes: nodeData.nodes,
+        entrances: nodeData.entrances,
+        buidingMarks: labels.buildingMarks,
+        roadMarks: labels.roadMarks,
+        boundaries: labels.mapBoundaries,
+      };
+    }
+
     default:
       throw new Error(`Unknown floor: ${floor}`);
   }

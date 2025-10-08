@@ -30,6 +30,7 @@ export interface INodes {
 export type Place = {
   id: string;
   name: string;
+  type?: string;
   entranceNodes: string[];
   entranceNode: string;
   path?: string;

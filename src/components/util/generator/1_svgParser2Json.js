@@ -20,7 +20,7 @@ function normalizeId(id) {
   return id;
 }
 
-// convert path to polygon
+// convert path to polygon (approximation using path commands)
 function parsePathToPolygon(pathStr) {
   const commands = parse(pathStr);
   const pts = [];
@@ -28,28 +28,30 @@ function parsePathToPolygon(pathStr) {
   let current = { x: 0, y: 0 };
 
   for (const cmd of commands) {
-    switch (cmd.code) {
+    const code = cmd.code.toUpperCase?.() || cmd.code;
+    switch (code) {
       case 'M':
       case 'L':
         current = { x: cmd.x, y: cmd.y };
         if (!start) start = { ...current };
-        pts.push(current);
+        pts.push({ x: current.x, y: current.y });
         break;
       case 'H':
         current = { x: cmd.x, y: current.y };
-        pts.push(current);
+        pts.push({ x: current.x, y: current.y });
         break;
       case 'V':
         current = { x: current.x, y: cmd.y };
-        pts.push(current);
+        pts.push({ x: current.x, y: current.y });
         break;
       case 'Z':
-        if (start) pts.push({ ...start });
+        if (start) pts.push({ x: start.x, y: start.y });
         break;
       default:
+        // handle implicit absolute coordinates (e.g., C/T/Q) by taking endpoint if present
         if (cmd.x !== undefined && cmd.y !== undefined) {
           current = { x: cmd.x, y: cmd.y };
-          pts.push(current);
+          pts.push({ x: current.x, y: current.y });
         }
         break;
     }
@@ -57,8 +59,35 @@ function parsePathToPolygon(pathStr) {
   return pts;
 }
 
-// check if point is inside polygon (with tolerance)
+// correct point-in-polygon (ray-casting) plus edge tolerance check
 function isPointInPolygon(point, polygon, tolerance = 10) {
+  if (!polygon || polygon.length === 0) return false;
+
+  // 1) Edge distance tolerance: if point is within `tolerance` of any segment -> inside
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i].x,
+      yi = polygon[i].y;
+    const xj = polygon[j].x,
+      yj = polygon[j].y;
+
+    // projection of point onto segment
+    const dx = xj - xi;
+    const dy = yj - yi;
+    const lenSq = dx * dx + dy * dy;
+    if (lenSq === 0) {
+      // degenerate segment (same points)
+      const dist = Math.hypot(point.x - xi, point.y - yi);
+      if (dist <= tolerance) return true;
+      continue;
+    }
+    const t = Math.max(0, Math.min(1, ((point.x - xi) * dx + (point.y - yi) * dy) / lenSq));
+    const projX = xi + t * dx;
+    const projY = yi + t * dy;
+    const dist = Math.hypot(projX - point.x, projY - point.y);
+    if (dist <= tolerance) return true;
+  }
+
+  // 2) Ray-casting for strict inside/outside
   let inside = false;
   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
     const xi = polygon[i].x,
@@ -67,22 +96,16 @@ function isPointInPolygon(point, polygon, tolerance = 10) {
       yj = polygon[j].y;
 
     const intersect =
-      ~yi > point.y !== yj > point.y && point.x < ((xj - xi) * (point.y - yi)) / (yj - yi) + xi;
+      yi > point.y !== yj > point.y &&
+      point.x < ((xj - xi) * (point.y - yi)) / (yj - yi + Number.EPSILON) + xi;
     if (intersect) inside = !inside;
-
-    // edge tolerance
-    const dx = xj - xi;
-    const dy = yj - yi;
-    const lenSq = dx * dx + dy * dy;
-    if (lenSq > 0) {
-      const t = Math.max(0, Math.min(1, ((point.x - xi) * dx + (point.y - yi) * dy) / lenSq));
-      const projX = xi + t * dx;
-      const projY = yi + t * dy;
-      const dist = Math.sqrt((projX - point.x) ** 2 + (projY - point.y) ** 2);
-      if (dist <= tolerance) return true;
-    }
   }
   return inside;
+}
+
+function getAttr(node, name) {
+  if (!node) return null;
+  return node.getAttribute ? node.getAttribute(name) : null;
 }
 
 function parseSvgToJson(svgFile, oldJsonPath) {
@@ -92,18 +115,18 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
     : { places: [] };
 
+  // --- buildings (group id = 'BLDG') ---
   const buildingGroup = doc.getElementById('BLDG');
-  const buildingPaths = buildingGroup.getElementsByTagName('path');
+  const buildingPaths = buildingGroup ? buildingGroup.getElementsByTagName('path') : [];
   const seen = new Set();
   let buildings = [];
 
   for (let i = 0; i < buildingPaths.length; i++) {
     const pathNode = buildingPaths.item(i);
-    const rawId = pathNode.getAttribute('id') || `BLDG_${i}`;
+    const rawId = getAttr(pathNode, 'id') || `BLDG_${i}`;
     const id = normalizeId(rawId);
-    const d = pathNode.getAttribute('d');
+    const d = getAttr(pathNode, 'd');
     if (!d) continue;
-
     if (seen.has(d)) continue;
     seen.add(d);
 
@@ -116,15 +139,41 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     });
   }
 
-  // --- labels ---
-  const labelGroup = doc.getElementById('Building Marks');
-  const labelPaths = labelGroup.getElementsByTagName('path');
+  const unclikableGroup = doc.getElementById('Unclikable');
+  const unclikablePaths = unclikableGroup ? unclikableGroup.getElementsByTagName('path') : [];
+
+  for (let i = 0; i < unclikablePaths.length; i++) {
+    const pathNode = unclikablePaths.item(i);
+    const rawId = getAttr(pathNode, 'id');
+    const id = normalizeId(rawId) || `BLDG_${buildings.length + i}`;
+    const d = getAttr(pathNode, 'd');
+
+    if (!d) continue;
+    if (seen.has(d)) continue;
+    seen.add(d);
+
+    buildings.push({
+      id,
+      path: d,
+      centroid: getCentroid(d),
+      name: 'NotClickable',
+      type: 'NotClickable',
+      description: 'Place description goes in here...',
+      entranceNodes: [],
+      floor: 'Ayala Malls Thrid Floor',
+    });
+  }
+
+  // --- labels (group id = 'Building Marks') ---
+  const labelGroup = doc.getElementById('Building Marks') || doc.getElementById('Building_Marks');
+  const labelPaths = labelGroup ? labelGroup.getElementsByTagName('path') : [];
   let labels = [];
 
   for (let i = 0; i < labelPaths.length; i++) {
     const pathNode = labelPaths.item(i);
-    const id = pathNode.getAttribute('id');
-    const d = pathNode.getAttribute('d');
+    const id = getAttr(pathNode, 'id') || `label_${i}`;
+    const d = getAttr(pathNode, 'd');
+    if (!d) continue;
     const centroid = getCentroid(d);
     labels.push({ name: id, centroid });
   }
@@ -135,7 +184,7 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     for (const b of buildings) {
       const dx = label.centroid[0] - b.centroid[0];
       const dy = label.centroid[1] - b.centroid[1];
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const dist = Math.hypot(dx, dy);
       if (dist < minDist) {
         minDist = dist;
         nearest = b;
@@ -144,37 +193,72 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     if (nearest) nearest.name = label.name;
   }
 
-  // --- entrances ---
-  const entranceGroup = doc.getElementById('Entrances');
-  const entrancePaths = entranceGroup.getElementsByTagName('path');
+  // --- entrances: accept path, circle, ellipse inside Entrances group ---
+  const entranceGroup = doc.getElementById('Entrances') || doc.getElementById('entrances');
   let entrances = [];
-  for (let i = 0; i < entrancePaths.length; i++) {
-    const pathNode = entrancePaths.item(i);
-    const id = pathNode.getAttribute('id');
-    const d = pathNode.getAttribute('d');
-    if (!d) continue;
-    const centroid = getCentroid(d);
-    entrances.push({ id, centroid, path: d });
+
+  if (entranceGroup) {
+    // paths
+    const entrancePaths = entranceGroup.getElementsByTagName('path');
+    for (let i = 0; i < entrancePaths.length; i++) {
+      const node = entrancePaths.item(i);
+      const id = getAttr(node, 'id') || `entr_path_${i}`;
+      const d = getAttr(node, 'd');
+      if (!d) continue;
+      const centroid = getCentroid(d);
+      entrances.push({ id, centroid, path: d, type: 'path' });
+    }
+
+    // circles
+    const entranceCircles = entranceGroup.getElementsByTagName('circle');
+    for (let i = 0; i < entranceCircles.length; i++) {
+      const node = entranceCircles.item(i);
+      const id = getAttr(node, 'id') || `entr_circle_${i}`;
+      const cx = parseFloat(getAttr(node, 'cx') || '0');
+      const cy = parseFloat(getAttr(node, 'cy') || '0');
+      entrances.push({ id, centroid: [cx, cy], path: null, type: 'circle' });
+    }
+
+    // ellipses
+    const entranceEllipses = entranceGroup.getElementsByTagName('ellipse');
+    for (let i = 0; i < entranceEllipses.length; i++) {
+      const node = entranceEllipses.item(i);
+      const id = getAttr(node, 'id') || `entr_ellipse_${i}`;
+      const cx = parseFloat(getAttr(node, 'cx') || '0');
+      const cy = parseFloat(getAttr(node, 'cy') || '0');
+      entrances.push({ id, centroid: [cx, cy], path: null, type: 'ellipse' });
+    }
+  } else {
+    console.warn('⚠️ No Entrances group found in SVG (id="Entrances")');
   }
 
+  // --- assign entrances to buildings when inside polygon (tolerance allowed) ---
   for (const entrance of entrances) {
+    const pt = { x: entrance.centroid[0], y: entrance.centroid[1] };
+
     for (const b of buildings) {
       const poly = parsePathToPolygon(b.path);
-      const point = { x: entrance.centroid[0], y: entrance.centroid[1] };
-      if (isPointInPolygon(point, poly, 15)) {
-        b.entranceNodes.push(entrance.id);
+      // if polygon conversion failed or is degenerate, skip
+      if (!poly || poly.length < 3) continue;
+
+      if (isPointInPolygon(pt, poly, 15)) {
+        // avoid duplicates
+        if (!b.entranceNodes.includes(entrance.id)) {
+          b.entranceNodes.push(entrance.id);
+        }
+        // once matched to a building, break (entrance belongs only to nearest/one building)
         break;
       }
     }
   }
 
   // --- merge with old ---
-  const oldPathMap = new Map(oldData.places.map((p) => [p.path, p]));
-  const oldIdMap = new Map(oldData.places.map((p) => [p.id, p]));
+  const oldPathMap = new Map((oldData.places || []).map((p) => [p.path, p]));
+  const oldIdMap = new Map((oldData.places || []).map((p) => [p.id, p]));
   const merged = [];
 
   for (const nb of buildings) {
-    let old = oldPathMap.get(nb.path) || oldIdMap.get(nb.id);
+    const old = oldPathMap.get(nb.path) || oldIdMap.get(nb.id);
     if (!old) {
       merged.push({
         id: nb.id,
@@ -184,7 +268,10 @@ function parseSvgToJson(svgFile, oldJsonPath) {
         entranceNodes: nb.entranceNodes,
         description: 'Place description goes in here...',
         nearNodes: [],
-        baseFill: '#FFFFFF',
+        baseFill: nb.baseFill,
+        centerX: nb.centerX,
+        centerY: nb.centerY,
+        icon: nb.icon
       });
       continue;
     }
@@ -205,7 +292,7 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     merged.push(mergedObj);
   }
 
-  const unmatchedOld = oldData.places.filter((op) => !merged.some((mp) => mp.id === op.id));
+  const unmatchedOld = (oldData.places || []).filter((op) => !merged.some((mp) => mp.id === op.id));
 
   console.log(
     '⚠️ Unmatched old items:',
@@ -213,9 +300,6 @@ function parseSvgToJson(svgFile, oldJsonPath) {
   );
   return {
     places: merged,
-    // buildingMarks: labels.length ? labels : [],
-    // roadMarks: roadMarksLabels.length ? roadMarksLabels : [],
-    // mapBoundaries: boundaryLabels.length ? boundaryLabels : [],
   };
 }
 
@@ -230,4 +314,4 @@ fs.writeFileSync(
   JSON.stringify({ places: result.places }, null, 2)
 );
 
-console.log(`✅ {oldJson} (merged by path/id, cleaned, deduped).`);
+console.log(`✅ Wrote merged FourthFloor.json (buildings with entranceNodes).`);
