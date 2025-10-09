@@ -1,0 +1,62 @@
+{
+  "categories": {
+    "Retail": [
+      "Book King",
+      "Executive Optical",
+      "Anta Kids",
+      "Miniso",
+      "Blade Auto Center",
+      "Asia Mart",
+      "Nature Republic",
+      "Chris Sports",
+      "Olympic Village",
+      "5.11 Tactical Series",
+      "Stride & Stroke",
+      "Mumuso",
+      "NL Cat",
+      "No Brand",
+      "New Age Mart",
+      "Fashion TV",
+      "Golden Cowrie Bisaya"
+    ],
+    "Food & Beverage": [
+      "Kuya J Restaurant",
+      "Mesa",
+      "Classic Savory",
+      "Romantic Baboy",
+      "Sibyullee Flavors of Seoul",
+      "King Chef",
+      "Happy Lemon",
+      "Shabway Shabu Shabu & Unlimited Grill",
+      "Shi Lin",
+      "Hap Chan",
+      "Mann Hann",
+      "Myeong Ryun Jinsa Galbi",
+      "Tong Yang Plus",
+      "The Alley by Vikings",
+      "Bistro Charlemagne"
+    ],
+    "Services": [
+      "Mary Pauline Salon",
+      "Bench Fix Lab",
+      "Bruno’s Barbers",
+      "Mirang Curl Korea Salon",
+      "Karada",
+      "Nailandia Nail Salon and Spa",
+      "Novodental",
+      "Cathy Valencia Advanced Skin Clinic",
+      "Azta Urban Salon",
+      "LBC",
+      "David’s Dental Services",
+      "Mothercare (retail + service focus)"
+    ],
+    "Entertainment": [
+      "Timezone",
+      "Roller Fever",
+      "A Museum: Digital Museum",
+      "Homecourt: Table Tennis",
+      "No. 1 Claw Machine",
+      "Korsa Pitstop Café"
+    ]
+  }
+}

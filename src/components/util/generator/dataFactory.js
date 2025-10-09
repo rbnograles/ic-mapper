@@ -1,15 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-// ✅ Load category reference (Retail / Services / Entertainment)
-const categoriesPath = path.resolve('./datacomparison.json');
+// ✅ Load category reference
+const categoriesPath = path.resolve('../../Data/category.json');
 
 if (!fs.existsSync(categoriesPath)) {
   console.error('❌ Category file not found:', categoriesPath);
   process.exit(1);
 }
 
-const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'));
+const categoryFile = JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'));
+const categories = categoryFile.categories || categoryFile;
 
 // --- Helper: classify type based on name similarity ---
 function classifyType(name) {
@@ -18,11 +19,12 @@ function classifyType(name) {
 
   for (const [type, list] of Object.entries(categories)) {
     if (
-      list.some((n) =>
-        cleanName.includes(n.toLowerCase().replace('*', '').trim())
-      )
+      list.some((n) => {
+        const cleanN = n.toLowerCase().replace(/[^\w\s]/g, '').trim();
+        return cleanName.includes(cleanN);
+      })
     ) {
-      return type.charAt(0) + type.slice(1).toLowerCase(); // e.g., "RETAIL" → "Retail"
+      return type;
     }
   }
   return null;
@@ -53,8 +55,8 @@ const dataFactory = () => {
   const updatedPlaces = oldData.places.map((place, i) => {
     let updated = { ...place, floor: 'Third Floor' };
 
-    // 🔥 Handle Fire Exits
-    if (place.id?.includes('Fire Exit')) {
+    // 🔥 Fire Exit handling
+    if (/fire\s*exit/i.test(place.id || '') || /fire\s*exit/i.test(place.name || '')) {
       updated = {
         ...updated,
         id: `Fire Exit_${i}`,
@@ -67,17 +69,17 @@ const dataFactory = () => {
     }
 
     // 🧹 Remove underscores
-    if (typeof updated.name === 'string' && updated.name.includes('_')) {
+    if (typeof updated.name === 'string') {
       updated.name = updated.name.replace(/_/g, ' ').trim();
     }
 
-    // 🏷️ Auto classify by imported categories
-   const detectedType = classifyType(updated.name || '');
-      if (detectedType) {
-        updated.type = detectedType;
-      } else {
-        unmatched.push(updated.name);
-      }
+    // 🏷️ Auto-classify by imported categories
+    const detectedType = classifyType(updated.name || '');
+    if (detectedType) {
+      updated.type = detectedType;
+    } else if (updated.type !== 'Fire Exit') {
+      unmatched.push(updated.name);
+    }
 
     // 🧩 Detect duplicate paths
     if (typeof updated.path === 'string') {

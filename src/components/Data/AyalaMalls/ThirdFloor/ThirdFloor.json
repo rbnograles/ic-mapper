@@ -9,56 +9,56 @@
         "Ellipse 118"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10487.5,
         3375.9750000000004
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_263",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M5481.02 2137.21C5481.02 2131.69 5476.54 2127.21 5471.02 2127.21H5397.62C5392.1 2127.21 5387.62 2131.69 5387.62 2137.21V2292C5387.62 2297.52 5392.1 2302 5397.62 2302H5404.31C5409.83 2302 5414.31 2297.52 5414.31 2292V2261.02C5414.31 2255.49 5418.79 2251.02 5424.31 2251.02H5471.02C5476.54 2251.02 5481.02 2246.54 5481.02 2241.02V2137.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5434.32,
         2214.605
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_264",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M5787.88 2261.02C5787.88 2255.5 5783.4 2251.02 5777.88 2251.02H5697.81C5692.29 2251.02 5687.81 2255.5 5687.81 2261.02V2342.98C5687.81 2348.5 5692.29 2352.98 5697.81 2352.98H5777.88C5783.4 2352.98 5787.88 2348.5 5787.88 2342.98V2261.02Z",
-      "type": "Retail",
+      "type": "BLDG_264",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5737.845,
         2302
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_248",
-      "name": "Unknown",
+      "name": "MIDAS BAG, SHOE, AND LEATHER SPA",
       "path": "M4120.16 8036.37C4120.16 8030.85 4115.69 8026.37 4110.16 8026.37H4050.11C4044.59 8026.37 4040.11 8030.85 4040.11 8036.37V8103.77C4040.11 8109.29 4044.59 8113.77 4050.11 8113.77H4110.16C4115.69 8113.77 4120.16 8109.29 4120.16 8103.77V8036.37Z",
-      "type": "Retail",
+      "type": "Services",
       "entranceNodes": [
         "Ellipse 32"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4080.135,
         8070.07
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_273",
@@ -69,28 +69,28 @@
         "Ellipse 39"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4172.5,
         6512.25
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_249",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4120.16 8103.77C4120.16 8109.29 4124.64 8113.77 4130.16 8113.77H4336.97C4342.49 8113.77 4346.97 8109.29 4346.97 8103.77V8036.37C4346.97 8030.85 4342.49 8026.37 4336.97 8026.37H4130.16C4124.64 8026.37 4120.16 8030.85 4120.16 8036.37V8103.77Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [
         "Ellipse 33"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4233.5650000000005,
         8070.07
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "The Landmark",
@@ -99,12 +99,12 @@
       "type": "Landmark",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         2038.855,
         6671.75
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_260",
@@ -113,12 +113,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3813.3050000000003,
         3631.13
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Skinstation",
@@ -129,12 +129,12 @@
         "Ellipse 21"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5507.700000000001,
         8594.439999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Elite Chropractor",
@@ -145,12 +145,12 @@
         "Ellipse 20"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5320.915000000001,
         8594.439999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Mirang Kurl Korean Salon",
@@ -161,12 +161,12 @@
         "Ellipse 13"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3329.665,
         8456.029999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Bruno's Barbers",
@@ -177,12 +177,12 @@
         "Ellipse 10"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         7898.92
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_12",
@@ -193,12 +193,12 @@
         "Ellipse 11"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3446.5,
         8124.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Bench Fix Lab",
@@ -209,12 +209,12 @@
         "Ellipse 9"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         7622.17
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Homecourt: Table Tennis",
@@ -225,12 +225,12 @@
         "Ellipse 129"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11426,
         5441
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Mary Pauline Salon",
@@ -241,12 +241,12 @@
         "Ellipse 8"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         7341.775
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "The Powder Room Beauty Lounge",
@@ -257,12 +257,12 @@
         "Ellipse 7"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         7061.385
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Happy Brows",
@@ -273,12 +273,12 @@
         "Ellipse 6"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3519.785,
         6744.575
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Golden Cowrie Binisaya",
@@ -289,28 +289,28 @@
         "Ellipse 2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3316.38,
         5958.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Kuya J Restaurant",
       "name": "KUYA J RESTAURANT",
       "path": "M3573.15 5809.65C3573.15 5815.17 3568.68 5819.65 3563.15 5819.65H3076.17C3070.65 5819.65 3066.17 5815.17 3066.17 5809.65V5436.37C3066.17 5430.85 3070.65 5426.37 3076.17 5426.37H3481.81C3484.74 5426.37 3487.53 5427.66 3489.43 5429.89L3570.77 5525.53C3572.31 5527.34 3573.15 5529.63 3573.15 5532.01V5809.65Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 1"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         5623.01
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Happy Lemon",
@@ -321,12 +321,12 @@
         "Ellipse 47"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3426.3900000000003,
         4253.82
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Anta Kids",
@@ -337,12 +337,12 @@
         "Ellipse 48"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         4028.05
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Toy R Us",
@@ -353,12 +353,12 @@
         "Ellipse 55"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         2545.84,
         3332.5299999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Vector12345",
@@ -369,12 +369,12 @@
         "Ellipse 14"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3813.3050000000003,
         9086.035
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Vector_2",
@@ -383,12 +383,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3813.3050000000003,
         8820.21
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Classic Savory",
@@ -399,44 +399,44 @@
         "Ellipse 40"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4310.28,
         6242.055
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_28",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M3926.71 6567.07C3926.71 6572.59 3922.23 6577.07 3916.71 6577.07H3723.24C3717.72 6577.07 3713.24 6572.59 3713.24 6567.07V5844.21C3713.24 5838.69 3717.72 5834.21 3723.24 5834.21H3916.71C3922.23 5834.21 3926.71 5838.69 3926.71 5844.21V6567.07Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [
         "Ellipse 42"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3819.975,
         6205.639999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Mesa",
       "name": "MESA",
       "path": "M4400.34 5713.12C4400.34 5707.6 4395.86 5703.12 4390.34 5703.12H4050.11C4044.59 5703.12 4040.11 5707.6 4040.11 5713.12V6086.4C4040.11 6091.92 4044.59 6096.4 4050.11 6096.4H4390.34C4395.86 6096.4 4400.34 6091.92 4400.34 6086.4V5713.12Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 41"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4220.225,
         5899.76
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_35",
@@ -447,12 +447,12 @@
         "Ellipse 37"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5207.515,
         6700.88
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Novodental",
@@ -463,12 +463,12 @@
         "Ellipse 29"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4300.275,
         7567.55
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Nuat Thai",
@@ -479,12 +479,12 @@
         "Ellipse 27"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4940.675,
         7516.57
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Passion Nails",
@@ -495,12 +495,12 @@
         "Ellipse 24"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5471.0599999999995,
         7516.57
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Lay Bare Waxing Salon",
@@ -511,12 +511,12 @@
         "Ellipse 25"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5467.675,
         7767.825
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Roman Baths Scrubbing Salon",
@@ -527,12 +527,12 @@
         "Ellipse 26"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5467.675,
         7946.254999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "LBC",
@@ -543,12 +543,12 @@
         "Ellipse 16"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4243.575,
         8277.630000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Cathy Valencia Advanced Skin Clinic",
@@ -559,12 +559,12 @@
         "Ellipse 15"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4306.945,
         8547.099999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Dogs And The City",
@@ -575,12 +575,12 @@
         "Ellipse 17"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4597.13,
         8277.630000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Azta Urban Salon",
@@ -591,44 +591,44 @@
         "Ellipse 18"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4660.5,
         8547.099999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Fashion TV",
       "name": "FASHION TV",
       "path": "M5774.54 6916.65C5774.54 6922.17 5779.01 6926.65 5784.54 6926.65H6565.04C6570.56 6926.65 6575.04 6922.17 6575.04 6916.65V6368.58C6575.04 6363.06 6570.56 6358.58 6565.04 6358.58H5784.54C5779.01 6358.58 5774.54 6363.06 5774.54 6368.58V6916.65Z",
-      "type": "Services",
+      "type": "Retail",
       "entranceNodes": [
         "Ellipse 106"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6174.79,
         6642.615
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Bistro Charlemagne",
       "name": "BISTRO CHARLEMAGNE",
       "path": "M9276.73 5722.25C9276.73 5727.77 9272.26 5732.25 9266.73 5732.25H9033.24C9027.72 5732.25 9023.24 5727.77 9023.24 5722.25V5181.47C9023.24 5175.94 9027.72 5171.47 9033.24 5171.47H9266.73C9272.26 5171.47 9276.73 5175.94 9276.73 5181.47V5722.25Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 131"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9149.985,
         5451.860000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Merrell",
@@ -639,12 +639,12 @@
         "Ellipse 123"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10971.2,
         3900.55
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Merrell_2",
@@ -655,12 +655,12 @@
         "Ellipse 124"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11009.25,
         3978.065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "SPORTSOLOGY",
@@ -671,12 +671,12 @@
         "Ellipse 125"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11039.05,
         4250.21
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "STRIDE & STROKE",
@@ -687,12 +687,12 @@
         "Ellipse 121"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10891.15,
         3795.11
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "5.11 TACTICAL SERIES",
@@ -703,12 +703,12 @@
         "Ellipse 119"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10734.25,
         3503.75
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "OLYMPIC VILLAGE",
@@ -719,12 +719,12 @@
         "Ellipse 116"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10060.515,
         2837.49
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "PACSAFE",
@@ -735,12 +735,12 @@
         "Ellipse 117"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10339.05,
         3064.375
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "GERRY'S GRILL",
@@ -751,54 +751,40 @@
         "Ellipse 115"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9803.77,
         3314.1499999999996
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_94",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M10997.1 3364.67C11001.1 3368.93 11007.9 3368.91 11011.8 3364.6L11145 3219.18C11148.5 3215.33 11148.5 3209.42 11144.9 3205.6L10764.7 2797.52C10760.9 2793.38 10754.3 2793.26 10750.3 2797.26L10611.1 2936.07C10607.3 2939.88 10607.1 2946.02 10610.8 2949.97L10997.1 3364.67Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10877.8,
         3081.0950000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_50",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M10677.6 2702.56L10537.5 2855.5L10677.6 2702.56ZM10537.5 2855.5L10130.6 2432.73C10126.9 2428.86 10126.9 2422.75 10130.6 2418.87L10270.1 2273.17C10274.1 2269.04 10280.7 2269.06 10284.6 2273.21L10677.9 2688.51C10681.5 2692.32 10681.5 2698.27 10678 2702.14L10537.5 2855.5Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10404.2,
         2562.27
       ],
-      "floor": "Third Floor"
-    },
-    {
-      "id": "BLDG_51",
-      "name": "Unknown",
-      "path": "M10677.6 2702.56L10537.5 2855.5M10537.5 2855.5L10130.6 2432.73C10126.9 2428.86 10126.9 2422.75 10130.6 2418.87L10270.1 2273.17C10274.1 2269.04 10280.7 2269.06 10284.6 2273.21L10677.9 2688.51C10681.5 2692.32 10681.5 2698.27 10678 2702.14L10537.5 2855.5Z",
-      "type": "Retail",
-      "entranceNodes": [],
-      "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
-      "centroid": [
-        10404.2,
-        2562.27
-      ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_98",
@@ -809,12 +795,12 @@
         ""
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9857.115,
         2156.34
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "NATURE REPUBLIC",
@@ -825,60 +811,60 @@
         "Ellipse 113"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8869.81,
         2367.545
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "MYEONG RYUN JINSA GALBI",
       "name": "MYEONG RYUN JINSA GALBI 2",
       "path": "M8002.6 3063.99C8002.6 3069.51 8007.08 3073.99 8012.6 3073.99H8246.09C8251.62 3073.99 8256.09 3069.51 8256.09 3063.99V2231.89C8256.09 2226.36 8251.62 2221.89 8246.09 2221.89H8012.6C8007.08 2221.89 8002.6 2226.36 8002.6 2231.89V3063.99Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 111"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8129.345,
         2647.9399999999996
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_117",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M7175.41 2523.2C7175.41 2517.68 7179.89 2513.2 7185.41 2513.2H7392.22C7397.75 2513.2 7402.22 2517.68 7402.22 2523.2V2823.65C7402.22 2829.17 7397.75 2833.65 7392.22 2833.65H7185.41C7179.89 2833.65 7175.41 2829.17 7175.41 2823.65V2523.2Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [
         "Ellipse 110"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7288.8150000000005,
         2673.425
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Buko Express",
-      "name": "Unknown",
+      "name": "Buko Express",
       "path": "M3867 5567C3867 5561.48 3862.52 5557 3857 5557H3782C3776.48 5557 3772 5561.48 3772 5567V5638C3772 5643.52 3776.48 5648 3782 5648H3857C3862.52 5648 3867 5643.52 3867 5638V5567Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 43"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3819.5,
         5602.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "MUMUSO",
@@ -889,70 +875,70 @@
         "Ellipse 109"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7328.84,
         2221.8849999999998
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_127",
-      "name": "Unknown",
+      "name": "Shawarma Shack",
       "path": "M3765 4612C3765 4606.48 3769.48 4602 3775 4602H3857C3862.52 4602 3867 4606.48 3867 4612V4703C3867 4708.52 3862.52 4713 3857 4713H3775C3769.48 4713 3765 4708.52 3765 4703V4612Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 44"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3816,
         4657.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_133",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4320.07 3197.28C4323.92 3193.51 4324.08 3187.37 4320.44 3183.39L4260.95 3118.45C4256.99 3114.13 4250.17 3114.13 4246.21 3118.45L4199.44 3169.51C4196.06 3173.2 4195.93 3178.82 4199.13 3182.66L4253.3 3247.72C4257.04 3252.21 4263.83 3252.55 4268 3248.45L4320.07 3197.28Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4260.005,
         3183.34
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_134",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4460.16 3190C4464 3186.22 4464.16 3180.08 4460.53 3176.11L4408.11 3118.89C4404.01 3114.41 4396.89 3114.59 4393.02 3119.28L4345.83 3176.52C4342.66 3180.37 4342.8 3185.96 4346.17 3189.64L4393.34 3241.14C4397.17 3245.31 4403.69 3245.49 4407.73 3241.52L4460.16 3190Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4403.41,
         3179.95
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_135",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4588.41 3212.59C4583.69 3208.83 4583.35 3201.78 4587.68 3197.58L4649.24 3138.04C4653.04 3134.37 4659.04 3134.28 4662.94 3137.85L4718.66 3188.83C4722.91 3192.71 4723 3199.38 4718.86 3203.39L4697.36 3224.19C4695.5 3225.99 4693 3227 4690.41 3227H4610C4607.73 3227 4605.54 3226.23 4603.77 3224.82L4588.41 3212.59Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4653.175,
         3180.6400000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Siomai House",
@@ -963,12 +949,12 @@
         "Ellipse 51"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4507.175,
         3048.585
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Polland Hopia",
@@ -979,58 +965,58 @@
         "Ellipse 72"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4977.525,
         2414.975
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_146",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M5080.77 3347.34C5080.77 3344.84 5079.83 3342.43 5078.14 3340.59L4894.38 3139.97C4890.53 3135.77 4883.95 3135.63 4879.92 3139.67L4723.45 3296.83C4721.59 3298.71 4720.54 3301.24 4720.54 3303.89V4000C4720.54 4006.71 4727.02 4011.52 4733.44 4009.57L5073.67 3906.39C5077.88 3905.11 5080.77 3901.23 5080.77 3896.82V3347.34Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4900.655000000001,
         3573.575
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "MANN HANN",
       "name": "MANN HANN 2",
       "path": "M5107 3368C5107 3362.48 5111.48 3358 5117 3358H5538C5543.52 3358 5548 3362.48 5548 3368V3739.91C5548 3744.36 5545.06 3748.28 5540.78 3749.52L5119.78 3871.3C5113.38 3873.15 5107 3868.35 5107 3861.7V3368Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 82"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5327.5,
         3615.575
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "King Chef",
       "name": "KING CHEF",
       "path": "M4220.23 3601.07C4220.23 3595.55 4215.75 3591.07 4210.23 3591.07H4050.11C4044.59 3591.07 4040.11 3595.55 4040.11 3601.07V4556.99C4040.11 4562.51 4044.59 4566.99 4050.11 4566.99H4563.78C4569.3 4566.99 4573.78 4562.51 4573.78 4556.99V3914.24C4573.78 3908.72 4569.3 3904.24 4563.78 3904.24H4397C4391.47 3904.24 4387 3908.72 4387 3914.24V3967.07C4387 3972.59 4382.52 3977.07 4377 3977.07H4230.23C4224.7 3977.07 4220.23 3972.59 4220.23 3967.07V3601.07Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 49"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4306.945,
         4079.0299999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "GOLDEN GLOW TRADITIONAL THAI MASSAGE AND",
@@ -1041,12 +1027,12 @@
         "Ellipse 86"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5112.0650000000005,
         3145.09
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "999 HEALTH PHARMACY",
@@ -1057,12 +1043,12 @@
         "Ellipse 85"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5195.5599999999995,
         2910.125
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BEIJING FOOT SPA",
@@ -1073,58 +1059,58 @@
         "Ellipse 81"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5457.67,
         3048.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "HAP CHAN",
       "name": "HAP CHAN 2",
       "path": "M5834.57 3423.21C5834.57 3427.72 5831.56 3431.67 5827.21 3432.86L5607.06 3492.95C5600.69 3494.69 5594.42 3489.9 5594.42 3483.3V3346.17C5594.42 3340.65 5589.94 3336.17 5584.42 3336.17C5578.89 3336.17 5574.41 3331.7 5574.41 3326.17V2763.54C5574.41 2758.02 5578.89 2753.54 5584.41 2753.54H5824.57C5830.1 2753.54 5834.57 2758.02 5834.57 2763.54V3423.21Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 83"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5704.49,
         3124.115
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "SHI LIN",
       "name": "SHI LIN 2",
       "path": "M6081.39 2763.54C6081.39 2758.02 6076.92 2753.54 6071.39 2753.54H5844.57C5839.05 2753.54 5834.57 2758.02 5834.57 2763.54V3417.05C5834.57 3423.86 5841.22 3428.67 5847.68 3426.56L6094.52 3345.71C6098.63 3344.37 6101.41 3340.53 6101.41 3336.21V3076.71C6101.41 3071.18 6096.92 3066.71 6091.4 3066.71C6085.88 3066.71 6081.39 3062.23 6081.39 3056.71V2763.54Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 84"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5967.99,
         3091.105
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_153",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M6357 2784C6357 2778.48 6352.52 2774 6347 2774H6111C6105.48 2774 6101 2778.48 6101 2784V3021C6101 3026.52 6105.48 3031 6111 3031H6347C6352.52 3031 6357 3026.52 6357 3021V2784Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6229,
         2902.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_159",
@@ -1133,12 +1119,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3466.42,
         2134.49
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Washroom",
@@ -1155,21 +1141,21 @@
         3466.42,
         2302
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_161",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M3319.66 2532.33C3319.66 2537.86 3324.14 2542.33 3329.66 2542.33H3603.18C3608.7 2542.33 3613.18 2537.86 3613.18 2532.33V2421.24C3613.18 2415.72 3608.7 2411.24 3603.18 2411.24H3329.66C3324.14 2411.24 3319.66 2415.72 3319.66 2421.24V2532.33Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3466.42,
         2476.785
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Timezone",
@@ -1180,12 +1166,12 @@
         "Ellipse 52"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3993.415,
         2236.455
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Timezone_2",
@@ -1196,76 +1182,76 @@
         "Ellipse 52"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         2429.1,
         2236.455
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Izahr Money Changer",
-      "name": "Unknown",
+      "name": "Izahr Money Changer",
       "path": "M5300.9 2137.21C5300.9 2131.69 5305.38 2127.21 5310.9 2127.21H5377.63C5383.15 2127.21 5387.63 2131.69 5387.63 2137.21V2284.72C5387.63 2290.24 5383.15 2294.72 5377.63 2294.72H5310.9C5305.38 2294.72 5300.9 2290.24 5300.9 2284.72V2137.21Z",
-      "type": "Retail",
+      "type": "Services",
       "entranceNodes": [
         "Ellipse 74"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5344.264999999999,
         2210.965
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Ms. Tanghulu",
-      "name": "Unknown",
+      "name": "MS. TANGHULU",
       "path": "M5761.19 1947.85C5761.19 1942.33 5765.67 1937.85 5771.19 1937.85H5857.93C5863.45 1937.85 5867.93 1942.33 5867.93 1947.85V2044.38C5867.93 2049.9 5863.45 2054.38 5857.93 2054.38H5771.19C5765.67 2054.38 5761.19 2049.9 5761.19 2044.38V1947.85Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 78"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5814.5599999999995,
         1996.115
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Shou La Mien Handpulled Noodles",
-      "name": "Unknown",
+      "name": "Shou La Mien Handpulled Noodles",
       "path": "M5534.38 1947.85C5534.38 1942.33 5538.86 1937.85 5544.38 1937.85H5751.19C5756.72 1937.85 5761.19 1942.33 5761.19 1947.85V2044.38C5761.19 2049.9 5756.72 2054.38 5751.19 2054.38H5544.38C5538.86 2054.38 5534.38 2049.9 5534.38 2044.38V1947.85Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 77"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5647.785,
         1996.115
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Eng Bee Tin Chinese Deli",
-      "name": "Unknown",
+      "name": "Eng Bee Tin Chinese Deli",
       "path": "M5320.92 1947.85C5320.92 1942.33 5325.4 1937.85 5330.92 1937.85H5524.39C5529.91 1937.85 5534.39 1942.33 5534.39 1947.85V2044.38C5534.39 2049.9 5529.91 2054.38 5524.39 2054.38H5330.92C5325.4 2054.38 5320.92 2049.9 5320.92 2044.38V1947.85Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 76"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5427.655000000001,
         1996.115
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "ASINA MART",
@@ -1276,12 +1262,12 @@
         "Ellipse 79"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6408.27,
         2342.055
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "SHABWAY SHABU-SHABU & UNLIMITED GRILL",
@@ -1292,88 +1278,88 @@
         "Ellipse 80"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6718.465,
         2342.055
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_178",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M7082.02 2100.79C7082.02 2095.27 7077.55 2090.79 7072.02 2090.79H6971.95C6966.42 2090.79 6961.95 2095.27 6961.95 2100.79V2197.32C6961.95 2202.84 6966.42 2207.32 6971.95 2207.32H7072.02C7077.55 2207.32 7082.02 2202.84 7082.02 2197.32V2100.79Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7021.985000000001,
         2149.0550000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_179",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M7082.02 2275.58C7082.02 2270.06 7077.55 2265.58 7072.02 2265.58H6971.95C6966.42 2265.58 6961.95 2270.06 6961.95 2275.58V2386.68C6961.95 2392.2 6966.42 2396.68 6971.95 2396.68H7072.02C7077.55 2396.68 7082.02 2392.2 7082.02 2386.68V2275.58Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7021.985000000001,
         2331.13
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_181",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4968.06 1995.35C4964.1 1999.68 4957.28 1999.68 4953.32 1995.35L4920.43 1959.45C4916.83 1955.51 4916.95 1949.44 4920.71 1945.65L4993.87 1871.92C4997.68 1868.08 5003.86 1867.96 5007.81 1871.66L5040.19 1901.96C5044.19 1905.71 5044.43 1911.97 5040.73 1916.02L4968.06 1995.35Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [
         "Ellipse 71"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4980.63,
         1933.8200000000002
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_250",
-      "name": "Unknown",
+      "name": "CEBUANA LHUILLIER PAWNSHOP",
       "path": "M4353.64 8043.65C4353.64 8038.13 4358.12 8033.65 4363.64 8033.65H4430.36C4435.89 8033.65 4440.36 8038.13 4440.36 8043.65V8103.77C4440.36 8109.29 4435.89 8113.77 4430.36 8113.77H4363.64C4358.12 8113.77 4353.64 8109.29 4353.64 8103.77V8043.65Z",
-      "type": "Retail",
+      "type": "Services",
       "entranceNodes": [
         "Ellipse 34"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4397,
         8073.71
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_251",
-      "name": "Unknown",
+      "name": "USSC",
       "path": "M4447.04 8043.65C4447.04 8038.13 4451.51 8033.65 4457.04 8033.65H4510.41C4515.94 8033.65 4520.41 8038.13 4520.41 8043.65V8103.77C4520.41 8109.29 4515.94 8113.77 4510.41 8113.77H4457.04C4451.51 8113.77 4447.04 8109.29 4447.04 8103.77V8043.65Z",
-      "type": "Retail",
+      "type": "Services",
       "entranceNodes": [
         "Ellipse 35"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4483.725,
         8073.71
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_191",
@@ -1382,44 +1368,44 @@
       "type": "Services",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6454.965,
         1624.69
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BIBINGKINITAN!",
-      "name": "Unknown",
+      "name": "BIBINGKINITAN",
       "path": "M9563.58 1605.56C9563.58 1600.03 9559.1 1595.56 9553.58 1595.56H9506.87C9501.35 1595.56 9496.87 1600.03 9496.87 1605.56V1643.82C9496.87 1649.34 9501.35 1653.82 9506.87 1653.82H9553.58C9559.1 1653.82 9563.58 1649.34 9563.58 1643.82V1605.56Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 101"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9530.225,
         1624.69
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "KOHI MANJU",
-      "name": "Unknown",
+      "name": "KOHI MANJU",
       "path": "M9563.58 1736.65C9563.58 1731.13 9559.1 1726.65 9553.58 1726.65H9506.87C9501.35 1726.65 9496.87 1731.13 9496.87 1736.65V1774.91C9496.87 1780.43 9501.35 1784.91 9506.87 1784.91H9553.58C9559.1 1784.91 9563.58 1780.43 9563.58 1774.91V1736.65Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 102"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9530.225,
         1755.7800000000002
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Pag-ibig Fund A",
@@ -1430,12 +1416,12 @@
         "Ellipse 57"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         1101.6005,
         1340.6515
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Pag-ibig Fund B",
@@ -1446,12 +1432,12 @@
         "Ellipse 56"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         1061.575,
         2695.2799999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Roller Fever",
@@ -1462,40 +1448,40 @@
         "Ellipse 58"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         2235.645,
         1133.088
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_205",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M3092.85 1277.82C3092.85 1272.3 3088.37 1267.82 3082.85 1267.82H3022.8C3017.28 1267.82 3012.8 1272.3 3012.8 1277.82V1352.5C3012.8 1358.03 3017.28 1362.5 3022.8 1362.5H3082.85C3088.37 1362.5 3092.85 1358.03 3092.85 1352.5V1277.82Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3052.825,
         1315.1599999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_96",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M3092.85 1173.15H3006.13H3092.85ZM3092.85 1173.15V1257.82C3092.85 1263.35 3088.37 1267.82 3082.85 1267.82H3016.13C3010.61 1267.82 3006.13 1263.35 3006.13 1257.82V1173.15M3092.85 1173.15V1095.75C3092.85 1090.23 3088.37 1085.75 3082.85 1085.75H3016.13C3010.61 1085.75 3006.13 1090.23 3006.13 1095.75V1173.15",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3049.49,
         1176.7849999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_97",
@@ -1504,26 +1490,26 @@
       "type": "Retail",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3049.49,
         1176.7849999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_207",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M3006.13 993.79C3006.13 988.267 3010.61 983.79 3016.13 983.79H3082.85C3088.37 983.79 3092.85 988.267 3092.85 993.79V1075.75C3092.85 1081.27 3088.37 1085.75 3082.85 1085.75H3016.13C3010.61 1085.75 3006.13 1081.27 3006.13 1075.75V993.79Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3049.49,
         1034.77
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Davedent Dental Services",
@@ -1534,12 +1520,12 @@
         "Ellipse 62"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3393.04,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "MotherCare",
@@ -1550,12 +1536,12 @@
         "Ellipse 63"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3813.3050000000003,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Karada",
@@ -1566,42 +1552,42 @@
         "Ellipse 36"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4440.365,
         6846.54
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Korsa Pitsop Cafe",
       "name": "KORSA PITSTOP CAFE",
       "path": "M4320.29 826.283C4320.29 820.76 4315.81 816.283 4310.29 816.283H4076.8C4071.27 816.283 4066.8 820.76 4066.8 826.283V1425.33C4066.8 1430.85 4071.27 1435.33 4076.8 1435.33H4310.29C4315.81 1435.33 4320.29 1430.85 4320.29 1425.33V826.283Z",
-      "type": "Retail",
+      "type": "Entertainment",
       "entranceNodes": [
         "Ellipse 64"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4193.545,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_212",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4573.78 1425.33C4573.78 1430.85 4569.3 1435.33 4563.78 1435.33H4330.29C4324.77 1435.33 4320.29 1430.85 4320.29 1425.33V826.283C4320.29 820.76 4324.77 816.283 4330.29 816.283H4683.86C4689.38 816.283 4693.86 820.76 4693.86 826.283V886.395C4693.86 891.918 4689.38 896.395 4683.86 896.395H4583.78C4578.26 896.395 4573.78 900.872 4573.78 906.395V1032.05C4573.78 1037.58 4569.3 1042.05 4563.78 1042.05H4477.05C4471.53 1042.05 4467.05 1046.53 4467.05 1052.05V1235.98C4467.05 1241.5 4471.53 1245.98 4477.05 1245.98H4523.76C4529.28 1245.98 4533.76 1250.45 4533.76 1255.98V1381.63C4533.76 1387.16 4538.23 1391.63 4543.76 1391.63H4563.78C4569.3 1391.63 4573.78 1396.11 4573.78 1401.63V1425.33Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4507.075,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Glad King",
@@ -1612,12 +1598,12 @@
         "Ellipse 67"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4867.295,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Miniso",
@@ -1628,12 +1614,12 @@
         "Ellipse 68"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5334.26,
         1122.165
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "N. CAT",
@@ -1644,12 +1630,12 @@
         "Ellipse 112"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8399.515,
         2367.545
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_107",
@@ -1660,12 +1646,12 @@
         "Ellipse 69"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5877.93,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Ideal Vision Center",
@@ -1676,12 +1662,12 @@
         "Ellipse 88"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6414.9400000000005,
         1271.465
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Dr. Kong",
@@ -1692,12 +1678,12 @@
         "Ellipse 89"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6675.1,
         1271.465
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "OJO Eyewear",
@@ -1708,12 +1694,12 @@
         "Ellipse 90"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6901.91,
         1271.465
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_225",
@@ -1722,12 +1708,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7135.39,
         1271.465
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Sarabia Optical",
@@ -1738,12 +1724,12 @@
         "Ellipse 91"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7368.865,
         1271.465
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Shou La Mien Handpulled Noodles_2",
@@ -1754,12 +1740,12 @@
         "Ellipse 75"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5527.715,
         2189.115
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Oldmoon Studio",
@@ -1770,12 +1756,12 @@
         "Ellipse 92"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7909.21,
         1318.8049999999998
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "No. 1 Claw Machine",
@@ -1786,12 +1772,12 @@
         "Ellipse 94"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8062.635,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Dermstrata Premier",
@@ -1802,12 +1788,12 @@
         "Ellipse 28"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4650.495,
         7556.625
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "No Brand",
@@ -1818,12 +1804,12 @@
         "Ellipse 96"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8823.119999999999,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Photoism",
@@ -1834,12 +1820,12 @@
         "Ellipse 97"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9089.95,
         1260.54
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "New Age Mart",
@@ -1850,28 +1836,28 @@
         "Ellipse 99"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9450.18,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Tong Yang Plus",
       "name": "TONG YANG PLUS",
       "path": "M10124.8 1871.89C10120.7 1876.05 10114 1875.89 10110.1 1871.54L9729.66 1442.07C9726.26 1438.24 9726.31 1432.46 9729.77 1428.69L9761.08 1394.5C9762.77 1392.66 9763.71 1390.25 9763.71 1387.75V863.701C9763.71 857.802 9768.79 853.184 9774.66 853.747L10515.1 924.661C10520.3 925.152 10524.2 929.461 10524.2 934.615V1134.01C10524.2 1139.54 10519.7 1144.01 10514.2 1144.01H10454.1C10448.6 1144.01 10444.1 1148.49 10444.1 1154.01V1540.5C10444.1 1543.11 10443.1 1545.62 10441.3 1547.49L10124.8 1871.89Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 100"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10125.23,
         1364.617
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_237",
@@ -1880,12 +1866,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10449.099999999999,
         1634.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "The Alley by Vikings",
@@ -1896,12 +1882,12 @@
         "Ellipse 105"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11017.849999999999,
         1732.4195
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Timezone Clawzone",
@@ -1912,12 +1898,12 @@
         "Ellipse 134"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10924.650000000001,
         2524.24
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "A Museum: Digital Museum",
@@ -1928,28 +1914,28 @@
         "Ellipse 128"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         12410.05,
         3414.6549999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Sibyullee Flavors of Seoulsh",
       "name": "SIBYULLEE FLAVORS OF SEOUL",
       "path": "M3496.1 4840.19C3494.2 4842.44 3491.4 4843.74 3488.46 4843.74H3082.84C3077.32 4843.74 3072.84 4839.26 3072.84 4833.74V4431.33C3072.84 4425.8 3077.32 4421.33 3082.84 4421.33H3563.15C3568.68 4421.33 3573.15 4425.8 3573.15 4431.33V4745.4C3573.15 4747.76 3572.31 4750.05 3570.79 4751.85L3496.1 4840.19Z",
-      "type": "Retail",
+      "type": "Food & Beverage",
       "entranceNodes": [
         "Ellipse 45"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3322.995,
         4632.535
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Executive Optical",
@@ -1960,12 +1946,12 @@
         "Ellipse 54"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3319.66,
         3751.3
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Book King",
@@ -1976,12 +1962,12 @@
         "Ellipse 53"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3333,
         3474.545
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Nailaholics Nail Salon and Spa",
@@ -1992,12 +1978,12 @@
         "Ellipse 31"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4280.26,
         7931.695
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "PWD Washroom",
@@ -2011,7 +1997,7 @@
         3353.015,
         2112.64
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "WashRoom",
@@ -2027,7 +2013,7 @@
         11496.95,
         2575.375
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "PWD Washroom_2",
@@ -2041,7 +2027,7 @@
         3453.075,
         6602.5599999999995
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Washroom_2",
@@ -2059,7 +2045,7 @@
         3279.635,
         6810.12
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Stairs",
@@ -2077,7 +2063,7 @@
         8356.16,
         1690.2350000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_135",
@@ -2086,12 +2072,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3819.9750000000004,
         5943.455
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_136",
@@ -2107,7 +2093,7 @@
         3819.9750000000004,
         5943.455
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_140",
@@ -2123,7 +2109,7 @@
         3823.25,
         4185.66
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Escalator_3",
@@ -2139,7 +2125,7 @@
         9853.7,
         2156.06
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_272",
@@ -2148,12 +2134,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11408.05,
         3481.83
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Escalator_4",
@@ -2171,10 +2157,10 @@
         11404.85,
         3467.11
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_140",
+      "id": "Fire Exit_139",
       "name": "Fire Exit",
       "path": "M3082.84 8033.65C3077.32 8033.65 3072.84 8038.13 3072.84 8043.65V8296C3072.84 8301.52 3077.32 8306 3082.84 8306H3300.28C3305.1 8306 3309 8302.1 3309 8297.28C3309 8292.46 3312.9 8288.56 3317.72 8288.56H3483.1C3488.62 8288.56 3493.1 8284.08 3493.1 8278.56V8233.01C3493.1 8227.49 3488.62 8223.01 3483.1 8223.01H3319C3313.48 8223.01 3309 8218.53 3309 8213.01V8043.65C3309 8038.13 3304.52 8033.65 3299 8033.65H3082.84Z",
       "type": "Fire Exit",
@@ -2190,10 +2176,10 @@
         3282.9700000000003,
         8169.825
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_141",
+      "id": "Fire Exit_140",
       "name": "Fire Exit",
       "path": "M8002.6 906.395C8002.6 900.872 7998.12 896.395 7992.6 896.395H7869.18H7759.11C7753.59 896.395 7749.11 900.872 7749.11 906.395V1330.65C7749.11 1336.18 7753.59 1340.65 7759.11 1340.65H7805.82C7811.34 1340.65 7815.82 1336.18 7815.82 1330.65V1212.28C7815.82 1206.75 7820.3 1202.28 7825.82 1202.28H7992.6C7998.12 1202.28 8002.6 1197.8 8002.6 1192.28V906.395Z",
       "type": "Fire Exit",
@@ -2208,10 +2194,10 @@
         7875.855,
         1118.5225
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "FireExit",
+      "id": "Fire Exit_141",
       "name": "Fire Exit",
       "path": "M854.785 889.112C860.308 889.112 864.785 884.635 864.785 879.112V826.283C864.785 820.76 860.308 816.283 854.785 816.283H694.672C689.149 816.283 684.672 820.76 684.672 826.283V1738.5C684.672 1744.02 689.149 1748.5 694.672 1748.5H961.519C967.042 1748.5 971.519 1752.97 971.519 1758.5V1935.14C971.519 1940.66 975.996 1945.14 981.519 1945.14H1355.1C1360.62 1945.14 1365.1 1940.66 1365.1 1935.14V1875.02C1365.1 1869.5 1360.62 1865.02 1355.1 1865.02H1054.9C1049.38 1865.02 1044.9 1860.55 1044.9 1855.02V1372.5C1044.9 1366.98 1040.42 1362.5 1034.9 1362.5H874.785C869.262 1362.5 864.785 1366.98 864.785 1372.5V1658.38C864.785 1663.91 860.308 1668.38 854.785 1668.38H761.38C755.858 1668.38 751.38 1663.91 751.38 1658.38V899.112C751.38 893.589 755.858 889.112 761.38 889.112H854.785Z",
       "type": "Fire Exit",
@@ -2227,10 +2213,10 @@
         1024.886,
         1380.7115000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_143",
+      "id": "Fire Exit_142",
       "name": "Fire Exit",
       "path": "M11242.7 2381.82C11246.2 2377.74 11245.9 2371.59 11241.9 2367.93L11236 2362.5L11065.2 2198.42C11061.2 2194.59 11054.9 2194.72 11051.1 2198.69L10958.1 2295.11C10954.4 2298.96 10954.4 2305.06 10958.1 2308.94L11132.4 2492.5C11136.5 2496.79 11143.4 2496.63 11147.2 2492.16L11242.7 2381.82Z",
       "type": "Fire Exit",
@@ -2243,10 +2229,10 @@
         11100.3,
         2345.69
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "FireExit_2",
+      "id": "Fire Exit_143",
       "name": "Fire Exit",
       "path": "M3463.09 4421.33C3468.61 4421.33 3473.09 4416.85 3473.09 4411.33V4358.5C3473.09 4352.98 3468.61 4348.5 3463.09 4348.5H3289.63C3284.11 4348.5 3279.63 4344.02 3279.63 4338.5V4169.14C3279.63 4163.62 3275.16 4159.14 3269.63 4159.14H3082.84C3077.32 4159.14 3072.84 4163.62 3072.84 4169.14V4411.33C3072.84 4416.85 3077.32 4421.33 3082.84 4421.33H3463.09Z",
       "type": "Fire Exit",
@@ -2262,7 +2248,7 @@
         3272.965,
         4290.235000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Elevator_5646",
@@ -2280,10 +2266,10 @@
         12161.900000000001,
         4679.870000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_146",
+      "id": "Fire Exit_145",
       "name": "Fire Exit",
       "path": "M9403.48 906.395C9403.48 900.872 9399 896.395 9393.48 896.395H9136.65H9026.57C9021.05 896.395 9016.57 900.872 9016.57 906.395V1075.75C9016.57 1081.27 9021.05 1085.75 9026.57 1085.75H9153.33C9158.85 1085.75 9163.33 1090.23 9163.33 1095.75V1337.94C9163.33 1343.46 9167.81 1347.94 9173.33 1347.94H9233.38C9238.9 1347.94 9243.38 1343.46 9243.38 1337.94V1124.88C9243.38 1119.36 9247.86 1114.88 9253.38 1114.88H9393.48C9399 1114.88 9403.48 1110.41 9403.48 1104.88V906.395Z",
       "type": "Fire Exit",
@@ -2298,10 +2284,10 @@
         9210.025,
         1122.1675
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "BLDG_150",
+      "id": "Fire Exit_146",
       "name": "Fire Exit",
       "path": "M1245.02 3634.77H1515.2C1520.72 3634.77 1525.2 3630.29 1525.2 3624.77V3120.4C1525.2 3114.88 1520.72 3110.4 1515.2 3110.4H1448.48C1442.96 3110.4 1438.48 3114.88 1438.48 3120.4V3500.96C1438.48 3506.49 1434 3510.96 1428.48 3510.96H1355.09C1349.56 3510.96 1345.09 3506.49 1345.09 3500.96V3348.28C1345.09 3345.23 1343.69 3342.35 1341.3 3340.45L1274.44 3287.36C1272.67 3285.96 1270.48 3285.19 1268.22 3285.19H1245.02M1245.02 3634.77H1048.23C1042.7 3634.77 1038.23 3630.29 1038.23 3624.77V3295.19C1038.23 3289.67 1042.7 3285.19 1048.23 3285.19H1245.02",
       "type": "Fire Exit",
@@ -2317,35 +2303,35 @@
         1281.7150000000001,
         3372.585
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "PWD Washroom_3",
-      "name": "Unknown",
+      "name": "Restroom",
       "path": "M11294.9 2668.94C11298.3 2665.1 11298.3 2659.24 11294.8 2655.44L11268.1 2626.63C11264.2 2622.47 11257.7 2622.35 11253.7 2626.37L11224.7 2655.43C11220.9 2659.2 11220.8 2665.25 11224.4 2669.2L11252.1 2699.81C11256.1 2704.2 11262.9 2704.2 11266.9 2699.81L11294.9 2668.94Z",
-      "type": "Retail",
+      "type": "Restroom",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11259.55,
         2663.2749999999996
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "ATM",
-      "name": "Unknown",
+      "name": "ATM Near Digital Museum",
       "path": "M11250.9 2592.67C11254.6 2588.93 11254.8 2582.96 11251.3 2579L11234.9 2560.33C11231.1 2556.06 11224.6 2555.78 11220.5 2559.72L11200.2 2579.11C11196.2 2582.93 11196.1 2589.27 11199.9 2593.25L11217.5 2611.62C11221.4 2615.67 11227.9 2615.73 11231.8 2611.76L11250.9 2592.67Z",
-      "type": "Retail",
+      "type": "Bank",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11225.45,
         2585.755
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Washroom_3",
@@ -2363,7 +2349,7 @@
         3046.1549999999997,
         2389.39
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "WashRoom_2",
@@ -2381,10 +2367,10 @@
         4740.55,
         1209.56
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_152",
+      "id": "Fire Exit_151",
       "name": "Fire Exit",
       "path": "M12472.7 4006.28C12476.7 4010 12483 4009.74 12486.8 4005.71L12637.7 3842.82C12641.5 3838.78 12641.2 3832.46 12637.2 3828.7L12545.3 3743.29C12541.3 3739.54 12535 3739.76 12531.2 3743.78L12378.9 3906.62C12375.1 3910.69 12375.3 3917.07 12379.4 3920.83L12472.7 4006.28Z",
       "type": "Fire Exit",
@@ -2399,10 +2385,10 @@
         12508.3,
         3874.77
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "FireExit_3",
+      "id": "Fire Exit_152",
       "name": "Fire Exit",
       "path": "M3092.85 1969.7C3092.85 1964.18 3097.33 1959.7 3102.85 1959.7H3229.61C3235.13 1959.7 3239.61 1964.18 3239.61 1969.7V2226.45C3239.61 2231.97 3235.13 2236.45 3229.61 2236.45H2956.09C2950.57 2236.45 2946.09 2231.97 2946.09 2226.45V2027.96C2946.09 2022.44 2950.57 2017.96 2956.09 2017.96H3082.85C3088.37 2017.96 3092.85 2013.49 3092.85 2007.96V1969.7Z",
       "type": "Fire Exit",
@@ -2417,10 +2403,10 @@
         3092.8500000000004,
         2098.075
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_154",
+      "id": "Fire Exit_153",
       "name": "Fire Exit",
       "path": "M8756.41 5305.28C8756.41 5299.75 8751.93 5295.28 8746.41 5295.28H8572.95C8567.43 5295.28 8562.95 5299.75 8562.95 5305.28V5562.03C8562.95 5567.55 8567.43 5572.03 8572.95 5572.03H8746.41C8751.93 5572.03 8756.41 5567.55 8756.41 5562.03V5305.28Z",
       "type": "Fire Exit",
@@ -2435,7 +2421,7 @@
         8659.68,
         5433.655
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Elevator_2",
@@ -2446,12 +2432,13 @@
         "Ellipse 133"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "#DFB133",
+      "icon": "elevator",
       "centroid": [
         7810.030000000001,
         5095.34
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Elevator_3",
@@ -2462,12 +2449,12 @@
         "Ellipse 120"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "#DFB133",
       "centroid": [
         10517.8,
         3081.6099999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Escalator_5",
@@ -2485,7 +2472,7 @@
         5597.76,
         1741.2150000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Stairs_3",
@@ -2503,10 +2490,10 @@
         6217.5,
         3167.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_159",
+      "id": "Fire Exit_158",
       "name": "Fire Exit",
       "path": "M6274.85 7227.97C6274.85 7222.44 6270.37 7217.97 6264.85 7217.97H6111.41C6105.88 7217.97 6101.41 7222.44 6101.41 7227.97V7397.32C6101.41 7402.85 6096.93 7407.32 6091.41 7407.32H5877.93C5872.4 7407.32 5867.93 7411.8 5867.93 7417.32V7448.3C5867.93 7453.83 5872.4 7458.3 5877.93 7458.3H6091.41C6096.93 7458.3 6101.41 7462.78 6101.41 7468.3V7470.15C6101.41 7475.68 6105.88 7480.15 6111.41 7480.15H6264.85C6270.37 7480.15 6274.85 7475.68 6274.85 7470.15V7227.97Z",
       "type": "Fire Exit",
@@ -2519,13 +2506,13 @@
         6071.39,
         7349.0599999999995
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40,
       "centerX": -70
     },
     {
-      "id": "Fire Exit_160",
+      "id": "Fire Exit_159",
       "name": "Fire Exit",
       "path": "M2879.38 1277.82C2879.38 1272.3 2883.86 1267.82 2889.38 1267.82H2996.13C3001.65 1267.82 3006.13 1263.35 3006.13 1257.82V993.79C3006.13 988.267 3001.65 983.79 2996.13 983.79H2822.67C2817.15 983.79 2812.67 988.267 2812.67 993.79V1301.52C2812.67 1307.04 2817.15 1311.52 2822.67 1311.52H2869.38C2874.91 1311.52 2879.38 1307.04 2879.38 1301.52V1277.82Z",
       "type": "Fire Exit",
@@ -2538,12 +2525,12 @@
         2909.4,
         1147.655
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40
     },
     {
-      "id": "Fire Exit_161",
+      "id": "Fire Exit_160",
       "name": "Fire Exit",
       "path": "M4590.45 8011.81C4584.93 8011.81 4580.45 8007.33 4580.45 8001.81V7766.9C4580.45 7761.38 4584.93 7756.9 4590.45 7756.9H4750.56C4756.09 7756.9 4760.56 7761.38 4760.56 7766.9V8001.81C4760.56 8007.33 4756.09 8011.81 4750.56 8011.81H4590.45Z",
       "type": "Fire Exit",
@@ -2556,12 +2543,12 @@
         4670.505,
         7884.355
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40
     },
     {
-      "id": "Fire Exit_162",
+      "id": "Fire Exit_161",
       "name": "Fire Exit",
       "path": "M6031.37 8332.25C6036.89 8332.25 6041.37 8327.78 6041.37 8322.25V8029.09C6041.37 8023.57 6036.89 8019.09 6031.37 8019.09H5904.61C5899.09 8019.09 5894.61 8014.61 5894.61 8009.09V7985.39C5894.61 7979.87 5890.13 7975.39 5884.61 7975.39H5844.57C5839.05 7975.39 5834.57 7979.87 5834.57 7985.39V8033.65V8227.58C5834.57 8233.1 5830.09 8237.58 5824.57 8237.58C5819.04 8237.58 5814.56 8242.05 5814.56 8247.58V8322.25C5814.56 8327.78 5819.04 8332.25 5824.56 8332.25H6031.37Z",
       "type": "Fire Exit",
@@ -2574,13 +2561,13 @@
         5927.965,
         8153.82
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40,
       "centerX": 40
     },
     {
-      "id": "Fire Exit_163",
+      "id": "Fire Exit_162",
       "name": "Fire Exit",
       "path": "M4827.27 906.395C4827.27 900.872 4822.8 896.395 4817.27 896.395H4693.86H4583.78C4578.26 896.395 4573.78 900.872 4573.78 906.395V1032.05C4573.78 1037.58 4569.3 1042.05 4563.78 1042.05H4477.05C4471.52 1042.05 4467.05 1046.53 4467.05 1052.05V1235.98C4467.05 1241.5 4471.52 1245.98 4477.05 1245.98H4523.76C4529.28 1245.98 4533.76 1250.45 4533.76 1255.98V1381.63C4533.76 1387.16 4538.23 1391.63 4543.76 1391.63H4563.78C4569.3 1391.63 4573.78 1387.16 4573.78 1381.63V1095.75C4573.78 1090.23 4578.26 1085.75 4583.78 1085.75H4817.27C4822.8 1085.75 4827.27 1081.27 4827.27 1075.75V906.395Z",
       "type": "Fire Exit",
@@ -2593,13 +2580,13 @@
         4647.16,
         1144.0125
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 200,
       "centerX": -20
     },
     {
-      "id": "Fire Exit_164",
+      "id": "Fire Exit_163",
       "name": "Fire Exit",
       "path": "M10751 1154.01C10751 1148.49 10746.5 1144.01 10741 1144.01H10454.1C10448.6 1144.01 10444.1 1148.49 10444.1 1154.01V1396.2C10444.1 1401.72 10448.6 1406.2 10454.1 1406.2H10741C10746.5 1406.2 10751 1401.72 10751 1396.2V1154.01Z",
       "type": "Fire Exit",
@@ -2610,12 +2597,12 @@
         10597.55,
         1275.105
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40
     },
     {
-      "id": "Fire Exit_165",
+      "id": "Fire Exit_164",
       "name": "Fire Exit",
       "path": "M10464.1 5292.56C10464.1 5298.08 10459.7 5302.56 10454.1 5302.56H10287.4C10281.8 5302.56 10277.4 5307.04 10277.4 5312.56V5620.29C10277.4 5625.81 10281.8 5630.29 10287.4 5630.29H10527.5C10533 5630.29 10537.5 5625.81 10537.5 5620.29V5239.73C10537.5 5234.21 10533 5229.73 10527.5 5229.73H10474.1C10468.6 5229.73 10464.1 5234.21 10464.1 5239.73V5292.56Z",
       "type": "Fire Exit",
@@ -2628,7 +2615,7 @@
         10407.45,
         5430.01
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40
     },
@@ -2641,15 +2628,15 @@
         "Ellipse 114"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9146.65,
         2349.34
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_167",
+      "id": "Fire Exit_166",
       "name": "Fire Exit",
       "path": "M4544 9680C4538.48 9680 4534 9675.52 4534 9670V9442C4534 9436.48 4538.48 9432 4544 9432H4737C4742.52 9432 4747 9436.48 4747 9442V9670C4747 9675.52 4742.52 9680 4737 9680H4544Z",
       "type": "Fire Exit",
@@ -2662,12 +2649,12 @@
         4640.5,
         9556
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40
     },
     {
-      "id": "Fire Exit_168",
+      "id": "Fire Exit_167",
       "name": "Fire Exit",
       "path": "M4083.47 3583.79C4077.94 3583.79 4073.47 3579.31 4073.47 3573.79V3528.25C4073.47 3522.72 4077.94 3518.25 4083.47 3518.25H4370.33C4375.85 3518.25 4380.33 3522.72 4380.33 3528.25V3588.36C4380.33 3593.88 4384.8 3598.36 4390.33 3598.36H4463.72C4469.24 3598.36 4473.72 3602.83 4473.72 3608.36V3617.49C4473.72 3623.01 4478.2 3627.49 4483.72 3627.49H4583.79C4589.32 3627.49 4593.79 3631.97 4593.79 3637.49V3741.3C4593.79 3746.82 4589.32 3751.3 4583.79 3751.3H4577.11C4571.59 3751.3 4567.11 3755.78 4567.11 3761.3V3886.96C4567.11 3892.48 4562.63 3896.96 4557.11 3896.96H4390.33C4384.8 3896.96 4380.33 3901.43 4380.33 3906.96V3959.79C4380.33 3965.31 4375.85 3969.79 4370.33 3969.79H4236.9C4231.37 3969.79 4226.9 3965.31 4226.9 3959.79V3593.79C4226.9 3588.27 4222.42 3583.79 4216.9 3583.79H4083.47Z",
       "type": "Fire Exit",
@@ -2680,12 +2667,12 @@
         4333.63,
         3744.02
       ],
-      "floor": "Third Floor",
+      "floor": "Ayala Malls Third Floor",
       "icon": "fire",
       "centerY": 40
     },
     {
-      "id": "Fire Exit_169",
+      "id": "Fire Exit_168",
       "name": "Fire Exit",
       "path": "M10410.5 3677.79C10407.1 3673.94 10407.2 3668.14 10410.7 3664.38L10504.8 3563.24C10508.7 3559.03 10515.3 3558.98 10519.3 3563.12L10694.4 3745.1C10698.3 3749.16 10704.8 3749.2 10708.7 3745.19L10956.6 3494.05C10960.8 3489.78 10967.8 3490.16 10971.5 3494.88L10983.7 3510.36C10986.8 3514.19 10986.6 3519.65 10983.3 3523.27L10664.7 3874.72C10661.4 3878.34 10661.2 3883.81 10664.3 3887.65L10684.6 3913.3C10687.5 3916.93 10687.5 3922.07 10684.6 3925.71L10655.4 3962.67C10652.3 3966.59 10652.6 3972.18 10656 3975.79L10811.2 4137.81C10814.9 4141.62 10814.9 4147.6 10811.4 4151.48L10791.7 4172.92C10787.8 4177.25 10780.9 4177.24 10777 4172.9L10658 4042.3C10653.8 4037.71 10646.5 4038 10642.7 4042.92L10637.1 4050.18C10633.2 4055.23 10625.6 4055.38 10621.5 4050.49L10584.8 4006.74C10580.9 4002.11 10573.9 4001.96 10569.8 4006.42L10552.2 4025.59C10548.3 4029.87 10541.6 4029.93 10537.6 4025.73L10483.9 3969.27C10480.3 3965.46 10480.2 3959.5 10483.8 3955.62L10564.8 3867.15C10568.3 3863.39 10568.3 3857.64 10565 3853.8L10410.5 3677.79Z",
       "type": "Fire Exit",
@@ -2701,10 +2688,10 @@
         10696.95,
         3833.5150000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_170",
+      "id": "Fire Exit_169",
       "name": "Fire Exit",
       "path": "M5677.81 2251.02C5683.34 2251.02 5687.81 2255.5 5687.81 2261.02V2342.98C5687.81 2348.5 5683.34 2352.98 5677.81 2352.98H5637.78C5632.25 2352.98 5627.78 2357.46 5627.78 2362.98V2488.64C5627.78 2494.16 5623.3 2498.64 5617.78 2498.64H5310.9C5305.38 2498.64 5300.9 2494.16 5300.9 2488.64V2312C5300.9 2306.48 5305.38 2302 5310.9 2302H5404.31C5409.83 2302 5414.31 2297.52 5414.31 2292V2261.02C5414.31 2255.5 5418.79 2251.02 5424.31 2251.02H5677.81Z",
       "type": "Fire Exit",
@@ -2719,10 +2706,10 @@
         5494.355,
         2374.83
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_171",
+      "id": "Fire Exit_170",
       "name": "Fire Exit",
       "path": "M4343.63 6642.62C4338.11 6642.62 4333.63 6638.14 4333.63 6632.62V6390.43C4333.63 6384.91 4338.11 6380.43 4343.63 6380.43H4557.11C4562.63 6380.43 4567.11 6384.91 4567.11 6390.43V6909.37C4567.11 6914.89 4562.63 6919.37 4557.11 6919.37H4463.71C4458.18 6919.37 4453.71 6914.89 4453.71 6909.37V6652.62C4453.71 6647.09 4449.23 6642.62 4443.71 6642.62H4343.63Z",
       "type": "Fire Exit",
@@ -2738,7 +2725,7 @@
         4450.37,
         6649.9
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "ATM_2",
@@ -2747,264 +2734,265 @@
       "type": "Entertainment",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3219.5950000000003,
         2269.225
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "ATM_3",
       "name": "ATM Near Happy Brows",
       "path": "M3278 6414C3278 6408.48 3282.48 6404 3288 6404H3328C3333.52 6404 3338 6408.48 3338 6414V6448C3338 6453.52 3333.52 6458 3328 6458H3288C3282.48 6458 3278 6453.52 3278 6448V6414.8",
-      "type": "Services",
+      "type": "Bank",
       "entranceNodes": [
         "Ellipse 137"
       ],
       "description": "Place description goes in here...",
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor",
+      "baseFill": "white"
     },
     {
       "id": "BLDG_274",
       "name": "NotClickable",
       "path": "M10766.5 5133V4763H10784.5V5133H10766.5Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10775.5,
         4948
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_277",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M9628.48 2897L9557 2822.58L9560.52 2819L9632 2893.42L9628.48 2897Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9594.5,
         2858
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_279",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M8723 3063.24L8551.28 3063.82L8551 3058.8L8722.72 3058.23L8723 3063.24Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8637,
         3061.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_289",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M7163 2736.24L6884.45 2736.82L6884 2731.8L7162.55 2731.23L7163 2736.24Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7023.5,
         2734.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_281",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4695 4566.24L4577.19 4566.82L4577 4561.8L4694.81 4561.23L4695 4566.24Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4636,
         4564.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_285",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4698 5708.24L4580.19 5708.82L4580 5703.8L4697.81 5703.23L4698 5708.24Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4639,
         5706.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_287",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M5761 6380.24L5617.23 6380.82L5617 6375.8L5760.77 6375.23L5761 6380.24Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5689,
         6378.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_283",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4712 3764.24L4594.19 3764.82L4594 3759.8L4711.81 3759.23L4712 3764.24Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4653,
         3762.025
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_275",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M10785 4867H10767V5001H10785V4867Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10776,
         4934
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_278",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M9580.71 2839.82L9577.19 2843.4L9603.08 2870.35L9606.6 2866.77L9580.71 2839.82Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9591.895,
         2855.085
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_280",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M8606 3058.21L8606.28 3063.22L8668.47 3063.02L8668.19 3058L8606 3058.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8637.235,
         3060.6099999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_290",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M6973.22 2731.21L6973.67 2736.22L7074.55 2736.02L7074.1 2731L6973.22 2731.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7023.885,
         2733.6099999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_282",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4614.73 4561.21L4614.92 4566.22L4657.59 4566.02L4657.4 4561L4614.73 4561.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4636.16,
         4563.610000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_286",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M4617.73 5703.21L4617.92 5708.22L4660.59 5708.02L4660.4 5703L4617.73 5703.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4639.16,
         5705.610000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_288",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M5663.05 6375.21L5663.28 6380.22L5715.35 6380.02L5715.11 6375L5663.05 6375.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5689.200000000001,
         6377.610000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_284",
       "name": "NotClickable",
       "path": "M4631.73 3759.21L4631.92 3764.22L4674.59 3764.02L4674.4 3759L4631.73 3759.21Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4653.16,
         3761.6099999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_276",
-      "name": "Unknown",
+      "name": "NotClickable",
       "path": "M11965 4846H11947V4980H11965V4846Z",
-      "type": "Retail",
+      "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11956,
         4913
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "BLDG_431",
+      "id": "Fire Exit_190",
       "name": "Fire Exit",
       "path": "M3279.5 6392H3088C3082.48 6392 3078 6387.52 3078 6382V6117C3078 6111.48 3082.48 6107 3088 6107H3290C3295.52 6107 3300 6111.48 3300 6117V6291C3300 6296.52 3304.48 6301 3310 6301H3459.5C3465.02 6301 3469.5 6305.48 3469.5 6311V6413.5C3469.5 6419.02 3465.02 6423.5 3459.5 6423.5H3365C3359.48 6423.5 3355 6419.02 3355 6413.5V6386C3355 6380.48 3350.52 6376 3345 6376H3295.5C3291.08 6376 3287.5 6379.58 3287.5 6384C3287.5 6388.42 3283.92 6392 3279.5 6392Z",
       "type": "Fire Exit",
@@ -3016,7 +3004,7 @@
       "centerY": 40,
       "centerX": 140,
       "icon": "fire",
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_432",
@@ -3030,7 +3018,7 @@
       "icon": "elevator",
       "centerY": 50,
       "description": "Place description goes in here...",
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_265",
@@ -3039,12 +3027,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8352.82,
         2797.2349999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Pio's Cotton Candy",
@@ -3053,12 +3041,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3826.6400000000003,
         3095.835
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_261",
@@ -3067,12 +3055,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4126.785,
         2880.9
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_257",
@@ -3081,12 +3069,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4490.395,
         5899.76
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_258",
@@ -3095,12 +3083,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4143.51,
         5135.049999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_256",
@@ -3109,12 +3097,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4176.865,
         6853.82
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_209",
@@ -3123,12 +3111,12 @@
       "type": "Food & Beverage",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3846.6549999999997,
         3387.15
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_247",
@@ -3137,12 +3125,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5010.725,
         8448.779999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_246",
@@ -3151,12 +3139,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6171.455,
         7895.28
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_245",
@@ -3165,12 +3153,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10607.6,
         5444.58
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_1",
@@ -3179,12 +3167,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3322.995,
         9322.73
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_71",
@@ -3193,12 +3181,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10967.8,
         4949.335
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_273",
@@ -3207,26 +3195,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11359.05,
         4948.905000000001
       ],
-      "floor": "Third Floor"
-    },
-    {
-      "id": "BLDG_274",
-      "name": "NotClickable",
-      "path": "M11827.1 4902C11827.1 4896.48 11822.6 4892 11817.1 4892H11657C11651.5 4892 11647 4896.48 11647 4902V5005.81C11647 5011.33 11651.5 5015.81 11657 5015.81H11817.1C11822.6 5015.81 11827.1 5011.33 11827.1 5005.81V4902Z",
-      "type": "NotClickable",
-      "entranceNodes": [],
-      "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
-      "centroid": [
-        11737.05,
-        4953.905000000001
-      ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_75",
@@ -3235,12 +3209,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10977.8,
         4570.63
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_74",
@@ -3249,12 +3223,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11394.7,
         4297.52
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_12",
@@ -3263,12 +3237,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3439.735,
         6267.549999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_21",
@@ -3277,12 +3251,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4687.185,
         9584.92
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_22",
@@ -3291,12 +3265,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5954.65,
         9632.27
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_23",
@@ -3305,12 +3279,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5884.605,
         9595.845
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_238",
@@ -3319,12 +3293,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6168.139999999999,
         9188
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_27",
@@ -3333,12 +3307,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3819.975,
         7312.65
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_33",
@@ -3347,12 +3321,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4700.525,
         6708.165
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_245",
@@ -3361,12 +3335,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4954.02,
         6704.525
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_36",
@@ -3375,12 +3349,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5467.695,
         6700.88
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_37",
@@ -3389,12 +3363,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4430.36,
         7196.12
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_38",
@@ -3403,12 +3377,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5220.855,
         7188.835
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_43",
@@ -3417,12 +3391,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5200.84,
         7516.57
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_47",
@@ -3431,12 +3405,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5340.93,
         8226.654999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_53",
@@ -3445,12 +3419,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4430.36,
         8929.455
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_54",
@@ -3459,12 +3433,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5220.855,
         8929.455
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_55",
@@ -3473,12 +3447,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6171.45,
         8863.91
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_56",
@@ -3487,12 +3461,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6171.45,
         8310.405
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_58",
@@ -3501,12 +3475,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6174.79,
         7552.98
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_59",
@@ -3515,12 +3489,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6174.79,
         7159.705
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_61",
@@ -3529,12 +3503,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8319.470000000001,
         5564.745
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_62",
@@ -3543,12 +3517,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8839.79,
         5448.219999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_65",
@@ -3557,12 +3531,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9406.82,
         5448.219999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_66",
@@ -3571,12 +3545,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9656.974999999999,
         5448.219999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_67",
@@ -3585,12 +3559,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9910.46,
         5451.865
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_68",
@@ -3599,12 +3573,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10250.7,
         5448.219999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_76",
@@ -3613,12 +3587,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10831.05,
         4437.87
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_284",
@@ -3627,12 +3601,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10688.9,
         4304.5650000000005
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_270",
@@ -3641,12 +3615,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10341.6,
         3898.1000000000004
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_271",
@@ -3655,12 +3629,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10166.025000000001,
         3712
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_269",
@@ -3669,12 +3643,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10510.75,
         4155.48
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_88",
@@ -3683,12 +3657,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         13702.849999999999,
         4392.195
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "MINLOU TOUCH MASSAGE",
@@ -3697,12 +3671,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         11401.400000000001,
         3816.8450000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_95",
@@ -3711,12 +3685,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10647.75,
         2822.7799999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_97",
@@ -3725,12 +3699,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         10183.95,
         2301.995
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_100",
@@ -3739,12 +3713,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8779.755000000001,
         2997.52
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_101",
@@ -3753,12 +3727,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8926.515,
         2793.595
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_102",
@@ -3767,12 +3741,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8776.42,
         2582.39
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_103",
@@ -3781,12 +3755,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8776.42,
         2713.4849999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_104",
@@ -3795,12 +3769,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8773.085,
         2844.575
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_105",
@@ -3809,12 +3783,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9218.71,
         2760.825
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_106",
@@ -3823,12 +3797,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9413.47,
         2711.9300000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_107",
@@ -3837,12 +3811,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9410.15,
         2338.415
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_266",
@@ -3851,12 +3825,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8496.244999999999,
         2578.75
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "HEY! I AM YOGOST",
@@ -3865,12 +3839,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8496.244999999999,
         2709.8450000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_267",
@@ -3879,12 +3853,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8496.244999999999,
         2848.2200000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_268",
@@ -3893,12 +3867,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8496.244999999999,
         3001.16
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_110",
@@ -3907,12 +3881,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8883.155,
         2058.02
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_111",
@@ -3921,12 +3895,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9260.055,
         2058.02
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_116",
@@ -3935,12 +3909,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7502.285,
         2669.785
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_331",
@@ -3949,12 +3923,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7545.645,
         2371.1899999999996
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_334",
@@ -3963,12 +3937,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7805.8099999999995,
         2647.9399999999996
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_336",
@@ -3977,12 +3951,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7805.8099999999995,
         2647.9399999999996
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_121",
@@ -3991,12 +3965,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7709.08,
         2054.38
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_122",
@@ -4005,12 +3979,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8002.6,
         2054.38
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_123",
@@ -4019,12 +3993,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8376.17,
         2058.02
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_125",
@@ -4033,12 +4007,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9740.46,
         2593.755
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Oro China",
@@ -4047,12 +4021,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4133.505,
         3412.6400000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Lulu Money Exchange",
@@ -4061,12 +4035,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4313.62,
         3416.285
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Mang Tomas Pinoy Sorbetes",
@@ -4075,12 +4049,12 @@
       "type": "Food & Beverage",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3786.62,
         3387.15
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_132",
@@ -4089,12 +4063,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4490.395,
         3467.2650000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_262",
@@ -4103,12 +4077,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5083.705,
         2295.58
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_139",
@@ -4117,12 +4091,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5210.6,
         2575.0950000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_140",
@@ -4131,12 +4105,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5107.675,
         2476.805
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_143",
@@ -4145,12 +4119,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5041.04,
         2553.005
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_144",
@@ -4159,12 +4133,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4637.125,
         2327.27
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_155",
@@ -4173,12 +4147,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         2272.335,
         2880.99
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_156",
@@ -4187,12 +4161,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3275.2650000000003,
         2888.275
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_164",
@@ -4201,12 +4175,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         2269,
         1610.12
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_165",
@@ -4215,12 +4189,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3186.245,
         1617.405
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_166",
@@ -4229,12 +4203,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4106.82,
         1617.405
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_168",
@@ -4243,12 +4217,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5681.145,
         2240.0950000000003
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_171",
@@ -4257,12 +4231,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6014.6900000000005,
         2065.3
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_172",
@@ -4271,12 +4245,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6014.6900000000005,
         2371.1850000000004
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_180",
@@ -4285,12 +4259,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4937.04,
         1886.73
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_182",
@@ -4299,12 +4273,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5107.450000000001,
         1690.2350000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_183",
@@ -4313,12 +4287,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4793.915000000001,
         1602.835
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_184",
@@ -4327,12 +4301,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4853.955,
         1639.25
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_185",
@@ -4341,12 +4315,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4853.955,
         1573.705
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_190",
@@ -4355,12 +4329,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6181.46,
         1690.23
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_252",
@@ -4369,12 +4343,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4580.455,
         8073.715
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_253",
@@ -4383,12 +4357,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4700.53,
         8073.715
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "PRESCRIPTO",
@@ -4397,12 +4371,12 @@
       "type": "Services",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6454.965,
         1755.7800000000002
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_194",
@@ -4411,12 +4385,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7011.98,
         1690.23
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_195",
@@ -4425,12 +4399,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7999.264999999999,
         1690.23
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_197",
@@ -4439,12 +4413,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         9029.91,
         1686.5900000000001
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_407",
@@ -4453,12 +4427,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3119.535,
         900.0364999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_409",
@@ -4467,12 +4441,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3119.535,
         900.0364999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_218",
@@ -4481,12 +4455,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         5921.29,
         1369.7849999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_413",
@@ -4495,12 +4469,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6094.735000000001,
         1124.1325
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_415",
@@ -4509,12 +4483,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6094.735000000001,
         1124.1325
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_221",
@@ -4523,12 +4497,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         6361.57,
         1305.385
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "Candy Corner",
@@ -4537,12 +4511,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         3913.365,
         3183.23
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_227",
@@ -4551,12 +4525,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         7675.725,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_231",
@@ -4565,15 +4539,15 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         8382.84,
         1125.8065
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_303",
+      "id": "Fire Exit_302",
       "name": "Fire Exit",
       "path": "M7815.82 2785.39C7815.82 2779.87 7811.34 2775.39 7805.82 2775.39H7612.35C7606.83 2775.39 7602.35 2779.87 7602.35 2785.39V3056.71C7602.35 3062.23 7606.83 3066.71 7612.35 3066.71H7805.82C7811.34 3066.71 7815.82 3062.23 7815.82 3056.71V2785.39Z",
       "type": "Fire Exit",
@@ -4586,10 +4560,10 @@
         7709.085,
         2921.05
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_304",
+      "id": "Fire Exit_303",
       "name": "Fire Exit",
       "path": "M6258.18 1435.33C6263.7 1435.33 6268.18 1430.85 6268.18 1425.33V1139.45C6268.18 1133.93 6263.7 1129.45 6258.18 1129.45H6078.05C6072.53 1129.45 6068.05 1133.93 6068.05 1139.45V1425.33C6068.05 1430.85 6072.53 1435.33 6078.05 1435.33H6258.18Z",
       "type": "Fire Exit",
@@ -4602,10 +4576,10 @@
         6168.115,
         1282.3899999999999
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
-      "id": "Fire Exit_305",
+      "id": "Fire Exit_304",
       "name": "Fire Exit",
       "path": "M10209.8 3451.93C10213.9 3456.25 10220.7 3456.17 10224.6 3451.76L10401.3 3253.09C10405 3248.92 10404.5 3242.52 10400.3 3238.87L10368.4 3211.39C10364.3 3207.84 10358.1 3208.24 10354.5 3212.28L10323.1 3247.15C10319.4 3251.22 10313.2 3251.59 10309.1 3247.97L10261.6 3206.25C10257.6 3202.74 10251.6 3202.97 10247.9 3206.76L10235.5 3219.37C10231.8 3223.11 10225.9 3223.39 10221.9 3220.01L10158.6 3166.46C10154.6 3163.09 10148.7 3163.35 10145 3167.05L10094.7 3217.7C10090.8 3221.7 10084.3 3221.63 10080.4 3217.56L9790.44 2913.29C9786.62 2909.27 9780.25 2909.14 9776.26 2912.99L9747.57 2940.68C9743.64 2944.47 9743.47 2950.7 9747.19 2954.69L10209.8 3451.93Z",
       "type": "Fire Exit",
@@ -4619,7 +4593,7 @@
         10074.235,
         3182.6949999999997
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_433",
@@ -4628,12 +4602,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4700.35,
         2900.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_435",
@@ -4642,12 +4616,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4700.35,
         2900.5
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_437",
@@ -4656,12 +4630,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4854.85,
         2740
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     },
     {
       "id": "BLDG_439",
@@ -4670,12 +4644,12 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "white",
       "centroid": [
         4854.85,
         2740
       ],
-      "floor": "Third Floor"
+      "floor": "Ayala Malls Third Floor"
     }
   ]
 }
