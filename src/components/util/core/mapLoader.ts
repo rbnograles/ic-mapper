@@ -17,6 +17,22 @@ export async function loadMapData(floor: any) {
       };
     }
 
+    case 'second': {
+      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
+        import('../../Data/AyalaMalls/SecondFloor/SecondFloor.json'),
+        import('../../Data/AyalaMalls/SecondFloor/SecondFloorNodes.json'),
+        import('../../Data/AyalaMalls/SecondFloor/SecondFloorLabels.json'),
+      ]);
+      return {
+        places: mapData.places,
+        nodes: nodeData.nodes,
+        entrances: nodeData.entrances,
+        buidingMarks: labels.buildingMarks,
+        roadMarks: labels.roadMarks,
+        boundaries: labels.mapBoundaries,
+      };
+    }
+
     case 'third': {
       const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
         import('../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json'),

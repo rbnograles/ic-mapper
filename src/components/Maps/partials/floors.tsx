@@ -10,6 +10,16 @@ export const floors = [
     name: 'Ayala Malls Ground Floor',
     // no assets -> will use defaults inside AMGroundFloor
   },
+   {
+    key: 'second',
+    name: 'Ayala Malls 2nd Floor',
+    assets: {
+      // if you have specialized components for the 3rd floor, pass them here
+      // Boundaries: AM3FMapBoundaries,
+      // Base: AM3FMapBase,
+      // viewBox: '0 0 12000 9000',
+    },
+  },
   {
     key: 'third',
     name: 'Ayala Malls 3rd Floor',

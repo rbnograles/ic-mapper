@@ -1,11 +1,38 @@
 import fs from 'fs';
 import path from 'path';
 
+// ✅ Load category reference (Retail / Services / Entertainment)
+const categoriesPath = path.resolve('./datacomparison.json');
+
+if (!fs.existsSync(categoriesPath)) {
+  console.error('❌ Category file not found:', categoriesPath);
+  process.exit(1);
+}
+
+const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf-8'));
+
+// --- Helper: classify type based on name similarity ---
+function classifyType(name) {
+  if (!name) return null;
+  const cleanName = name.toLowerCase();
+
+  for (const [type, list] of Object.entries(categories)) {
+    if (
+      list.some((n) =>
+        cleanName.includes(n.toLowerCase().replace('*', '').trim())
+      )
+    ) {
+      return type.charAt(0) + type.slice(1).toLowerCase(); // e.g., "RETAIL" → "Retail"
+    }
+  }
+  return null;
+}
+
 // ✅ Data factory for cleaning and enhancing place JSON
 const dataFactory = () => {
   const oldJsonPath = path.resolve('../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json');
 
-  // --- Load file ---
+  // --- Load JSON ---
   if (!fs.existsSync(oldJsonPath)) {
     console.error('❌ File not found:', oldJsonPath);
     return;
@@ -18,14 +45,15 @@ const dataFactory = () => {
     return;
   }
 
-  const seenPaths = new Map(); // path string → first item index
+  const seenPaths = new Map();
   const duplicatePaths = [];
+  const unmatched = [];
 
   // --- Modify + clean items ---
   const updatedPlaces = oldData.places.map((place, i) => {
     let updated = { ...place, floor: 'Third Floor' };
 
-    // 🔥 Special handling for Fire Exits
+    // 🔥 Handle Fire Exits
     if (place.id?.includes('Fire Exit')) {
       updated = {
         ...updated,
@@ -34,16 +62,24 @@ const dataFactory = () => {
         type: 'Fire Exit',
         baseFill: '#F66E19',
         icon: 'fire',
-        centerY: 40,
+        centerY: place.centerY || 40,
       };
     }
 
-    // 🧹 Clean up names with underscores
+    // 🧹 Remove underscores
     if (typeof updated.name === 'string' && updated.name.includes('_')) {
       updated.name = updated.name.replace(/_/g, ' ').trim();
     }
 
-    // 🧩 Detect duplicate path entries
+    // 🏷️ Auto classify by imported categories
+   const detectedType = classifyType(updated.name || '');
+      if (detectedType) {
+        updated.type = detectedType;
+      } else {
+        unmatched.push(updated.name);
+      }
+
+    // 🧩 Detect duplicate paths
     if (typeof updated.path === 'string') {
       const normalizedPath = updated.path.trim();
       if (seenPaths.has(normalizedPath)) {
@@ -60,9 +96,16 @@ const dataFactory = () => {
     return updated;
   });
 
-  // --- Write file ---
+  // --- Write updated JSON ---
   const result = { places: updatedPlaces };
   fs.writeFileSync(oldJsonPath, JSON.stringify(result, null, 2));
+
+  // --- Write unmatched names for review ---
+  if (unmatched.length > 0) {
+    const unmatchedPath = path.resolve('../../Data/AyalaMalls/unmatched.json');
+    fs.writeFileSync(unmatchedPath, JSON.stringify(unmatched, null, 2));
+    console.warn(`⚠️ Some names did not match any category. Saved to ${unmatchedPath}`);
+  }
 
   // --- Report summary ---
   console.log(`✅ Completed data cleanup & saved to ${oldJsonPath}`);
