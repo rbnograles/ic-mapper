@@ -77,7 +77,7 @@ function BottomSlider({
               {pathItem.name}
             </Typography>
             {/* Remove this below after fixing all map details */}
-            <p>{pathItem.id}</p> 
+            {/* <p>{pathItem.id}</p>  */}
             {pathItem.img && (
               <Box
                 component="img"
