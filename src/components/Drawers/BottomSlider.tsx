@@ -20,10 +20,10 @@ function BottomSlider({
       onClose={handleSliderClose}
       onOpen={() => {}}
       disableSwipeToOpen={false}
-      hideBackdrop // ✅ removes backdrop overlay
+      hideBackdrop
       ModalProps={{
         keepMounted: true,
-        disableEnforceFocus: true, // ✅ allow focus outside drawer
+        disableEnforceFocus: true,
         BackdropProps: { invisible: true },
       }}
       PaperProps={{
@@ -31,22 +31,21 @@ function BottomSlider({
           borderRadius: isMobile ? '24px 24px 0 0' : '10px 0 0 10px',
           height: isMobile ? '75vh' : '100vh',
           width: isMobile ? '100%' : 380,
-          p: 2,
           backgroundColor: 'white',
           boxShadow: 8,
           display: 'flex',
           flexDirection: 'column',
-          pointerEvents: 'auto', // ✅ only drawer itself catches clicks
+          overflow: 'hidden', // ✅ prevent outer scroll, we'll handle inside
         },
       }}
       sx={{
-        pointerEvents: 'none', // ✅ drawer wrapper is click-through
-        '& .MuiDrawer-paper': { pointerEvents: 'auto' }, // ✅ only paper is interactive
+        pointerEvents: 'none',
+        '& .MuiDrawer-paper': { pointerEvents: 'auto' },
       }}
     >
-      {/* Drag handle */}
+      {/* --- Drag Handle --- */}
       {isMobile && (
-        <Box display="flex" justifyContent="center" mb={2}>
+        <Box display="flex" justifyContent="center" pt={1} pb={1.5} flexShrink={0}>
           <Box
             onClick={handleSliderClose}
             sx={{
@@ -60,109 +59,113 @@ function BottomSlider({
         </Box>
       )}
 
-      {/* Close button for desktop */}
+      {/* --- Close button (desktop only) --- */}
       {!isMobile && (
-        <Box display="flex" justifyContent="flex-end">
+        <Box display="flex" justifyContent="flex-end" p={1} flexShrink={0}>
           <IconButton onClick={handleSliderClose} size="small">
             <CloseIcon />
           </IconButton>
         </Box>
       )}
 
-      {/* Header */}
-      <Box sx={{ flexShrink: 0 }}>
-        {pathItem ? (
-          <>
-            <Typography variant="h6" fontWeight="bold" mb={1} textAlign="center">
-              {pathItem.name}
+      {/* --- Scrollable Content Section --- */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          overflowY: 'auto',
+          px: 2,
+          pb: 4, // ✅ ensures last item visible
+          minHeight: 0, // ✅ critical for flex scroll behavior
+        }}
+      >
+        {/* --- Header / Main Info --- */}
+        <Box sx={{ flexShrink: 0 }}>
+          {pathItem ? (
+            <>
+              <Typography variant="h6" fontWeight="bold" mb={1} textAlign="center">
+                {pathItem.name}
+              </Typography>
+
+              {pathItem.img && (
+                <Box
+                  component="img"
+                  src={pathItem.img}
+                  alt={pathItem.name}
+                  sx={{
+                    width: '100%',
+                    maxHeight: 160,
+                    objectFit: 'cover',
+                    borderRadius: 2,
+                    mb: 2,
+                  }}
+                />
+              )}
+
+              {pathItem.type && (
+                <Typography variant="subtitle2" color="text.secondary" textAlign="center" mb={1}>
+                  {pathItem.type}
+                </Typography>
+              )}
+
+              {pathItem.description && (
+                <Typography variant="body2" textAlign="justify" mb={2}>
+                  {pathItem.description}
+                </Typography>
+              )}
+            </>
+          ) : (
+            <Typography variant="body2" color="text.secondary" textAlign="center">
+              No information available.
             </Typography>
-            {/* Remove this below after fixing all map details */}
-            {/* <p>{pathItem.id}</p>  */}
-            {pathItem.img && (
-              <Box
-                component="img"
-                src={pathItem.img}
-                alt={pathItem.name}
-                sx={{
-                  width: '100%',
-                  maxHeight: 160,
-                  objectFit: 'cover',
-                  borderRadius: 2,
-                  mb: 2,
-                }}
-              />
-            )}
+          )}
+        </Box>
 
-            {pathItem.type && (
-              <Typography variant="subtitle2" color="text.secondary" textAlign="center" mb={1}>
-                {pathItem.type}
-              </Typography>
-            )}
+        {/* --- Scrollable Schedule Section --- */}
+        {pathItem?.schedule && pathItem.schedule.length > 0 && (
+          <>
+            <Divider sx={{ my: 2 }} />
+            <Typography
+              variant="subtitle1"
+              fontWeight="bold"
+              textAlign="center"
+              mb={1}
+              color="primary"
+            >
+              Schedule
+            </Typography>
 
-            {pathItem.description && (
-              <Typography variant="body2" textAlign="justify" mb={2}>
-                {pathItem.description}
-              </Typography>
-            )}
+            <Stack spacing={1.5} pb={isMobile ? 0 : 10}>
+              {pathItem.schedule.map((s, i) => (
+                <Box
+                  key={i}
+                  sx={{
+                    border: '1px solid #ddd',
+                    borderRadius: 2,
+                    p: 1.5,
+                    bgcolor: '#fafafa',
+                  }}
+                >
+                  <Typography variant="subtitle2" fontWeight="bold" color="text.primary">
+                    {s.time}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {s.date}
+                  </Typography>
+                  <Typography variant="body2" mt={0.5}>
+                    <strong>Volunteers:</strong> {s.volunteers.join(', ')}
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Guide:</strong> {s.guide}
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Congregation:</strong> {s.congregation}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
           </>
-        ) : (
-          <Typography variant="body2" color="text.secondary" textAlign="center">
-            No information available.
-          </Typography>
         )}
       </Box>
-
-      {/* Scrollable Schedule Section */}
-      {pathItem?.schedule && pathItem.schedule.length > 0 && (
-        <Box
-          sx={{
-            overflowY: 'auto',
-            flexGrow: 1,
-            pr: 1,
-          }}
-        >
-          <Divider sx={{ my: 2 }} />
-          <Typography
-            variant="subtitle1"
-            fontWeight="bold"
-            textAlign="center"
-            mb={1}
-            color="primary"
-          >
-            Schedule
-          </Typography>
-
-          <Stack spacing={1.5} pb={2}>
-            {pathItem.schedule.map((s, i) => (
-              <Box
-                key={i}
-                sx={{
-                  border: '1px solid #ddd',
-                  borderRadius: 2,
-                  p: 1.5,
-                  bgcolor: '#fafafa',
-                }}
-              >
-                <Typography variant="subtitle2" fontWeight="bold" color="text.primary">
-                  {s.time}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {s.date}
-                </Typography>
-                <Typography variant="body2" mt={0.5}>
-                  <strong>Volunteers:</strong> {s.volunteers.join(', ')}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>Guide:</strong> {s.guide}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>Congregation:</strong> {s.congregation}
-                </Typography>
-              </Box>
-            ))}
-          </Stack>
-        </Box>
-      )}
     </SwipeableDrawer>
   );
 }
