@@ -5,7 +5,7 @@ import RoomServiceIcon from '@mui/icons-material/RoomService';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import DoorFrontIcon from '@mui/icons-material/DoorFront';
 import ParkIcon from '@mui/icons-material/Park';
-import { Stack, Chip, ThemeProvider, CssBaseline } from '@mui/material';
+import { Stack, Chip, ThemeProvider, CssBaseline, useMediaQuery } from '@mui/material';
 import type { JSX } from 'react';
 import { FaBus, FaRunning } from 'react-icons/fa';
 import {
@@ -56,6 +56,9 @@ type ChipsProps = {
 };
 
 export const Chips = ({ handleClick, types }: ChipsProps) => {
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -64,8 +67,8 @@ export const Chips = ({ handleClick, types }: ChipsProps) => {
         spacing={1}
         sx={{
           overflowX: 'auto',
-          width: '100%',
-          padding: 2,
+          width: isMobile ? '100%' : '90%',
+          padding: 1.5,
           pb: 2,
           '&::-webkit-scrollbar': { display: 'none' },
         }}
@@ -79,7 +82,7 @@ export const Chips = ({ handleClick, types }: ChipsProps) => {
               iconMap[type] ? (
                 iconMap[type]({
                   color: 'white',
-                  fontSize: 20,
+                  fontSize: 16,
                 })
               ) : (
                 <FaLocationArrow style={{ color: 'white' }} />

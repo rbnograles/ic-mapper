@@ -54,8 +54,8 @@ function parseSvgToJson(svgFile) {
 }
 
 // --- run ---
-const svgPath = '../../../assets/AyalaMallsMap/2ndFloor.svg';
-const outputPath = '../../Data/AyalaMalls/SecondFloor/SecondFloorLabels.json';
+const svgPath = '../../../assets/AyalaMallsMap/5th Floor.svg';
+const outputPath = '../../Data/AyalaMalls/FifthFloor/FifthFloorLabels.json';
 const result = parseSvgToJson(svgPath);
 
 fs.writeFileSync(

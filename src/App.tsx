@@ -1,4 +1,3 @@
-// App.tsx
 import { useState, useEffect, useMemo } from 'react';
 import {
   Box,

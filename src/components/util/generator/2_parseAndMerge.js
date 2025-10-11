@@ -31,32 +31,16 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
   while ((gMatch = groupRegex.exec(svgString)) !== null) {
     const [, groupId, groupContent] = gMatch;
 
-    // find circles inside this group
-    const circleRegex = /<circle\b[^>]*\bid\s*=\s*"([^"]+)"[^>]*>/gi;
-    let c;
-    while ((c = circleRegex.exec(groupContent)) !== null) {
-      const elementId = c[1];
-      if (elementId) idToGroup.set(elementId, groupId);
-    }
-
-    // find ellipses inside this group
-    const ellipseRegex = /<ellipse\b[^>]*\bid\s*=\s*"([^"]+)"[^>]*>/gi;
-    let e;
-    while ((e = ellipseRegex.exec(groupContent)) !== null) {
-      const elementId = e[1];
-      if (elementId) idToGroup.set(elementId, groupId);
-    }
-
-    // find paths inside this group (for entrances that are paths)
-    const pathRegex = /<path\b[^>]*\bid\s*=\s*"([^"]+)"[^>]*\bd="([^"]+)"[^>]*>/gi;
-    let p;
-    while ((p = pathRegex.exec(groupContent)) !== null) {
-      const elementId = p[1];
+    // find circles, ellipses, paths
+    const allElementRegex = /<(circle|ellipse|path)\b[^>]*\bid\s*=\s*"([^"]+)"[^>]*>/gi;
+    let match;
+    while ((match = allElementRegex.exec(groupContent)) !== null) {
+      const [, , elementId] = match;
       if (elementId) idToGroup.set(elementId, groupId);
     }
   }
 
-  // --- Parse entrances from the Entrances group ---
+  /** ---------------- ENTRANCES ---------------- **/
   const entrancesGroupRegex = /<g\b[^>]*\bid\s*=\s*"(?:Entrances|entrances)"[^>]*>([\s\S]*?)<\/g>/i;
   const groupMatchEntrances = svgString.match(entrancesGroupRegex);
 
@@ -125,6 +109,31 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
           neighbors: [],
         });
       }
+    }
+  }
+
+  /** ---------------- PATHS (as nodes) ---------------- **/
+  const pathsGroupRegex = /<g\b[^>]*\bid\s*=\s*"(?:Paths|paths)"[^>]*>([\s\S]*?)<\/g>/i;
+  const groupMatchPaths = svgString.match(pathsGroupRegex);
+
+  if (groupMatchPaths) {
+    const groupContent = groupMatchPaths[1];
+
+    // parse all <path> inside Paths group as nodes
+    const pathRegex = /<path\b[^>]*\bid="([^"]+)"[^>]*\bd="([^"]+)"[^>]*\/?>/gi;
+    let pMatch;
+    while ((pMatch = pathRegex.exec(groupContent)) !== null) {
+      const [, id, d] = pMatch;
+      const { cx, cy, rx, ry } = computeBoundingBox(d);
+      nodes.push({
+        id,
+        x: Math.round(cx * 100) / 100,
+        y: Math.round(cy * 100) / 100,
+        rx: Math.round(rx * 100) / 100,
+        ry: Math.round(ry * 100) / 100,
+        type: 'path',
+        neighbors: [],
+      });
     }
   }
 
@@ -217,7 +226,7 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
     grid.get(key).push(node);
   }
 
-  // --- Step 1: Circle/Ellipse <-> Circle/Ellipse neighbors ---
+  // --- Step 1: Node <-> Node neighbors ---
   for (const node of nodes) {
     const cx = Math.floor(node.x / cellSize);
     const cy = Math.floor(node.y / cellSize);
@@ -237,7 +246,7 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
     }
   }
 
-  // --- Step 2: Entrance <-> Path connections ---
+  // --- Step 2: Entrance <-> Node connections ---
   for (const entrance of entrances) {
     const cx = Math.floor(entrance.x / cellSize);
     const cy = Math.floor(entrance.y / cellSize);
@@ -267,7 +276,7 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
 function main() {
   const svgString = fs.readFileSync('../../../assets/AyalaMallsMap/2ndFloor.svg', 'utf-8');
   const outputPath = '../../Data/AyalaMalls/SecondFloor/SecondFloorNodes.json';
-  parseSvgToRoutingGraph(svgString, outputPath, 500);
+  parseSvgToRoutingGraph(svgString, outputPath, 150);
 }
 
 main();

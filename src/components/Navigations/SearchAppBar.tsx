@@ -263,6 +263,7 @@ export default function SearchAppBar({
             backgroundColor: 'transparent',
             boxShadow: 'none',
             paddingTop: 1.5,
+            flexDirection: isMobile ? 'column' : 'row'
           }}
         >
           <Toolbar

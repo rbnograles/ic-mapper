@@ -32,7 +32,7 @@ function classifyType(name) {
 
 // ✅ Data factory for cleaning and enhancing place JSON
 const dataFactory = () => {
-  const oldJsonPath = path.resolve('../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json');
+  const oldJsonPath = path.resolve('../../Data/AyalaMalls/FifthFloor/FifthFloor.json');
 
   // --- Load JSON ---
   if (!fs.existsSync(oldJsonPath)) {

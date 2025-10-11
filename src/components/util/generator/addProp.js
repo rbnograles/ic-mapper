@@ -2,8 +2,8 @@ import fs from 'fs';
 
 // ✅ Add new property "floor" to every place object
 const addFloorProp = () => {
-  const oldJsonPath = '../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json';
-  const floorName = 'Ayala Malls Third Floor'; // 👈 change this depending on your floor (e.g. 'third')
+  const oldJsonPath = '../../Data/AyalaMalls/FifthFloor/FifthFloor.json';
+  const floorName = 'Ayala Malls Fifth Floor'; // 👈 change this depending on your floor (e.g. 'third')
 
   // Load the JSON
   const oldData = fs.existsSync(oldJsonPath)
