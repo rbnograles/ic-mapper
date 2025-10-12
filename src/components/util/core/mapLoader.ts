@@ -1,84 +1,98 @@
 // src/utils/loadMapData.ts
+interface FloorData {
+  floor: string;
+  places: any[];
+  nodes: any[];
+  entrances: any[];
+  buidingMarks: any[];
+  roadMarks: any[];
+  boundaries: any[];
+}
+
 export async function loadMapData(floor: any) {
-  switch (floor) {
-    case 'ground': {
-      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
-        import('../../Data/AyalaMalls/GroundFloor/GroundFloor.json'),
-        import('../../Data/AyalaMalls/GroundFloor/GroundFloorNodes.json'),
-        import('../../Data/AyalaMalls/GroundFloor/GroundFloorLabels.json'),
-      ]);
-      return {
-        places: mapData.places,
-        nodes: nodeData.nodes,
-        entrances: nodeData.entrances,
-        buidingMarks: labels.buildingMarks,
-        roadMarks: labels.roadMarks,
-        boundaries: labels.mapBoundaries,
-      };
-    }
+  const loadSingleFloor = async (dirName: string, canonicalFloorName: string): Promise<FloorData> => {
+    const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
+      import(`../../Data/AyalaMalls/${dirName}/${dirName}.json`),
+      import(`../../Data/AyalaMalls/${dirName}/${dirName}Nodes.json`),
+      import(`../../Data/AyalaMalls/${dirName}/${dirName}Labels.json`),
+    ]);
 
-    case 'second': {
-      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
-        import('../../Data/AyalaMalls/SecondFloor/SecondFloor.json'),
-        import('../../Data/AyalaMalls/SecondFloor/SecondFloorNodes.json'),
-        import('../../Data/AyalaMalls/SecondFloor/SecondFloorLabels.json'),
-      ]);
-      return {
-        places: mapData.places,
-        nodes: nodeData.nodes,
-        entrances: nodeData.entrances,
-        buidingMarks: labels.buildingMarks,
-        roadMarks: labels.roadMarks,
-        boundaries: labels.mapBoundaries,
-      };
-    }
+    const places = Array.isArray(mapData?.places) ? mapData.places : [];
+    const nodes = Array.isArray(nodeData?.nodes) ? nodeData.nodes : [];
+    const entrances = Array.isArray(nodeData?.entrances) ? nodeData.entrances : [];
+    const buidingMarks = Array.isArray(labels?.buildingMarks) ? labels.buildingMarks : [];
+    const roadMarks = Array.isArray(labels?.roadMarks) ? labels.roadMarks : [];
+    const boundaries = Array.isArray(labels?.mapBoundaries) ? labels.mapBoundaries : [];
 
-    case 'third': {
-      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
-        import('../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json'),
-        import('../../Data/AyalaMalls/ThirdFloor/ThirdFloorNodes.json'),
-        import('../../Data/AyalaMalls/ThirdFloor/ThirdFloorLabels.json'),
-      ]);
-      return {
-        places: mapData.places,
-        nodes: nodeData.nodes,
-        entrances: nodeData.entrances,
-        buidingMarks: labels.buildingMarks,
-        roadMarks: labels.roadMarks,
-        boundaries: labels.mapBoundaries,
-      };
-    }
+    return {
+      floor: canonicalFloorName,
+      places,
+      nodes,
+      entrances,
+      buidingMarks,
+      roadMarks,
+      boundaries,
+    };
+  };
 
-    case 'fourth': {
-      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
-        import('../../Data/AyalaMalls/FourthFloor/FourthFloor.json'),
-        import('../../Data/AyalaMalls/FourthFloor/FourthFloorNodes.json'),
-        import('../../Data/AyalaMalls/FourthFloor/FourthFloorLabels.json'),
-      ]);
-      return {
-        places: mapData.places,
-        nodes: nodeData.nodes,
-        entrances: nodeData.entrances,
-        buidingMarks: labels.buildingMarks,
-        roadMarks: labels.roadMarks,
-        boundaries: labels.mapBoundaries,
-      };
-    }
+  switch (String(floor)) {
+    case 'ground':
+      return loadSingleFloor('GroundFloor', 'ground');
+    case 'second':
+      return loadSingleFloor('SecondFloor', 'second');
+    case 'third':
+      return loadSingleFloor('ThirdFloor', 'third');
+    case 'fourth':
+      return loadSingleFloor('FourthFloor', 'fourth');
+    case 'fifth':
+      return loadSingleFloor('FifthFloor', 'fifth');
 
-     case 'fifth': {
-      const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([
-        import('../../Data/AyalaMalls/FifthFloor/FifthFloor.json'),
-        import('../../Data/AyalaMalls/FifthFloor/FifthFloorNodes.json'),
-        import('../../Data/AyalaMalls/FifthFloor/FifthFloorLabels.json'),
-      ]);
-      return {
-        places: mapData.places,
-        nodes: nodeData.nodes,
-        entrances: nodeData.entrances,
-        buidingMarks: labels.buildingMarks,
-        roadMarks: labels.roadMarks,
-        boundaries: labels.mapBoundaries,
-      };
+    case 'all': {
+      const floorsToLoad: { dir: string; name: string }[] = [
+        { dir: 'GroundFloor', name: 'ground' },
+        { dir: 'SecondFloor', name: 'second' },
+        { dir: 'ThirdFloor', name: 'third' },
+        { dir: 'FourthFloor', name: 'fourth' },
+        { dir: 'FifthFloor', name: 'fifth' },
+      ];
+
+      const results = await Promise.all(
+        floorsToLoad.map(async (f) => {
+          try {
+            return await loadSingleFloor(f.dir, f.name);
+          } catch (err) {
+            console.error(`Failed to load ${f.name}`, err);
+            return null;
+          }
+        })
+      );
+
+      // filter out nulls and combine
+      const valid = results.filter((r): r is FloorData => r !== null && r !== undefined);
+
+      // initial accumulator with floor: 'all' to satisfy the type
+      const merged = valid.reduce(
+        (acc: FloorData, cur: FloorData) => ({
+          floor: acc.floor, // keep 'all'
+          places: [...acc.places, ...cur.places.map((p) => ({ ...p }))],
+          nodes: [...acc.nodes, ...cur.nodes],
+          entrances: [...acc.entrances, ...cur.entrances],
+          buidingMarks: [...acc.buidingMarks, ...cur.buidingMarks],
+          roadMarks: [...acc.roadMarks, ...cur.roadMarks],
+          boundaries: [...acc.boundaries, ...cur.boundaries],
+        }),
+        {
+          floor: 'all',
+          places: [],
+          nodes: [],
+          entrances: [],
+          buidingMarks: [],
+          roadMarks: [],
+          boundaries: [],
+        }
+      );
+
+      return merged;
     }
 
     default:

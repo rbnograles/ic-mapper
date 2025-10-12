@@ -40,6 +40,7 @@ export default function App() {
   // 🧭 Map Drawer
   const [mapsDrawerOpen, setMapsDrawerOpen] = useState(false);
   const [selectedMap, setSelectedMap] = useState(floors[0].key);
+  const [selectedMapName, setSelectedMapName] = useState(floors[0].key)
 
   // 🧱 Data states
   const [maps, setMaps] = useState<any[]>([]);
@@ -136,7 +137,6 @@ export default function App() {
         {/* 🔍 Search Bar */}
         <Box sx={layoutStyles.fixedTop}>
           <SearchAppBar
-            selectedMap={selectedMap}
             onSelect={handlePathSelect}
             handleChipClick={handleChipClick}
             handlePathSearchBehavior={handlePathSearchBehavior}
@@ -157,7 +157,7 @@ export default function App() {
                 height: '100%',
               }}
             >
-              Loading {selectedMap} map…
+              Loading {selectedMapName} …
             </Box>
           ) : (
             <BaseMap
@@ -200,6 +200,7 @@ export default function App() {
                     selected={selectedMap === floor.key}
                     onClick={() => {
                       setSelectedMap(floor.key);
+                      setSelectedMapName(floor.name);
                       setHighlightId(null);
                       setHighlightName(null);
                       setMapsDrawerOpen(false);

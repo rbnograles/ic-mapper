@@ -62,14 +62,12 @@ const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toU
 // Main Component
 // ====================
 export default function SearchAppBar({
-  selectedMap,
   onSelect,
   handleChipClick,
   handlePathSearchBehavior,
   handleRoute,
   getLocationFromHistory,
 }: {
-  selectedMap: string;
   onSelect: (item: any, type?: 'A' | 'B') => void;
   handleChipClick: (type: string) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
@@ -89,7 +87,7 @@ export default function SearchAppBar({
   // Lazy search data
   // ====================
   const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
-    selectedMap,
+    'all',
     20
   );
 

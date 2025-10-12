@@ -274,8 +274,8 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
 
 // --- Example usage ---
 function main() {
-  const svgString = fs.readFileSync('../../../assets/AyalaMallsMap/2ndFloor.svg', 'utf-8');
-  const outputPath = '../../Data/AyalaMalls/SecondFloor/SecondFloorNodes.json';
+  const svgString = fs.readFileSync('../../../assets/AyalaMallsMap/GroundFloor.svg', 'utf-8');
+  const outputPath = '../../Data/AyalaMalls/GroundFloor/GroundFloorNodes.json';
   parseSvgToRoutingGraph(svgString, outputPath, 150);
 }
 

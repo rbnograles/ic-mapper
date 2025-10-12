@@ -3,6 +3,7 @@ export interface PathItem {
   name: string;
   type?: string;
   img?: string;
+  floor?: string;
   description?: string;
   schedule?: ISchedule[];
 }

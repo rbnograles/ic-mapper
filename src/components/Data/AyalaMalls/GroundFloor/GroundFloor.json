@@ -809,7 +809,8 @@
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
       "entranceNodes": [
-        "Ellipse 494_2"
+        "Ellipse 494_2",
+        "Ellipse 494_2_2"
       ],
       "icon": "Escalator",
       "centerY": 30,
@@ -900,7 +901,8 @@
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
       "entranceNodes": [
-        "Ellipse 497_2"
+        "Ellipse 497_2",
+        "Ellipse 497_2_2"
       ],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -1203,7 +1205,8 @@
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
       "entranceNodes": [
-        "Ellipse 499_2"
+        "Ellipse 499_2",
+        "Ellipse 499_2_2"
       ],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -1432,7 +1435,7 @@
     },
     {
       "id": "BLDG_85",
-      "name": "NONOÃ¢ÂÂS",
+      "name": "NONO'S",
       "path": "M5712.93 2426.09V2073.54C5712.93 2070.78 5715.17 2068.63 5717.93 2068.63H6218.86C6221.63 2068.63 6223.86 2070.86 6223.86 2073.63V2421.1C6223.86 2423.85 6221.73 2426.09 6218.98 2426.1C6047.13 2426.41 5712.93 2426.84 5712.93 2426.09Z",
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 404_2",
@@ -1718,7 +1721,8 @@
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
       "entranceNodes": [
-        "Ellipse 498_2"
+        "Ellipse 498_2",
+        "Ellipse 498_2_2"
       ],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -4047,7 +4051,8 @@
       "entranceNode": "Ellipse 483_2",
       "description": "Place description goes in here...",
       "entranceNodes": [
-        "Ellipse 483_2"
+        "Ellipse 483_2",
+        "Ellipse 483_2_2"
       ],
       "baseFill": "#DFB133",
       "icon": "Escalator",
@@ -4060,13 +4065,18 @@
     },
     {
       "id": "BLDG_278",
-      "name": "NotClickable",
+      "name": "Escalator",
       "path": "M11090 3338.01L11137.8 3294.05C11139.8 3292.18 11143 3292.32 11144.9 3294.35L11442.6 3618.18C11444.4 3620.21 11444.3 3623.38 11442.3 3625.25L11394.4 3669.2C11392.4 3671.07 11389.2 3670.94 11387.4 3668.91L11089.7 3345.08C11087.8 3343.05 11088 3339.88 11090 3338.01Z",
-      "type": "NotClickable",
+      "type": "Escalator",
       "entranceNode": "",
       "description": "Place description goes in here...",
       "baseFill": "#DFB133",
-      "entranceNodes": [],
+      "icon": "Escalator",
+      "centerY": 50,
+      "entranceNodes": [
+        "Ellipse 483_2_3",
+        "Ellipse 483_2_4"
+      ],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         11266.099999999999,
