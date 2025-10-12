@@ -1,3 +1,4 @@
+// App.tsx
 import { useState, useEffect, useMemo } from 'react';
 import {
   Box,
@@ -6,7 +7,7 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemText,
+  ListItemText
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -23,10 +24,47 @@ import { floors } from './components/Maps/partials/floors';
 // Reuse single map component for all floors
 import BaseMap from './components/Maps';
 
+// Route tracker component
+import RouteTracker from './components/RouteTracker'; // adjust path if needed
+
 // plain function (not a hook)
 import { routeMapHandler } from './components/hooks/useRouteMapHandler';
 
-export default function App() {
+// react-router
+import {
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
+
+export default function AppRouter() {
+  return (
+    <Routes>
+
+         {/* explore view */}
+        <Route path="/xd" element={<RouteTracker/>} />
+        {/* normal floor view */}
+        <Route path="/floor/:floorKey" element={<MainLayout />} />
+
+        {/* fallback */}
+        <Route path="/" element={<Navigate to={`/floor/${floors[0].key}`} replace />} />
+      </Routes>
+  );
+}
+
+/**
+ * MainLayout - contains the original App UI but reads floor/explore from route params.
+ *
+ * If `exploreRoute` prop is true, this component will start in explore mode.
+ */
+function MainLayout({ exploreRoute = false }: { exploreRoute?: boolean }) {
+  const { floorKey } = useParams<{ floorKey?: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // 🗺️ Highlight + filter states
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [highlightName, setHighlightName] = useState<string | null>(null);
@@ -39,8 +77,14 @@ export default function App() {
 
   // 🧭 Map Drawer
   const [mapsDrawerOpen, setMapsDrawerOpen] = useState(false);
-  const [selectedMap, setSelectedMap] = useState(floors[0].key);
-  const [selectedMapName, setSelectedMapName] = useState(floors[0].key)
+
+  // selectedMap is driven by the route param when available, otherwise default to first floor
+  const initialFloorKey = floorKey ?? floors[0].key;
+  const [selectedMap, setSelectedMap] = useState<string>(initialFloorKey);
+
+  // readable name for display (keep in state so we can show "Loading x..." while loading)
+  const initialFloorName = floors.find((f) => f.key === initialFloorKey)?.name ?? floors[0].name;
+  const [selectedMapName, setSelectedMapName] = useState<string>(initialFloorName);
 
   // 🧱 Data states
   const [maps, setMaps] = useState<any[]>([]);
@@ -50,6 +94,23 @@ export default function App() {
   const [roadMarks, setRoadMarks] = useState<any[]>([]);
   const [boundaries, setboundaries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // explore mode from route (if path is /explore/*) OR toggled from UI
+  const isUrlExplore = location.pathname.startsWith('/explore');
+  const [exploreMode, setExploreMode] = useState<boolean>(isUrlExplore || exploreRoute);
+
+  // --- keep selectedMap in sync with route param changes (back/forward support)
+  useEffect(() => {
+    const newKey = floorKey ?? floors[0].key;
+    setSelectedMap(newKey);
+    const floor = floors.find((f) => f.key === newKey);
+    setSelectedMapName(floor?.name ?? newKey);
+  }, [floorKey]);
+
+  // keep exploreMode synced with route
+  useEffect(() => {
+    setExploreMode(location.pathname.startsWith('/explore'));
+  }, [location.pathname]);
 
   // 🧠 Helpers
   const resetHighlight = () => {
@@ -100,7 +161,8 @@ export default function App() {
     return () => {
       isMounted = false;
     };
-  }, [selectedMap]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedMap]); // selectedMap is synced to route via the effect above
 
   // 🚏 Pathfinding with caching — plain function that accepts current state
   const handleRoute = (from: string, to: string) => {
@@ -128,8 +190,18 @@ export default function App() {
   // Find current floor object once (memoized)
   const selectedFloor = useMemo(() => floors.find((f) => f.key === selectedMap), [selectedMap]);
 
-  // Always reuse the same AMGroundFloor component instance.
-  // Pass optional `assets` so a floor can override visuals if necessary.
+  // NAV helpers that use router instead of direct state changes
+  const openFloor = (floorKeyToOpen: string) => {
+    // navigate to floor route. Keep UI reset behaviors as before.
+    navigate(`/floor/${floorKeyToOpen}`);
+    setMapsDrawerOpen(false);
+    setExpanded(false);
+    setHighlightId(null);
+    setHighlightName(null);
+    setActiveNodeIds([]);
+    setPathItems({ id: '', name: '' });
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -147,7 +219,7 @@ export default function App() {
         </Box>
 
         {/* 🗺️ Map Container */}
-        <Box sx={layoutStyles.mapContainer}>
+        <Box id="yes" sx={layoutStyles.mapContainer}>
           {loading ? (
             <Box
               sx={{
@@ -160,23 +232,29 @@ export default function App() {
               Loading {selectedMapName} …
             </Box>
           ) : (
-            <BaseMap
-              // reuse the same component for all floors
-              highlightId={highlightId}
-              highlightName={highlightName}
-              selectedType={selectedType}
-              map={maps}
-              onClick={handlePathSelect}
-              handleSliderPathClick={handleSliderPathClick}
-              activeNodeIds={activeNodeIds}
-              nodes={nodes}
-              entrances={entrances}
-              boundaries={boundaries}
-              buidingMarks={buidingMarks}
-              roadMarks={roadMarks}
-              floorKey={selectedMap}
-              assets={selectedFloor?.assets}
-            />
+            exploreMode ? (
+              // Explore route: show RouteTracker
+              <RouteTracker
+              />
+            ) : (
+              <BaseMap
+                // reuse the same component for all floors
+                highlightId={highlightId}
+                highlightName={highlightName}
+                selectedType={selectedType}
+                map={maps}
+                onClick={handlePathSelect}
+                handleSliderPathClick={handleSliderPathClick}
+                activeNodeIds={activeNodeIds}
+                nodes={nodes}
+                entrances={entrances}
+                boundaries={boundaries}
+                buidingMarks={buidingMarks}
+                roadMarks={roadMarks}
+                floorKey={selectedMap}
+                assets={selectedFloor?.assets}
+              />
+            )
           )}
         </Box>
 
@@ -198,16 +276,7 @@ export default function App() {
                 <ListItem key={floor.key} disablePadding>
                   <ListItemButton
                     selected={selectedMap === floor.key}
-                    onClick={() => {
-                      setSelectedMap(floor.key);
-                      setSelectedMapName(floor.name);
-                      setHighlightId(null);
-                      setHighlightName(null);
-                      setMapsDrawerOpen(false);
-                      setExpanded(false);
-                      setActiveNodeIds([]);
-                      setPathItems({ id: '', name: '' });
-                    }}
+                    onClick={() => openFloor(floor.key)}
                   >
                     <ListItemText primary={floor.name} />
                   </ListItemButton>

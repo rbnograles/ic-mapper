@@ -305,14 +305,14 @@ function parseSvgToJson(svgFile, oldJsonPath) {
 }
 
 // --- run ---
-const svgPath = '../../../assets/AyalaMallsMap/2ndFloor.svg';
-const oldJson = '../../Data/AyalaMalls/SecondFloor/SecondFloor.json';
+const svgPath = '../../../assets/AyalaMallsMap/4thFloor.svg';
+const oldJson = '../../Data/AyalaMalls/FourthFloor/FourthFloor.json';
 
 const result = parseSvgToJson(svgPath, oldJson);
 
 fs.writeFileSync(
-  '../../Data/AyalaMalls/SecondFloor/SecondFloor.json',
+  '../../Data/AyalaMalls/FourthFloor/FourthFloor.json',
   JSON.stringify({ places: result.places }, null, 2)
 );
 
-console.log(`✅ Wrote merged SecondFloor.json (buildings with entranceNodes).`);
+console.log(`✅ Wrote merged FourthFloor.json (buildings with entranceNodes).`);

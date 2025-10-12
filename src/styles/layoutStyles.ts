@@ -12,7 +12,7 @@ export const layoutStyles = {
     zIndex: 1200,
   },
   mapContainer: {
-    height: 'calc(100vh - 120px)',
+    height: 'calc(100vh)',
     overflow: 'hidden',
     mt: 7,
   },

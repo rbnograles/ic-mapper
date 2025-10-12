@@ -258,10 +258,14 @@ export default function SearchAppBar({
           position="fixed"
           elevation={0}
           sx={{
+            width: '100vw', // make sure it never exceeds viewport
+            maxWidth: '100%',
+            left: 0,
             backgroundColor: 'transparent',
             boxShadow: 'none',
             paddingTop: 1.5,
-            flexDirection: isMobile ? 'column' : 'row'
+            flexDirection: isMobile ? 'column' : 'row',
+            overflowX: 'hidden', // prevent AppBar itself from overflowing
           }}
         >
           <Toolbar
