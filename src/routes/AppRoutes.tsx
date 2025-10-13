@@ -11,11 +11,8 @@ export default function AppRouter() {
     <Routes>
       {/* top-level layout that contains the BottomBar */}
       <Route path="/" element={<Layout />}>
-        {/* index -> redirect to default floor */}
-        <Route index element={<Navigate to={`/floor/${floors[0].key}`} replace />} />
-
         {/* pages (the Outlet content) */}
-        <Route path="map" element={<IndoorMap />} />
+        <Route index path="map" element={<IndoorMap />} />
         <Route path="explore-route" element={<RouteTracker />} />
         <Route path="saved" element={<Fragment>Saved</Fragment>} />
 

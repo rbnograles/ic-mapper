@@ -1,5 +1,3 @@
-// src/layouts/Layout.tsx
-import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider, CssBaseline, Drawer, Box } from '@mui/material';
 import theme from '@/styles/theme';

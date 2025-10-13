@@ -1,4 +1,4 @@
-import  { useState, useCallback, useEffect } from "react";
+import  { useState, useCallback, useEffect, Fragment } from "react";
 import { MapContainer, TileLayer, Marker, Polyline, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 
@@ -66,7 +66,7 @@ export default function RouteTracker({
   };
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <Fragment>
       <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "center" }}>
         <div>
           <label style={{ marginRight: 8 }}>
@@ -111,6 +111,6 @@ export default function RouteTracker({
           {origin && destination && <Polyline positions={[[origin.lat, origin.lng], [destination.lat, destination.lng]]} />}
         </MapContainer>
       </div>
-    </div>
+    </Fragment>
   );
 }
