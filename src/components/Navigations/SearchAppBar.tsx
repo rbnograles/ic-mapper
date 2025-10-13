@@ -10,15 +10,17 @@ import {
   IconButton,
   CircularProgress,
 } from '@mui/material';
-import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
 
+import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
+
+import SearchIcon from '@mui/icons-material/Search';
 import { FaDirections } from 'react-icons/fa';
-import uniqueTypes from '../Data/unique_types.json';
-import Direction from '../Drawers/Direction';
-import { Chips, iconMap } from './Chips';
-import type { PathItem } from '../../interface';
-import { useLazyMapData } from '../hooks/useLazyMapData';
+
+import uniqueTypes from '@/Data/unique_types.json';
+import Direction from '@/components/Drawers/DirectionSearch';
+import { Chips, iconMap } from '@/components/Navigations/Chips';
+import type { PathItem } from '@/interface';
+import { useLazyMapData } from '@/hooks/useLazyMapData';
 
 // ====================
 // Styled Components

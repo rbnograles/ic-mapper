@@ -1,12 +1,7 @@
-import FlatwareIcon from '@mui/icons-material/Flatware';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import WcIcon from '@mui/icons-material/Wc';
-import RoomServiceIcon from '@mui/icons-material/RoomService';
-import ElevatorIcon from '@mui/icons-material/Elevator';
-import DoorFrontIcon from '@mui/icons-material/DoorFront';
-import ParkIcon from '@mui/icons-material/Park';
+
 import { Stack, Chip, ThemeProvider, CssBaseline, useMediaQuery, Box } from '@mui/material';
 import { useRef, type JSX } from 'react';
+// icons
 import { FaBus, FaRunning } from 'react-icons/fa';
 import {
   FaHandHoldingHand,
@@ -19,9 +14,17 @@ import { BsBank2 } from 'react-icons/bs';
 import { MdHotel } from 'react-icons/md';
 import { FaSignsPost } from 'react-icons/fa6';
 import { MdEmojiEvents } from 'react-icons/md';
-
-import theme from '../../styles/theme';
 import { GrEscalator } from 'react-icons/gr';
+import FlatwareIcon from '@mui/icons-material/Flatware';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import WcIcon from '@mui/icons-material/Wc';
+import RoomServiceIcon from '@mui/icons-material/RoomService';
+import ElevatorIcon from '@mui/icons-material/Elevator';
+import DoorFrontIcon from '@mui/icons-material/DoorFront';
+import ParkIcon from '@mui/icons-material/Park';
+
+import theme from '@/styles/theme';
+
 
 export const iconMap: Record<string, (style?: React.CSSProperties) => JSX.Element> = {
   'Food & Beverage': (style = {}) => (

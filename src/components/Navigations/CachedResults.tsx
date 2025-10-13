@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/material';
 import { History } from '@mui/icons-material';
-import theme from '../../styles/theme';
+import theme from '@/styles/theme';
 
 interface Place {
   id: string;

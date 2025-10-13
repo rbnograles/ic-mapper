@@ -1,7 +1,6 @@
 export const layoutStyles = {
   appRoot: {
     minHeight: '100vh',
-    pb: 7,
     bgcolor: 'background.default',
   },
   fixedTop: {
@@ -12,7 +11,7 @@ export const layoutStyles = {
     zIndex: 1200,
   },
   mapContainer: {
-    height: 'calc(100vh)',
+    height: '100vh',
     overflow: 'hidden',
     mt: 7,
   },

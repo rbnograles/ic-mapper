@@ -1,16 +1,16 @@
 // AM.GroundFloor.tsx
 import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import MapFloatingIcons from '../Navigations/MapFloatingIcons';
-import ICON_MAP from '../util/iconMapper';
-import type { INodes, Labels } from '../../interface';
+import MapFloatingIcons from '@/components/Navigations/MapFloatingIcons';
+import ICON_MAP from '@/components/props/iconMapper';
+import type { INodes, Labels } from '@/interface';
 
 /* DEFAULT (ground-floor) visuals — keep these as defaults so current behavior is unchanged */
-import Boundaries from './components/Boundaries';
-import Base from './components/Base';
-import RoadMarks from './components/RoadMarks';
-import BuildingMarks from './components/BuildingMarks';
-import PathNodes from './components/PathNodes';
+import Boundaries from '@/components/Maps/Boundaries';
+import Base from '@/components/Maps/Base';
+import RoadMarks from '@/components/Maps/RoadMarks';
+import BuildingMarks from '@/components/Maps/BuildingMarks';
+import PathNodes from '@/components/Maps/PathNodes';
 
 type AssetComponents = {
   Boundaries?: React.ComponentType<any>;
@@ -22,7 +22,7 @@ type AssetComponents = {
   viewBox?: string;
 };
 
-function AMGroundFloor({
+function MapBuilder({
   highlightId,
   highlightName,
   selectedType,
@@ -36,6 +36,7 @@ function AMGroundFloor({
   buidingMarks,
   roadMarks,
   assets,
+  onFloorChangeClick,
 }: {
   highlightId: string | null;
   highlightName: string | null;
@@ -51,6 +52,7 @@ function AMGroundFloor({
   roadMarks: Labels[];
   floorKey?: string;
   assets?: AssetComponents;
+  onFloorChangeClick: () => void;
 }) {
   // Merge defaults with overrides
   const { ICON_MAP: ICONS = ICON_MAP, viewBox = '0 0 14779 10835' } = assets ?? {};
@@ -136,7 +138,7 @@ function AMGroundFloor({
       initialScale={initialScale}
       maxScale={20}
     >
-      <MapFloatingIcons transformRef={transformRef} />
+      <MapFloatingIcons transformRef={transformRef} onFloorChangeClick={onFloorChangeClick} />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox={viewBox} style={{ width: '100%', height: 'auto' }} fill="none">
           <g id="Base Map">
@@ -200,4 +202,4 @@ function AMGroundFloor({
   );
 }
 
-export default memo(AMGroundFloor);
+export default memo(MapBuilder);

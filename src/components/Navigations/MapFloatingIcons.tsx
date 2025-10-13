@@ -1,12 +1,18 @@
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 import { useControls } from 'react-zoom-pan-pinch';
-import { Remove } from '@mui/icons-material';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useTheme, useMediaQuery } from '@mui/material';
+import { HiMiniSquare3Stack3D } from 'react-icons/hi2';
+import { FiZoomIn, FiZoomOut } from 'react-icons/fi';
 
-function MapFloatingIcons({ transformRef }: any) {
+function MapFloatingIcons({
+  transformRef,
+  onFloorChangeClick,
+}: {
+  transformRef: any;
+  onFloorChangeClick: () => void;
+}) {
   const { zoomIn, zoomOut } = useControls();
   // ✅ MUI breakpoints
   const theme = useTheme();
@@ -46,9 +52,9 @@ function MapFloatingIcons({ transformRef }: any) {
         '& > :not(style)': {
           m: 1,
           // ✅ Default (desktop/tablet size)
-          width: 56,
-          height: 56,
-          minHeight: 56,
+          width: 36,
+          height: 36,
+          minHeight: 36,
           // ✅ Smaller size for mobile
           '@media (max-width:600px)': {
             width: 40,
@@ -65,11 +71,18 @@ function MapFloatingIcons({ transformRef }: any) {
         zIndex: 1300,
       }}
     >
+      <Fab
+        aria-label="add"
+        onClick={() => onFloorChangeClick()}
+        sx={{ bgcolor: theme.palette.secondary.main }}
+      >
+        <HiMiniSquare3Stack3D style={{ color: 'white' }} />
+      </Fab>
       <Fab aria-label="add" onClick={() => zoomIn()} sx={{ bgcolor: '#7B48FF' }}>
-        <AddIcon sx={{ color: 'white' }} />
+        <FiZoomIn style={{ color: 'white' }} />
       </Fab>
       <Fab aria-label="zoom-out" onClick={() => zoomOut()} sx={{ bgcolor: '#E0DCF4' }}>
-        <Remove />
+        <FiZoomOut />
       </Fab>
       <Fab aria-label="reset" onClick={() => handleReset()} sx={{ bgcolor: '#E0DCF4' }}>
         <RestartAltIcon />
