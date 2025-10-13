@@ -11,7 +11,6 @@ export default function Layout() {
       <Box sx={layoutStyles.appRoot}>
         {/* top-level fixed content (AppBar, Search) can go here if you want */}
         <Outlet />
-
         {/* persistent bottom bar (always visible) */}
         <BottomBar
           expanded={false} // wire in real state if you have slider
