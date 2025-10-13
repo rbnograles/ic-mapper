@@ -5,16 +5,12 @@ import BottomBar from '@/components/Navigations/BottomNavBar';
 import { layoutStyles } from '@/styles/layoutStyles';
 
 export default function Layout() {
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={layoutStyles.appRoot}>
         {/* top-level fixed content (AppBar, Search) can go here if you want */}
-        {/* main page content (routes render here) */}
-        <Box sx={layoutStyles.mapContainer}>
-          <Outlet />
-        </Box>
+        <Outlet />
 
         {/* persistent bottom bar (always visible) */}
         <BottomBar
