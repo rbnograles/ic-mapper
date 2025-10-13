@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/layouts/layout';
 import { IndoorMap } from '@/pages/IndoorMap';
 import RouteTracker from '@/pages/ExplorerMap';
-import { floors } from '@/pages/IndoorMap/partials/floors';
 import { Fragment } from 'react/jsx-runtime';
 
 export default function AppRouter() {
