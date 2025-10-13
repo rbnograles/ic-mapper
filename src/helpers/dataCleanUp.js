@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // ✅ Load category reference
-const categoriesPath = path.resolve('../../Data/category.json');
+const categoriesPath = path.resolve('../Data/category.json');
 
 if (!fs.existsSync(categoriesPath)) {
   console.error('❌ Category file not found:', categoriesPath);

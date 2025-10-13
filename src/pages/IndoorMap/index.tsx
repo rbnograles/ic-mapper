@@ -3,11 +3,6 @@ import { useState, useEffect, useMemo } from 'react';
 import {
   Box,
   CssBaseline,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Typography,
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
@@ -69,7 +64,7 @@ export function IndoorMap() {
   // but change effect dependency from [floorKey] to [paramFloorKey] (or use selectedMap state)
   useEffect(() => {
     const newKey = paramFloorKey ?? floors[0].key;
-    setSelectedMap(newKey);
+    setSelectedMap('second'); // change to new key
     const floor = floors.find((f) => f.key === newKey);
     setSelectedMapName(floor?.name ?? newKey);
   }, [paramFloorKey]);
