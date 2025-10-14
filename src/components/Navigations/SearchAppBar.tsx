@@ -55,14 +55,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-// ====================
-// Utility
-// ====================
 const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toUpperCase());
 
-// ====================
-// Main Component
-// ====================
 export default function SearchAppBar({
   onSelect,
   handleChipClick,
@@ -85,9 +79,7 @@ export default function SearchAppBar({
   const [pointA, setPointA] = useState<PathItem>(pathItem);
   const [pointB, setPointB] = useState<PathItem>(pathItem);
 
-  // ====================
   // Lazy search data
-  // ====================
   const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
     'all',
     20
@@ -96,7 +88,7 @@ export default function SearchAppBar({
   const [query, setQuery] = useState('');
   const [displayOptions, setDisplayOptions] = useState<any[]>([]);
 
-  // ✅ Debounced search
+  // Debounced search
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!query.trim()) setDisplayOptions(visiblePlaces);
@@ -105,9 +97,7 @@ export default function SearchAppBar({
     return () => clearTimeout(timer);
   }, [query, visiblePlaces]);
 
-  // ====================
   // Point Handling
-  // ====================
   const setPointAMethod = (val: any) => {
     setPointA(val);
     if (pointB.name && val) {
@@ -135,9 +125,7 @@ export default function SearchAppBar({
     if (newA && newB) handleRoute(newA.name, newB.name);
   };
 
-  // ====================
   // Search Bar Renderer
-  // ====================
   const renderSearchBar = (placeholder: string, value: any, onChange: (val: any) => void) => (
     <Search
       sx={{
@@ -249,9 +237,7 @@ export default function SearchAppBar({
     </Search>
   );
 
-  // ====================
   // Render Component
-  // ====================
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

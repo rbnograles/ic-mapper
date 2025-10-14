@@ -1,4 +1,3 @@
-// src/components/Navigations/BottomBar.tsx
 import { LocationOn, Bookmark } from '@mui/icons-material';
 import {
   useMediaQuery,

@@ -227,7 +227,7 @@ const dataFactory = () => {
       }
     }
 
-    // 🏷️ Auto-classify by imported categories (only if not already one of the special types)
+    // Auto-classify by imported categories (only if not already one of the special types)
     const isSpecial = ['Fire Exit', 'Stairs', 'Escalator', 'Elevator', 'Restroom'].includes(updated.type);
     const detectedType = !isSpecial ? classifyType(updated.name || '') : null;
     if (detectedType) {
@@ -237,7 +237,7 @@ const dataFactory = () => {
       if (Object.keys(categories).length > 0) unmatched.push(updated.name || null);
     }
 
-    // 🧩 Detect duplicate paths
+    // Detect duplicate paths
     if (typeof updated.path === 'string') {
       const normalizedPath = updated.path.trim();
       if (seenPaths.has(normalizedPath)) {

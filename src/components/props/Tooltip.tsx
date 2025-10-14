@@ -1,3 +1,7 @@
+/**
+ * NOTE: Not Currently in used, the idea is them ever we click location, highligh location or point to point search a toll tip 
+ * will show displaining location name
+ */
 import type { IBaseP } from '@/interface';
 
 export const Tooltip = ({

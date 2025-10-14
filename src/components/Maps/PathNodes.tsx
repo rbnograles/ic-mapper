@@ -1,4 +1,3 @@
-// AMGFPathNodes.tsx (replace the file contents with this)
 import { motion, useAnimation } from 'framer-motion';
 import { line, curveCatmullRom } from 'd3-shape';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -77,8 +76,7 @@ const PathNodes = ({ route, nodes }: PathNodesProps) => {
         duration: 20,
       },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathLength, route.join('-')]); // include route order so swapping restarts animation
+  }, [pathLength, route.join('-')]); 
 
   return (
     <ThemeProvider theme={theme}>

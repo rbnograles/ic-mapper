@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-
+import { useParams } from 'react-router-dom';
 import theme from '@/styles/theme';
 import { layoutStyles } from '@/styles/layoutStyles';
 import BottomBar from '@/components/Navigations/BottomNavBar';
@@ -20,13 +20,12 @@ import { floors } from '@/pages/IndoorMap/partials/floors';
 // Reuse single map component for all floors
 import MapBuilder from '@/components/Maps';
 
-// plain function (not a hook)
+// plain function
 import { routeMapHandler } from '@/hooks/useRouteMapHandler';
-import { useParams, useNavigate } from 'react-router-dom';
+
 import FloorCardSelector from '@/components/Drawers/FloorSelection';
 
 export function IndoorMap() {
-  const navigate = useNavigate();
 
   // 🗺️ Highlight + filter states
   const [highlightId, setHighlightId] = useState<string | null>(null);
@@ -35,10 +34,10 @@ export function IndoorMap() {
   const [pathItem, setPathItems] = useState<PathItem>({ name: '', id: '' });
   const [activeNodeIds, setActiveNodeIds] = useState<string[]>([]);
 
-  // 🎚️ Slider
+  // Slider
   const [expanded, setExpanded] = useState(false);
 
-  // 🧭 Map Drawer
+  // Map Drawer
   const [floorDrawerOpen, setFloorDrawerOpen] = useState(false);
 
   // use paramFloorKey as the route-provided floor key
@@ -60,8 +59,6 @@ export function IndoorMap() {
   const [boundaries, setboundaries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // ... rest of your component is unchanged, it already has an effect that watches floorKey
-  // but change effect dependency from [floorKey] to [paramFloorKey] (or use selectedMap state)
   useEffect(() => {
     const newKey = paramFloorKey ?? floors[0].key;
     setSelectedMap('ground'); // change to new key
@@ -69,7 +66,7 @@ export function IndoorMap() {
     setSelectedMapName(floor?.name ?? newKey);
   }, [paramFloorKey]);
 
-  // 🧠 Helpers
+  // Helpers
   const resetHighlight = () => {
     setHighlightId(null);
     setHighlightName(null);
@@ -119,10 +116,10 @@ export function IndoorMap() {
     return () => {
       isMounted = false;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedMap]); // selectedMap is synced to route via the effect above
+   // selectedMap is synced to route via the effect above
+  }, [selectedMap]); 
 
-  // 🚏 Pathfinding with caching — plain function that accepts current state
+  // Pathfinding with caching — plain function that accepts current state
   const handleRoute = (from: string, to: string) => {
     return routeMapHandler(
       from,
@@ -177,7 +174,7 @@ export function IndoorMap() {
           />
         </Box>
 
-        {/* 🗺️ Map Container */}
+        {/* Map Container */}
         {/* Container size pagination problem below */}
         <div style={{ ...layoutStyles.mapContainer }}>
           {loading ? (

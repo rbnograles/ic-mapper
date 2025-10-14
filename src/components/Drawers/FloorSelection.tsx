@@ -40,13 +40,6 @@ export type FloorCardSelectorProps = {
   mobileBottomSheet?: boolean;
 };
 
-/**
- * Modernized FloorCardSelector
- * - modern visuals (rounded card, subtle shadows, avatars)
- * - built-in search / filter
- * - smooth fade + scale animation
- * - accessible: closes on Escape and ClickAway
- */
 export default function FloorCardSelector({
   open,
   onClose,

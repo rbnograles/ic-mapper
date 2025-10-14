@@ -1,3 +1,4 @@
+// Return a custom icon in form of SVG for cart location
 const Cart = () => {
   return (
     <svg

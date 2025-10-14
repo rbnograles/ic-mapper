@@ -12,12 +12,7 @@ type RouteResult = {
   timestamp: number;
 } | null;
 
-/**
- * Plain function (NOT a hook) that computes a route between two places,
- * caches results in localStorage (both directions), and updates supplied setters.
- *
- * Returns the ordered nodes (from -> to) or null if no route.
- */
+
 export async function routeMapHandler(
   from: string,
   to: string,
