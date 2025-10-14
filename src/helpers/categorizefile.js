@@ -11,16 +11,14 @@ const findProp = () => {
         : { places: [] };
 
     const map = oldData.places.map(d => {
-       if(d.entranceNodes.length === 0 && d.type !== 'NotClickable') {
-            return d
+       if(d.type === "Building") {
+            return d.name
        }
     }).filter((f) => f !== undefined)
 
-    const result = { places: map }
-    console.log(result)
-    fs.writeFileSync(
-      '../Data/findResult.json',
-      JSON.stringify(result, null, 2)
+     fs.writeFileSync(
+      './findResult.json',
+      JSON.stringify(map, null, 2)
     );
 }
 

@@ -255,11 +255,10 @@ function parseSvgToJson(svgFile, oldJsonPath) {
 
   // --- merge with old ---
   const oldPathMap = new Map((oldData.places || []).map((p) => [p.path, p]));
-  const oldIdMap = new Map((oldData.places || []).map((p) => [p.id, p]));
   const merged = [];
 
   for (const nb of buildings) {
-    const old = oldPathMap.get(nb.path) || oldIdMap.get(nb.id);
+    const old = oldPathMap.get(nb.path);
     if (!old) {
       merged.push({
         id: nb.id,
