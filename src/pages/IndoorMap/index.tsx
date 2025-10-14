@@ -64,7 +64,7 @@ export function IndoorMap() {
   // but change effect dependency from [floorKey] to [paramFloorKey] (or use selectedMap state)
   useEffect(() => {
     const newKey = paramFloorKey ?? floors[0].key;
-    setSelectedMap('third'); // change to new key
+    setSelectedMap('ground'); // change to new key
     const floor = floors.find((f) => f.key === newKey);
     setSelectedMapName(floor?.name ?? newKey);
   }, [paramFloorKey]);

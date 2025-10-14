@@ -97,8 +97,8 @@ const FloorBase = memo(
             <foreignObject
               x={centers[p.id].x - (p.centerX ?? 50)}
               y={centers[p.id].y - (p.centerY ?? 30)}
-              width={100}
-              height={100}
+              width={p.name.includes("Elevator") ? 70 : 100}
+              height={p.name.includes("Elevator") ? 70 : 100}
             >
               <div
                 style={{

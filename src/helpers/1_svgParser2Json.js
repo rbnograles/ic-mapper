@@ -134,7 +134,7 @@ function parseSvgToJson(svgFile, oldJsonPath) {
       id,
       path: d,
       centroid: getCentroid(d),
-      name: null,
+      name: id,
       entranceNodes: [],
     });
   }

@@ -19,7 +19,7 @@ const findProp = () => {
     const result = { places: map }
     console.log(result)
     fs.writeFileSync(
-      'findResult.json',
+      '../Data/findResult.json',
       JSON.stringify(result, null, 2)
     );
 }
