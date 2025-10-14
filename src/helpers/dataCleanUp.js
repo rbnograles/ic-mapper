@@ -1,3 +1,4 @@
+// update-places-unique-ids.js
 import fs from 'fs';
 import path from 'path';
 
@@ -30,6 +31,17 @@ function classifyType(name) {
   return null;
 }
 
+// --- Helper: create a normalized slug/id from a string ---
+function slugifyId(input) {
+  if (!input) return '';
+  // toLower, remove non-word characters except spaces, replace spaces with underscore, trim underscores
+  return String(input)
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s-]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
 // ✅ Data factory for cleaning and enhancing place JSON
 const dataFactory = () => {
   const args = process.argv.slice(2);
@@ -52,15 +64,32 @@ const dataFactory = () => {
   const duplicatePaths = [];
   const unmatched = [];
 
+  // Keep track of used ids to enforce uniqueness
+  const usedIds = new Set();
+
+  // function to produce a unique id (adds suffixes when collision)
+  function makeUniqueId(base, indexFallback) {
+    const cleanBase = slugifyId(base) || `place_${indexFallback}`;
+    let candidate = cleanBase;
+    let suffix = 1;
+    while (usedIds.has(candidate)) {
+      candidate = `${cleanBase}_${suffix}`;
+      suffix += 1;
+    }
+    usedIds.add(candidate);
+    return candidate;
+  }
+
   // --- Modify + clean items ---
   const updatedPlaces = oldData.places.map((place, i) => {
-    let updated = { ...place, floor: 'Third Floor' };
+    // start with copy and default floor
+    let updated = { ...place, floor: place.floor || 'Third Floor' };
 
-    // 🔥 Fire Exit handling
+    // 🔥 Fire Exit handling (assign temporary id; we'll still normalize/unique it below)
     if (/fire\s*exit/i.test(place.id || '') || /fire\s*exit/i.test(place.name || '')) {
       updated = {
         ...updated,
-        id: `Fire Exit_${i}`,
+        id: `Fire Exit_${i}`, // will be normalized by slugify + uniquified below
         name: 'Fire Exit',
         type: 'Fire Exit',
         baseFill: '#F66E19',
@@ -69,7 +98,7 @@ const dataFactory = () => {
       };
     }
 
-    // 🧹 Remove underscores
+    // 🧹 Remove underscores in name
     if (typeof updated.name === 'string') {
       updated.name = updated.name.replace(/_/g, ' ').trim();
     }
@@ -96,17 +125,23 @@ const dataFactory = () => {
       }
     }
 
+    // --- Ensure unique id for every place ---
+    // Prefer existing id, then name, then fallback to index
+    const preferred = updated.id || updated.name || `place_${i}`;
+    const uniqueId = makeUniqueId(preferred, i);
+    updated.id = uniqueId;
+
     return updated;
   });
 
   // --- Write updated JSON ---
-  const result = { places: updatedPlaces };
-  fs.writeFileSync(oldJsonPath, JSON.stringify(result, null, 2));
+  const result = { ...oldData, places: updatedPlaces };
+  fs.writeFileSync(oldJsonPath, JSON.stringify(result, null, 2), 'utf-8');
 
   // --- Write unmatched names for review ---
   if (unmatched.length > 0) {
-    const unmatchedPath = path.resolve('../../Data/AyalaMalls/unmatched.json');
-    fs.writeFileSync(unmatchedPath, JSON.stringify(unmatched, null, 2));
+    const unmatchedPath = path.resolve('../Data/unmatched.json');
+    fs.writeFileSync(unmatchedPath, JSON.stringify(unmatched, null, 2), 'utf-8');
     console.warn(`⚠️ Some names did not match any category. Saved to ${unmatchedPath}`);
   }
 
@@ -122,3 +157,4 @@ const dataFactory = () => {
 
 // Executes File
 dataFactory();
+``

@@ -83,8 +83,8 @@ const FloorBase = memo(
             id={p.id}
             d={p.path}
             fill={p.type !== 'NotClickable' ? fillColor : '#B8B6B6'}
-            stroke={p.type !== 'NotClickable' && p.type !== 'Park' ? strokeColor : 'black'}
-            strokeWidth={p.type !== 'NotClickable' ? strokeWidth : 1}
+            stroke={p.type !== 'NotClickable' && p.type !== 'Park' ? strokeColor : 'white'}
+            strokeWidth={p.type !== 'NotClickable' ? strokeWidth : 5}
             style={{
               transformBox: 'fill-box',
               transformOrigin: 'center',

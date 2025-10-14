@@ -1,0 +1,19 @@
+{
+  "places": [
+    {
+      "id": "bldg_167",
+      "name": "Unknown",
+      "path": "M3278 6414.8V6448C3278 6453.52 3282.48 6458 3288 6458H3328C3333.52 6458 3338 6453.52 3338 6448V6414C3338 6408.48 3333.52 6404 3328 6404H3288C3282.48 6404 3278 6408.48 3278 6414V6414.8Z",
+      "type": "Building",
+      "entranceNodes": [],
+      "description": "Place description goes in here...",
+      "nearNodes": [],
+      "baseFill": "white",
+      "centroid": [
+        3308,
+        6431
+      ],
+      "floor": "Third Floor"
+    }
+  ]
+}
