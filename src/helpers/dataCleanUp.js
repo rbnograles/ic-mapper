@@ -155,8 +155,8 @@ const specialTypeMatchers = [
   }
 ];
 
-// ✅ Data factory for cleaning and enhancing place JSON
-const dataFactory = () => {
+// Data Clean Up function
+const dataCleanUp = () => {
   const args = process.argv.slice(2);
   const oldJsonPath = path.resolve(`../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`);
 
@@ -193,18 +193,96 @@ const dataFactory = () => {
     return candidate;
   }
 
+  // Normalizer for category text variants into canonical type names
+  function normalizeCategoryName(raw) {
+    if (!raw || typeof raw !== 'string') return null;
+    let s = raw.trim();
+
+    // common cleanups
+    s = s.replace(/\s+/g, ' ');
+    s = s.replace(/[_]+/g, ' ');
+    s = s.replace(/&amp;/gi, '&');
+
+    const low = s.toLowerCase();
+
+    // canonical mapping - extend as needed
+    const map = {
+      'food & beverages': 'Food & Beverage',
+      'food and beverages': 'Food & Beverage',
+      'food': 'Food & Beverage',
+      'retail': 'Retail',
+      'service': 'Services',
+      'services': 'Services',
+      'entertainment / recreation': 'Entertainment',
+      'entertainment': 'Entertainment',
+      'recreation': 'Entertainment / Recreation',
+      'entertainment & recreation': 'Entertainment',
+      'entertainment / recreation': 'Entertainment',
+    };
+
+    // If categories object exists and has keys, prefer its keys (case-insensitive)
+    if (categories && typeof categories === 'object' && Object.keys(categories).length > 0) {
+      const keys = Object.keys(categories);
+      // try to find case-insensitive match
+      const found = keys.find((k) => k.toLowerCase() === low);
+      if (found) return found;
+    }
+
+    if (map[low]) return map[low];
+
+    // fallback: Title Case the incoming suffix
+    return s.split(' ').map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+  }
+
+  // Prepare centroid tracking outside map so we can remove duplicates later
+  const seenCentroid = new Map(); // centroidKey -> firstIndex
+  const duplicateCentroids = [];
+
+  // Suffix detection pattern:
+  // will match a trailing " - SOME CATEGORY", "— SOME CATEGORY", ", SOME CATEGORY", "/ SOME CATEGORY", or just "NAME CATEGORY" with dash-like separators.
+  const trailingCategoryPattern = /^(.*?)(?:\s*[-–—\/,]+\s*)([^-–—\/,()]+(?:\s*\/\s*[^-–—\/,()]+)?)\s*$/;
+
   // --- Modify + clean items ---
-  const updatedPlaces = oldData.places.map((place, i) => {
+  const transformed = oldData.places.map((place, i) => {
     // start with copy and default floor
-    let updated = { ...place, floor: place.floor || 'Third Floor' };
+    let updated = { ...place, floor: place.floor };
 
     // Normalize and fix mojibake on incoming name/id first
     if (typeof updated.name === 'string') {
       updated.name = fixMojibake(updated.name);
-      updated.name = updated.name.replace(/_/g, ' ').trim();
+      // unify whitespace and underscores
+      updated.name = updated.name.replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
     }
     if (typeof updated.id === 'string') {
       updated.id = fixMojibake(updated.id);
+    }
+
+    // --- Clean trailing category in name (e.g. "MASTER SIOMAI- Food & Beverages", "FUMA-Retail") ---
+    if (typeof updated.name === 'string' && updated.name.length > 0) {
+      const m = updated.name.match(trailingCategoryPattern);
+      if (m) {
+        // m[1] = name without suffix, m[2] = candidate category suffix
+        const possibleName = (m[1] || '').trim();
+        const possibleCategory = (m[2] || '').trim();
+
+        const normalizedCategory = normalizeCategoryName(possibleCategory);
+        // only accept it as category if the normalizedCategory is non-empty and not something that looks like a leftover name
+        if (normalizedCategory) {
+          // if the place doesn't already have a special type, adopt the suffix as type
+          const isSpecial = ['Fire Exit', 'Stairs', 'Escalator', 'Elevator', 'Restroom'].includes(updated.type);
+          if (!isSpecial) {
+            updated.type = normalizedCategory;
+          }
+
+          // set the cleaned name if it's non-empty; otherwise keep original
+          if (possibleName && possibleName.length > 0) {
+            updated.name = possibleName;
+          } else {
+            // if cleaning produced an empty name, keep original trimmed
+            updated.name = updated.name.replace(/\s+/g, ' ').trim();
+          }
+        }
+      }
     }
 
     // --- Special types handling: Fire Exit / Stairs / Escalator / Elevator / Restroom ---
@@ -227,14 +305,14 @@ const dataFactory = () => {
       }
     }
 
-    // Auto-classify by imported categories (only if not already one of the special types)
+    // Auto-classify by imported categories only if still not a special-type and not already a known category
     const isSpecial = ['Fire Exit', 'Stairs', 'Escalator', 'Elevator', 'Restroom'].includes(updated.type);
     const detectedType = !isSpecial ? classifyType(updated.name || '') : null;
     if (detectedType) {
       updated.type = detectedType;
     } else if (!isSpecial) {
       // Only record unmatched names if categories were provided
-      if (Object.keys(categories).length > 0) unmatched.push(updated.name || null);
+      if (Object.keys(categories || {}).length > 0) unmatched.push(updated.name || null);
     }
 
     // Detect duplicate paths
@@ -251,6 +329,35 @@ const dataFactory = () => {
       }
     }
 
+    // --- Centroid duplicate detection ---
+    // Normalize centroid to a string key so we can detect duplicates robustly
+    let centroidKey = null;
+    if (Array.isArray(updated.centroid) && updated.centroid.length > 0) {
+      // numeric centroid array -> "x,y" string
+      centroidKey = updated.centroid.map((c) => {
+        const n = Number(c);
+        return Number.isFinite(n) ? n.toFixed(6) : String(c);
+      }).join(',');
+    } else if (typeof updated.centroid === 'string' && updated.centroid.trim() !== '') {
+      centroidKey = updated.centroid.trim();
+    }
+
+    if (centroidKey) {
+      if (seenCentroid.has(centroidKey)) {
+        // mark this place for removal later (duplicate centroid)
+        duplicateCentroids.push({
+          duplicateIndex: i,
+          originalIndex: seenCentroid.get(centroidKey),
+          centroid: centroidKey,
+          name: updated.name,
+        });
+        // add a flag so we can filter it out after mapping
+        updated._removeBecauseDuplicateCentroid = true;
+      } else {
+        seenCentroid.set(centroidKey, i);
+      }
+    }
+
     // --- Ensure unique id for every place ---
     // Prefer existing id, then name, then fallback to index
     const preferred = updated.id || updated.name || `place_${i}`;
@@ -259,6 +366,9 @@ const dataFactory = () => {
 
     return updated;
   });
+
+  // Remove items marked as duplicate centroids (keep first occurrence)
+  const updatedPlaces = transformed.filter((p) => !p._removeBecauseDuplicateCentroid);
 
   // --- Write updated JSON ---
   const result = { ...oldData, places: updatedPlaces };
@@ -273,13 +383,22 @@ const dataFactory = () => {
 
   // --- Report summary ---
   console.log(`✅ Completed data cleanup & saved to ${oldJsonPath}`);
+
   if (duplicatePaths.length > 0) {
     console.warn('⚠️ Duplicate paths found:');
     console.table(duplicatePaths);
   } else {
     console.log('✅ No duplicate paths found.');
   }
+
+  if (duplicateCentroids.length > 0) {
+    console.warn('⚠️ Duplicate centroids found (duplicates removed, first occurrence kept):');
+    console.table(duplicateCentroids);
+    console.log(`Removed ${duplicateCentroids.length} place(s) that had matching centroids.`);
+  } else {
+    console.log('✅ No duplicate centroids found.');
+  }
 };
 
-// Executes File
-dataFactory();
+
+dataCleanUp();

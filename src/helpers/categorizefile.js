@@ -17,7 +17,7 @@ const findProp = () => {
     }).filter((f) => f !== undefined)
 
      fs.writeFileSync(
-      './findResult.json',
+      './catResult.json',
       JSON.stringify(map, null, 2)
     );
 }
