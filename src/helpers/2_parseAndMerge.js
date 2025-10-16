@@ -1,23 +1,7 @@
 import fs from 'fs';
 
-/** --- Helpers --- */
-function computeBoundingBox(pathStr) {
-  const numbers = pathStr.match(/-?\d+(\.\d+)?/g)?.map(Number) || [];
-  const xs = numbers.filter((_, i) => i % 2 === 0);
-  const ys = numbers.filter((_, i) => i % 2 === 1);
+import { computeBoundingBox } from './geometry';
 
-  const minX = Math.min(...xs);
-  const maxX = Math.max(...xs);
-  const minY = Math.min(...ys);
-  const maxY = Math.max(...ys);
-
-  return {
-    cx: (minX + maxX) / 2,
-    cy: (minY + maxY) / 2,
-    rx: (maxX - minX) / 2,
-    ry: (maxY - minY) / 2,
-  };
-}
 
 function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
   const nodes = [];
