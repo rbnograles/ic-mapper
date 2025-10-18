@@ -3,7 +3,7 @@ import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import MapFloatingIcons from '@/components/Navigations/MapFloatingIcons';
 import ICON_MAP from '@/components/props/iconMapper';
-import type { INodes, Labels } from '@/interface';
+import type { IMapItem, INodes, ILabels } from '@/interface';
 
 /* DEFAULT (ground-floor) visuals — keep these as defaults so current behavior is unchanged */
 import Boundaries from '@/components/Maps/Boundaries';
@@ -11,51 +11,35 @@ import Base from '@/components/Maps/Base';
 import RoadMarks from '@/components/Maps/RoadMarks';
 import BuildingMarks from '@/components/Maps/BuildingMarks';
 import PathNodes from '@/components/Maps/PathNodes';
+import useMapStore from '@/store/MapStore';
+import useDrawerStore from '@/store/DrawerStore';
 
-type AssetComponents = {
-  Boundaries?: React.ComponentType<any>;
-  Base?: React.ComponentType<any>;
-  RoadMarks?: React.ComponentType<any>;
-  BuildingMarks?: React.ComponentType<any>;
-  PathNodes?: React.ComponentType<{ route: string[]; nodes: INodes[] }>;
-  ICON_MAP?: Record<string, any>;
-  viewBox?: string;
-};
-
-function MapBuilder({
-  highlightId,
-  highlightName,
-  selectedType,
-  map,
-  onClick,
-  handleSliderPathClick,
-  activeNodeIds,
-  nodes,
-  entrances,
-  boundaries,
-  buidingMarks,
-  roadMarks,
-  assets,
-  onFloorChangeClick,
-}: {
-  highlightId: string | null;
-  highlightName: string | null;
-  selectedType?: string | null;
+type TMapBuilder = {
   map: any[];
-  onClick?: (p: any) => void;
-  handleSliderPathClick?: () => void;
-  activeNodeIds: string[];
   nodes: INodes[];
   entrances: INodes[];
-  boundaries: Labels[];
-  buidingMarks: Labels[];
-  roadMarks: Labels[];
+  boundaries: ILabels[];
+  buidingMarks: ILabels[];
+  roadMarks: ILabels[];
   floorKey?: string;
-  assets?: AssetComponents;
-  onFloorChangeClick: () => void;
-}) {
+};
+
+function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks }: TMapBuilder) {
+  // Map Store
+  const highlightPlace = useMapStore((state) => state.highlightedPlace);
+  const activeNodeIds = useMapStore((state) => state.activeNodeIds);
+  const selectedType = useMapStore((state) => state.selectedType);
+  // alias assignment to normalize word
+  const id = highlightPlace.id;
+  const name = highlightPlace.name;
+  //Actions
+  const handlePathSelect = useMapStore((state) => state.handlePathSelect);
+  const handleSetMapItems = useMapStore((state) => state.setMapItems);
+  // Drawer Store
+  const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
+
   // Merge defaults with overrides
-  const { ICON_MAP: ICONS = ICON_MAP, viewBox = '0 0 14779 10835' } = assets ?? {};
+  const { ICON_MAP: ICONS = ICON_MAP, viewBox = '0 0 14779 10835' } = {};
 
   const transformRef = useRef<any>(null);
 
@@ -74,10 +58,10 @@ function MapBuilder({
   }, []);
 
   useEffect(() => {
-    if (!highlightId) return;
-    const timeout = setTimeout(() => focusOnPath(highlightId, 16), 0);
+    if (!id) return;
+    const timeout = setTimeout(() => focusOnPath(id, 16), 0);
     return () => clearTimeout(timeout);
-  }, [highlightId, focusOnPath]);
+  }, [id, focusOnPath]);
 
   useEffect(() => {
     const newCenters: Record<string, { x: number; y: number }> = {};
@@ -98,9 +82,9 @@ function MapBuilder({
   }, [map]);
 
   useEffect(() => {
-    if (!highlightId) return;
+    if (!id) return;
     const prevId = prevHighlightRef.current;
-    if (prevId && prevId !== highlightId) {
+    if (prevId && prevId !== id) {
       const prevEl = document.getElementById(prevId)?.parentNode as SVGGElement | null;
       const original = originalPositions.current.get(prevId);
       if (prevEl && original) {
@@ -110,7 +94,7 @@ function MapBuilder({
         parent.insertBefore(prevEl, refNode);
       }
     }
-    const pathEl = document.getElementById(highlightId);
+    const pathEl = document.getElementById(id);
     const groupEl = pathEl?.parentNode as SVGGElement | null;
     const svgRoot = groupEl?.parentNode as SVGGElement | null;
     if (groupEl && svgRoot) svgRoot.appendChild(groupEl);
@@ -119,15 +103,16 @@ function MapBuilder({
     const baseMapGroup = document.getElementById('Base Map');
     if (labelsGroup && baseMapGroup) baseMapGroup.appendChild(labelsGroup);
 
-    prevHighlightRef.current = highlightId;
-  }, [highlightId]);
+    prevHighlightRef.current = id;
+  }, [id]);
 
   const handleClick = useCallback(
-    (p: any) => {
-      onClick?.(p);
-      handleSliderPathClick?.();
+    (p: IMapItem) => {
+      handlePathSelect?.(p);
+      setIsExpanded?.(true);
+      handleSetMapItems?.(p);
     },
-    [onClick, handleSliderPathClick]
+    [handlePathSelect, setIsExpanded, handleSetMapItems]
   );
 
   return (
@@ -138,7 +123,7 @@ function MapBuilder({
       initialScale={initialScale}
       maxScale={20}
     >
-      <MapFloatingIcons transformRef={transformRef} onFloorChangeClick={onFloorChangeClick} />
+      <MapFloatingIcons transformRef={transformRef} />
       <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
         <svg viewBox={viewBox} style={{ width: '100%', height: 'auto' }} fill="none">
           <g id="Base Map">
@@ -149,7 +134,7 @@ function MapBuilder({
               <Base
                 key={p.id}
                 p={p}
-                highlightName={highlightName}
+                highlightName={name}
                 isTypeHighlighted={!!selectedType && p.type === selectedType}
                 centers={centers}
                 ICON_MAP={ICONS}

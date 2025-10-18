@@ -8,9 +8,9 @@ const findProp = () => {
     
     const oldData = fs.existsSync(oldJsonPath)
         ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
-        : { places: [] };
+        : { maps: [] };
 
-    const map = oldData.places.map(d => {
+    const map = oldData.maps.map(d => {
        if(d.type === "Building") {
             return d.name
        }

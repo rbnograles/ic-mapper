@@ -1,4 +1,4 @@
-import type { Graph, Place, INodes } from '@/interface';
+import type { Graph, IMapItem, INodes } from '@/interface';
 import MinHeap from '@/utils/MinHeap';
 
 
@@ -118,7 +118,9 @@ function findNearestNode(graph: Graph, point: { x: number; y: number }): string 
 
 /**
  * Single-source Dijkstra (returns distances and predecessors for path reconstruction)
- * - graph: your graph object (only needed if you want to build adjacency here)
+ * Dijkstra search + path finding algo is very good for 2D spaces
+ * = Pre req for the algo:
+ * - graph: Graph object (only needed if there are no preBuiltAdj)
  * - startNode: node id to start from
  * - prebuiltAdj: optional adjacency list to reuse (recommended)
  */
@@ -169,22 +171,22 @@ export function findShortestPathSingleSource(
 }
 
 /**
- * Path between two places (optimized with prebuilt adjacency)
+ * Path between two maps (optimized with prebuilt adjacency)
  */
 /**
- * Optimized: Path between two places (handles multiple same-name destinations).
+ * Optimized: Path between two maps (handles multiple same-name destinations).
  * - Caches entrance->pathNodes resolution
  * - Runs shortest-path search once per start node and reuses results for all candidate end nodes
  */
 export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, placeB: string) {
   // find source place (keep first match for source; can be made symmetric later)
-  const p1 = graph.places.find((p) => p.name === placeA);
+  const p1 = graph.maps.find((p) => p.name === placeA);
   if (!p1) {
     console.warn('Source place not found', { placeA });
     return null;
   }
 
-  const p2Candidates = graph.places.filter((p) => p.name === placeB);
+  const p2Candidates = graph.maps.filter((p) => p.name === placeB);
   if (!p2Candidates || p2Candidates.length === 0) {
     console.warn('Destination place(s) not found', { placeB });
     return null;
@@ -194,7 +196,7 @@ export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, pla
   // cache for entranceId -> resolved path node ids
   const entranceToPathNodesCache = new Map<string, string[]>();
 
-  const getEntranceIds = (p: Place): string[] => {
+  const getEntranceIds = (p: IMapItem): string[] => {
     if (Array.isArray(p.entranceNodes) && p.entranceNodes.length > 0)
       return p.entranceNodes.filter((id) => graph.entrances?.some((e) => e.id === id));
     return [];
@@ -295,7 +297,7 @@ export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, pla
   // If your findShortestPath only computes path between two nodes, implement a single-source Dijkstra that returns dist[] & prev[].
 
   let overallBest: {
-    candidate: Place;
+    candidate: IMapItem;
     nodes: string[];
     distance: number;
     startEntranceId: string;

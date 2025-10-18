@@ -8,7 +8,7 @@ import { Fragment } from 'react/jsx-runtime';
 export default function AppRouter() {
   return (
     <Routes>
-      {/* top-level layout that contains the BottomBar */}
+      {/* top-level layout that contains the BottomNavBar */}
       <Route element={<Layout />}>
         {/* pages (the Outlet content) */}
         <Route index path="map" element={<IndoorMap />} />

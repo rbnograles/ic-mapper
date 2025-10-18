@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { Labels } from '@/interface';
+import type { ILabels} from '@/interface';
 
 const Boundaries = ({boundaries}: {boundaries: Labels[]}) => {
   return (

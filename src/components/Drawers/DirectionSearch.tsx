@@ -1,4 +1,3 @@
-import { type Dispatch, type JSX, type SetStateAction } from 'react';
 import {
   Box,
   Drawer,
@@ -9,12 +8,17 @@ import {
   ThemeProvider,
   Paper,
 } from '@mui/material';
+
+import theme from '@/styles/theme';
+
 import { FaLocationDot } from 'react-icons/fa6';
 import { RiArrowUpDownLine } from 'react-icons/ri';
 import CloseIcon from '@mui/icons-material/Close';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import theme from '@/styles/theme';
+// Components
 import CachedResults from '@/components/Navigations/CachedResults';
+// Intefaces
+import { IDirectionSearch } from '@/interface/DrawerInterface';
 
 const Direction = ({
   directionOpen,
@@ -28,19 +32,7 @@ const Direction = ({
   pointB,
   handleSwapPoints,
   getLocationFromHistory,
-}: {
-  directionOpen: boolean;
-  setDirectionOpen: Dispatch<SetStateAction<boolean>>;
-  isMobile: boolean;
-  renderSearchBar: (placeholder: string, value: any, onChange: (val: any) => void) => JSX.Element;
-  setPointAMethod: React.Dispatch<any>;
-  handlePathSearchBehavior: (item: any, type?: 'A' | 'B' | undefined) => void;
-  setPointBMethod: React.Dispatch<any>;
-  pointA: any;
-  pointB: any;
-  handleSwapPoints: () => void;
-  getLocationFromHistory: (history: any) => void;
-}) => {
+}: IDirectionSearch) => {
   return (
     <ThemeProvider theme={theme}>
       <Drawer

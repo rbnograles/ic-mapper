@@ -1,18 +1,14 @@
 // App.tsx
 import { useState, useEffect, useMemo } from 'react';
-import {
-  Box,
-  CssBaseline,
-  Typography,
-} from '@mui/material';
+import { Box, CssBaseline, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { useParams } from 'react-router-dom';
 import theme from '@/styles/theme';
 import { layoutStyles } from '@/styles/layoutStyles';
-import BottomBar from '@/components/Navigations/BottomNavBar';
+import BottomNavBar from '@/components/Navigations/BottomNavBar';
 import SearchAppBar from '@/components/Navigations/SearchAppBar';
 import { loadMapData } from '@/utils/mapLoader';
-import type { PathItem } from '@/interface';
+import type { IPlace, IMapItem } from '@/interface';
 
 // floors: [{ key, name, assets? }]
 import { floors } from '@/pages/IndoorMap/partials/floors';
@@ -24,21 +20,23 @@ import MapBuilder from '@/components/Maps';
 import { routeMapHandler } from '@/hooks/useRouteMapHandler';
 
 import FloorCardSelector from '@/components/Drawers/FloorSelection';
+import useMapStore from '@/store/MapStore';
+import useDrawerStore from '@/store/DrawerStore';
 
 export function IndoorMap() {
+  // MapStore
+  // Actions
+  const resetMap = useMapStore((state) => state.resetMap);
+  const handlePathSelect = useMapStore((state) => state.handlePathSelect);
+  const setIMapItems = useMapStore((state) => state.setMapItems);
+  const setSelectedType = useMapStore((state) => state.setSelectedType);
+  const setActiveNodeIds = useMapStore((state) => state.setActiveNodeIds);
 
-  // 🗺️ Highlight + filter states
-  const [highlightId, setHighlightId] = useState<string | null>(null);
-  const [highlightName, setHighlightName] = useState<string | null>(null);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
-  const [pathItem, setPathItems] = useState<PathItem>({ name: '', id: '' });
-  const [activeNodeIds, setActiveNodeIds] = useState<string[]>([]);
-
-  // Slider
-  const [expanded, setExpanded] = useState(false);
-
-  // Map Drawer
-  const [floorDrawerOpen, setFloorDrawerOpen] = useState(false);
+  // Drawer Store
+  const isLoading = useDrawerStore((state) => state.isLoading)
+  const setIsLoading = useDrawerStore((state) => state.setIsLoading)
+  const setIsExpanded = useDrawerStore((state) => state.setIsExpanded)
+  const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen)
 
   // use paramFloorKey as the route-provided floor key
   const { floorKey: paramFloorKey } = useParams<{ floorKey?: string }>();
@@ -57,7 +55,6 @@ export function IndoorMap() {
   const [buidingMarks, setbuidingMarks] = useState<any[]>([]);
   const [roadMarks, setRoadMarks] = useState<any[]>([]);
   const [boundaries, setboundaries] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const newKey = paramFloorKey ?? floors[0].key;
@@ -66,71 +63,45 @@ export function IndoorMap() {
     setSelectedMapName(floor?.name ?? newKey);
   }, [paramFloorKey]);
 
-  // Helpers
-  const resetHighlight = () => {
-    setHighlightId(null);
-    setHighlightName(null);
-  };
-
-  const handlePathSelect = (path: PathItem | null) => {
-    setHighlightId(path?.id || null);
-    setHighlightName(path?.name || null);
-    setPathItems(path as PathItem);
-    setSelectedType(null);
-    setActiveNodeIds([]);
-  };
-
-  const handlePathSearchBehavior = (path: PathItem | null) => {
-    setPathItems(path as PathItem);
+  const handlePathSearchBehavior = (path: IMapItem | null) => {
+    setIMapItems(path as IMapItem);
   };
 
   const handleChipClick = (type: string) => {
-    setSelectedType((prev) => (prev === type ? null : type));
-    resetHighlight();
+    setSelectedType(type);
+    resetMap();
   };
-
-  const handleSliderPathClick = () => setExpanded(true);
-  const handleSliderClose = () => setExpanded(false);
 
   // 🧭 Load map + node data dynamically when floor changes
   useEffect(() => {
     let isMounted = true;
-    setLoading(true);
+    setIsLoading(true);
 
     loadMapData(selectedMap)
       .then((data) => {
         if (!isMounted) return;
-        setMaps(data.places);
+        setMaps(data.maps);
         setNodes(data.nodes);
         setEntrances(data.entrances);
         setbuidingMarks(data.buidingMarks ?? []);
         setRoadMarks(data.roadMarks ?? []);
         setboundaries(data.boundaries ?? []);
-        setLoading(false);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error('Error loading map data:', err);
-        if (isMounted) setLoading(false);
+        if (isMounted) setIsLoading(false);
       });
 
     return () => {
       isMounted = false;
     };
-   // selectedMap is synced to route via the effect above
-  }, [selectedMap]); 
+    // selectedMap is synced to route via the effect above
+  }, [selectedMap]);
 
   // Pathfinding with caching — plain function that accepts current state
-  const handleRoute = (from: string, to: string) => {
-    return routeMapHandler(
-      from,
-      to,
-      nodes,
-      entrances,
-      maps,
-      selectedMap,
-      setActiveNodeIds,
-      setHighlightId
-    );
+  const handleRoute = (from: IPlace, to: IPlace) => {
+    return routeMapHandler(from.name, to.name, maps, nodes, entrances);
   };
 
   const getLocationFromHistory = (history: any) => {
@@ -142,20 +113,14 @@ export function IndoorMap() {
     handlePathSelect(history);
   };
 
-  // Find current floor object once (memoized)
-  const selectedFloor = useMemo(() => floors.find((f) => f.key === selectedMap), [selectedMap]);
-
   // state change for floor rendering
   // if page refreshed it will go to ground floor
   // we can use cache once requirement to retain floor comes
   const openFloor = (floorKeyToOpen: string) => {
     setSelectedMap(floorKeyToOpen);
-    setFloorDrawerOpen(false);
-    setExpanded(false);
-    setHighlightId(null);
-    setHighlightName(null);
-    setActiveNodeIds([]);
-    setPathItems({ id: '', name: '' });
+    setIsFloorMapOpen(false);
+    setIsExpanded(false);
+    resetMap();
   };
 
   return (
@@ -169,7 +134,6 @@ export function IndoorMap() {
             handleChipClick={handleChipClick}
             handlePathSearchBehavior={handlePathSearchBehavior}
             handleRoute={handleRoute}
-            pathItem={pathItem}
             getLocationFromHistory={getLocationFromHistory}
           />
         </Box>
@@ -177,7 +141,7 @@ export function IndoorMap() {
         {/* Map Container */}
         {/* Container size pagination problem below */}
         <div style={{ ...layoutStyles.mapContainer }}>
-          {loading ? (
+          {isLoading ? (
             <Box
               sx={{
                 display: 'flex',
@@ -193,38 +157,24 @@ export function IndoorMap() {
           ) : (
             <MapBuilder
               // reuse the same component for all floors
-              highlightId={highlightId}
-              highlightName={highlightName}
-              selectedType={selectedType}
               map={maps}
-              onClick={handlePathSelect}
-              handleSliderPathClick={handleSliderPathClick}
-              activeNodeIds={activeNodeIds}
               nodes={nodes}
               entrances={entrances}
               boundaries={boundaries}
               buidingMarks={buidingMarks}
               roadMarks={roadMarks}
               floorKey={selectedMap}
-              assets={selectedFloor?.assets}
-              onFloorChangeClick={() => setFloorDrawerOpen(true)}
             />
           )}
         </div>
 
         {/* 📌 Bottom Bar */}
         <Box sx={layoutStyles.fixedBottom}>
-          <BottomBar
-            expanded={expanded}
-            handleSliderClose={handleSliderClose}
-            pathItem={pathItem}
-          />
+          <BottomNavBar />
         </Box>
 
         {/* 🗂️ Floor Drawer */}
         <FloorCardSelector
-          open={floorDrawerOpen}
-          onClose={() => setFloorDrawerOpen(false)}
           floors={floors}
           onSelect={openFloor}
         />

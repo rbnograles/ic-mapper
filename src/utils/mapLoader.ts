@@ -1,13 +1,7 @@
+import { FloorData } from "@/interface";
+
 // src/utils/loadMapData.ts
-interface FloorData {
-  floor: string;
-  places: any[];
-  nodes: any[];
-  entrances: any[];
-  buidingMarks: any[];
-  roadMarks: any[];
-  boundaries: any[];
-}
+
 
 export async function loadMapData(floor: any) {
   const loadSingleFloor = async (dirName: string, canonicalFloorName: string): Promise<FloorData> => {
@@ -17,7 +11,7 @@ export async function loadMapData(floor: any) {
       import(`@/Data/AyalaMalls/${dirName}/${dirName}Labels.json`),
     ]);
 
-    const places = Array.isArray(mapData?.places) ? mapData.places : [];
+    const maps = Array.isArray(mapData?.maps) ? mapData.maps : [];
     const nodes = Array.isArray(nodeData?.nodes) ? nodeData.nodes : [];
     const entrances = Array.isArray(nodeData?.entrances) ? nodeData.entrances : [];
     const buidingMarks = Array.isArray(labels?.buildingMarks) ? labels.buildingMarks : [];
@@ -26,7 +20,7 @@ export async function loadMapData(floor: any) {
 
     return {
       floor: canonicalFloorName,
-      places,
+      maps,
       nodes,
       entrances,
       buidingMarks,
@@ -74,7 +68,7 @@ export async function loadMapData(floor: any) {
       const merged = valid.reduce(
         (acc: FloorData, cur: FloorData) => ({
           floor: acc.floor, // keep 'all'
-          places: [...acc.places, ...cur.places.map((p) => ({ ...p }))],
+          maps: [...acc.maps, ...cur.maps.map((p) => ({ ...p }))],
           nodes: [...acc.nodes, ...cur.nodes],
           entrances: [...acc.entrances, ...cur.entrances],
           buidingMarks: [...acc.buidingMarks, ...cur.buidingMarks],
@@ -83,7 +77,7 @@ export async function loadMapData(floor: any) {
         }),
         {
           floor: 'all',
-          places: [],
+          maps: [],
           nodes: [],
           entrances: [],
           buidingMarks: [],

@@ -19,8 +19,9 @@ import { FaDirections } from 'react-icons/fa';
 import uniqueTypes from '@/Data/unique_types.json';
 import Direction from '@/components/Drawers/DirectionSearch';
 import { Chips, iconMap } from '@/components/Navigations/Chips';
-import type { PathItem } from '@/interface';
+import type { IPlace } from '@/interface';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
+import useMapStore from '@/store/MapStore';
 
 // ====================
 // Styled Components
@@ -67,17 +68,15 @@ export default function SearchAppBar({
   onSelect: (item: any, type?: 'A' | 'B') => void;
   handleChipClick: (type: string) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
-  handleRoute: (from: string, to: string) => void;
-  pathItem: PathItem;
+  handleRoute: (from: IPlace, to: IPlace) => void;
   getLocationFromHistory: (history: any) => void;
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const pathItem: PathItem = { name: '', id: '' };
   const [directionOpen, setDirectionOpen] = useState(false);
-  const [pointA, setPointA] = useState<PathItem>(pathItem);
-  const [pointB, setPointB] = useState<PathItem>(pathItem);
+  const [pointA, setPointA] = useState<IPlace | null>(null);
+  const [pointB, setPointB] = useState<IPlace | null>(null);
 
   // Lazy search data
   const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
@@ -98,31 +97,29 @@ export default function SearchAppBar({
   }, [query, visiblePlaces]);
 
   // Point Handling
-  const setPointAMethod = (val: any) => {
+  const setPointAMethod = (val: IPlace) => {
     setPointA(val);
-    if (pointB.name && val) {
-      handleRoute(val.name, pointB.name);
+    if (val?.name && pointB?.name) {
+      handleRoute(val, pointB);
       setDirectionOpen(false);
     }
     saveToCache(val);
   };
 
-  const setPointBMethod = (val: any) => {
+  const setPointBMethod = (val: IPlace) => {
     setPointB(val);
-    if (pointA.name && val) {
-      handleRoute(pointA.name, val.name);
+    if (pointA?.name && val?.name) {
+      handleRoute(pointA, val);
       setDirectionOpen(false);
     }
     saveToCache(val);
   };
 
   const handleSwapPoints = () => {
-    if (!pointA && !pointB) return;
-    const newA = pointB;
-    const newB = pointA;
-    setPointA(newA);
-    setPointB(newB);
-    if (newA && newB) handleRoute(newA.name, newB.name);
+    if (!pointA || !pointB) return; // need both to swap
+    setPointA(pointB);
+    setPointB(pointA);
+    handleRoute(pointB, pointA);
   };
 
   // Search Bar Renderer

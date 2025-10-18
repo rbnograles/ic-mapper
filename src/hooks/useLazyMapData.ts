@@ -15,7 +15,7 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(false);
 
-  // 🧠 In-memory cache for selected places
+  // 🧠 In-memory cache for selected maps
   const cacheRef = useRef<Record<string, Place[]>>({});
 
   // Load saved cache on mount
@@ -35,10 +35,10 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
   // =====================
   const normalizeName = (name: string) => name.trim().toLowerCase();
 
-  const filterPlaces = useCallback((places: Place[]) => {
+  const filterPlaces = useCallback((maps: Place[]) => {
     // remove unwanted and duplicate names
     const seen = new Set<string>();
-    return places.filter((p) => {
+    return maps.filter((p) => {
       const valid =
         p.name !== 'Unknown' && p.name !== 'NotClickable' && !seen.has(normalizeName(p.name));
       if (valid) seen.add(normalizeName(p.name));
@@ -55,8 +55,8 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
     async function fetchData() {
       setLoading(true);
       try {
-        const { places } = await loadMapData(floor);
-        const filtered = filterPlaces(places);
+        const { maps } = await loadMapData(floor);
+        const filtered = filterPlaces(maps);
 
         if (isMounted) {
           setAllPlaces(filtered);

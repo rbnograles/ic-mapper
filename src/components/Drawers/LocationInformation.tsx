@@ -1,23 +1,23 @@
 import { Box, Typography, IconButton, Divider, Stack, SwipeableDrawer } from '@mui/material';
+// Icons
 import CloseIcon from '@mui/icons-material/Close';
-import type { PathItem } from '@/interface';
+// State Manager
+import useMapStore from '@/store/MapStore';
+import useDrawerStore from '@/store/DrawerStore';
 
-function BottomSlider({
-  isMobile,
-  expanded,
-  handleSliderClose,
-  pathItem,
-}: {
-  isMobile: boolean;
-  expanded: boolean;
-  handleSliderClose: () => void;
-  pathItem: PathItem;
-}) {
+function LocationInformation({ isMobile }: { isMobile: boolean }) {
+  // Using Map Store
+  // Main State
+  const map = useMapStore((state) => state.map);
+  // Use Drawer Store
+  const isExpanded = useDrawerStore((state) => state.isExpanded);
+  const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
+
   return (
     <SwipeableDrawer
       anchor={isMobile ? 'bottom' : 'left'}
-      open={expanded}
-      onClose={handleSliderClose}
+      open={isExpanded}
+      onClose={() => setIsExpanded(false)}
       onOpen={() => {}}
       disableSwipeToOpen={false}
       hideBackdrop
@@ -47,7 +47,7 @@ function BottomSlider({
       {isMobile && (
         <Box display="flex" justifyContent="center" pt={1} pb={1.5} flexShrink={0}>
           <Box
-            onClick={handleSliderClose}
+            onClick={() => setIsExpanded(false)}
             sx={{
               width: 40,
               height: 4,
@@ -62,7 +62,7 @@ function BottomSlider({
       {/* --- Close button (desktop only) --- */}
       {!isMobile && (
         <Box display="flex" justifyContent="flex-end" p={1} flexShrink={0}>
-          <IconButton onClick={handleSliderClose} size="small">
+          <IconButton onClick={() => setIsExpanded(false)} size="small">
             <CloseIcon />
           </IconButton>
         </Box>
@@ -80,36 +80,21 @@ function BottomSlider({
       >
         {/* --- Header / Main Info --- */}
         <Box sx={{ flexShrink: 0 }}>
-          {pathItem ? (
+          {map ? (
             <>
               <Typography variant="h6" fontWeight="bold" mb={1} textAlign="center">
-                {pathItem.name}
+                {map.name}
               </Typography>
 
-              {pathItem.img && (
-                <Box
-                  component="img"
-                  src={pathItem.img}
-                  alt={pathItem.name}
-                  sx={{
-                    width: '100%',
-                    maxHeight: 160,
-                    objectFit: 'cover',
-                    borderRadius: 2,
-                    mb: 2,
-                  }}
-                />
-              )}
-
-              {pathItem.type && (
+              {map.type && (
                 <Typography variant="subtitle2" color="text.secondary" textAlign="center" mb={1}>
-                  {pathItem.type}
+                  {map.type}
                 </Typography>
               )}
 
-              {pathItem.description && (
+              {map.description && (
                 <Typography variant="body2" textAlign="justify" mb={2}>
-                  {pathItem.description}
+                  {map.description}
                 </Typography>
               )}
             </>
@@ -121,7 +106,7 @@ function BottomSlider({
         </Box>
 
         {/* --- Scrollable Schedule Section --- */}
-        {pathItem?.schedule && pathItem.schedule.length > 0 && (
+        {map?.schedule && map.schedule.length > 0 && (
           <>
             <Divider sx={{ my: 2 }} />
             <Typography
@@ -135,7 +120,7 @@ function BottomSlider({
             </Typography>
 
             <Stack spacing={1.5} pb={isMobile ? 0 : 10}>
-              {pathItem.schedule.map((s, i) => (
+              {map.schedule.map((s, i) => (
                 <Box
                   key={i}
                   sx={{
@@ -170,4 +155,4 @@ function BottomSlider({
   );
 }
 
-export default BottomSlider;
+export default LocationInformation;

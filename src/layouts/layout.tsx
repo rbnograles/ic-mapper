@@ -1,10 +1,22 @@
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider, CssBaseline, Drawer, Box } from '@mui/material';
 import theme from '@/styles/theme';
-import BottomBar from '@/components/Navigations/BottomNavBar';
+import BottomNavBar from '@/components/Navigations/BottomNavBar';
 import { layoutStyles } from '@/styles/layoutStyles';
+import { IMapItem } from '@/interface';
 
 export default function Layout() {
+  const placeItem: IMapItem = {
+    entranceNodes: [],
+    path: '',
+    centroid: [],
+    floor: '',
+    baseFill: '',
+    centerY: 0,
+    id: '',
+    name: '',
+    type: '',
+  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -12,10 +24,10 @@ export default function Layout() {
         {/* top-level fixed content (AppBar, Search) can go here if you want */}
         <Outlet />
         {/* persistent bottom bar (always visible) */}
-        <BottomBar
+        <BottomNavBar
           expanded={false} // wire in real state if you have slider
           handleSliderClose={() => {}}
-          pathItem={{ id: '', name: '' }}
+          pathItem={placeItem}
         />
       </Box>
     </ThemeProvider>

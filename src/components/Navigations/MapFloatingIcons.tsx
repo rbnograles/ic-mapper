@@ -5,19 +5,16 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useTheme, useMediaQuery } from '@mui/material';
 import { HiMiniSquare3Stack3D } from 'react-icons/hi2';
 import { FiZoomIn, FiZoomOut } from 'react-icons/fi';
+import useDrawerStore from '@/store/DrawerStore';
 
-function MapFloatingIcons({
-  transformRef,
-  onFloorChangeClick,
-}: {
-  transformRef: any;
-  onFloorChangeClick: () => void;
-}) {
+function MapFloatingIcons({ transformRef }: { transformRef: any }) {
   const { zoomIn, zoomOut } = useControls();
   // ✅ MUI breakpoints
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // <600px
   const isTablet = useMediaQuery(theme.breakpoints.between('md', 'xl')); // 600–900px
+  // Drawer Store
+   const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
 
   const handleReset = () => {
     if (!transformRef?.current) return;
@@ -73,7 +70,7 @@ function MapFloatingIcons({
     >
       <Fab
         aria-label="add"
-        onClick={() => onFloorChangeClick()}
+        onClick={() => setIsFloorMapOpen(true)}
         sx={{ bgcolor: theme.palette.secondary.main }}
       >
         <HiMiniSquare3Stack3D style={{ color: 'white' }} />
