@@ -2,7 +2,7 @@ import { type Dispatch, type JSX, type SetStateAction } from 'react';
 
 export interface IDirectionSearch {
   directionOpen: boolean;
-  setDirectionOpen: Dispatch<SetStateAction<boolean>>;
+  setDirectionOpen: (value: boolean) => void
   isMobile: boolean;
   renderSearchBar: (placeholder: string, value: any, onChange: (val: any) => void) => JSX.Element;
   setPointAMethod: React.Dispatch<any>;

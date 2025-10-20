@@ -7,21 +7,20 @@ import {
   Autocomplete,
   useMediaQuery,
   CssBaseline,
-  IconButton,
   CircularProgress,
 } from '@mui/material';
 
 import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 
 import SearchIcon from '@mui/icons-material/Search';
-import { FaDirections } from 'react-icons/fa';
 
 import uniqueTypes from '@/Data/unique_types.json';
 import Direction from '@/components/Drawers/DirectionSearch';
 import { Chips, iconMap } from '@/components/Navigations/Chips';
 import type { IPlace } from '@/interface';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
-import useMapStore from '@/store/MapStore';
+import useDrawerStore from '@/store/DrawerStore';
+import VoiceRecorder from '@/components/props/VoiceSearch';
 
 // ====================
 // Styled Components
@@ -73,8 +72,10 @@ export default function SearchAppBar({
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  // Use Drawer Store
+  const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen);
+  const isDirectionPanelOpen = useDrawerStore((state) => state.isDirectionPanelOpen);
 
-  const [directionOpen, setDirectionOpen] = useState(false);
   const [pointA, setPointA] = useState<IPlace | null>(null);
   const [pointB, setPointB] = useState<IPlace | null>(null);
 
@@ -101,7 +102,7 @@ export default function SearchAppBar({
     setPointA(val);
     if (val?.name && pointB?.name) {
       handleRoute(val, pointB);
-      setDirectionOpen(false);
+      setIsDirectionPanelOpen(false);
     }
     saveToCache(val);
   };
@@ -110,7 +111,7 @@ export default function SearchAppBar({
     setPointB(val);
     if (pointA?.name && val?.name) {
       handleRoute(pointA, val);
-      setDirectionOpen(false);
+      setIsDirectionPanelOpen(false);
     }
     saveToCache(val);
   };
@@ -126,8 +127,8 @@ export default function SearchAppBar({
   const renderSearchBar = (placeholder: string, value: any, onChange: (val: any) => void) => (
     <Search
       sx={{
-        boxShadow: directionOpen ? 'none' : '0 2px 6px rgba(0,0,0,0.2)',
-        border: directionOpen ? '1px solid #ccc' : 'none',
+        boxShadow: isDirectionPanelOpen ? 'none' : '0 2px 6px rgba(0,0,0,0.2)',
+        border: isDirectionPanelOpen ? '1px solid #ccc' : 'none',
       }}
     >
       <SearchIconWrapper>
@@ -211,7 +212,7 @@ export default function SearchAppBar({
           <StyledTextField
             {...params}
             style={{ padding: 10 }}
-            placeholder={directionOpen ? `${placeholder}` : placeholder}
+            placeholder={isDirectionPanelOpen ? `${placeholder}` : placeholder}
             variant="standard"
             InputProps={{
               ...params.InputProps,
@@ -226,11 +227,12 @@ export default function SearchAppBar({
         )}
       />
 
-      {!directionOpen && (
-        <IconButton onClick={() => setDirectionOpen(true)} sx={{ ml: 1 }}>
-          <FaDirections style={{ fontSize: 28, color: theme.palette.secondary.main }} />
-        </IconButton>
-      )}
+      <VoiceRecorder
+        onTranscript={(text) => {
+          setQuery(text); // update your search bar input
+        }}
+        color={theme.palette.secondary.main}
+      />
     </Search>
   );
 
@@ -272,8 +274,8 @@ export default function SearchAppBar({
 
         {/* === Drawer for directions === */}
         <Direction
-          directionOpen={directionOpen}
-          setDirectionOpen={setDirectionOpen}
+          directionOpen={isDirectionPanelOpen}
+          setDirectionOpen={setIsDirectionPanelOpen}
           isMobile={isMobile}
           renderSearchBar={renderSearchBar}
           handlePathSearchBehavior={handlePathSearchBehavior}

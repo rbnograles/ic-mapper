@@ -9,10 +9,12 @@ interface IDrawerStore {
   isExpanded: boolean;
   isFloorMapOpen: boolean;
   isLoading: boolean;
+  isDirectionPanelOpen: boolean;
   // actions
   setIsExpanded: (value: boolean) => void;
   setIsFloorMapOpen: (value: boolean) => void;
   setIsLoading: (value: boolean) => void;
+  setIsDirectionPanelOpen: (value: boolean) => void;
   resetDrawers: () => void;
 }
 
@@ -21,6 +23,7 @@ const useDrawerStore = create<IDrawerStore>()((set) => ({
   isExpanded: false,
   isFloorMapOpen: false,
   isLoading: false,
+  isDirectionPanelOpen: false,
   // handlers
   setIsExpanded: (value) => {
     set(() => ({
@@ -35,6 +38,11 @@ const useDrawerStore = create<IDrawerStore>()((set) => ({
   setIsLoading: (value) => {
     set(() => ({
       isLoading: value,
+    }));
+  },
+  setIsDirectionPanelOpen: (value) => {
+    set(() => ({
+      isDirectionPanelOpen: value,
     }));
   },
   resetDrawers: () => {
