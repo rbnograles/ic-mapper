@@ -26,6 +26,4 @@ export interface IFloorCardSelectorProps {
   floors: IFloor[];
   selectedKey?: string | null;
   onSelect: (key: string) => void;
-  // optional: place the card as a bottom-sheet on mobile and center on desktop
-  mobileBottomSheet?: boolean;
 }

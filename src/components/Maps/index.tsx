@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import MapFloatingIcons from '@/components/Navigations/MapFloatingIcons';
-import ICON_MAP from '@/components/props/iconMapper';
+import BASE_ICON_MAP from '@/components/props/BaseIconMapper';
 import type { IMapItem, INodes, ILabels } from '@/interface';
 
 /* DEFAULT (ground-floor) visuals — keep these as defaults so current behavior is unchanged */
@@ -39,7 +39,7 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
   const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
 
   // Merge defaults with overrides
-  const { ICON_MAP: ICONS = ICON_MAP, viewBox = '0 0 14779 10835' } = {};
+  const { BASE_ICON_MAP: ICONS = BASE_ICON_MAP, viewBox = '0 0 14779 10835' } = {};
 
   const transformRef = useRef<any>(null);
 
@@ -137,7 +137,7 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
                 highlightName={name}
                 isTypeHighlighted={!!selectedType && p.type === selectedType}
                 centers={centers}
-                ICON_MAP={ICONS}
+                BASE_ICON_MAP={ICONS}
                 onClick={handleClick}
               />
             ))}

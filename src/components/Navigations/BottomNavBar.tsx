@@ -12,7 +12,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import LocationInformation from '@/components/Drawers/LocationInformation';
 import { FaMap } from 'react-icons/fa';
-import useDrawerStore from '@/store/DrawerStore';
 
 export default function BottomNavBar() {
   const theme = useTheme();

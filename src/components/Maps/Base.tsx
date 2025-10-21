@@ -15,7 +15,7 @@ type MapRegionProps = {
   };
   highlightName: string | null;
   centers: { [key: string]: { x: number; y: number } };
-  ICON_MAP: { [key: string]: React.ReactNode };
+  BASE_ICON_MAP: { [key: string]: React.ReactNode };
   onHover?: (p: any) => void;
   onClick?: (p: any) => void;
   isTypeHighlighted?: boolean;
@@ -26,7 +26,7 @@ const FloorBase = memo(
     p,
     highlightName,
     centers,
-    ICON_MAP,
+    BASE_ICON_MAP,
     onClick,
     isTypeHighlighted = false,
   }: MapRegionProps) {
@@ -43,7 +43,7 @@ const FloorBase = memo(
     const strokeWidth = isNameHighlighted || isTypeHighlighted ? 4 : 2;
 
     // Clone the icon and override color if highlighted
-    const iconElement = ICON_MAP[p.icon];
+    const iconElement = BASE_ICON_MAP[p.icon];
     const iconNode =
       p.icon &&
       iconElement &&

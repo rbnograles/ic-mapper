@@ -176,6 +176,7 @@ export function IndoorMap() {
         {/* 🗂️ Floor Drawer */}
         <FloorCardSelector
           floors={floors}
+          selectedKey={selectedMap}
           onSelect={openFloor}
         />
       </Box>

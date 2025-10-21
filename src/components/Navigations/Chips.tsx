@@ -1,78 +1,45 @@
-
-import { Stack, Chip, ThemeProvider, CssBaseline, useMediaQuery, Box } from '@mui/material';
-import { useRef, type JSX } from 'react';
-// icons
-import { FaBus, FaRunning } from 'react-icons/fa';
+import { useRef, useEffect, useState } from 'react';
 import {
-  FaHandHoldingHand,
-  FaLocationArrow,
-  FaMasksTheater,
-  FaPeopleArrows,
-  FaStairs,
-} from 'react-icons/fa6';
-import { BsBank2 } from 'react-icons/bs';
-import { MdHotel } from 'react-icons/md';
-import { FaSignsPost } from 'react-icons/fa6';
-import { MdEmojiEvents } from 'react-icons/md';
-import { GrEscalator } from 'react-icons/gr';
-import FlatwareIcon from '@mui/icons-material/Flatware';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import WcIcon from '@mui/icons-material/Wc';
-import RoomServiceIcon from '@mui/icons-material/RoomService';
-import ElevatorIcon from '@mui/icons-material/Elevator';
-import DoorFrontIcon from '@mui/icons-material/DoorFront';
-import ParkIcon from '@mui/icons-material/Park';
+  Stack,
+  Chip,
+  ThemeProvider,
+  CssBaseline,
+  useMediaQuery,
+  Box,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
+
+// icons
+import { FaLocationArrow } from 'react-icons/fa';
+
+import { HiDotsHorizontal } from 'react-icons/hi';
 
 import theme from '@/styles/theme';
 
+import useMapStore from '@/store/MapStore';
+import CHIPS_ICONMAP from '@/components/props/ChipsIconMapper';
 
-export const iconMap: Record<string, (style?: React.CSSProperties) => JSX.Element> = {
-  'Food & Beverage': (style = {}) => (
-    <FlatwareIcon style={{ color: 'white', fontSize: 15, ...style }} />
-  ),
-  Retail: (style = {}) => <StorefrontIcon style={{ color: 'white', ...style }} />,
-  Restroom: (style = {}) => <WcIcon style={{ color: 'white', ...style }} />,
-  Services: (style = {}) => (
-    <FaHandHoldingHand style={{ color: 'white', fontSize: 15, ...style }} />
-  ),
-  Concierge: (style = {}) => <RoomServiceIcon style={{ color: 'white', ...style }} />,
-  Elevator: (style = {}) => <ElevatorIcon style={{ color: 'white', ...style }} />,
-  Escalator: (style = {}) => <GrEscalator style={{ color: 'white', ...style }} />,
-  'Entrance/Exit': (style = {}) => <DoorFrontIcon style={{ color: 'white', ...style }} />,
-  Park: (style = {}) => <ParkIcon style={{ color: 'white', ...style }} />,
-  'Transport Terminal': (style = {}) => <FaBus style={{ color: 'white', ...style }} />,
-  Stairs: (style = {}) => <FaStairs style={{ color: 'white', ...style }} />,
-  Bank: (style = {}) => <BsBank2 style={{ color: 'white', ...style }} />,
-  Entertainment: (style = {}) => <FaMasksTheater style={{ color: 'white', ...style }} />,
-  'Fire Exit': (style = {}) => <FaRunning style={{ color: 'white', ...style }} />,
-  Hotel: (style = {}) => <MdHotel style={{ color: 'white', ...style }} />,
-  Landmark: (style = {}) => <FaSignsPost style={{ color: 'white', ...style }} />,
-  'Activity Center': (style = {}) => <MdEmojiEvents style={{ color: 'white', ...style }} />,
-  "Jehovah's Witnesses Carts": (style = {}) => (
-    <FaPeopleArrows style={{ color: 'white', ...style }} />
-  ),
-};
-
-type ChipsProps = {
-  handleClick: (type: string) => void;
-  types: string[];
-};
-
-export const Chips = ({ handleClick, types }: ChipsProps) => {
+export const Chips = ({ types }: { types: string[] }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  // Use Map Store
+  const setSelectedType = useMapStore((state) => state.setSelectedType);
+
+  // Overflow / measurement state
+  const [containerWidth, setContainerWidth] = useState<number>(0);
+  const [visibleCount, setVisibleCount] = useState<number>(types.length);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
   // Wheel handler: convert vertical wheel -> horizontal scroll for desktop
   const handleWheel = (e: React.WheelEvent) => {
-    // only on non-mobile
     if (isMobile) return;
     const el = scrollRef.current;
     if (!el) return;
-
-    // If user holds shift we want native behavior, so don't intercept when shiftKey
     if (e.shiftKey) return;
-
-    // Convert vertical scrolling into horizontal
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       el.scrollLeft += e.deltaY;
       e.preventDefault();
@@ -113,10 +80,64 @@ export const Chips = ({ handleClick, types }: ChipsProps) => {
     el.classList.remove('dragging');
   };
 
+  // measure the container width reactively
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const calc = () => {
+      setContainerWidth(el.clientWidth);
+    };
+    calc();
+
+    const ro = new ResizeObserver(() => {
+      calc();
+    });
+    ro.observe(el);
+
+    // also track window resize (for some cases)
+    window.addEventListener('resize', calc);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', calc);
+    };
+  }, []);
+
+  // compute visible count based on container width and average chip width
+  useEffect(() => {
+    if (!containerWidth) {
+      setVisibleCount(types.length);
+      return;
+    }
+
+    // Average chip width heuristic (includes margin/padding)
+    const AVERAGE_CHIP_WIDTH = isMobile ? 120 : 140; // tweak if needed
+    // reserve one slot for overflow chip if necessary
+    const possible = Math.floor(containerWidth / AVERAGE_CHIP_WIDTH);
+
+    if (possible <= 0) {
+      setVisibleCount(1);
+    } else if (possible >= types.length) {
+      setVisibleCount(types.length);
+    } else {
+      // leave one slot for overflow chip if there are hidden items
+      const fits = Math.max(1, possible - 1);
+      setVisibleCount(fits);
+    }
+  }, [containerWidth, isMobile, types.length]);
+
+  // overflow menu handlers
+  const handleOverflowOpen = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+  const handleOverflowClose = () => setAnchorEl(null);
+  const isOverflowOpen = Boolean(anchorEl);
+
+  const visible = types.slice(0, visibleCount);
+  const hidden = types.slice(visibleCount);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* wrapper gives us pointer/touch handling and wheel capture */}
       <Box
         ref={scrollRef}
         onWheel={handleWheel}
@@ -127,17 +148,12 @@ export const Chips = ({ handleClick, types }: ChipsProps) => {
         sx={{
           display: 'flex',
           width: '100%',
-          // allow horizontal scrolling
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
-          msOverflowStyle: 'none', // IE/Edge
-          // optional visual while dragging
-          '& .dragging': {},
-          // padding so chips don't touch edges
+          msOverflowStyle: 'none',
           px: 1,
-          py:1.5,
-          // 🌟 Hide scrollbar for all browsers
-          '&::-webkit-scrollbar': { display: 'none' }, // Chrome, Safari, Opera
+          py: 1.5,
+          '&::-webkit-scrollbar': { display: 'none' },
         }}
       >
         <Stack
@@ -146,21 +162,20 @@ export const Chips = ({ handleClick, types }: ChipsProps) => {
           sx={{
             display: 'flex',
             flexWrap: 'nowrap',
-            // each chip should not shrink
             '& .MuiChip-root': {
               flex: '0 0 auto',
               whiteSpace: 'nowrap',
             },
           }}
         >
-          {types.map((type) => (
+          {visible.map((type) => (
             <Chip
               key={type}
               label={type}
-              onClick={() => handleClick(type)}
+              onClick={() => setSelectedType(type)}
               icon={
-                iconMap[type] ? (
-                  iconMap[type]({
+                CHIPS_ICONMAP[type] ? (
+                  CHIPS_ICONMAP[type]({
                     color: 'white',
                     fontSize: 16,
                   })
@@ -179,9 +194,61 @@ export const Chips = ({ handleClick, types }: ChipsProps) => {
                   transform: 'translateY(-2px)',
                   backgroundColor: theme.palette.secondary.main,
                 },
+                maxWidth: 220,
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
               }}
             />
           ))}
+
+          {hidden.length > 0 && (
+            <>
+              <Chip
+                label={`+${hidden.length}`}
+                icon={<HiDotsHorizontal style={{ fontSize: 22, color: 'white', marginLeft: 16 }} />}
+                onClick={handleOverflowOpen}
+                clickable
+                variant="filled"
+                sx={{
+                  backgroundColor: theme.palette.primary.main,
+                  color: 'white',
+                  '&:hover': { backgroundColor: theme.palette.secondary.main },
+                }}
+              />
+
+              <Menu
+                anchorEl={anchorEl}
+                open={isOverflowOpen}
+                onClose={handleOverflowClose}
+                PaperProps={{ sx: { maxHeight: 320 } }}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              >
+                {hidden.map((type) => (
+                  <MenuItem
+                    key={type}
+                    onClick={() => {
+                      setSelectedType(type);
+                      handleOverflowClose();
+                    }}
+                    sx={{ gap: 1 }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 36 }}>
+                      {CHIPS_ICONMAP[type] ? (
+                        CHIPS_ICONMAP[type]({
+                          color: theme.palette.primary.main,
+                          fontSize: 18,
+                        })
+                      ) : (
+                        <FaLocationArrow style={{ color: theme.palette.primary.main }} />
+                      )}
+                    </ListItemIcon>
+                    <ListItemText primary={type} />
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          )}
         </Stack>
       </Box>
     </ThemeProvider>

@@ -85,11 +85,8 @@ const useMapStore = create<IMapStore>()((set) => ({
   },
 
   setSelectedType: (type) => {
-    set((state) => ({
-      highlightedPlace: {
-        ...state.highlightedPlace,
-        type,
-      },
+    set(() => ({
+     selectedType: type
     }));
   },
 

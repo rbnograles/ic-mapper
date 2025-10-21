@@ -16,7 +16,8 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import uniqueTypes from '@/Data/unique_types.json';
 import Direction from '@/components/Drawers/DirectionSearch';
-import { Chips, iconMap } from '@/components/Navigations/Chips';
+import { Chips } from '@/components/Navigations/Chips';
+import CHIPS_ICONMAP from '@/components/props/ChipsIconMapper'
 import type { IPlace } from '@/interface';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
@@ -187,7 +188,7 @@ export default function SearchAppBar({
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              {iconMap[option.type]?.({
+              {CHIPS_ICONMAP[option.type]?.({
                 color: theme.palette.primary.main,
                 fontSize: 24,
                 marginRight: 5,
@@ -269,7 +270,7 @@ export default function SearchAppBar({
             })}
           </Toolbar>
 
-          <Chips handleClick={handleChipClick} types={uniqueTypes} />
+          <Chips types={uniqueTypes} />
         </AppBar>
 
         {/* === Drawer for directions === */}

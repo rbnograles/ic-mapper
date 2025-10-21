@@ -10,38 +10,37 @@ import {
   ListItemButton,
   ListItemText,
   Typography,
-  Fade,
-  ClickAwayListener,
-  useTheme,
-  InputAdornment,
   TextField,
+  InputAdornment,
   Avatar,
   Divider,
+  Modal,
+  Fade,
+  Backdrop,
+  useTheme,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
+
 import { HiBuildingOffice2 } from 'react-icons/hi2';
-// Interface
-import { IFloorCardSelectorProps } from '@/interface/DrawerInterface';
+import { IoLocation } from "react-icons/io5";
+
 import useDrawerStore from '@/store/DrawerStore';
+import { IFloorCardSelectorProps } from '@/interface/DrawerInterface';
 
 export default function FloorCardSelector({
   floors,
   selectedKey,
   onSelect,
-  mobileBottomSheet = true,
 }: IFloorCardSelectorProps) {
   const theme = useTheme();
-  const [query, setQuery] = React.useState('');
-  // Drawer Store
   const isFloorMapOpen = useDrawerStore((state) => state.isFloorMapOpen);
   const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
+  const [query, setQuery] = React.useState('');
 
   React.useEffect(() => {
     if (!isFloorMapOpen) setQuery('');
   }, [isFloorMapOpen]);
-
-  if (!isFloorMapOpen) return null;
 
   const filtered = floors.filter(
     (f) =>
@@ -50,8 +49,24 @@ export default function FloorCardSelector({
   );
 
   return (
-    <ClickAwayListener onClickAway={() => setIsFloorMapOpen(false)}>
-      <Fade in={isFloorMapOpen} appear>
+    <Modal
+      open={isFloorMapOpen}
+      onClose={() => setIsFloorMapOpen(false)}
+      closeAfterTransition
+      slots={{ backdrop: Backdrop }}
+      slotProps={{
+        backdrop: {
+          timeout: 200,
+          sx: {
+            backgroundColor: 'rgba(6,10,15,0.45)',
+            backdropFilter: 'blur(6px)',
+          },
+        },
+      }}
+      sx={{ zIndex: (t) => t.zIndex.modal + 200 }} // ensure above other UI
+      aria-labelledby="select-floor-title"
+    >
+      <Fade in={isFloorMapOpen}>
         <Box
           role="presentation"
           onKeyDown={(e: React.KeyboardEvent) => {
@@ -60,30 +75,31 @@ export default function FloorCardSelector({
           sx={{
             position: 'fixed',
             inset: 0,
-            zIndex: 1400,
-            backgroundColor: 'rgba(6,10,15,0.45)',
             display: 'flex',
-            alignItems: { xs: mobileBottomSheet ? 'flex-end' : 'center', sm: 'center' },
+            alignItems: 'center',
             justifyContent: 'center',
             p: { xs: 1.5, sm: 3 },
-            backdropFilter: 'blur(6px)',
+            pointerEvents: 'auto',
           }}
         >
           <Card
             elevation={12}
+            onClick={(e) => e.stopPropagation()} // IMPORTANT: prevent clicks from bubbling to backdrop
             sx={{
               width: { xs: '100%', sm: 420 },
-              maxHeight: { xs: '70vh', sm: '80vh' },
-              borderRadius: { xs: mobileBottomSheet ? '14px 14px 0 0' : 3, sm: 3 },
+              maxHeight: { sm: '80vh' },
+              borderRadius: 3,
               overflow: 'hidden',
               boxShadow: (t) =>
                 `0 10px 30px ${t.palette.mode === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(16,24,40,0.12)'}`,
               transformOrigin: 'center',
+              // ensure the card captures pointer events
+              pointerEvents: 'auto',
             }}
           >
             <CardHeader
               title={
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                <Typography id="select-floor-title" variant="h6" sx={{ fontWeight: 700 }}>
                   Select a Floor
                 </Typography>
               }
@@ -165,7 +181,8 @@ export default function FloorCardSelector({
                               width: 44,
                               height: 44,
                               mr: 2,
-                              bgcolor: (t) => t.palette.primary.main,
+                              bgcolor:
+                                selectedKey === floor.key ? 'red' : (t) => t.palette.primary.main,
                               backgroundImage:
                                 floor.thumbnail && typeof floor.thumbnail === 'string'
                                   ? `url(${floor.thumbnail})`
@@ -176,7 +193,12 @@ export default function FloorCardSelector({
                           >
                             {(!floor.thumbnail || typeof floor.thumbnail !== 'string') && (
                               <Typography variant="subtitle2" sx={{ color: '#fff' }}>
-                                <HiBuildingOffice2 style={{ fontSize: 18 }} />
+                                {selectedKey === floor.key ? (
+                                  <IoLocation style={{ fontSize: 22, marginTop: 5 }} />
+                                ) : (
+                                  <HiBuildingOffice2 style={{ fontSize: 22, marginTop: 5 }} />
+                                )}
+                               
                               </Typography>
                             )}
                           </Avatar>
@@ -190,7 +212,6 @@ export default function FloorCardSelector({
                             }
                           />
 
-                          {/* subtle selected indicator */}
                           {selectedKey === floor.key && (
                             <Box
                               sx={{
@@ -214,6 +235,6 @@ export default function FloorCardSelector({
           </Card>
         </Box>
       </Fade>
-    </ClickAwayListener>
+    </Modal>
   );
 }

@@ -14,35 +14,17 @@ function MapFloatingIcons({ transformRef }: { transformRef: any }) {
   // ✅ MUI breakpoints
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // <600px
+  const isMidTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isTablet = useMediaQuery(theme.breakpoints.between('md', 'xl')); // 600–900px
   // Drawer Store
   const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
-  const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen)
+  const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen);
 
   const handleReset = () => {
     if (!transformRef?.current) return;
-
-    let scale = 3; // ✅ default for desktop
-    let x = 0;
-    let y = 0;
-
-    if (isMobile) {
-      // 📱 Mobile
-      scale = 1.5;
-      x = 5;
-      y = 190;
-    } else if (isTablet) {
-      // 💻 Tablet
-      scale = 2;
-      x = 400; // tweak until centered for tablet
-      y = 120;
-    } else {
-      // 🖥️ Desktop
-      scale = 3;
-      x = 550; // tweak until centered for desktop
-      y = 140;
-    }
-
+    let scale = 3;
+    let x = 450;
+    let y = 140;
     transformRef.current.setTransform(x, y, scale);
   };
 
@@ -63,31 +45,31 @@ function MapFloatingIcons({ transformRef }: { transformRef: any }) {
           },
         },
         position: 'fixed',
-        bottom: isMobile ? 60 : isTablet ? 90 : 100,
-        right: isMobile ? 2 : 35,
+        bottom: isMobile ? 60 : isMidTablet ? 90 : isTablet ? 16 : 100,
+        right: isMobile ? 2 : 15,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: isMobile || isTablet ? 'space-between' : '',
-        height: isMobile ? '75vh' : isTablet ? '65vh' : '12vh',
-        zIndex: 1300,
+        justifyContent: isMobile || isMidTablet || isTablet ? 'space-between' : '',
+        height: isMobile ||  isTablet ? '75vh' : isMidTablet ? '80vh' : '32vh',
+        zIndex: 300,
       }}
     >
       <Fab
         aria-label="add"
         onClick={() => setIsFloorMapOpen(true)}
-        sx={{ bgcolor: theme.palette.secondary.main,  borderRadius: '15px', }}
+        sx={{ bgcolor: theme.palette.secondary.main, borderRadius: '22px' }}
       >
         <HiMiniSquare3Stack3D style={{ color: 'white', fontSize: 18 }} />
       </Fab>
       <Fab
         aria-label="add"
         onClick={() => setIsDirectionPanelOpen(true)}
-        sx={{ bgcolor: theme.palette.primary.main, borderRadius: '15px' }}
+        sx={{ bgcolor: theme.palette.primary.main, borderRadius: '22px' }}
       >
         <FaDirections style={{ color: 'white', fontSize: 18 }} />
       </Fab>
-      {!isMobile && !isTablet && (
+      {!isMobile && !isMidTablet && !isTablet && (
         <Fragment>
           <Fab aria-label="add" onClick={() => zoomIn()} sx={{ bgcolor: '#7B48FF' }}>
             <FiZoomIn style={{ color: 'white' }} />
