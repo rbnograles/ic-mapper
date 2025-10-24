@@ -1,105 +1,51 @@
-import { useState, useEffect } from 'react';
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  TextField,
-  Autocomplete,
-  useMediaQuery,
-  CssBaseline,
-  CircularProgress,
-} from '@mui/material';
+import { AppBar, Box, Toolbar, useMediaQuery, CssBaseline } from '@mui/material';
 
-import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
-
-import SearchIcon from '@mui/icons-material/Search';
+import { ThemeProvider, useTheme } from '@mui/material/styles';
 
 import uniqueTypes from '@/Data/unique_types.json';
 import Direction from '@/components/Drawers/DirectionSearch';
 import { Chips } from '@/components/Navigations/Chips';
-import CHIPS_ICONMAP from '@/components/props/ChipsIconMapper'
-import type { IPlace } from '@/interface';
+import type { IMapItem } from '@/interface';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
-import VoiceRecorder from '@/components/props/VoiceSearch';
-
-// ====================
-// Styled Components
-// ====================
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: 10,
-  backgroundColor: theme.palette.common.white,
-  boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
-  flex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  paddingRight: theme.spacing(1),
-  marginBottom: theme.spacing(1),
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  display: 'flex',
-  alignItems: 'center',
-  color: '#5f6368',
-}));
-
-const StyledTextField = styled(TextField)(({ theme }) => ({
-  flex: 1,
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': { border: 'none' },
-    '& input': {
-      padding: theme.spacing(1.2, 0, 1.2, 0),
-      fontSize: 16,
-    },
-  },
-}));
-
-const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toUpperCase());
+import useSearchStore from '@/store/SearchStore';
+import SearchBar from '../props/SearchInput';
+import useMapStore from '@/store/MapStore';
 
 export default function SearchAppBar({
   onSelect,
-  handleChipClick,
   handlePathSearchBehavior,
   handleRoute,
   getLocationFromHistory,
 }: {
   onSelect: (item: any, type?: 'A' | 'B') => void;
-  handleChipClick: (type: string) => void;
   handlePathSearchBehavior: (item: any, type?: 'A' | 'B') => void;
-  handleRoute: (from: IPlace, to: IPlace) => void;
+  handleRoute: (from: IMapItem, to: IMapItem) => void;
   getLocationFromHistory: (history: any) => void;
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   // Use Drawer Store
   const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen);
-  const isDirectionPanelOpen = useDrawerStore((state) => state.isDirectionPanelOpen);
 
-  const [pointA, setPointA] = useState<IPlace | null>(null);
-  const [pointB, setPointB] = useState<IPlace | null>(null);
+  // Use Search Store
+  const pointA = useSearchStore((state) => state.pointA);
+  const pointB = useSearchStore((state) => state.pointB);
+  // handlers
+  const setPointA = useSearchStore((state) => state.setPointA);
+  const setPointB = useSearchStore((state) => state.setPointB);
+
+  // Use Map Store
+  const floor = useMapStore((state) => state.selectedFloorMap)
 
   // Lazy search data
   const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
-    'all',
+    floor,
     20
   );
 
-  const [query, setQuery] = useState('');
-  const [displayOptions, setDisplayOptions] = useState<any[]>([]);
-
-  // Debounced search
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!query.trim()) setDisplayOptions(visiblePlaces);
-      else setDisplayOptions(search(query));
-    }, 250);
-    return () => clearTimeout(timer);
-  }, [query, visiblePlaces]);
-
   // Point Handling
-  const setPointAMethod = (val: IPlace) => {
+  const setPointAMethod = (val: IMapItem) => {
     setPointA(val);
     if (val?.name && pointB?.name) {
       handleRoute(val, pointB);
@@ -108,7 +54,7 @@ export default function SearchAppBar({
     saveToCache(val);
   };
 
-  const setPointBMethod = (val: IPlace) => {
+  const setPointBMethod = (val: IMapItem) => {
     setPointB(val);
     if (pointA?.name && val?.name) {
       handleRoute(pointA, val);
@@ -123,119 +69,6 @@ export default function SearchAppBar({
     setPointB(pointA);
     handleRoute(pointB, pointA);
   };
-
-  // Search Bar Renderer
-  const renderSearchBar = (placeholder: string, value: any, onChange: (val: any) => void) => (
-    <Search
-      sx={{
-        boxShadow: isDirectionPanelOpen ? 'none' : '0 2px 6px rgba(0,0,0,0.2)',
-        border: isDirectionPanelOpen ? '1px solid #ccc' : 'none',
-      }}
-    >
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-
-      <Autocomplete
-        freeSolo
-        blurOnSelect
-        value={value}
-        options={displayOptions}
-        loading={loading}
-        filterOptions={(x) => x}
-        getOptionLabel={(opt) => (opt?.name ? capitalizeWords(opt.name.toLowerCase()) : '')}
-        onChange={(_, val) => {
-          onChange(val);
-          saveToCache(val);
-        }}
-        onInputChange={(_, val) => setQuery(val)}
-        onFocus={() => {
-          setDisplayOptions(visiblePlaces);
-        }}
-        ListboxProps={{
-          onScroll: (e) => {
-            const listbox = e.currentTarget;
-            if (hasMore && listbox.scrollTop + listbox.clientHeight >= listbox.scrollHeight - 10) {
-              loadMore();
-            }
-          },
-        }}
-        sx={{ flex: 1 }}
-        slotProps={{
-          popper: {
-            modifiers: [
-              {
-                name: 'width',
-                enabled: true,
-                phase: 'beforeWrite',
-                requires: ['computeStyles'],
-                fn: ({ state }) => {
-                  state.styles.popper.width = `${state.rects.reference.width}px`;
-                },
-              },
-            ],
-          },
-        }}
-        renderOption={(props, option) => (
-          <li
-            {...props}
-            key={option.id}
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              flexDirection: 'column',
-              padding: '8px 12px',
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              {CHIPS_ICONMAP[option.type]?.({
-                color: theme.palette.primary.main,
-                fontSize: 24,
-                marginRight: 5,
-              })}
-              <Box>
-                <Box sx={{ fontWeight: 500, fontSize: isMobile ? 14 : 16 }}>
-                  {capitalizeWords(option.name.toLowerCase())}
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: isMobile ? 12 : 13,
-                    color: 'text.secondary',
-                  }}
-                >
-                  {option.floor ?? 'Unknown'}
-                </Box>
-              </Box>
-            </Box>
-          </li>
-        )}
-        renderInput={(params) => (
-          <StyledTextField
-            {...params}
-            style={{ padding: 10 }}
-            placeholder={isDirectionPanelOpen ? `${placeholder}` : placeholder}
-            variant="standard"
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
-            }}
-          />
-        )}
-      />
-
-      <VoiceRecorder
-        onTranscript={(text) => {
-          setQuery(text); // update your search bar input
-        }}
-        color={theme.palette.secondary.main}
-      />
-    </Search>
-  );
 
   // Render Component
   return (
@@ -253,7 +86,7 @@ export default function SearchAppBar({
             boxShadow: 'none',
             paddingTop: 1.5,
             flexDirection: isMobile ? 'column' : 'row',
-            overflowX: 'hidden', // prevent AppBar itself from overflowing
+            overflowX: 'hidden',
           }}
         >
           <Toolbar
@@ -264,10 +97,22 @@ export default function SearchAppBar({
               gap: 2,
             }}
           >
-            {renderSearchBar('Search for a place or type', pointA, (val) => {
-              setPointA(val);
-              onSelect(val, 'A');
-            })}
+            <SearchBar
+              placeholder="Search for a place or type"
+              value={pointA}
+              onChange={(val) => {
+                setPointA(val);
+                onSelect(val, 'A');
+              }}
+              lazy={{
+                visiblePlaces,
+                hasMore,
+                loadMore,
+                search,
+                loading,
+                saveToCache,
+              }}
+            />
           </Toolbar>
 
           <Chips types={uniqueTypes} />
@@ -275,15 +120,10 @@ export default function SearchAppBar({
 
         {/* === Drawer for directions === */}
         <Direction
-          directionOpen={isDirectionPanelOpen}
-          setDirectionOpen={setIsDirectionPanelOpen}
           isMobile={isMobile}
-          renderSearchBar={renderSearchBar}
           handlePathSearchBehavior={handlePathSearchBehavior}
           setPointBMethod={setPointBMethod}
           setPointAMethod={setPointAMethod}
-          pointA={pointA}
-          pointB={pointB}
           handleSwapPoints={handleSwapPoints}
           getLocationFromHistory={getLocationFromHistory}
         />

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { ILabels} from '@/interface';
 
-const Boundaries = ({boundaries}: {boundaries: Labels[]}) => {
+const Boundaries = ({boundaries}: {boundaries: ILabels[]}) => {
   return (
     <g id="Map Boundaries">
       {boundaries.map((bound, index) => {

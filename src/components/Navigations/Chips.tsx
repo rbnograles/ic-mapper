@@ -28,6 +28,7 @@ export const Chips = ({ types }: { types: string[] }) => {
 
   // Use Map Store
   const setSelectedType = useMapStore((state) => state.setSelectedType);
+  const resetMap = useMapStore((state) => state.resetMap);
 
   // Overflow / measurement state
   const [containerWidth, setContainerWidth] = useState<number>(0);
@@ -172,7 +173,10 @@ export const Chips = ({ types }: { types: string[] }) => {
             <Chip
               key={type}
               label={type}
-              onClick={() => setSelectedType(type)}
+              onClick={() => {
+                resetMap();
+                setSelectedType(type);
+              }}
               icon={
                 CHIPS_ICONMAP[type] ? (
                   CHIPS_ICONMAP[type]({

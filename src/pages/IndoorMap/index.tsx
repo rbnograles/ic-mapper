@@ -1,8 +1,7 @@
 // App.tsx
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, CssBaseline, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import { useParams } from 'react-router-dom';
 import theme from '@/styles/theme';
 import { layoutStyles } from '@/styles/layoutStyles';
 import BottomNavBar from '@/components/Navigations/BottomNavBar';
@@ -29,24 +28,18 @@ export function IndoorMap() {
   const resetMap = useMapStore((state) => state.resetMap);
   const handlePathSelect = useMapStore((state) => state.handlePathSelect);
   const setIMapItems = useMapStore((state) => state.setMapItems);
-  const setSelectedType = useMapStore((state) => state.setSelectedType);
   const setActiveNodeIds = useMapStore((state) => state.setActiveNodeIds);
 
   // Drawer Store
-  const isLoading = useDrawerStore((state) => state.isLoading)
-  const setIsLoading = useDrawerStore((state) => state.setIsLoading)
-  const setIsExpanded = useDrawerStore((state) => state.setIsExpanded)
-  const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen)
+  const isLoading = useDrawerStore((state) => state.isLoading);
+  const setIsLoading = useDrawerStore((state) => state.setIsLoading);
+  const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
+  const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
 
-  // use paramFloorKey as the route-provided floor key
-  const { floorKey: paramFloorKey } = useParams<{ floorKey?: string }>();
-  const initialFloorKey = paramFloorKey ?? floors[0].key;
+  const selectedFloorMap = useMapStore((state) => state.selectedFloorMap);
+  const setSelectedFloorMap = useMapStore((state) => state.setSelectedFloorMap);
 
-  const [selectedMap, setSelectedMap] = useState<string>(initialFloorKey);
-
-  // readable name for display (keep in state so we can show "Loading x..." while loading)
-  const initialFloorName = floors.find((f) => f.key === initialFloorKey)?.name ?? floors[0].name;
-  const [selectedMapName, setSelectedMapName] = useState<string>(initialFloorName);
+  const [selectedMapName, setSelectedMapName] = useState<string>('');
 
   // 🧱 Data states
   const [maps, setMaps] = useState<any[]>([]);
@@ -57,19 +50,12 @@ export function IndoorMap() {
   const [boundaries, setboundaries] = useState<any[]>([]);
 
   useEffect(() => {
-    const newKey = paramFloorKey ?? floors[0].key;
-    setSelectedMap('ground'); // change to new key
-    const floor = floors.find((f) => f.key === newKey);
-    setSelectedMapName(floor?.name ?? newKey);
-  }, [paramFloorKey]);
+    const floor = floors.find((f) => f.key === selectedFloorMap);
+    setSelectedMapName(floor?.name ?? '');
+  }, [selectedFloorMap]);
 
   const handlePathSearchBehavior = (path: IMapItem | null) => {
     setIMapItems(path as IMapItem);
-  };
-
-  const handleChipClick = (type: string) => {
-    setSelectedType(type);
-    resetMap();
   };
 
   // 🧭 Load map + node data dynamically when floor changes
@@ -77,7 +63,7 @@ export function IndoorMap() {
     let isMounted = true;
     setIsLoading(true);
 
-    loadMapData(selectedMap)
+    loadMapData(selectedFloorMap ?? floors[0].key)
       .then((data) => {
         if (!isMounted) return;
         setMaps(data.maps);
@@ -96,8 +82,7 @@ export function IndoorMap() {
     return () => {
       isMounted = false;
     };
-    // selectedMap is synced to route via the effect above
-  }, [selectedMap]);
+  }, [selectedFloorMap]);
 
   // Pathfinding with caching — plain function that accepts current state
   const handleRoute = (from: IPlace, to: IPlace) => {
@@ -109,7 +94,6 @@ export function IndoorMap() {
       setActiveNodeIds(history.raw.nodes);
       return;
     }
-
     handlePathSelect(history);
   };
 
@@ -117,7 +101,7 @@ export function IndoorMap() {
   // if page refreshed it will go to ground floor
   // we can use cache once requirement to retain floor comes
   const openFloor = (floorKeyToOpen: string) => {
-    setSelectedMap(floorKeyToOpen);
+    setSelectedFloorMap(floorKeyToOpen);
     setIsFloorMapOpen(false);
     setIsExpanded(false);
     resetMap();
@@ -131,7 +115,6 @@ export function IndoorMap() {
         <Box sx={layoutStyles.fixedTop}>
           <SearchAppBar
             onSelect={handlePathSelect}
-            handleChipClick={handleChipClick}
             handlePathSearchBehavior={handlePathSearchBehavior}
             handleRoute={handleRoute}
             getLocationFromHistory={getLocationFromHistory}
@@ -163,7 +146,7 @@ export function IndoorMap() {
               boundaries={boundaries}
               buidingMarks={buidingMarks}
               roadMarks={roadMarks}
-              floorKey={selectedMap}
+              floorKey={selectedFloorMap}
             />
           )}
         </div>
@@ -174,11 +157,7 @@ export function IndoorMap() {
         </Box>
 
         {/* 🗂️ Floor Drawer */}
-        <FloorCardSelector
-          floors={floors}
-          selectedKey={selectedMap}
-          onSelect={openFloor}
-        />
+        <FloorCardSelector floors={floors} selectedKey={selectedFloorMap} onSelect={openFloor} />
       </Box>
     </ThemeProvider>
   );

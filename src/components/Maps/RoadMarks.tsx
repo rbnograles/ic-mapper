@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { ILabels} from '@/interface';
 
-const RoadMarks = ({ roadMarks }: { roadMarks: Labels[] }) => {
+const RoadMarks = ({ roadMarks }: { roadMarks: ILabels[] }) => {
   return (
     <g id="RoadMarks">
       {roadMarks.map((roadMark, index) => {

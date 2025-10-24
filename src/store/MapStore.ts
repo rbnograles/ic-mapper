@@ -13,6 +13,7 @@ interface IMapStore {
   map: IMapItem;
   selectedMap: string;
   selectedType: string;
+  selectedFloorMap: string;
   activeNodeIds: string[];
   // handlers
   handlePathSelect: (path: IMapItem | IPlace) => void;
@@ -21,6 +22,7 @@ interface IMapStore {
   setSelectedName: (name: string) => void;
   setSelectedType: (type: string) => void;
   clearSelectedType: () => void;
+  setSelectedFloorMap: (floor: string) => void;
   setActiveNodeIds: (nodeIds: string[]) => void;
   resetMap: () => void;
 }
@@ -46,13 +48,16 @@ const useMapStore = create<IMapStore>()((set) => ({
   map: newMap,
   selectedMap: '',
   selectedType: '',
+  selectedFloorMap: 'ground',
   activeNodeIds: [],
 
   // handlers
   setMapItems: (path) => {
-    set(() => ({
-      map: path,
-    }));
+    if (path !== null) {
+      set(() => ({
+        map: path,
+      }));
+    }
   },
 
   handlePathSelect: (by) => {
@@ -86,7 +91,7 @@ const useMapStore = create<IMapStore>()((set) => ({
 
   setSelectedType: (type) => {
     set(() => ({
-     selectedType: type
+      selectedType: type,
     }));
   },
 
@@ -95,6 +100,12 @@ const useMapStore = create<IMapStore>()((set) => ({
   setActiveNodeIds: (nodeIds: string[]) => {
     set(() => ({
       activeNodeIds: nodeIds,
+    }));
+  },
+
+  setSelectedFloorMap: (floor) => {
+    set(() => ({
+      selectedFloorMap: floor,
     }));
   },
 

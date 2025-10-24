@@ -16,7 +16,7 @@ export default function CachedResults({
   setDirectionOpen,
 }: {
   getLocationFromHistory?: (history: any) => void;
-  setDirectionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setDirectionOpen: (value: boolean) => void;
 }) {
   const [allCachedPlaces, setAllCachedPlaces] = useState<Place[]>([]);
 

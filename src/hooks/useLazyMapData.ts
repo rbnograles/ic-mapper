@@ -1,22 +1,15 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { loadMapData } from '@/utils/mapLoader';
-
-interface Place {
-  id: string;
-  name: string;
-  type?: string;
-  floor?: string;
-  [key: string]: any;
-}
+import { IMapItem } from '@/interface';
 
 export function useLazyMapData(floor: string, initialLimit = 20) {
-  const [allPlaces, setAllPlaces] = useState<Place[]>([]);
-  const [visiblePlaces, setVisiblePlaces] = useState<Place[]>([]);
+  const [allPlaces, setAllPlaces] = useState<IMapItem[]>([]);
+  const [visiblePlaces, setVisiblePlaces] = useState<IMapItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(false);
 
   // 🧠 In-memory cache for selected maps
-  const cacheRef = useRef<Record<string, Place[]>>({});
+  const cacheRef = useRef<Record<string, IMapItem[]>>({});
 
   // Load saved cache on mount
   useEffect(() => {
@@ -35,7 +28,7 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
   // =====================
   const normalizeName = (name: string) => name.trim().toLowerCase();
 
-  const filterPlaces = useCallback((maps: Place[]) => {
+  const filterPlaces = useCallback((maps: IMapItem[]) => {
     // remove unwanted and duplicate names
     const seen = new Set<string>();
     return maps.filter((p) => {
@@ -57,10 +50,19 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
       try {
         const { maps } = await loadMapData(floor);
         const filtered = filterPlaces(maps);
-
         if (isMounted) {
           setAllPlaces(filtered);
-          setVisiblePlaces(filtered.slice(0, initialLimit));
+          setVisiblePlaces(
+            filtered
+              .sort((a, b) => {
+                console.log(a.floor)
+                // Put items whose type matches the floor first
+                if (a.floor === floor && b.type !== floor) return -1;
+                if (a.floor !== floor && b.type === floor) return 1;
+                return 0; // keep their relative order otherwise
+              })
+              .slice(0, initialLimit)
+          );
           setHasMore(filtered.length > initialLimit);
         }
       } catch (err) {
@@ -91,7 +93,7 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
   // Smart Search (name + type)
   // =====================
   const search = useCallback(
-    (query: string): Place[] => {
+    (query: string): IMapItem[] => {
       const q = query.trim().toLowerCase();
       if (!q) return visiblePlaces;
 
@@ -119,7 +121,7 @@ export function useLazyMapData(floor: string, initialLimit = 20) {
   // Cache only on selection
   // =====================
   const saveToCache = useCallback(
-    (selectedPlace: Place) => {
+    (selectedPlace: IMapItem) => {
       if (!selectedPlace) return;
 
       const key = normalizeName(selectedPlace.name);
