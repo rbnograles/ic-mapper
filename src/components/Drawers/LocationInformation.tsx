@@ -1,115 +1,279 @@
-import { Box, Typography, IconButton, Divider, Stack, SwipeableDrawer } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Box,
+  Typography,
+  IconButton,
+  Divider,
+  Stack,
+  SwipeableDrawer,
+  useTheme,
+} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import type { PathItem } from '@/interface';
+// State Manager
+import useMapStore from '@/store/MapStore';
+import useDrawerStore from '@/store/DrawerStore';
 
-function BottomSlider({
-  isMobile,
-  expanded,
-  handleSliderClose,
-  pathItem,
-}: {
-  isMobile: boolean;
-  expanded: boolean;
-  handleSliderClose: () => void;
-  pathItem: PathItem;
-}) {
+function LocationInformation({ isMobile }: { isMobile: boolean }) {
+  const theme = useTheme();
+  // Use Map Store
+  const map = useMapStore((state) => state.map);
+  // Use Drawer Store
+  const isSheetOpen = useDrawerStore((state) => state.isExpanded);
+  const setIsSheetOpen = useDrawerStore((state) => state.setIsExpanded);
+
+  const [expanded, setExpanded] = useState(!isMobile);
+
+  // Drag / touch state
+  const startYRef = useRef<number | null>(null);
+  const lastYRef = useRef<number | null>(null);
+  const draggingRef = useRef(false);
+
+  // Config
+  const PEEK_HEIGHT = 110; // px shown on initial peek (adjust to show name)
+  const EXPANDED_HEIGHT = '75vh'; // expanded size on mobile
+  const TRANSITION_MS = 220;
+  const DRAG_THRESHOLD = 40; // px - how far to drag to toggle
+
+  // when the global sheet open flag toggles open -> reset to peek
+  useEffect(() => {
+    if (isSheetOpen) {
+      setExpanded(false); // true for desktop, false (peek) for mobile
+    } else {
+      // when sheet is closed, reset collapsed state
+      setExpanded(false);
+    }
+  }, [isSheetOpen, isMobile]);
+
+  // Touch / mouse handlers attached to the drag handle area
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    const y = e.touches[0].clientY;
+    startYRef.current = y;
+    lastYRef.current = y;
+    draggingRef.current = true;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    if (!draggingRef.current) return;
+    lastYRef.current = e.touches[0].clientY;
+  };
+
+  const onTouchEnd = () => {
+    if (!isMobile) return;
+    if (!draggingRef.current) return;
+    const start = startYRef.current ?? 0;
+    const end = lastYRef.current ?? start;
+    const delta = start - end; // positive when dragging up
+    draggingRef.current = false;
+    startYRef.current = null;
+    lastYRef.current = null;
+
+    if (!expanded && delta > DRAG_THRESHOLD) {
+      // dragged up enough -> expand
+      setExpanded(true);
+    } else if (expanded && delta < -DRAG_THRESHOLD) {
+      // dragged down enough -> collapse
+      setExpanded(false);
+    }
+  };
+
+  // Mouse equivalents for desktop / emulation (optional)
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (!isMobile) return;
+    startYRef.current = e.clientY;
+    lastYRef.current = e.clientY;
+    draggingRef.current = true;
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isMobile) return;
+    if (!draggingRef.current) return;
+    lastYRef.current = e.clientY;
+  };
+
+  const onMouseUp = () => {
+    if (!isMobile) return;
+    if (!draggingRef.current) return;
+    const start = startYRef.current ?? 0;
+    const end = lastYRef.current ?? start;
+    const delta = start - end;
+    draggingRef.current = false;
+    startYRef.current = null;
+    lastYRef.current = null;
+
+    if (!expanded && delta > DRAG_THRESHOLD) setExpanded(true);
+    else if (expanded && delta < -DRAG_THRESHOLD) setExpanded(false);
+  };
+
+  // toggle on handle click
+  const toggleExpanded = () => setExpanded((s) => !s);
+
+  // close sheet
+  const handleClose = () => {
+    setIsSheetOpen(false);
+    setExpanded(false);
+  };
+
+  // computed paper style
+  const paperSx = {
+    borderRadius: '16px 16px 0 0',
+    height: isMobile ? (expanded ? EXPANDED_HEIGHT : `${PEEK_HEIGHT}px`) : '75vh',
+    width: isMobile ? '100%' : 380,
+    backgroundColor: theme.palette.background.default,
+    boxShadow: 8,
+    display: 'flex',
+    flexDirection: 'column' as const,
+    overflow: 'hidden',
+    transition: `height ${TRANSITION_MS}ms cubic-bezier(.2,.8,.2,1)`,
+    touchAction: 'none' as const, // let us handle touch
+  };
+
   return (
     <SwipeableDrawer
-      anchor={isMobile ? 'bottom' : 'left'}
-      open={expanded}
-      onClose={handleSliderClose}
-      onOpen={() => {}}
+      anchor="bottom"
+      open={isSheetOpen}
+      onOpen={() => {
+        // keep peek on open
+      }}
+      onClose={handleClose}
       disableSwipeToOpen={false}
-      hideBackdrop
+      // only show backdrop when fully expanded — allow map interaction when peek
+      hideBackdrop={!expanded}
       ModalProps={{
         keepMounted: true,
         disableEnforceFocus: true,
-        BackdropProps: { invisible: true },
+        // when expanded, use a semi-transparent backdrop to block map interaction
+        ...(expanded
+          ? {
+              BackdropProps: {
+                sx: {
+                  backgroundColor: 'rgba(0,0,0,0.18)',
+                },
+              },
+            }
+          : {
+              // when not expanded, ensure no backdrop styles (no blocking)
+              BackdropProps: {
+                sx: {
+                  backgroundColor: 'transparent',
+                  pointerEvents: 'none',
+                },
+              },
+            }),
       }}
       PaperProps={{
-        sx: {
-          borderRadius: isMobile ? '24px 24px 0 0' : '10px 0 0 10px',
-          height: isMobile ? '75vh' : '100vh',
-          width: isMobile ? '100%' : 380,
-          backgroundColor: 'white',
-          boxShadow: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden', // ✅ prevent outer scroll, we'll handle inside
-        },
+        sx: paperSx,
       }}
       sx={{
-        pointerEvents: 'none',
-        '& .MuiDrawer-paper': { pointerEvents: 'auto' },
+        pointerEvents: expanded ? 'auto' : 'none',
+        '& .MuiDrawer-paper': {
+          pointerEvents: 'auto',
+          zIndex: (theme as any).zIndex?.drawer + 300,
+        },
       }}
     >
-      {/* --- Drag Handle --- */}
+      {/* --- Drag Handle area (always visible on mobile peek) --- */}
       {isMobile && (
-        <Box display="flex" justifyContent="center" pt={1} pb={1.5} flexShrink={0}>
+        <Box
+          sx={{
+            px: 2,
+            py: 0.75,
+            cursor: 'grab',
+            flexShrink: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: expanded ? 'transparent' : 'transparent',
+            userSelect: 'none',
+          }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleExpanded();
+          }}
+        >
           <Box
-            onClick={handleSliderClose}
             sx={{
               width: 40,
-              height: 4,
-              borderRadius: 2,
+              height: 6,
+              borderRadius: 3,
               bgcolor: 'grey.400',
-              cursor: 'pointer',
+              mb: 0.25,
             }}
           />
         </Box>
       )}
 
-      {/* --- Close button (desktop only) --- */}
-      {!isMobile && (
-        <Box display="flex" justifyContent="flex-end" p={1} flexShrink={0}>
-          <IconButton onClick={handleSliderClose} size="small">
-            <CloseIcon />
-          </IconButton>
-        </Box>
-      )}
-
-      {/* --- Scrollable Content Section --- */}
+      {/* --- Top Row: Name + close button (when expanded) or just name on peek --- */}
       <Box
         sx={{
-          flexGrow: 1,
-          overflowY: 'auto',
           px: 2,
-          pb: 4, // ✅ ensures last item visible
-          minHeight: 0, // ✅ critical for flex scroll behavior
+          py: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 1,
+          flexShrink: 0,
         }}
       >
-        {/* --- Header / Main Info --- */}
-        <Box sx={{ flexShrink: 0 }}>
-          {pathItem ? (
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <Typography
+            variant="h6"
+            fontWeight="bold"
+            noWrap
+            textAlign={isMobile ? 'center' : 'left'}
+          >
+            {map?.name ?? 'No name'}
+          </Typography>
+          <Typography
+            variant="subtitle2"
+            noWrap
+            textAlign={isMobile ? 'center' : 'left'}
+          >
+            {map.floor}
+          </Typography>
+          {isMobile && !expanded && map?.type && (
+            <Typography variant="caption" color="text.secondary" noWrap textAlign="center">
+              {map.type}
+            </Typography>
+          )}
+        </Box>
+
+        {(!isMobile || expanded) && (
+          <IconButton onClick={handleClose} size="small" aria-label="close location" sx={{ ml: 1 }}>
+            <CloseIcon />
+          </IconButton>
+        )}
+      </Box>
+
+      {/* content (shown only when expanded) */}
+      {!isMobile || expanded ? (
+        <Box
+          sx={{
+            flexGrow: 1,
+            overflowY: 'auto',
+            px: 2,
+            pb: 4,
+            minHeight: 0,
+          }}
+        >
+          {map ? (
             <>
-              <Typography variant="h6" fontWeight="bold" mb={1} textAlign="center">
-                {pathItem.name}
-              </Typography>
-
-              {pathItem.img && (
-                <Box
-                  component="img"
-                  src={pathItem.img}
-                  alt={pathItem.name}
-                  sx={{
-                    width: '100%',
-                    maxHeight: 160,
-                    objectFit: 'cover',
-                    borderRadius: 2,
-                    mb: 2,
-                  }}
-                />
-              )}
-
-              {pathItem.type && (
-                <Typography variant="subtitle2" color="text.secondary" textAlign="center" mb={1}>
-                  {pathItem.type}
+              {map.type && (
+                <Typography variant="subtitle2" color="text.secondary" textAlign="left" mb={1}>
+                  {map.type}
                 </Typography>
               )}
 
-              {pathItem.description && (
+              {map.description && (
                 <Typography variant="body2" textAlign="justify" mb={2}>
-                  {pathItem.description}
+                  {map.description}
                 </Typography>
               )}
             </>
@@ -118,56 +282,51 @@ function BottomSlider({
               No information available.
             </Typography>
           )}
+
+          {map?.schedule && map.schedule.length > 0 && (
+            <>
+              <Divider sx={{ my: 2 }} />
+              <Typography variant="subtitle1" fontWeight="bold" color="primary" mb={1}>
+                Schedule
+              </Typography>
+
+              <Stack spacing={1.5} pb={isMobile ? 0 : 10}>
+                {map.schedule.map((s, i) => (
+                  <Box
+                    key={i}
+                    sx={{
+                      border: '1px solid #ddd',
+                      borderRadius: 2,
+                      p: 1.5,
+                      bgcolor: '#fafafa',
+                    }}
+                  >
+                    <Typography variant="subtitle2" fontWeight="bold" color="text.primary">
+                      {s.time}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {s.date}
+                    </Typography>
+                    <Typography variant="body2" mt={0.5}>
+                      <strong>Volunteers:</strong> {s.volunteers.join(', ')}
+                    </Typography>
+                    <Typography variant="body2">
+                      <strong>Guide:</strong> {s.guide}
+                    </Typography>
+                    <Typography variant="body2">
+                      <strong>Congregation:</strong> {s.congregation}
+                    </Typography>
+                  </Box>
+                ))}
+              </Stack>
+            </>
+          )}
         </Box>
-
-        {/* --- Scrollable Schedule Section --- */}
-        {pathItem?.schedule && pathItem.schedule.length > 0 && (
-          <>
-            <Divider sx={{ my: 2 }} />
-            <Typography
-              variant="subtitle1"
-              fontWeight="bold"
-              textAlign="center"
-              mb={1}
-              color="primary"
-            >
-              Schedule
-            </Typography>
-
-            <Stack spacing={1.5} pb={isMobile ? 0 : 10}>
-              {pathItem.schedule.map((s, i) => (
-                <Box
-                  key={i}
-                  sx={{
-                    border: '1px solid #ddd',
-                    borderRadius: 2,
-                    p: 1.5,
-                    bgcolor: '#fafafa',
-                  }}
-                >
-                  <Typography variant="subtitle2" fontWeight="bold" color="text.primary">
-                    {s.time}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {s.date}
-                  </Typography>
-                  <Typography variant="body2" mt={0.5}>
-                    <strong>Volunteers:</strong> {s.volunteers.join(', ')}
-                  </Typography>
-                  <Typography variant="body2">
-                    <strong>Guide:</strong> {s.guide}
-                  </Typography>
-                  <Typography variant="body2">
-                    <strong>Congregation:</strong> {s.congregation}
-                  </Typography>
-                </Box>
-              ))}
-            </Stack>
-          </>
-        )}
-      </Box>
+      ) : (
+        <Box sx={{ height: 8 }} />
+      )}
     </SwipeableDrawer>
   );
 }
 
-export default BottomSlider;
+export default LocationInformation;

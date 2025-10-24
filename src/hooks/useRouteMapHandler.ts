@@ -1,8 +1,9 @@
 // components/hooks/routeMapHandler.ts
-import type { Dispatch, SetStateAction } from 'react';
 import { findPathBetweenPlacesOptimized } from '@/utils/routing';
 import { floors } from '@/pages/IndoorMap/partials/floors';
-import type { Graph } from '@/interface/index';
+import type { Graph, IEntrances, IMapItem, INodes } from '@/interface/index';
+
+import useMapStore from '@/store/MapStore';
 
 type RouteResult = {
   from: string;
@@ -16,16 +17,19 @@ type RouteResult = {
 export async function routeMapHandler(
   from: string,
   to: string,
-  nodes: any[],
-  entrances: any[],
-  maps: any[],
-  selectedMap: string,
-  setActiveNodeIds: Dispatch<SetStateAction<string[]>>,
-  setHighlightId: Dispatch<SetStateAction<string | null>>
+  maps: IMapItem[],
+  nodes: INodes[],
+  entrances: IEntrances[]
 ): Promise<string[] | null> {
+
+  const mapStore = useMapStore.getState();
+  const selectedMap = mapStore.selectedMap
+  const setActiveNodeIds = mapStore.setActiveNodeIds
+  const setSelectedId = mapStore.setSelectedId
+
   if (!from || !to) return null;
 
-  const floorMap = { nodes, entrances, places: maps } as unknown as Graph;
+  const floorMap = { nodes, entrances, maps: maps } as unknown as Graph;
 
   const safeLocalStorageAvailable =
     typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
@@ -56,7 +60,7 @@ export async function routeMapHandler(
               `✅ Using cached route for ${from} ↔ ${to} (from ${cachedKey === key ? 'key' : 'reverseKey'})`
             );
             // ensure highlight set to destination
-            setHighlightId(to);
+            setSelectedId(to);
             return nodesToUse;
           }
         } catch (err) {
@@ -107,7 +111,7 @@ export async function routeMapHandler(
 
   // update state
   setActiveNodeIds(orderedNodes);
-  setHighlightId(to);
+  setSelectedId(to);
 
   return orderedNodes;
 }

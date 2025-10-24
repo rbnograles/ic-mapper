@@ -10,19 +10,10 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import type { PathItem } from '@/interface';
-import BottomSlider from '@/components/Drawers/LocationInformation';
+import LocationInformation from '@/components/Drawers/LocationInformation';
 import { FaMap } from 'react-icons/fa';
 
-export default function BottomBar({
-  expanded,
-  handleSliderClose,
-  pathItem,
-}: {
-  expanded: boolean;
-  handleSliderClose: () => void;
-  pathItem: PathItem;
-}) {
+export default function BottomNavBar() {
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
@@ -66,11 +57,8 @@ export default function BottomBar({
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BottomSlider
+      <LocationInformation
         isMobile={isMobile}
-        expanded={expanded}
-        handleSliderClose={handleSliderClose}
-        pathItem={pathItem}
       />
 
       <Paper

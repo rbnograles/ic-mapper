@@ -1,4 +1,3 @@
-import { type Dispatch, type JSX, type SetStateAction } from 'react';
 import {
   Box,
   Drawer,
@@ -9,44 +8,49 @@ import {
   ThemeProvider,
   Paper,
 } from '@mui/material';
+
+import theme from '@/styles/theme';
+
 import { FaLocationDot } from 'react-icons/fa6';
 import { RiArrowUpDownLine } from 'react-icons/ri';
 import CloseIcon from '@mui/icons-material/Close';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import theme from '@/styles/theme';
+// Components
 import CachedResults from '@/components/Navigations/CachedResults';
+// Intefaces
+import { IDirectionSearch } from '@/interface/DrawerInterface';
+import SearchBar from '../props/SearchInput';
+import { useLazyMapData } from '@/hooks/useLazyMapData';
+import useDrawerStore from '@/store/DrawerStore';
+import useSearchStore from '@/store/SearchStore';
 
 const Direction = ({
-  directionOpen,
-  setDirectionOpen,
   isMobile,
-  renderSearchBar,
   setPointAMethod,
   handlePathSearchBehavior,
   setPointBMethod,
-  pointA,
-  pointB,
   handleSwapPoints,
   getLocationFromHistory,
-}: {
-  directionOpen: boolean;
-  setDirectionOpen: Dispatch<SetStateAction<boolean>>;
-  isMobile: boolean;
-  renderSearchBar: (placeholder: string, value: any, onChange: (val: any) => void) => JSX.Element;
-  setPointAMethod: React.Dispatch<any>;
-  handlePathSearchBehavior: (item: any, type?: 'A' | 'B' | undefined) => void;
-  setPointBMethod: React.Dispatch<any>;
-  pointA: any;
-  pointB: any;
-  handleSwapPoints: () => void;
-  getLocationFromHistory: (history: any) => void;
-}) => {
+}: IDirectionSearch) => {
+  // Use Drawer Store
+  const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen);
+  const isDirectionPanelOpen = useDrawerStore((state) => state.isDirectionPanelOpen);
+  // Use Search Store
+  const pointA = useSearchStore((state) => state.pointA);
+  const pointB = useSearchStore((state) => state.pointB);
+  // Lazy search data
+  const { visiblePlaces, hasMore, loadMore, search, loading, saveToCache } = useLazyMapData(
+    'all',
+    20
+  );
+  
+
   return (
     <ThemeProvider theme={theme}>
       <Drawer
         anchor="left"
-        open={directionOpen}
-        onClose={() => setDirectionOpen(false)}
+        open={isDirectionPanelOpen}
+        onClose={() => setIsDirectionPanelOpen(false)}
         PaperProps={{
           sx: {
             width: isMobile ? '100vw' : 430,
@@ -74,7 +78,7 @@ const Direction = ({
                 Walking
               </Typography>
             </Stack>
-            <IconButton onClick={() => setDirectionOpen(false)}>
+            <IconButton onClick={() => setIsDirectionPanelOpen(false)}>
               <CloseIcon />
             </IconButton>
           </Stack>
@@ -99,15 +103,38 @@ const Direction = ({
 
             {/* Search fields + swap button */}
             <Stack spacing={1.5} flex={1}>
-              {renderSearchBar('Choose starting...', pointA, (val: any) => {
-                setPointAMethod(val);
-                handlePathSearchBehavior(val, 'A');
-              })}
-
-              {renderSearchBar('Choose destination...', pointB, (val: any) => {
-                setPointBMethod(val);
-                handlePathSearchBehavior(val, 'B');
-              })}
+              <SearchBar
+                placeholder="Choose starting..."
+                value={pointA}
+                onChange={(val) => {
+                  setPointAMethod(val);
+                  handlePathSearchBehavior(val, 'A');
+                }}
+                lazy={{
+                  visiblePlaces,
+                  hasMore,
+                  loadMore,
+                  search,
+                  loading,
+                  saveToCache,
+                }}
+              />
+              <SearchBar
+                placeholder="Choose destination..."
+                value={pointB}
+                onChange={(val) => {
+                  setPointBMethod(val);
+                  handlePathSearchBehavior(val, 'B');
+                }}
+                lazy={{
+                  visiblePlaces,
+                  hasMore,
+                  loadMore,
+                  search,
+                  loading,
+                  saveToCache,
+                }}
+              />
             </Stack>
 
             <IconButton style={{ marginTop: 40 }} onClick={handleSwapPoints}>
@@ -129,7 +156,7 @@ const Direction = ({
         >
           <CachedResults
             getLocationFromHistory={getLocationFromHistory}
-            setDirectionOpen={setDirectionOpen}
+            setDirectionOpen={setIsDirectionPanelOpen}
           />
         </Box>
       </Drawer>

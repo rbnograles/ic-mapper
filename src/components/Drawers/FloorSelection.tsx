@@ -10,91 +10,104 @@ import {
   ListItemButton,
   ListItemText,
   Typography,
-  Fade,
-  ClickAwayListener,
-  useTheme,
-  InputAdornment,
   TextField,
+  InputAdornment,
   Avatar,
   Divider,
+  Modal,
+  Fade,
+  Backdrop,
+  useTheme,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
-import { HiBuildingOffice2 } from "react-icons/hi2";
 
-export type Floor = {
-  key: string;
-  name: string;
-  location: string;
-  // optional thumbnail url or react node
-  thumbnail?: string | React.ReactNode;
-};
+import { HiBuildingOffice2 } from 'react-icons/hi2';
+import { IoLocation } from "react-icons/io5";
 
-export type FloorCardSelectorProps = {
-  open: boolean;
-  onClose: () => void;
-  floors: Floor[];
-  selectedKey?: string | null;
-  onSelect: (key: string) => void;
-  // optional: place the card as a bottom-sheet on mobile and center on desktop
-  mobileBottomSheet?: boolean;
-};
+import useDrawerStore from '@/store/DrawerStore';
+import { IFloorCardSelectorProps } from '@/interface/DrawerInterface';
 
 export default function FloorCardSelector({
-  open,
-  onClose,
   floors,
   selectedKey,
   onSelect,
-  mobileBottomSheet = true,
-}: FloorCardSelectorProps) {
+}: IFloorCardSelectorProps) {
   const theme = useTheme();
+  const isFloorMapOpen = useDrawerStore((state) => state.isFloorMapOpen);
+  const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
   const [query, setQuery] = React.useState('');
 
   React.useEffect(() => {
-    if (!open) setQuery('');
-  }, [open]);
+    if (!isFloorMapOpen) setQuery('');
+  }, [isFloorMapOpen]);
 
-  if (!open) return null;
-
-  const filtered = floors.filter((f) =>
-    f.name.toLowerCase().includes(query.trim().toLowerCase()) || f.key.toLowerCase().includes(query.trim().toLowerCase())
+  const filtered = floors.filter(
+    (f) =>
+      f.name.toLowerCase().includes(query.trim().toLowerCase()) ||
+      f.key.toLowerCase().includes(query.trim().toLowerCase())
   );
 
   return (
-    <ClickAwayListener onClickAway={onClose}>
-      <Fade in={open} appear>
+    <Modal
+      open={isFloorMapOpen}
+      onClose={() => setIsFloorMapOpen(false)}
+      closeAfterTransition
+      slots={{ backdrop: Backdrop }}
+      slotProps={{
+        backdrop: {
+          timeout: 200,
+          sx: {
+            backgroundColor: 'rgba(6,10,15,0.45)',
+            backdropFilter: 'blur(6px)',
+          },
+        },
+      }}
+      sx={{ zIndex: (t) => t.zIndex.modal + 200 }} // ensure above other UI
+      aria-labelledby="select-floor-title"
+    >
+      <Fade in={isFloorMapOpen}>
         <Box
           role="presentation"
           onKeyDown={(e: React.KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
+            if (e.key === 'Escape') setIsFloorMapOpen(false);
           }}
           sx={{
             position: 'fixed',
             inset: 0,
-            zIndex: 1400,
-            backgroundColor: 'rgba(6,10,15,0.45)',
             display: 'flex',
-            alignItems: { xs: mobileBottomSheet ? 'flex-end' : 'center', sm: 'center' },
+            alignItems: 'center',
             justifyContent: 'center',
             p: { xs: 1.5, sm: 3 },
-            backdropFilter: 'blur(6px)',
+            pointerEvents: 'auto',
           }}
         >
           <Card
             elevation={12}
+            onClick={(e) => e.stopPropagation()} // IMPORTANT: prevent clicks from bubbling to backdrop
             sx={{
               width: { xs: '100%', sm: 420 },
-              maxHeight: { xs: '70vh', sm: '80vh' },
-              borderRadius: { xs: mobileBottomSheet ? '14px 14px 0 0' : 3, sm: 3 },
+              maxHeight: { sm: '80vh' },
+              borderRadius: 3,
               overflow: 'hidden',
-              boxShadow: (t) => `0 10px 30px ${t.palette.mode === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(16,24,40,0.12)'}`,
+              boxShadow: (t) =>
+                `0 10px 30px ${t.palette.mode === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(16,24,40,0.12)'}`,
               transformOrigin: 'center',
+              // ensure the card captures pointer events
+              pointerEvents: 'auto',
             }}
           >
             <CardHeader
-              title={<Typography variant="h6" sx={{ fontWeight: 700 }}>Select a Floor</Typography>}
-              subheader={<Typography variant="caption" color="text.secondary">Tap to switch the map</Typography>}
+              title={
+                <Typography id="select-floor-title" variant="h6" sx={{ fontWeight: 700 }}>
+                  Select a Floor
+                </Typography>
+              }
+              subheader={
+                <Typography variant="caption" color="text.secondary">
+                  Tap to switch the map
+                </Typography>
+              }
               sx={{
                 px: 2,
                 py: 1,
@@ -102,7 +115,11 @@ export default function FloorCardSelector({
                 background: (t) => (t.palette.mode === 'light' ? 'transparent' : 'transparent'),
               }}
               action={
-                <IconButton size="small" aria-label="close floors" onClick={onClose}>
+                <IconButton
+                  size="small"
+                  aria-label="close floors"
+                  onClick={() => setIsFloorMapOpen(false)}
+                >
                   <CloseIcon />
                 </IconButton>
               }
@@ -146,13 +163,17 @@ export default function FloorCardSelector({
                           selected={selectedKey === floor.key}
                           onClick={() => {
                             onSelect(floor.key);
-                            onClose();
+                            setIsFloorMapOpen(false);
                           }}
                           sx={{
                             px: 2,
                             py: 1.25,
                             transition: 'transform 150ms ease, box-shadow 150ms ease',
-                            '&:hover': { transform: 'translateY(-3px)', boxShadow: (t) => `0 6px 18px ${t.palette.mode === 'dark' ? 'rgba(0,0,0,0.5)' : 'rgba(16,24,40,0.06)'}` },
+                            '&:hover': {
+                              transform: 'translateY(-3px)',
+                              boxShadow: (t) =>
+                                `0 6px 18px ${t.palette.mode === 'dark' ? 'rgba(0,0,0,0.5)' : 'rgba(16,24,40,0.06)'}`,
+                            },
                           }}
                         >
                           <Avatar
@@ -160,23 +181,30 @@ export default function FloorCardSelector({
                               width: 44,
                               height: 44,
                               mr: 2,
-                              bgcolor: (t) => t.palette.primary.main,
-                              backgroundImage: floor.thumbnail && typeof floor.thumbnail === 'string' ? `url(${floor.thumbnail})` : undefined,
+                              bgcolor:
+                                selectedKey === floor.key ? 'red' : (t) => t.palette.primary.main,
+                              backgroundImage:
+                                floor.thumbnail && typeof floor.thumbnail === 'string'
+                                  ? `url(${floor.thumbnail})`
+                                  : undefined,
                               backgroundSize: 'cover',
                               backgroundPosition: 'center',
                             }}
                           >
                             {(!floor.thumbnail || typeof floor.thumbnail !== 'string') && (
                               <Typography variant="subtitle2" sx={{ color: '#fff' }}>
-                               <HiBuildingOffice2 style={{ fontSize: 18}}/>
+                                {selectedKey === floor.key ? (
+                                  <IoLocation style={{ fontSize: 22, marginTop: 5 }} />
+                                ) : (
+                                  <HiBuildingOffice2 style={{ fontSize: 22, marginTop: 5 }} />
+                                )}
+                               
                               </Typography>
                             )}
                           </Avatar>
 
                           <ListItemText
-                            primary={
-                              <Typography sx={{ fontWeight: 700 }}>{floor.name}</Typography>
-                            }
+                            primary={<Typography sx={{ fontWeight: 700 }}>{floor.name}</Typography>}
                             secondary={
                               <Typography variant="caption" color="text.secondary">
                                 {floor.location}
@@ -184,7 +212,6 @@ export default function FloorCardSelector({
                             }
                           />
 
-                          {/* subtle selected indicator */}
                           {selectedKey === floor.key && (
                             <Box
                               sx={{
@@ -208,6 +235,6 @@ export default function FloorCardSelector({
           </Card>
         </Box>
       </Fade>
-    </ClickAwayListener>
+    </Modal>
   );
 }

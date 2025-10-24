@@ -8,14 +8,14 @@ const delProp = () => {
     
     const oldData = fs.existsSync(oldJsonPath)
         ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
-        : { places: [] };
+        : { maps: [] };
 
-    const map = oldData.places.map(d => {
+    const map = oldData.maps.map(d => {
         delete d.basefill;
         return d;
     })
 
-    const result = { places: map }
+    const result = { maps: map }
     
     fs.writeFileSync(
       '../../Data/AyalaMalls/ThirdFloor/ThirdFloor.json',

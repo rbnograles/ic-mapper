@@ -1,4 +1,4 @@
-// update-places-unique-ids.js
+// update-maps-unique-ids.js
 import fs from 'fs';
 import path from 'path';
 
@@ -168,8 +168,8 @@ const dataCleanUp = () => {
 
   const oldData = JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'));
 
-  if (!oldData.places || !Array.isArray(oldData.places)) {
-    console.error('❌ Invalid JSON format — missing "places" array');
+  if (!oldData.maps || !Array.isArray(oldData.maps)) {
+    console.error('❌ Invalid JSON format — missing "maps" array');
     return;
   }
 
@@ -243,7 +243,7 @@ const dataCleanUp = () => {
   const trailingCategoryPattern = /^(.*?)(?:\s*[-–—\/,]+\s*)([^-–—\/,()]+(?:\s*\/\s*[^-–—\/,()]+)?)\s*$/;
 
   // --- Modify + clean items ---
-  const transformed = oldData.places.map((place, i) => {
+  const transformed = oldData.maps.map((place, i) => {
     // start with copy and default floor
     let updated = { ...place, floor: place.floor };
 
@@ -371,7 +371,7 @@ const dataCleanUp = () => {
   const updatedPlaces = transformed.filter((p) => !p._removeBecauseDuplicateCentroid);
 
   // --- Write updated JSON ---
-  const result = { ...oldData, places: updatedPlaces };
+  const result = { ...oldData, maps: updatedPlaces };
   fs.writeFileSync(oldJsonPath, JSON.stringify(result, null, 2), 'utf-8');
 
   // --- Write unmatched names for review ---

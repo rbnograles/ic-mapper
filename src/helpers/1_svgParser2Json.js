@@ -31,7 +31,7 @@ function parseSvgToJson(svgFile, oldJsonPath) {
   const doc = new DOMParser().parseFromString(svgContent, 'image/svg+xml');
   const oldData = fs.existsSync(oldJsonPath)
     ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
-    : { places: [] };
+    : { maps: [] };
 
   // --- buildings (group id = 'BLDG') ---
   const buildingGroup = doc.getElementById('BLDG');
@@ -172,7 +172,7 @@ function parseSvgToJson(svgFile, oldJsonPath) {
   }
 
   // --- merge with old ---
-  const oldPathMap = new Map((oldData.places || []).map((p) => [p.path, p]));
+  const oldPathMap = new Map((oldData.maps || []).map((p) => [p.path, p]));
   const merged = [];
 
   for (const nb of buildings) {
@@ -210,14 +210,14 @@ function parseSvgToJson(svgFile, oldJsonPath) {
     merged.push(mergedObj);
   }
 
-  const unmatchedOld = (oldData.places || []).filter((op) => !merged.some((mp) => mp.id === op.id));
+  const unmatchedOld = (oldData.maps || []).filter((op) => !merged.some((mp) => mp.id === op.id));
 
   console.log(
     '⚠️ Unmatched old items:',
     unmatchedOld.map((x) => x.id)
   );
   return {
-    places: merged,
+    maps: merged,
   };
 }
 
@@ -230,7 +230,7 @@ const result = parseSvgToJson(svgPath, oldJson);
 
 fs.writeFileSync(
   `../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`,
-  JSON.stringify({ places: result.places }, null, 2)
+  JSON.stringify({ maps: result.maps }, null, 2)
 );
 
 console.log(`Wrote merged ${args[0]}Floor.json buildings with entranceNodes`);

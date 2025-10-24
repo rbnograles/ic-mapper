@@ -8,15 +8,15 @@ const findProp = () => {
     
     const oldData = fs.existsSync(oldJsonPath)
         ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
-        : { places: [] };
+        : { maps: [] };
 
-    const map = oldData.places.map(d => {
+    const map = oldData.maps.map(d => {
        if(d.entranceNodes.length === 0 && d.type !== 'NotClickable') {
             return d
        }
     }).filter((f) => f !== undefined)
 
-    const result = { places: map }
+    const result = { maps: map }
     console.log(result)
     fs.writeFileSync(
       '../Data/findResult.json',

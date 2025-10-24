@@ -16,7 +16,7 @@ export default function CachedResults({
   setDirectionOpen,
 }: {
   getLocationFromHistory?: (history: any) => void;
-  setDirectionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setDirectionOpen: (value: boolean) => void;
 }) {
   const [allCachedPlaces, setAllCachedPlaces] = useState<Place[]>([]);
 
@@ -31,7 +31,7 @@ export default function CachedResults({
       try {
         const data = JSON.parse(localStorage.getItem(key) || '{}');
 
-        // Map cache: array of places
+        // Map cache: array of maps
         if (Array.isArray(data)) {
           allPlaces.push(...data);
         }
@@ -45,7 +45,7 @@ export default function CachedResults({
             raw: data, // optional: keep original object
           });
         }
-        // Map cache stored as object { key: [places...] }
+        // Map cache stored as object { key: [maps...] }
         else {
           Object.values(data).forEach((arr: any) => {
             if (Array.isArray(arr)) allPlaces.push(...arr);

@@ -1,10 +1,18 @@
-export interface PathItem {
+export interface IPlace {
   id: string;
   name: string;
-  type?: string;
-  img?: string;
-  floor?: string;
+}
+
+export interface IMapItem extends IPlace {
+  type: string;
+  entranceNodes: string[];
+  path: string;
+  centroid: number[];
+  floor: string;
   description?: string;
+  baseFill?: string;
+  centerX?: number;
+  centerY?: number;
   schedule?: ISchedule[];
 }
 
@@ -16,6 +24,11 @@ export interface ISchedule {
   congregation: string;
 }
 
+export interface Graph {
+  nodes: INodes[];
+  entrances: INodes[];
+  maps: IMapItem[];
+}
 export interface INodes {
   id: string;
   x: number;
@@ -28,38 +41,20 @@ export interface INodes {
   neighbors: string[];
 }
 
-export type Place = {
-  id: string;
-  name: string;
-  type?: string;
-  entranceNodes: string[];
-  entranceNode: string;
-  path?: string;
-  centroid: any;
-  floor: any;
-};
+export interface IEntrances extends INodes {}
 
-export type Labels = {
+export type ILabels = {
   name: string;
   path: string;
   fill: string;
 };
 
-export interface Graph {
+export interface FloorData {
+  floor: string;
+  maps: IMapItem[];
   nodes: INodes[];
-  entrances: INodes[];
-  places: Place[];
-}
-
-export interface IBaseP {
-  id: string;
-  name: string;
-  path: string;
-  baseFill?: string;
-  strokeWidth?: string | number;
-  icon?: any;
-  type?: string;
-  isTypeHighlighted: boolean;
-  centerX: number | undefined;
-  centerY: number | undefined;
+  entrances: IEntrances[];
+  buidingMarks: ILabels[];
+  roadMarks: ILabels[];
+  boundaries: ILabels[];
 }

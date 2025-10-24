@@ -7,13 +7,13 @@ import { FaElevator } from 'react-icons/fa6';
 import { FaBoxesStacked } from 'react-icons/fa6';
 import { GrEscalator } from 'react-icons/gr';
 import { PiStairsFill } from 'react-icons/pi';
-import Cart from '@/components/props/Cart';
+import Cart from '@/assets/custom/Cart';
 
 const style = {
   default: { color: 'white', fontSize: 84 },
 };
 
-const ICON_MAP: Record<string, JSX.Element> = {
+const BASE_ICON_MAP: Record<string, JSX.Element> = {
   location: <LocationOnIcon style={style.default} />,
   Escalator: <GrEscalator style={style.default} />,
   door: <FaDoorOpen style={style.default} />,
@@ -26,4 +26,4 @@ const ICON_MAP: Record<string, JSX.Element> = {
   "Jehovah's Witnesses Carts": <Cart />,
 };
 
-export default ICON_MAP;
+export default BASE_ICON_MAP;

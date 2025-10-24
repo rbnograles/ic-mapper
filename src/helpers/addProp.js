@@ -9,10 +9,10 @@ const addFloorProp = () => {
   // Load the JSON
   const oldData = fs.existsSync(oldJsonPath)
     ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
-    : { places: [] };
+    : { maps: [] };
 
   // Add floor property
-  const updatedPlaces = oldData.places.map((place) => {
+  const updatedPlaces = oldData.maps.map((place) => {
     // Remove nearNodes if you still want
     delete place.nearNodes;
 
@@ -24,10 +24,10 @@ const addFloorProp = () => {
   });
 
   // Save back to file
-  const result = { places: updatedPlaces };
+  const result = { maps: updatedPlaces };
   fs.writeFileSync(oldJsonPath, JSON.stringify(result, null, 2));
 
-  console.log(`✅ Added "floor": "${floorName}" to ${updatedPlaces.length} places`);
+  console.log(`✅ Added "floor": "${floorName}" to ${updatedPlaces.length} maps`);
 };
 
 // Executes File
