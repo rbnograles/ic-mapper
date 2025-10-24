@@ -246,7 +246,7 @@ export default function SearchBar({
                   </Box>
                 </Box>
               </Box>
-              {localLoading && isLastItem ? (
+              {!localLoading && isLastItem ? (
                 <Box
                   sx={{
                     display: 'flex',
