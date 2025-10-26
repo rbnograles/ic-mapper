@@ -1,7 +1,6 @@
 import type { Graph, IMapItem, INodes } from '@/interface';
 import MinHeap from '@/utils/MinHeap';
 
-
 type AdjList = Record<string, { to: string; weight: number }[]>;
 
 /**
@@ -180,13 +179,13 @@ export function findShortestPathSingleSource(
  */
 export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, placeB: string) {
   // find source place (keep first match for source; can be made symmetric later)
-  const p1 = graph.maps.find((p) => p.name === placeA);
+  const p1 = graph.maps.find((p) => p.id === placeA) || graph.maps.find((p) => p.name === placeA);
   if (!p1) {
     console.warn('Source place not found', { placeA });
     return null;
   }
 
-  const p2Candidates = graph.maps.filter((p) => p.name === placeB);
+  const p2Candidates = graph.maps.filter((p) => p.id === placeB || p.name === placeB);
   if (!p2Candidates || p2Candidates.length === 0) {
     console.warn('Destination place(s) not found', { placeB });
     return null;

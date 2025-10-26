@@ -1,0 +1,12 @@
+{
+  "verticals": [
+    {
+      "id": "stairs_38_39",
+      "type": "Stairs",
+      "from": "Ground_bldg_38", 
+      "to": "Second_bldg_39",
+      "labelFrom": "Stairs", 
+      "labelTo": "Stairs" 
+    }
+  ]
+}

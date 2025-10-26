@@ -13,6 +13,7 @@ import BuildingMarks from '@/components/Maps/BuildingMarks';
 import PathNodes from '@/components/Maps/PathNodes';
 import useMapStore from '@/store/MapStore';
 import useDrawerStore from '@/store/DrawerStore';
+import { VerticalTransitionPrompt } from '../props/VerticalTransitionPrompt';
 
 type TMapBuilder = {
   map: any[];
@@ -103,6 +104,11 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
     const baseMapGroup = document.getElementById('Base Map');
     if (labelsGroup && baseMapGroup) baseMapGroup.appendChild(labelsGroup);
 
+    const promptGroup = document.querySelector('[data-vertical-prompt]');
+    if (promptGroup && svgRoot) {
+      svgRoot.appendChild(promptGroup);
+    }
+
     prevHighlightRef.current = id;
   }, [id]);
 
@@ -116,74 +122,76 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
   );
 
   return (
-    <TransformWrapper
-      ref={transformRef}
-      limitToBounds={false}
-      centerOnInit
-      initialScale={initialScale}
-      maxScale={20}
-    >
-      <MapFloatingIcons transformRef={transformRef} />
-      <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
-        <svg viewBox={viewBox} style={{ width: '100%', height: 'auto' }} fill="none">
-          <g id="Base Map">
-            <Boundaries boundaries={boundaries} />
-            <RoadMarks roadMarks={roadMarks} />
+    <>
+      <TransformWrapper
+        ref={transformRef}
+        limitToBounds={false}
+        centerOnInit
+        initialScale={initialScale}
+        maxScale={20}
+      >
+        <MapFloatingIcons transformRef={transformRef} />
+        <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
+          <svg viewBox={viewBox} style={{ width: '100%', height: 'auto' }} fill="none">
+            <g id="Base Map">
+              <Boundaries boundaries={boundaries} />
+              <RoadMarks roadMarks={roadMarks} />
+              {map.map((p) => (
+                <Base
+                  key={p.id}
+                  p={p}
+                  highlightName={name}
+                  isTypeHighlighted={!!selectedType && p.type === selectedType}
+                  centers={centers}
+                  BASE_ICON_MAP={ICONS}
+                  onClick={handleClick}
+                />
+              ))}
 
-            {map.map((p) => (
-              <Base
-                key={p.id}
-                p={p}
-                highlightName={name}
-                isTypeHighlighted={!!selectedType && p.type === selectedType}
-                centers={centers}
-                BASE_ICON_MAP={ICONS}
-                onClick={handleClick}
-              />
-            ))}
+              <BuildingMarks buidingMarks={buidingMarks} />
 
-            <BuildingMarks buidingMarks={buidingMarks} />
-
-            {/* Draw nodes (first & last) */}
-            {activeNodeIds.length >= 2 &&
-              [...nodes, ...entrances]
-                .filter(
-                  (n) =>
-                    n.id === activeNodeIds[0] || n.id === activeNodeIds[activeNodeIds.length - 1]
-                )
-                .map((n) =>
-                  n.type === 'entrance' ? (
-                    <ellipse
-                      key={n.id}
-                      id={n.id}
-                      cx={n.x}
-                      cy={n.y}
-                      rx={n.rx ?? 20}
-                      ry={n.ry ?? 20}
-                      fill={activeNodeIds.includes(n.id) ? '#4CAF50' : '#FFC107'}
-                      stroke="black"
-                      strokeWidth={3}
-                    />
-                  ) : (
-                    <circle
-                      key={n.id}
-                      id={n.id}
-                      cx={n.x}
-                      cy={n.y}
-                      r={20}
-                      fill={activeNodeIds.includes(n.id) ? '#4CAF50' : 'white'}
-                      stroke="black"
-                      strokeWidth={3}
-                    />
+              {/* Draw nodes (first & last) */}
+              {activeNodeIds.length >= 2 &&
+                [...nodes, ...entrances]
+                  .filter(
+                    (n) =>
+                      n.id === activeNodeIds[0] || n.id === activeNodeIds[activeNodeIds.length - 1]
                   )
-                )}
+                  .map((n) =>
+                    n.type === 'entrance' ? (
+                      <ellipse
+                        key={n.id}
+                        id={n.id}
+                        cx={n.x}
+                        cy={n.y}
+                        rx={n.rx ?? 20}
+                        ry={n.ry ?? 20}
+                        fill={activeNodeIds.includes(n.id) ? '#4CAF50' : '#FFC107'}
+                        stroke="black"
+                        strokeWidth={3}
+                      />
+                    ) : (
+                      <circle
+                        key={n.id}
+                        id={n.id}
+                        cx={n.x}
+                        cy={n.y}
+                        r={20}
+                        fill={activeNodeIds.includes(n.id) ? '#4CAF50' : 'white'}
+                        stroke="black"
+                        strokeWidth={3}
+                      />
+                    )
+                  )}
 
-            {/* Route line (component can be overridden per-floor) */}
-            <PathNodes route={activeNodeIds} nodes={[...nodes, ...entrances]} />
-          </g>
-        </svg>
-      </TransformComponent>
-    </TransformWrapper>
+              {/* Route line (component can be overridden per-floor) */}
+              <PathNodes route={activeNodeIds} nodes={[...nodes, ...entrances]} />
+              <VerticalTransitionPrompt centers={centers} maps={map} />
+            </g>
+          </svg>
+        </TransformComponent>
+      </TransformWrapper>
+    </>
   );
 }
 

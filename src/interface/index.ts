@@ -58,3 +58,14 @@ export interface FloorData {
   roadMarks: ILabels[];
   boundaries: ILabels[];
 }
+
+export type ViaOption = 'Stairs' | 'Elevator' | 'Escalator' | '';
+
+export interface RouteStep {
+   floor: string;
+  from: string;
+  to: string;
+  isVerticalTransition: boolean;
+  fromId?: string;
+  toId?: string;
+}
