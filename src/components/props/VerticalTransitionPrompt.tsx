@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdStairs, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
@@ -7,6 +6,7 @@ import { floors } from '@/pages/IndoorMap/partials/floors';
 import useDrawerStore from '@/store/DrawerStore';
 import theme from '@/styles/theme';
 import { useMediaQuery } from '@mui/material';
+import { FaTimes } from 'react-icons/fa';
 
 interface VerticalTransitionPromptProps {
   centers: { [key: string]: { x: number; y: number } };
@@ -15,9 +15,6 @@ interface VerticalTransitionPromptProps {
 }
 
 export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPromptProps) {
-  // ------------------------------
-  // Hooks: call all at top level
-  // ------------------------------
   const highlightedId = useMapStore((s) => s.highlightedPlace?.id);
   const currentFloor = useMapStore((s) => s.selectedFloorMap);
   const setSelectedFloorMap = useMapStore((s) => s.setSelectedFloorMap);
@@ -25,11 +22,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
   const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
-  const mR = useMapStore((s) => s.multiFloorRoute)
 
-  // ------------------------------
-  // Defensive / derived values
-  // ------------------------------
   const highlightedKey = highlightedId ?? '';
   const clickedMap = maps.find((m) => m.id === highlightedKey);
   const isVertical =
@@ -40,59 +33,43 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   const center = centers[clickedMap.id];
   if (!center) return null;
 
-  
   const currentIndex = floors.findIndex((f) => f.key === currentFloor);
   const isGroundFloor = String(currentFloor ?? '')
     .toLowerCase()
     .includes('ground');
 
-  // compute availability and labels
   const hasUp = currentIndex >= 0 && currentIndex < floors.length - 1;
   const hasDown = currentIndex > 0;
   const nextFloor = hasUp ? floors[currentIndex + 1] : undefined;
   const prevFloor = hasDown ? floors[currentIndex - 1] : undefined;
   const currentFloorLabel = currentIndex >= 0 ? floors[currentIndex].name : 'Unknown';
-  const upLabel = nextFloor ? nextFloor.name : '—';
-  const downLabel = prevFloor ? prevFloor.name : '—';
+  const upLabel = nextFloor ? nextFloor.name : '';
+  const downLabel = prevFloor ? prevFloor.name : '';
 
-  // ------------------------------
-  // UI sizing (kept similar to yours but slightly tuned)
-  // ------------------------------
-  const scale = 3;
-  const tooltipWidth = 250 * scale;
-  const tooltipHeight = 150 * scale;
-  const arrowSize = 7 * scale;
-  const iconSize = 18 * scale;
-  const fontSize = 15 * scale;
-  const buttonHeight = 36 * scale;
-  const buttonFontSize = 13 * scale;
+  // Responsive scaling
+  const baseScale = isMobile ? 2.5 : 3;
+  const tooltipWidth = !isGroundFloor ? 300 * baseScale : 280 * baseScale;
+  const tooltipHeight = !isGroundFloor ? 170 * baseScale : 160 * baseScale;
+  const arrowSize = 8 * baseScale;
+  const iconSize = 20 * baseScale;
+  const fontSize = 16 * baseScale;
+  const buttonHeight = 48 * baseScale;
+  const buttonFontSize = 14 * baseScale;
 
   const tooltipX = center.x - tooltipWidth / 2;
-  const tooltipY = center.y - tooltipHeight - arrowSize - 10 * scale;
+  const tooltipY = center.y - tooltipHeight - arrowSize - 12 * baseScale;
 
-  // ------------------------------
-  // Helpers
-  // ------------------------------
   const getIcon = () => {
-    const iconStyle = {
-      fontSize: iconSize,
-      color: theme?.palette?.text?.primary ?? '#444',
-    } as React.CSSProperties;
+    const iconProps = {
+      style: { fontSize: iconSize, color: '#1976d2' },
+    };
     switch (clickedMap.type) {
       case 'Stairs':
-        return <MdStairs style={iconStyle} />;
+        return <MdStairs {...iconProps} />;
       case 'Elevator':
-        return (
-          <ElevatorIcon
-            sx={{ fontSize: iconSize, color: theme?.palette?.text?.primary ?? '#444' }}
-          />
-        );
+        return <ElevatorIcon sx={{ fontSize: iconSize, color: '#1976d2' }} />;
       case 'Escalator':
-        return (
-          <EscalatorWarningIcon
-            sx={{ fontSize: iconSize, color: theme?.palette?.text?.primary ?? '#444' }}
-          />
-        );
+        return <EscalatorWarningIcon sx={{ fontSize: iconSize, color: '#1976d2' }} />;
       default:
         return null;
     }
@@ -100,10 +77,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
 
   const handleMove = (direction: 'up' | 'down') => {
     const currentIndexLocal = floors.findIndex((f) => f.key === currentFloor);
-    if (currentIndexLocal === -1) {
-      console.warn('Invalid current floor');
-      return;
-    }
+    if (currentIndexLocal === -1) return;
 
     let nextFloorLocal;
     if (direction === 'up' && currentIndexLocal < floors.length - 1) {
@@ -111,9 +85,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
     } else if (direction === 'down' && currentIndexLocal > 0) {
       nextFloorLocal = floors[currentIndexLocal - 1];
     } else {
-      console.log(
-        `You are already at the ${floors[currentIndexLocal].name}. Can't move ${direction}.`
-      );
       return;
     }
     setSelectedFloorMap(nextFloorLocal.key);
@@ -123,309 +94,351 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   };
 
   const handleClose = () => {
-    setIsFloorMapOpen(false);
-    setIsExpanded(false);
+    resetMap();
   };
 
-  // small style helpers to avoid repeating long inline objects
   const primary = theme?.palette?.primary?.main ?? '#1976d2';
-  const muted = theme?.palette?.text?.secondary ?? '#6b7280';
-  const surface = theme?.palette?.background?.default ?? '#ffffff';
+  const surface = '#ffffff';
+  const textPrimary = '#1a1a1a';
+  const textSecondary = '#666666';
 
-  // ------------------------------
-  // Render tooltip (full SVG + foreignObject content)
-  // ------------------------------
   return (
     <g style={{ pointerEvents: 'all' }} data-vertical-prompt>
-      {/* Tooltip container */}
-      <g>
-        {/* Background with a very soft border and shadow */}
-        <rect
-          x={tooltipX}
-          y={tooltipY}
-          width={tooltipWidth}
-          height={tooltipHeight}
-          rx={12 * scale}
-          fill={surface}
-          stroke="#e6eef8"
-          strokeWidth={1}
-          filter="url(#tooltip-shadow)"
-        />
+      {/* Shadow/backdrop blur effect */}
+      <defs>
+        <filter id="prompt-shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+          <feOffset dx="0" dy="6" result="offsetblur" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.15" />
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
 
-        {/* Arrow pointing down (softer) */}
-        <path
-          d={`M ${center.x - arrowSize} ${tooltipY + tooltipHeight} 
-              L ${center.x} ${tooltipY + tooltipHeight + arrowSize} 
-              L ${center.x + arrowSize} ${tooltipY + tooltipHeight} Z`}
-          fill={surface}
-          stroke="#e6eef8"
-          strokeWidth={1}
-        />
+        <linearGradient id="button-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor={primary} stopOpacity="1" />
+          <stop offset="100%" stopColor={primary} stopOpacity="0.85" />
+        </linearGradient>
 
-        {/* Shadow filter */}
-        <defs>
-          <filter id="tooltip-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
-            <feOffset dx="0" dy="4" result="offsetblur" />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.12" />
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+        <linearGradient id="disabled-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#e0e0e0" stopOpacity="1" />
+          <stop offset="100%" stopColor="#d0d0d0" stopOpacity="1" />
+        </linearGradient>
+      </defs>
 
-        {/* Header area: icon, title and close */}
+      {/* Main tooltip container */}
+      <rect
+        x={tooltipX}
+        y={tooltipY}
+        width={tooltipWidth}
+        height={tooltipHeight}
+        rx={16 * baseScale}
+        fill={surface}
+        stroke="rgba(0,0,0,0.08)"
+        strokeWidth={2}
+        filter="url(#prompt-shadow)"
+      />
+
+      {/* Arrow pointing to connector */}
+      <path
+        d={`M ${center.x - arrowSize} ${tooltipY + tooltipHeight} 
+            L ${center.x} ${tooltipY + tooltipHeight + arrowSize} 
+            L ${center.x + arrowSize} ${tooltipY + tooltipHeight} Z`}
+        fill={surface}
+        stroke="rgba(0,0,0,0.08)"
+        strokeWidth={2}
+      />
+
+      {/* Header section with icon and title */}
+      <foreignObject
+        x={tooltipX + 16 * baseScale}
+        y={tooltipY + 16 * baseScale}
+        width={tooltipWidth - 32 * baseScale}
+        height={56 * baseScale}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 * baseScale }}>
+            {/* Icon container with subtle background */}
+            <div
+              style={{
+                width: 44 * baseScale,
+                height: 44 * baseScale,
+                borderRadius: 12 * baseScale,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background:
+                  'linear-gradient(135deg, rgba(25,118,210,0.1) 0%, rgba(25,118,210,0.05) 100%)',
+                border: '2px solid rgba(25,118,210,0.2)',
+              }}
+            >
+              {getIcon()}
+            </div>
+
+            {/* Title and current floor */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 * baseScale }}>
+              <div
+                style={{
+                  fontSize: fontSize,
+                  fontWeight: 700,
+                  color: textPrimary,
+                  lineHeight: 1.2,
+                }}
+              >
+                {isGroundFloor ? 'Go Upstairs' : 'Change Floor'}
+              </div>
+              <div
+                style={{
+                  fontSize: fontSize * 0.75,
+                  color: textSecondary,
+                  fontWeight: 500,
+                }}
+              >
+                Currently on: {currentFloorLabel}
+              </div>
+            </div>
+          </div>
+
+          {/* Close button */}
+          <button
+            onClick={handleClose}
+            aria-label="Close"
+            style={{
+              border: 'none',
+              background: 'rgba(0,0,0,0.04)',
+              cursor: 'pointer',
+              fontSize: 18 * baseScale,
+              color: textSecondary,
+              width: 32 * baseScale,
+              height: 32 * baseScale,
+              borderRadius: 8 * baseScale,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.2s',
+              pointerEvents: 'auto',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = 'rgba(0,0,0,0.08)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = 'rgba(0,0,0,0.04)';
+            }}
+          >
+            <FaTimes />
+          </button>
+        </div>
+      </foreignObject>
+
+      {/* Subtitle text */}
+      {!isGroundFloor && (
         <foreignObject
-          x={tooltipX + 12 * scale}
-          y={tooltipY + 12 * scale}
-          width={tooltipWidth - 24 * scale}
-          height={48 * scale}
+          x={tooltipX + 16 * baseScale}
+          y={tooltipY + 72 * baseScale}
+          width={tooltipWidth - 32 * baseScale}
+          height={30 * baseScale}
         >
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              height: '100%',
-              pointerEvents: 'none',
+              fontSize: fontSize * 0.85,
+              color: textSecondary,
+              textAlign: 'center',
+              fontWeight: 500,
             }}
+          >
+            Which direction would you like to go?
+          </div>
+        </foreignObject>
+      )}
+
+      {/* Button section */}
+      {isGroundFloor ? (
+        // Single "Go Up" button
+        <g
+          onClick={() => hasUp && handleMove('up')}
+          style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+        >
+          <rect
+            x={tooltipX + 16 * baseScale}
+            y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+            width={tooltipWidth - 32 * baseScale}
+            height={buttonHeight}
+            rx={12 * baseScale}
+            fill={hasUp ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
+            style={{
+              opacity: hasUp ? 1 : 0.5,
+              transition: 'all 0.3s',
+            }}
+          />
+
+          <foreignObject
+            x={tooltipX + 16 * baseScale}
+            y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+            width={tooltipWidth - 32 * baseScale}
+            height={buttonHeight}
           >
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 10 * scale,
-                pointerEvents: 'auto',
+                justifyContent: 'center',
+                gap: 12 * baseScale,
+                height: '100%',
+                color: '#ffffff',
+                fontWeight: 700,
+                fontSize: buttonFontSize,
+                pointerEvents: 'none',
               }}
             >
+              <MdArrowUpward style={{ fontSize: buttonFontSize * 1.5 }} />
               <div
-                aria-hidden
                 style={{
-                  width: 36 * scale,
-                  height: 36 * scale,
-                  borderRadius: 10 * scale,
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'rgba(25,118,210,0.08)',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  lineHeight: 1.3,
                 }}
               >
-                {getIcon()}
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: fontSize, fontWeight: 700, color: '#0f172a' }}>
-                  {isGroundFloor ? 'Move up' : 'Change floor'}
-                </div>
-                <div
-                  style={{ fontSize: fontSize * 0.78, color: muted }}
-                >{`Current: ${currentFloorLabel}`}</div>
+                <span style={{ fontSize: buttonFontSize }}>Go to Upper Floor</span>
+                {hasUp && (
+                  <span style={{ fontSize: buttonFontSize * 0.8, opacity: 0.9 }}>{upLabel}</span>
+                )}
               </div>
             </div>
+          </foreignObject>
 
-            {/* Close button */}
-            <div style={{ pointerEvents: 'auto' }}>
-              <button
-                onClick={handleClose}
-                aria-label="Close"
-                style={{
-                  border: 'none',
-                  background: 'transparent',
-                  cursor: 'pointer',
-                  fontSize: 14 * scale,
-                  color: muted,
-                  padding: 6 * scale,
-                }}
-              >
-                ✕
-              </button>
-            </div>
-          </div>
-        </foreignObject>
-
-        <foreignObject
-          x={tooltipX}
-          y={isMobile ? tooltipY + 65 * scale : tooltipY + 50 * scale}
-          width={tooltipWidth}
-          height={110}
-        >
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: 45 }}>
-              {' '}
-              {isGroundFloor ? 'Where would you like to go?' : 'Which direction?'}
-            </p>
-          </div>
-        </foreignObject>
-
-        {/* Buttons area */}
-        {isGroundFloor ? (
+          {/* Invisible click catcher */}
+          <rect
+            x={tooltipX + 16 * baseScale}
+            y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+            width={tooltipWidth - 32 * baseScale}
+            height={buttonHeight}
+            rx={12 * baseScale}
+            fill="transparent"
+            style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+          />
+        </g>
+      ) : (
+        // Two buttons for up and down
+        <>
+          {/* Up button */}
           <g
             onClick={() => hasUp && handleMove('up')}
             style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
           >
-            {/* big single button */}
             <rect
-              x={tooltipX + 20 * scale}
-              y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-              width={tooltipWidth - 40 * scale}
+              x={tooltipX + 16 * baseScale}
+              y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+              width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
-              rx={10 * scale}
-              fill={hasUp ? primary : '#bcd6f6'}
-              style={{ opacity: hasUp ? 1 : 0.6 }}
+              rx={12 * baseScale}
+              fill={hasUp ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
+              style={{ opacity: hasUp ? 1 : 0.5 }}
             />
 
             <foreignObject
-              x={tooltipX + 20 * scale}
-              y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-              width={tooltipWidth - 40 * scale}
+              x={tooltipX + 16 * baseScale}
+              y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+              width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
             >
               <div
                 style={{
                   display: 'flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 10 * scale,
+                  gap: 4 * baseScale,
                   height: '100%',
-                  pointerEvents: 'none',
-                  color: '#fff',
+                  color: '#ffffff',
                   fontWeight: 700,
-                  fontSize: buttonFontSize,
+                  pointerEvents: 'none',
                 }}
               >
                 <MdArrowUpward style={{ fontSize: buttonFontSize * 1.4 }} />
-                <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-                  <span>{hasUp ? `Go to ${upLabel}` : 'Top floor'}</span>
-                </div>
+                <span style={{ fontSize: buttonFontSize * 0.8 }}>UP</span>
+                <span style={{ fontSize: buttonFontSize * 0.75, opacity: 0.9 }}>
+                  {hasUp ? upLabel : ''}
+                </span>
               </div>
             </foreignObject>
 
-            {/* invisible click-catcher */}
             <rect
-              x={tooltipX + 20 * scale}
-              y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-              width={tooltipWidth - 40 * scale}
+              x={tooltipX + 16 * baseScale}
+              y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+              width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
-              rx={10 * scale}
+              rx={12 * baseScale}
               fill="transparent"
               style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
             />
           </g>
-        ) : (
-          // two-column layout for up/down
-          <>
-            {/* Up */}
-            <g
-              onClick={() => hasUp && handleMove('up')}
-              style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+
+          {/* Down button */}
+          <g
+            onClick={() => hasDown && handleMove('down')}
+            style={{ cursor: hasDown ? 'pointer' : 'not-allowed' }}
+          >
+            <rect
+              x={tooltipX + tooltipWidth / 2 + 8 * baseScale}
+              y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+              width={(tooltipWidth - 48 * baseScale) / 2}
+              height={buttonHeight}
+              rx={12 * baseScale}
+              fill={hasDown ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
+              style={{ opacity: hasDown ? 1 : 0.5 }}
+            />
+
+            <foreignObject
+              x={tooltipX + tooltipWidth / 2 + 8 * baseScale}
+              y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+              width={(tooltipWidth - 48 * baseScale) / 2}
+              height={buttonHeight}
             >
-              <rect
-                x={tooltipX + 18 * scale}
-                y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-                width={(tooltipWidth - 48 * scale) / 2}
-                height={buttonHeight}
-                rx={10 * scale}
-                fill={hasUp ? primary : '#bcd6f6'}
-                style={{ opacity: hasUp ? 1 : 0.6 }}
-              />
-              <foreignObject
-                x={tooltipX + 18 * scale}
-                y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-                width={(tooltipWidth - 48 * scale) / 2}
-                height={buttonHeight}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 4 * baseScale,
+                  height: '100%',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  pointerEvents: 'none',
+                }}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 8 * scale,
-                    height: '100%',
-                    color: '#fff',
-                    fontWeight: 700,
-                    fontSize: buttonFontSize,
-                    pointerEvents: 'none',
-                  }}
-                >
-                  <MdArrowUpward style={{ fontSize: buttonFontSize * 1.2 }} />
-                  <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-                    <small style={{ fontSize: buttonFontSize * 0.8 }}>
-                      {hasUp ? upLabel : '—'}
-                    </small>
-                  </div>
-                </div>
-              </foreignObject>
+                <MdArrowDownward style={{ fontSize: buttonFontSize * 1.4 }} />
+                <span style={{ fontSize: buttonFontSize * 0.8 }}>DOWN</span>
+                <span style={{ fontSize: buttonFontSize * 0.75, opacity: 0.9 }}>
+                  {hasDown ? downLabel : ''}
+                </span>
+              </div>
+            </foreignObject>
 
-              <rect
-                x={tooltipX + 18 * scale}
-                y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-                width={(tooltipWidth - 48 * scale) / 2}
-                height={buttonHeight}
-                rx={10 * scale}
-                fill="transparent"
-                style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
-              />
-            </g>
-
-            {/* Down */}
-            <g
-              onClick={() => hasDown && handleMove('down')}
+            <rect
+              x={tooltipX + tooltipWidth / 2 + 8 * baseScale}
+              y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
+              width={(tooltipWidth - 48 * baseScale) / 2}
+              height={buttonHeight}
+              rx={12 * baseScale}
+              fill="transparent"
               style={{ cursor: hasDown ? 'pointer' : 'not-allowed' }}
-            >
-              <rect
-                x={tooltipX + tooltipWidth / 2 + 6 * scale}
-                y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-                width={(tooltipWidth - 48 * scale) / 2}
-                height={buttonHeight}
-                rx={10 * scale}
-                fill={hasDown ? primary : '#bcd6f6'}
-                style={{ opacity: hasDown ? 1 : 0.6 }}
-              />
-              <foreignObject
-                x={tooltipX + tooltipWidth / 2 + 6 * scale}
-                y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-                width={(tooltipWidth - 48 * scale) / 2}
-                height={buttonHeight}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 8 * scale,
-                    height: '100%',
-                    color: '#fff',
-                    fontWeight: 700,
-                    fontSize: buttonFontSize,
-                    pointerEvents: 'none',
-                  }}
-                >
-                  <MdArrowDownward style={{ fontSize: buttonFontSize * 1.2 }} />
-                  <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-                    <small style={{ fontSize: buttonFontSize * 0.8 }}>
-                      {hasDown ? downLabel : '—'}
-                    </small>
-                  </div>
-                </div>
-              </foreignObject>
-
-              <rect
-                x={tooltipX + tooltipWidth / 2 + 6 * scale}
-                y={tooltipY + tooltipHeight - buttonHeight - 14 * scale}
-                width={(tooltipWidth - 48 * scale) / 2}
-                height={buttonHeight}
-                rx={10 * scale}
-                fill="transparent"
-                style={{ cursor: hasDown ? 'pointer' : 'not-allowed' }}
-              />
-            </g>
-          </>
-        )}
-      </g>
+            />
+          </g>
+        </>
+      )}
     </g>
   );
 }

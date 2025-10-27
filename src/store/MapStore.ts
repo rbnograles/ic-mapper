@@ -21,6 +21,8 @@ interface IMapStore {
     steps: RouteStep[];
     finalDestination: IMapItem | null;
   };
+  isCalculatingRoute: boolean;
+  setIsCalculatingRoute: (isCalculating: boolean) => void;
   // handlers
   handlePathSelect: (path: IMapItem | IPlace) => void;
   setMapItems: (path: IMapItem) => void;
@@ -65,6 +67,7 @@ const useMapStore = create<IMapStore>()((set, get) => ({
     steps: [],
     finalDestination: null,
   },
+  isCalculatingRoute: false,
 
   // handlers
   setMapItems: (path) => {
@@ -176,6 +179,12 @@ const useMapStore = create<IMapStore>()((set, get) => ({
         steps: [],
         finalDestination: null,
       },
+    }));
+  },
+  
+  setIsCalculatingRoute: (b) => {
+    set((s) => ({
+      isCalculatingRoute: b,
     }));
   },
 }));

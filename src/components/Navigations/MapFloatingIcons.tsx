@@ -51,7 +51,7 @@ function MapFloatingIcons({ transformRef }: { transformRef: any }) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: isMobile || isMidTablet || isTablet ? 'space-between' : '',
-        height: isMobile ||  isTablet ? '75vh' : isMidTablet ? '80vh' : '32vh',
+        height: isMobile  ? '67vh' : isTablet ? '75vh' : isMidTablet ? '80vh' : '32vh',
         zIndex: 300,
       }}
     >

@@ -1,8 +1,32 @@
+let cachedVerticals: any = null;
+let loadingPromise: Promise<any> | null = null;
+
 export async function loadVerticals(floor: string) {
-  const module = await import(`@/Data/AyalaMalls/connectors/Vecticals.json`);
-  return module.default || module;
+  // Return cached if available
+  if (cachedVerticals) return cachedVerticals;
+
+  // Return existing promise if already loading
+  if (loadingPromise) return loadingPromise;
+
+  // Start loading
+  loadingPromise = import(`@/Data/AyalaMalls/connectors/Vecticals.json`)
+    .then((module) => {
+      cachedVerticals = module.default || module;
+      loadingPromise = null;
+      return cachedVerticals;
+    })
+    .catch((err) => {
+      loadingPromise = null;
+      throw err;
+    });
+
+  return loadingPromise;
 }
 
+// Preload on app initialization
+export function preloadVerticals() {
+  loadVerticals('ground').catch(console.error);
+}
 // 4. Helper to find vertical connector between floors
 // utils/verticalProcessor.ts (replace findVerticalConnector)
 export function findVerticalConnector(
@@ -88,4 +112,4 @@ export const floorMatches = (stepFloor: string | undefined | null, selectedKey: 
   if (cleanedS.includes(cleanedK) || cleanedK.includes(cleanedS)) return true;
 
   return false;
-}
+};
