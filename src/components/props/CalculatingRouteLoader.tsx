@@ -1,137 +1,121 @@
-// components/CalculatingRouteIndicator.tsx
+// CalculatingRouteIndicatorModernNonBlocking.tsx
 import React from 'react';
-import { Box, CircularProgress, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box, Paper, Typography, IconButton, CircularProgress } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 
-interface CalculatingRouteIndicatorProps {
+export type CalculatingRouteIndicatorProps = {
   isVisible: boolean;
   title?: string;
   subtitle?: string;
-  zIndex?: number;
-}
-
-export const CalculatingRouteIndicator: React.FC<CalculatingRouteIndicatorProps> = ({
-  isVisible,
-  title = 'Calculating Route',
-  subtitle = 'Finding the best path...',
-  zIndex = 1500,
-}) => {
-  const theme = useTheme();
-
-  if (!isVisible) return null;
-
-  return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        backgroundColor: 'rgba(255, 255, 255, 0.98)',
-        backdropFilter: 'blur(12px)',
-        color: theme.palette.primary.main,
-        padding: '24px 40px',
-        borderRadius: '25px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 2.5,
-        zIndex,
-        boxShadow: '0 12px 48px rgba(25, 118, 210, 0.15), 0 0 0 1px rgba(25, 118, 210, 0.1)',
-        minWidth: '240px',
-        animation: 'fadeInScale 0.3s ease-out',
-        '@keyframes fadeInScale': {
-          from: {
-            opacity: 0,
-            transform: 'translate(-50%, -50%) scale(0.9)',
-          },
-          to: {
-            opacity: 1,
-            transform: 'translate(-50%, -50%) scale(1)',
-          },
-        },
-      }}
-    >
-      {/* Pulse effect container */}
-      <Box
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        {/* Background pulse circles */}
-        <Box
-          sx={{
-            position: 'absolute',
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            backgroundColor: theme.palette.primary.main,
-            opacity: 0.1,
-            animation: 'pulse 2s ease-in-out infinite',
-            '@keyframes pulse': {
-              '0%, 100%': {
-                transform: 'scale(1)',
-                opacity: 0.1,
-              },
-              '50%': {
-                transform: 'scale(1.2)',
-                opacity: 0.05,
-              },
-            },
-          }}
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            backgroundColor: theme.palette.primary.main,
-            opacity: 0.15,
-            animation: 'pulse 2s ease-in-out infinite 0.5s',
-          }}
-        />
-
-        {/* Spinner */}
-        <CircularProgress
-          size={33}
-          thickness={4}
-          sx={{
-            color: theme.palette.primary.main,
-            position: 'relative',
-            zIndex: 1,
-          }}
-        />
-      </Box>
-
-      {/* Text content */}
-      <Box sx={{ textAlign: 'center' }}>
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 700,
-            color: theme.palette.text.primary,
-            letterSpacing: '0.3px',
-            marginBottom: 0.5,
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            color: theme.palette.text.secondary,
-            fontSize: '0.875rem',
-          }}
-        >
-          {subtitle}
-        </Typography>
-      </Box>
-    </Box>
-  );
+  onCancel?: () => void;
+  onAction?: () => void;
+  placement?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
 };
 
-export default CalculatingRouteIndicator;
+export default function CalculatingRouteIndicatorModernNonBlocking({
+  isVisible,
+  title = 'Calculating route',
+  subtitle = 'Finding best path…',
+  onCancel,
+  onAction,
+  placement = 'bottom-right',
+}: CalculatingRouteIndicatorProps) {
+  if (!isVisible) return null;
+
+  const pos: Record<string, React.CSSProperties> = {
+    'bottom-right': { right: 16, bottom: 24 },
+    'bottom-left': { left: 16, bottom: 24 },
+    'top-right': { right: 16, top: 24 },
+    'top-left': { left: 16, top: 24 },
+  };
+
+  return (
+    // Outer wrapper is completely pointer-events: none (cannot block anything)
+    <Box
+      aria-live="polite"
+      sx={{
+        position: 'fixed',
+        zIndex: 1400,
+        pointerEvents: 'none',
+        ...pos[placement],
+        transition: 'transform 200ms ease, opacity 150ms ease',
+      }}
+    >
+      {/* Paper is visually present but intentionally pointer-events: none so clicks pass through */}
+      <Paper
+        elevation={6}
+        sx={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 1,
+          minWidth: 200,
+          maxWidth: 340,
+          padding: '8px 10px',
+          borderRadius: 999,
+          boxShadow: '0 6px 20px rgba(16,24,40,0.08)',
+          backdropFilter: 'blur(4px)',
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'light' ? 'rgba(255,255,255,0.85)' : 'rgba(24,24,27,0.7)',
+          pointerEvents: 'none',     // <<< make the whole card pass-through
+          touchAction: 'auto',       // allow map touch gestures underneath on mobile
+        }}
+        role="status"
+        aria-label={`${title}: ${subtitle}`}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, paddingLeft: 2 }}>
+          <CircularProgress size={28} thickness={4} sx={{ pointerEvents: 'none' }} />
+        </Box>
+
+        <Box sx={{ flex: 1, minWidth: 0, paddingRight: 6 }}>
+          <Typography noWrap variant="subtitle2" sx={{ fontWeight: 700, lineHeight: 1 }} title={title}>
+            {title}
+          </Typography>
+
+          <Typography noWrap variant="caption" sx={{ opacity: 0.85 }} title={subtitle}>
+            {subtitle}
+          </Typography>
+        </Box>
+
+        {/* Only the icon buttons are interactive (pointerEvents:auto) */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, position: 'relative', right: 8 }}>
+          {onAction && (
+            <IconButton
+              size="small"
+              aria-label="action"
+              onClick={(e) => {
+                e.stopPropagation();
+                onAction();
+              }}
+              sx={{
+                pointerEvents: 'auto', // <<< only this button can receive clicks
+                backgroundColor: 'transparent',
+                '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' },
+              }}
+            >
+              <PauseCircleOutlineIcon fontSize="small" />
+            </IconButton>
+          )}
+
+          {onCancel && (
+            <IconButton
+              size="small"
+              aria-label="cancel calculation"
+              onClick={(e) => {
+                e.stopPropagation();
+                onCancel();
+              }}
+              sx={{
+                pointerEvents: 'auto', // <<< only this button can receive clicks
+                backgroundColor: 'transparent',
+                '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' },
+              }}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          )}
+        </Box>
+      </Paper>
+    </Box>
+  );
+}

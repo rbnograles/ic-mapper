@@ -15,19 +15,15 @@ import { floors } from '@/pages/IndoorMap/partials/floors';
 import MapBuilder from '@/components/Maps/Maps';
 
 // plain function
-import {
-  handleMultiFloorRoute,
-  routeMapHandler,
-  cancelAllRouteCalculations,
-} from '@/hooks/useRouteMapHandler';
+import { handleMultiFloorRoute, routeMapHandler } from '@/hooks/useRouteMapHandler';
 
 import FloorCardSelector from '@/components/Drawers/FloorSelection';
 
 import useMapStore from '@/store/MapStore';
 import useDrawerStore from '@/store/DrawerStore';
 import { floorMatches, preloadVerticals } from '@/utils/verticalProcessor';
-import { cleanExpiredCache } from '@/utils/routeCache';
-import CalculatingRouteIndicator from '@/components/props/CalculatingRouteLoader';
+
+import CalculatingRouteIndicatorModern from '@/components/props/CalculatingRouteLoader';
 
 export function IndoorMap() {
   // MapStore
@@ -51,7 +47,7 @@ export function IndoorMap() {
 
   const [selectedMapName, setSelectedMapName] = useState<string>('');
 
-  // ðŸ§± Data states
+  // Data states
   const [floorData, setFloorData] = useState<Omit<FloorData, 'floor'>>({
     maps: [],
     nodes: [],
@@ -68,15 +64,6 @@ export function IndoorMap() {
 
   useEffect(() => {
     preloadVerticals();
-    cleanExpiredCache();
-
-    // Clean cache every 5 minutes
-    const intervalId = setInterval(cleanExpiredCache, 5 * 60 * 1000);
-
-    return () => {
-      clearInterval(intervalId);
-      cancelAllRouteCalculations();
-    };
   }, []);
 
   useEffect(() => {
@@ -108,47 +95,89 @@ export function IndoorMap() {
 
   const handleRoute = useCallback(
     async (from: IMapItem, to: IMapItem, via?: string) => {
-      if (from.floor === to.floor) {
-        return routeMapHandler(
-          from.name,
-          to.name,
-          floorData.maps,
-          floorData.nodes,
-          floorData.entrances,
-          false // ✅ Use cache for same-floor routes
-        );
-      }
+      useMapStore.getState().setIsCalculatingRoute(true);
 
-      if (via) {
-        const steps = await handleMultiFloorRoute(
-          from,
-          to,
-          via,
-          useMapStore.getState().setMultiFloorRoute,
-          setSelectedFloorMap
-        );
+      requestAnimationFrame(() => {
+        // Close drawer first
+        setIsExpanded(false);
+        setIsFloorMapOpen(false);
 
-        if (steps && steps.length > 0) {
-          const firstStep = steps[0];
-          const routeFrom = firstStep.fromId
-            ? resolveMapItemIdentifier(firstStep.fromId)
-            : firstStep.from;
-          const routeTo = firstStep.toId ? resolveMapItemIdentifier(firstStep.toId) : firstStep.to;
+        requestAnimationFrame(async () => {
+          // ✅ Extra delay on mobile for drawer animation
+          const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          if (isMobile) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+          }
 
-          return routeMapHandler(
-            routeFrom,
-            routeTo,
-            floorData.maps,
-            floorData.nodes,
-            floorData.entrances,
-            true
-          );
-        }
-      }
+          try {
+            // Same floor routing
+            if (from.floor === to.floor) {
+              return routeMapHandler(
+                from.name,
+                to.name,
+                floorData.maps,
+                floorData.nodes,
+                floorData.entrances,
+                false
+              );
+            }
 
-      return null;
+            // Multi-floor routing
+            if (via) {
+              const steps = await handleMultiFloorRoute(
+                from,
+                to,
+                via,
+                useMapStore.getState().setMultiFloorRoute,
+                setSelectedFloorMap
+              );
+
+              if (steps && steps.length > 0) {
+                const waitForFloorData = () => {
+                  return new Promise<void>((resolve) => {
+                    const checkData = () => {
+                      const currentData = floorDataRef.current;
+                      if (currentData.maps.length > 0 && currentData.nodes.length > 0) {
+                        resolve();
+                      } else {
+                        setTimeout(checkData, 50);
+                      }
+                    };
+                    checkData();
+                  });
+                };
+
+                await waitForFloorData();
+
+                const firstStep = steps[0];
+                const routeFrom = firstStep.fromId
+                  ? resolveMapItemIdentifier(firstStep.fromId)
+                  : firstStep.from;
+                const routeTo = firstStep.toId
+                  ? resolveMapItemIdentifier(firstStep.toId)
+                  : firstStep.to;
+
+                return routeMapHandler(
+                  routeFrom,
+                  routeTo,
+                  floorDataRef.current.maps,
+                  floorDataRef.current.nodes,
+                  floorDataRef.current.entrances,
+                  true
+                );
+              }
+            }
+
+            return null;
+          } catch (err) {
+            console.error('Route handler error:', err);
+            useMapStore.getState().setIsCalculatingRoute(false);
+            return null;
+          }
+        });
+      });
     },
-    [floorData, resolveMapItemIdentifier, setSelectedFloorMap]
+    [floorData, resolveMapItemIdentifier, setSelectedFloorMap, setIsExpanded, setIsFloorMapOpen]
   );
 
   // state change for floor rendering
@@ -181,7 +210,7 @@ export function IndoorMap() {
           boundaries: data.boundaries ?? [],
         });
 
-        // âœ… Mark floor as loaded
+        // Mark floor as loaded
         loadedFloorsRef.current.add(floorKey);
         setIsLoading(false);
       })
@@ -195,12 +224,16 @@ export function IndoorMap() {
     };
   }, [selectedFloorMap]);
 
-  // âœ… Multi-floor route continuation effect with stable dependencies
   useEffect(() => {
+    const { multiFloorRoute } = useMapStore.getState();
+
+    if (!multiFloorRoute?.isActive) return;
     if (isLoading) return;
 
-    const { multiFloorRoute } = useMapStore.getState();
-    if (!multiFloorRoute?.isActive) return;
+    if (!floorData.maps.length || !floorData.nodes.length) {
+      console.warn('Floor data not ready yet, waiting...');
+      return;
+    }
 
     const nextStep = multiFloorRoute.steps.find(
       (s) => floorMatches(s.floor, selectedFloorMap) && !s.isVerticalTransition
@@ -208,18 +241,53 @@ export function IndoorMap() {
 
     if (!nextStep) return;
 
+    // ✅ Get current floor name
+    const currentFloorName =
+      floors.find((f) => f.key === selectedFloorMap)?.name || selectedFloorMap;
+
+    // ✅ More robust key matching
+    const preCalculatedKey = `${currentFloorName}:${nextStep.fromId || nextStep.from}:${nextStep.toId || nextStep.to}`;
+    const preCalculated = multiFloorRoute.preCalculatedRoutes?.get(preCalculatedKey);
+
+    if (preCalculated && preCalculated.length > 0) {
+      console.log(`⚡ Using pre-calculated route for step transition`);
+
+      queueMicrotask(() => {
+        setActiveNodeIds(preCalculated);
+        useMapStore.getState().setIsCalculatingRoute(false);
+      });
+
+      setTimeout(() => {
+        useMapStore.getState().nextRouteStep();
+      }, 300);
+      return;
+    }
+
+    useMapStore.getState().setIsCalculatingRoute(true);
+
     let cancelled = false;
 
     (async () => {
       try {
+        // ✅ Small delay to ensure loader is visible
+        await new Promise((resolve) => setTimeout(resolve, 50));
+
         const currentFloorData = floorDataRef.current;
+
+        if (cancelled || !currentFloorData.maps.length) {
+          console.warn('Floor data became invalid during calculation');
+          useMapStore.getState().setIsCalculatingRoute(false);
+          return;
+        }
 
         const routeFrom = nextStep.fromId
           ? resolveMapItemIdentifier(nextStep.fromId)
           : nextStep.from;
         const routeTo = nextStep.toId ? resolveMapItemIdentifier(nextStep.toId) : nextStep.to;
 
-        // âœ… Force calculation for multi-floor routes
+        console.log(`🔄 Calculating route: ${routeFrom} → ${routeTo} on ${currentFloorName}`);
+
+        // ✅ Force calculation for multi-floor routes
         const result = await routeMapHandler(
           routeFrom as string,
           routeTo as string,
@@ -235,50 +303,28 @@ export function IndoorMap() {
               useMapStore.getState().nextRouteStep();
             }
           }, 300);
+        } else if (!cancelled) {
+          console.error('Route calculation returned no result');
+          useMapStore.getState().setIsCalculatingRoute(false);
         }
       } catch (err) {
-        console.warn('Failed to continue multi-floor route', err);
+        console.error('Failed to continue multi-floor route', err);
+        if (!cancelled) {
+          useMapStore.getState().setIsCalculatingRoute(false);
+        }
       }
     })();
 
     return () => {
       cancelled = true;
     };
-  }, [selectedFloorMap, isLoading, resolveMapItemIdentifier]);
-
-  // Smart preloading - only load once per floor
-  useEffect(() => {
-    const currentIndex = floors.findIndex((f) => f.key === selectedFloorMap);
-    if (currentIndex < 0) return;
-
-    // Preload next floor if not already loaded
-    if (currentIndex < floors.length - 1) {
-      const nextFloorKey = floors[currentIndex + 1].key;
-      if (!loadedFloorsRef.current.has(nextFloorKey)) {
-        requestIdleCallback(() => {
-          loadMapData(nextFloorKey)
-            .then(() => {
-              loadedFloorsRef.current.add(nextFloorKey);
-            })
-            .catch(console.error);
-        });
-      }
-    }
-
-    // Preload previous floor if not already loaded
-    if (currentIndex > 0) {
-      const prevFloorKey = floors[currentIndex - 1].key;
-      if (!loadedFloorsRef.current.has(prevFloorKey)) {
-        requestIdleCallback(() => {
-          loadMapData(prevFloorKey)
-            .then(() => {
-              loadedFloorsRef.current.add(prevFloorKey);
-            })
-            .catch(console.error);
-        });
-      }
-    }
-  }, [selectedFloorMap]);
+  }, [
+    selectedFloorMap,
+    isLoading,
+    resolveMapItemIdentifier,
+    floorData.maps.length,
+    floorData.nodes.length,
+  ]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -311,7 +357,6 @@ export function IndoorMap() {
             </Box>
           ) : (
             <>
-              <CalculatingRouteIndicator isVisible={isCalculatingRoute} />
               <MapBuilder
                 map={floorData.maps}
                 nodes={floorData.nodes}
@@ -321,6 +366,7 @@ export function IndoorMap() {
                 roadMarks={floorData.roadMarks}
                 floorKey={selectedFloorMap}
               />
+              <CalculatingRouteIndicatorModern isVisible={isCalculatingRoute} />
             </>
           )}
         </div>

@@ -178,14 +178,47 @@ export function findShortestPathSingleSource(
  * - Runs shortest-path search once per start node and reuses results for all candidate end nodes
  */
 export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, placeB: string) {
-  // find source place (keep first match for source; can be made symmetric later)
-  const p1 = graph.maps.find((p) => p.id === placeA) || graph.maps.find((p) => p.name === placeA);
+  // ✅ Helper to find place in maps OR entrances
+  const findPlace = (identifier: string): IMapItem | null => {
+    // Try maps first
+    let place = graph.maps.find((p) => p.id === identifier) || 
+                graph.maps.find((p) => p.name === identifier);
+    
+    if (place) return place;
+    
+    // ✅ Try entrances
+    const entrance = graph.entrances?.find((e) => e.id === identifier);
+    if (entrance) {
+      return {
+        id: entrance.id,
+        name: entrance.id,
+        type: 'entrance',
+        entranceNodes: [entrance.id],
+        path: '',
+        centroid: [entrance.x, entrance.y],
+        floor: '',
+      } as IMapItem;
+    }
+    
+    return null;
+  };
+
+  const p1 = findPlace(placeA);
   if (!p1) {
     console.warn('Source place not found', { placeA });
     return null;
   }
 
   const p2Candidates = graph.maps.filter((p) => p.id === placeB || p.name === placeB);
+  
+  // ✅ Also check entrances for destination
+  if (p2Candidates.length === 0) {
+    const entranceDestination = findPlace(placeB);
+    if (entranceDestination) {
+      p2Candidates.push(entranceDestination);
+    }
+  }
+  
   if (!p2Candidates || p2Candidates.length === 0) {
     console.warn('Destination place(s) not found', { placeB });
     return null;

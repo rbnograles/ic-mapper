@@ -20,6 +20,7 @@ interface IMapStore {
     currentStep: number;
     steps: RouteStep[];
     finalDestination: IMapItem | null;
+    preCalculatedRoutes?: Map<string, string[]>;
   };
   isCalculatingRoute: boolean;
   setIsCalculatingRoute: (isCalculating: boolean) => void;
@@ -33,7 +34,11 @@ interface IMapStore {
   setSelectedFloorMap: (floor: string) => void;
   setActiveNodeIds: (nodeIds: string[]) => void;
   resetMap: () => void;
-  setMultiFloorRoute: (steps: RouteStep[], finalDestination: IMapItem) => void;
+  setMultiFloorRoute: (
+    steps: RouteStep[],
+    finalDestination: IMapItem,
+    preCalculatedRoutes?: Map<string, string[]>
+  ) => void;
   nextRouteStep: () => void;
   clearMultiFloorRoute: () => void;
 }
@@ -136,13 +141,14 @@ const useMapStore = create<IMapStore>()((set, get) => ({
       selectedType: '',
     }));
   },
-  setMultiFloorRoute: (steps, finalDestination) => {
+  setMultiFloorRoute: (steps, finalDestination, preCalculatedRoutes) => {
     set(() => ({
       multiFloorRoute: {
         isActive: true,
         currentStep: 0,
         steps,
         finalDestination: finalDestination,
+        preCalculatedRoutes: preCalculatedRoutes || new Map()
       },
     }));
   },
@@ -159,6 +165,7 @@ const useMapStore = create<IMapStore>()((set, get) => ({
           currentStep: 0,
           steps: [],
           finalDestination: null,
+          preCalculatedRoutes: new Map(),
         },
       }));
     } else {
@@ -178,10 +185,11 @@ const useMapStore = create<IMapStore>()((set, get) => ({
         currentStep: 0,
         steps: [],
         finalDestination: null,
+        preCalculatedRoutes: new Map()
       },
     }));
   },
-  
+
   setIsCalculatingRoute: (b) => {
     set((s) => ({
       isCalculatingRoute: b,

@@ -1,5 +1,3 @@
-import { requestIdleCallback } from './polyfills';
-
 interface CachedRoute {
   nodes: string[];
   timestamp: number;
