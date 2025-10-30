@@ -39,7 +39,6 @@ const FloorBase = memo(
         : p.baseFill || '#E4E9F4';
 
     const strokeColor = isNameHighlighted ? '#FDC023' : isTypeHighlighted ? '#FDC023' : '#7B48FF';
-
     const strokeWidth = isNameHighlighted || isTypeHighlighted ? 4 : 2;
 
     // Clone the icon and override color if highlighted
@@ -47,7 +46,6 @@ const FloorBase = memo(
     const iconNode =
       p.icon &&
       iconElement &&
-      // Ensure it's a valid ReactElement and supports 'style' prop
       typeof iconElement === 'object' &&
       'props' in iconElement
         ? cloneElement(iconElement as React.ReactElement<any>, {
@@ -77,8 +75,12 @@ const FloorBase = memo(
         <g
           key={p.id}
           onClick={p.type !== 'NotClickable' && p.name !== 'Park' ? () => onClick?.(p) : undefined}
+          style={{
+            // ✅ Use CSS to bring highlighted items forward instead of DOM manipulation
+            position: 'relative',
+            zIndex: isNameHighlighted || isTypeHighlighted ? 100 : 1,
+          }}
         >
-          {/* ---- Path ---- */}
           <path
             id={p.id}
             d={p.path}
@@ -92,7 +94,6 @@ const FloorBase = memo(
             }}
           />
 
-          {/* ---- Center Icon ---- */}
           {centers[p.id] && iconNode && (
             <foreignObject
               x={centers[p.id].x - (p.centerX ?? 50)}

@@ -93,14 +93,20 @@ export async function routeMapHandler(
       function resolvePlaceCandidate(candidate: string): string {
         if (!candidate) return candidate;
         const byId = maps.find((m) => m.id === candidate);
+
         if (byId) return byId.id;
+
         const byName = maps.find((m) => m.name === candidate);
+
         if (byName) return byName.name;
+
         const mapViaEntrance = maps.find(
           (m) =>
             Array.isArray((m as any).entranceNodes) && (m as any).entranceNodes.includes(candidate)
         );
+
         if (mapViaEntrance) return mapViaEntrance.id ?? mapViaEntrance.name;
+
         return candidate;
       }
 
@@ -181,7 +187,6 @@ async function preCalculateMultiFloorRoutes(
     const floorObj = floors.find((f) => f.key === floorKey);
     const floorName = floorObj ? floorObj.name : floorKey;
 
-    // Create key using floor NAME (to match what routeMapHandler expects)
     const key = `${floorName}:${from}:${to}`;
 
     try {
@@ -193,24 +198,33 @@ async function preCalculateMultiFloorRoutes(
 
       function resolveIdentifier(candidate: string): string {
         const byId = maps.find((m: { id: string }) => m.id === candidate);
-        if (byId) return byId.name || byId.id;
+        if (byId) return byId.id;
 
         const byName = maps.find((m: { name: string }) => m.name === candidate);
         if (byName) return byName.name;
 
+        // If candidate is an entrance id, prefer returning the *map that contains that entrance* (if any)
+        const mapViaEntrance = maps.find(
+          (m: { entranceNodes?: string[] }) =>
+            Array.isArray(m.entranceNodes) && m.entranceNodes.includes(candidate)
+        );
+        if (mapViaEntrance) return mapViaEntrance.id ?? mapViaEntrance.name;
+
+        // fallback to leaving the entrance id (so findPathBetweenPlacesOptimized can handle it)
         const entrance = entrances.find((e: { id: string }) => e.id === candidate);
         if (entrance) return candidate;
 
         return candidate;
       }
 
-      // <-- Simple last-item check: if this step is the last in the array, prefer step.fromId
+      // Prefer explicit step.toId for the final segment (and prefer step.fromId when applicable)
       const isLastItem = idx === lastIndex;
       const resolvedFrom = isLastItem && step.fromId ? step.fromId : resolveIdentifier(from);
-      const resolvedTo = resolveIdentifier(to);
-      console.log('from', resolvedFrom)
-      console.log('to', resolvedTo)
+      const resolvedTo = isLastItem && step.toId ? step.toId : resolveIdentifier(to);
+
       const path = findPathBetweenPlacesOptimized(floorMap, resolvedFrom, resolvedTo);
+
+      console.log(path);
 
       if (path && path.nodes && path.nodes.length > 0) {
         preCalculated.set(key, path.nodes);
@@ -225,7 +239,6 @@ async function preCalculateMultiFloorRoutes(
 
   return preCalculated;
 }
-
 
 /**
  * Find path through multiple floors using BFS - FIXED for bidirectional traversal
@@ -269,16 +282,16 @@ function findMultiFloorPath(
     if (!adj.has(toKey)) adj.set(toKey, []);
 
     // ✅ Store both directions with proper metadata
-    adj.get(fromKey)!.push({ 
-      vertical: v, 
+    adj.get(fromKey)!.push({
+      vertical: v,
       neighbor: toKey,
-      direction: 'up' // fromKey -> toKey is "up" 
+      direction: 'up', // fromKey -> toKey is "up"
     });
-    
-    adj.get(toKey)!.push({ 
-      vertical: v, 
+
+    adj.get(toKey)!.push({
+      vertical: v,
       neighbor: fromKey,
-      direction: 'down' // toKey -> fromKey is "down"
+      direction: 'down', // toKey -> fromKey is "down"
     });
   }
 
@@ -303,7 +316,7 @@ function findMultiFloorPath(
 
       while (cur !== startKey) {
         const p = parent.get(cur)!;
-        
+
         // ✅ Create connector with correct orientation based on direction
         const connector = {
           ...p.vertical,
@@ -312,9 +325,9 @@ function findMultiFloorPath(
           to: p.direction === 'down' ? p.vertical.from : p.vertical.to,
           labelFrom: p.direction === 'down' ? p.vertical.labelTo : p.vertical.labelFrom,
           labelTo: p.direction === 'down' ? p.vertical.labelFrom : p.vertical.labelTo,
-          direction: p.direction
+          direction: p.direction,
         };
-        
+
         path.unshift(connector);
         cur = p.from;
       }
@@ -394,7 +407,9 @@ export const handleMultiFloorRoute = async (
     }
 
     console.log(`✅ Will traverse ${connectorPath.length} floor(s)`);
-    console.log(`   Direction: ${connectorPath[0].direction === 'up' ? '⬆️ Upward' : '⬇️ Downward'}`);
+    console.log(
+      `   Direction: ${connectorPath[0].direction === 'up' ? '⬆️ Upward' : '⬇️ Downward'}`
+    );
 
     // ✅ Step 1: Origin floor - from location to first connector
     const firstConnector = connectorPath[0];
@@ -425,13 +440,15 @@ export const handleMultiFloorRoute = async (
       const fromFloorKey = getFloorKeyFromNode(connector.from);
       const toFloorKey = getFloorKeyFromNode(connector.to);
 
-      console.log(`   [${steps.length + 1}] ${fromFloorKey} → ${toFloorKey}: ${via} (${connector.direction})`);
+      console.log(
+        `[${steps.length + 1}] ${fromFloorKey} → ${toFloorKey}: ${via} (${connector.direction})`
+      );
 
       const isLastConnector = i === connectorPath.length - 1;
 
       if (!isLastConnector) {
         const nextConnector = connectorPath[i + 1];
-        
+
         steps.push({
           floor: toFloorKey,
           from: connector.labelTo || connector.to, // Use label for display
@@ -447,7 +464,7 @@ export const handleMultiFloorRoute = async (
       } else {
         // ✅ Final floor: connector exit to destination
         const destFloorKey = getFloorKey(to.floor);
-        
+
         steps.push({
           floor: destFloorKey,
           from: connector.labelTo || connector.to, // Use label for display

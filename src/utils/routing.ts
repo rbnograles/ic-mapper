@@ -224,6 +224,9 @@ export function findPathBetweenPlacesOptimized(graph: Graph, placeA: string, pla
     return null;
   }
 
+  console.log(p1)
+  console.log(p2Candidates)
+
   // ---------- 1) CACHES ----------
   // cache for entranceId -> resolved path node ids
   const entranceToPathNodesCache = new Map<string, string[]>();

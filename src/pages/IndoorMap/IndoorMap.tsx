@@ -237,7 +237,7 @@ export function IndoorMap() {
 
     // ✅ Get the CURRENT step using currentStep index
     const currentStep = multiFloorRoute.steps[multiFloorRoute.currentStep];
-    
+
     if (!currentStep) {
       console.warn('No current step found');
       return;
@@ -245,11 +245,15 @@ export function IndoorMap() {
 
     // ✅ Check if this step matches the current floor
     if (!floorMatches(currentStep.floor, selectedFloorMap)) {
-      console.log(`⏳ Waiting for correct floor. Current: ${selectedFloorMap}, Expected: ${currentStep.floor}`);
+      console.log(
+        `⏳ Waiting for correct floor. Current: ${selectedFloorMap}, Expected: ${currentStep.floor}`
+      );
       return;
     }
 
-    console.log(`🎯 Processing step ${multiFloorRoute.currentStep + 1}/${multiFloorRoute.steps.length}`);
+    console.log(
+      `🎯 Processing step ${multiFloorRoute.currentStep + 1}/${multiFloorRoute.steps.length}`
+    );
     console.log(`   Floor: ${currentStep.floor}`);
     console.log(`   Route: ${currentStep.from} → ${currentStep.to}`);
 
@@ -268,16 +272,47 @@ export function IndoorMap() {
       queueMicrotask(() => {
         setActiveNodeIds(preCalculated);
         useMapStore.getState().setIsCalculatingRoute(false);
-        
+
         // ✅ Store nodes in the multi-floor route state
         useMapStore.getState().setCurrentStepNodes(preCalculated);
-        
+
         // ✅ Highlight the destination
-        const destMap = floorData.maps.find(m => 
-          m.id === currentStep.toId || m.name === currentStep.to
-        );
+        // ✅ Highlight the destination (prefer id → entrance owner → unique name)
+        let destMap = null;
+
+        // 1) Prefer explicit destination id
+        if (currentStep.toId) {
+          destMap = floorData.maps.find((m) => m.id === currentStep.toId) ?? null;
+        }
+
+        // 2) If no id, but `to` is an entrance id, find the map that contains that entrance
+        if (!destMap && currentStep.to) {
+          const isEntranceId = floorData.entrances.some((e) => e.id === currentStep.to);
+          if (isEntranceId) {
+            destMap =
+              floorData.maps.find(
+                (m) => Array.isArray(m.entranceNodes) && m.entranceNodes.includes(currentStep.to)
+              ) ?? null;
+          }
+        }
+
+        // 3) Last-resort: only use name if it's unique on this floor
+        if (!destMap && currentStep.to) {
+          const nameMatches = floorData.maps.filter((m) => m.name === currentStep.to);
+          if (nameMatches.length === 1) {
+            destMap = nameMatches[0];
+          } else if (nameMatches.length > 1) {
+            console.warn(
+              `[highlight] name "${currentStep.to}" matched ${nameMatches.length} maps — skipping highlight to avoid highlighting multiples.`
+            );
+          }
+        }
+
         if (destMap) {
+          console.log(`[highlight] highlighting dest map id=${destMap.id} name="${destMap.name}"`);
           useMapStore.getState().setHighlightedPlace(destMap);
+        } else {
+          console.log('[highlight] no unique destMap found — not highlighting');
         }
       });
 
@@ -304,8 +339,8 @@ export function IndoorMap() {
         const routeFrom = currentStep.fromId
           ? resolveMapItemIdentifier(currentStep.fromId)
           : currentStep.from;
-        const routeTo = currentStep.toId 
-          ? resolveMapItemIdentifier(currentStep.toId) 
+        const routeTo = currentStep.toId
+          ? resolveMapItemIdentifier(currentStep.toId)
           : currentStep.to;
 
         console.log(`🔄 Calculating route: ${routeFrom} → ${routeTo}`);
@@ -322,10 +357,10 @@ export function IndoorMap() {
         if (!cancelled && result) {
           // ✅ Store the calculated nodes
           useMapStore.getState().setCurrentStepNodes(result);
-          
+
           // ✅ Highlight destination
-          const destMap = currentFloorData.maps.find(m => 
-            m.id === currentStep.toId || m.name === currentStep.to
+          const destMap = currentFloorData.maps.find(
+            (m) => m.id === currentStep.toId || m.name === currentStep.to
           );
           if (destMap) {
             useMapStore.getState().setHighlightedPlace(destMap);

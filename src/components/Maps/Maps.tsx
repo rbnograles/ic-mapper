@@ -1,11 +1,10 @@
-// AM.GroundFloor.tsx
+// Maps.tsx - Fixed using CSS z-index instead of DOM manipulation
 import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import MapFloatingIcons from '@/components/Navigations/MapFloatingIcons';
 import BASE_ICON_MAP from '@/components/props/BaseIconMapper';
 import type { IMapItem, INodes, ILabels } from '@/interface';
 
-/* DEFAULT (ground-floor) visuals — keep these as defaults so current behavior is unchanged */
 import Boundaries from '@/components/Maps/Boundaries';
 import Base from '@/components/Maps/Base';
 import RoadMarks from '@/components/Maps/RoadMarks';
@@ -26,31 +25,21 @@ type TMapBuilder = {
 };
 
 function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks }: TMapBuilder) {
-  // Map Store
   const highlightPlace = useMapStore((state) => state.highlightedPlace);
   const activeNodeIds = useMapStore((state) => state.activeNodeIds);
   const selectedType = useMapStore((state) => state.selectedType);
-  // alias assignment to normalize word
   const id = highlightPlace.id;
   const name = highlightPlace.name;
-  //Actions
   const handlePathSelect = useMapStore((state) => state.handlePathSelect);
   const handleSetMapItems = useMapStore((state) => state.setMapItems);
-  // Drawer Store
   const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
 
-  // Merge defaults with overrides
   const { BASE_ICON_MAP: ICONS = BASE_ICON_MAP, viewBox = '0 0 14779 10835' } = {};
 
   const transformRef = useRef<any>(null);
-
-  /* Responsive & scale */
-  // (You can keep your useTheme + media queries from the original if needed)
-  const initialScale = 3.5; // keep simple; you can compute per breakpoint upstream if desired
+  const initialScale = 3.5;
 
   const [centers, setCenters] = useState<Record<string, { x: number; y: number }>>({});
-  const originalPositions = useRef<Map<string, { parent: SVGGElement; index: number }>>(new Map());
-  const prevHighlightRef = useRef<string | null>(null);
 
   const focusOnPath = useCallback((id: string, scale = 16) => {
     const path = document.getElementById(id);
@@ -71,46 +60,10 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
       if (el) {
         const box = el.getBBox();
         newCenters[p.id] = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
-        const groupEl = el.parentNode as SVGGElement | null;
-        if (groupEl && !originalPositions.current.has(p.id)) {
-          const parent = groupEl.parentNode as SVGGElement;
-          const index = Array.from(parent.children).indexOf(groupEl);
-          originalPositions.current.set(p.id, { parent, index });
-        }
       }
     });
     setCenters(newCenters);
   }, [map]);
-
-  useEffect(() => {
-    if (!id) return;
-    const prevId = prevHighlightRef.current;
-    if (prevId && prevId !== id) {
-      const prevEl = document.getElementById(prevId)?.parentNode as SVGGElement | null;
-      const original = originalPositions.current.get(prevId);
-      if (prevEl && original) {
-        const { parent, index } = original;
-        const siblings = Array.from(parent.children);
-        const refNode = siblings[index] || null;
-        parent.insertBefore(prevEl, refNode);
-      }
-    }
-    const pathEl = document.getElementById(id);
-    const groupEl = pathEl?.parentNode as SVGGElement | null;
-    const svgRoot = groupEl?.parentNode as SVGGElement | null;
-    if (groupEl && svgRoot) svgRoot.appendChild(groupEl);
-
-    const labelsGroup = document.getElementById('Building Marks');
-    const baseMapGroup = document.getElementById('Base Map');
-    if (labelsGroup && baseMapGroup) baseMapGroup.appendChild(labelsGroup);
-
-    const promptGroup = document.querySelector('[data-vertical-prompt]');
-    if (promptGroup && svgRoot) {
-      svgRoot.appendChild(promptGroup);
-    }
-
-    prevHighlightRef.current = id;
-  }, [id]);
 
   const handleClick = useCallback(
     (p: IMapItem) => {
@@ -133,7 +86,8 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
         <MapFloatingIcons transformRef={transformRef} />
         <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }}>
           <svg viewBox={viewBox} style={{ width: '100%', height: 'auto' }} fill="none">
-            <g id="Base Map">
+            {/* Layer 1: Base elements (z-index handled in CSS) */}
+            <g id="Base Map" style={{ isolation: 'isolate' }}>
               <Boundaries boundaries={boundaries} />
               <RoadMarks roadMarks={roadMarks} />
               {map.map((p) => (
@@ -147,10 +101,14 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
                   onClick={handleClick}
                 />
               ))}
-
               <BuildingMarks buidingMarks={buidingMarks} />
+            </g>
 
-              {/* Draw nodes (first & last) */}
+            {/* Layer 2: Route (always on top via rendering order) */}
+            <g id="route-layer" style={{ isolation: 'isolate' }}>
+              <PathNodes route={activeNodeIds} nodes={[...nodes, ...entrances]} />
+
+              {/* Start/end markers */}
               {activeNodeIds.length >= 2 &&
                 [...nodes, ...entrances]
                   .filter(
@@ -183,9 +141,10 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
                       />
                     )
                   )}
-              <PathNodes route={activeNodeIds} nodes={[...nodes, ...entrances]} />
-              <VerticalTransitionPrompt centers={centers} maps={map} />
             </g>
+
+            {/* Layer 3: Prompts (topmost) */}
+            <VerticalTransitionPrompt centers={centers} maps={map} />
           </svg>
         </TransformComponent>
       </TransformWrapper>
