@@ -28,7 +28,7 @@ import { IoLocation } from "react-icons/io5";
 import useDrawerStore from '@/store/DrawerStore';
 import { IFloorCardSelectorProps } from '@/types/DrawerInterface';
 
-export default function FloorCardSelector({
+export default function FloorSelection({
   floors,
   selectedKey,
   onSelect,

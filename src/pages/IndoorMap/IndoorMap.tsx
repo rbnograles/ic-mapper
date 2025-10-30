@@ -7,7 +7,7 @@ import BottomNavBar from '@/components/navigation/BottomNavBar';
 import SearchAppBar from '@/components/navigation/SearchAppBar';
 import { loadMapData } from '@/routing/utils/mapLoader';
 import type { FloorData, IMapItem } from '@/types';
-import FloorCardSelector from '@/components/drawers/FloorSelection';
+import FloorSelection from '@/components/drawers/FloorSelection';
 
 // floors: [{ key, name, assets? }]
 import { floors } from '@/routing/utils/Constants';
@@ -441,7 +441,7 @@ export function IndoorMap() {
         </Box>
 
         {/*Floor Drawer */}
-        <FloorCardSelector floors={floors} selectedKey={selectedFloorMap} onSelect={openFloor} />
+        <FloorSelection floors={floors} selectedKey={selectedFloorMap} onSelect={openFloor} />
       </Box>
     </ThemeProvider>
   );
