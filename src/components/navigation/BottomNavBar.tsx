@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import LocationInformation from '@/components/drawers/LocationInformation';
+import LocationInformation from '@/components/drawer/LocationInformation';
 import { FaMap } from 'react-icons/fa';
 
 export default function BottomNavBar() {
