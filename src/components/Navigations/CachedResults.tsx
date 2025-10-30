@@ -38,11 +38,11 @@ export default function CachedResults({
         // Route cache: object with from/to
         else if (data.from && data.to) {
           allPlaces.push({
-            id: `route-${data.timestamp || Date.now()}`, // unique ID
-            name: `${data.from} → ${data.to}`, // show as "From → To"
+            id: `route-${data.timestamp || Date.now()}`,
+            name: `${data.from} → ${data.to}`,
             type: 'Route',
             floor: data.floor,
-            raw: data, // optional: keep original object
+            raw: data,
           });
         }
         // Map cache stored as object { key: [maps...] }
@@ -120,8 +120,8 @@ export default function CachedResults({
           </Typography>
         ) : (
           <List disablePadding>
-            {allCachedPlaces.map((place) => (
-              <Box key={place.id}>
+            {allCachedPlaces.map((place, i) => (
+              <Box key={i}>
                 <ListItem
                   dense
                   disablePadding

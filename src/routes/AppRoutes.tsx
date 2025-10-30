@@ -1,7 +1,7 @@
 // src/AppRouter.tsx
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/layouts/layout';
-import { IndoorMap } from '@/pages/IndoorMap';
+import { IndoorMap } from '@/pages/IndoorMap/IndoorMap';
 import RouteTracker from '@/pages/ExplorerMap';
 import { Fragment } from 'react/jsx-runtime';
 
