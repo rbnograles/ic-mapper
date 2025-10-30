@@ -19,7 +19,7 @@ export default function CalculatingRouteIndicatorModernNonBlocking({
   subtitle = 'Finding best path…',
   onCancel,
   onAction,
-  placement = 'bottom-right',
+  placement = 'bottom-left',
 }: CalculatingRouteIndicatorProps) {
   if (!isVisible) return null;
 
@@ -57,8 +57,6 @@ export default function CalculatingRouteIndicatorModernNonBlocking({
           backdropFilter: 'blur(4px)',
           backgroundColor: (theme) =>
             theme.palette.mode === 'light' ? 'rgba(255,255,255,0.85)' : 'rgba(24,24,27,0.7)',
-          pointerEvents: 'none',     // <<< make the whole card pass-through
-          touchAction: 'auto',       // allow map touch gestures underneath on mobile
         }}
         role="status"
         aria-label={`${title}: ${subtitle}`}
@@ -88,7 +86,7 @@ export default function CalculatingRouteIndicatorModernNonBlocking({
                 onAction();
               }}
               sx={{
-                pointerEvents: 'auto', // <<< only this button can receive clicks
+                pointerEvents: 'auto',
                 backgroundColor: 'transparent',
                 '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' },
               }}

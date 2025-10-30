@@ -2,7 +2,7 @@ import { MdStairs, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import useMapStore from '@/store/MapStore';
-import { floors } from '@/pages/IndoorMap/partials/floors';
+import { floors } from '@/utils/floors';
 import useDrawerStore from '@/store/DrawerStore';
 import theme from '@/styles/theme';
 import { useMediaQuery } from '@mui/material';
@@ -17,8 +17,11 @@ interface VerticalTransitionPromptProps {
 export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPromptProps) {
   const highlightedId = useMapStore((s) => s.highlightedPlace?.id);
   const currentFloor = useMapStore((s) => s.selectedFloorMap);
+  const multiFloorRoute = useMapStore((s) => s.multiFloorRoute);
   const setSelectedFloorMap = useMapStore((s) => s.setSelectedFloorMap);
   const resetMap = useMapStore((s) => s.resetMap);
+  const clearMultiFloorRoute = useMapStore((s) => s.clearMultiFloorRoute);
+  const nextRouteStep = useMapStore((s) => s.nextRouteStep);
   const setIsExpanded = useDrawerStore((state) => state.setIsExpanded);
   const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
@@ -28,6 +31,9 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   const isVertical =
     !!clickedMap && ['Stairs', 'Elevator', 'Escalator'].includes(clickedMap.type || '');
 
+  // ✅ Check if multi-floor route is active
+  const isMultiFloorActive = multiFloorRoute?.isActive;
+  
   if (!isVertical || !clickedMap) return null;
 
   const center = centers[clickedMap.id];
@@ -87,13 +93,30 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
     } else {
       return;
     }
+
+    // ✅ If in multi-floor route, advance step BEFORE floor change
+    if (isMultiFloorActive) {
+      console.log(`✅ Advancing to step ${multiFloorRoute.currentStep + 2}/${multiFloorRoute.steps.length}`);
+      nextRouteStep();
+    }
+
+    // ✅ Change floor
     setSelectedFloorMap(nextFloorLocal.key);
     setIsFloorMapOpen(false);
     setIsExpanded(false);
-    resetMap();
+    
+    // ✅ Only reset if NOT multi-floor
+    if (!isMultiFloorActive) {
+      console.log('Manual floor change - resetting map');
+      resetMap();
+    }
   };
 
   const handleClose = () => {
+    // ✅ Clear both map and multi-floor route
+    if (isMultiFloorActive) {
+      clearMultiFloorRoute();
+    }
     resetMap();
   };
 
@@ -196,7 +219,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
                   lineHeight: 1.2,
                 }}
               >
-                {isGroundFloor ? 'Go Upstairs' : 'Change Floor'}
+                {isGroundFloor ? (isMultiFloorActive ? 'Continue Route' : 'Go Upstairs') : 'Change Floor'}
               </div>
               <div
                 style={{
@@ -257,7 +280,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               fontWeight: 500,
             }}
           >
-            Which direction would you like to go?
+            {isMultiFloorActive ? 'Continue your route' : 'Which direction would you like to go?'}
           </div>
         </foreignObject>
       )}
@@ -310,7 +333,9 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
                   lineHeight: 1.3,
                 }}
               >
-                <span style={{ fontSize: buttonFontSize }}>Go to Upper Floor</span>
+                <span style={{ fontSize: buttonFontSize }}>
+                  {isMultiFloorActive ? 'Continue Route' : 'Go to Upper Floor'}
+                </span>
                 {hasUp && (
                   <span style={{ fontSize: buttonFontSize * 0.8, opacity: 0.9 }}>{upLabel}</span>
                 )}
@@ -367,7 +392,9 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
                 }}
               >
                 <MdArrowUpward style={{ fontSize: buttonFontSize * 1.4 }} />
-                <span style={{ fontSize: buttonFontSize * 0.8 }}>UP</span>
+                <span style={{ fontSize: buttonFontSize * 0.8 }}>
+                  {isMultiFloorActive ? 'CONTINUE' : 'UP'}
+                </span>
                 <span style={{ fontSize: buttonFontSize * 0.75, opacity: 0.9 }}>
                   {hasUp ? upLabel : ''}
                 </span>

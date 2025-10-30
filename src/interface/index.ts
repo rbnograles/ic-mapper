@@ -62,10 +62,11 @@ export interface FloorData {
 export type ViaOption = 'Stairs' | 'Elevator' | 'Escalator' | '';
 
 export interface RouteStep {
-   floor: string;
+  floor: string;
   from: string;
-  to: string;
-  isVerticalTransition: boolean;
   fromId?: string;
+  to: string;
   toId?: string;
+  isVerticalTransition: boolean;
+  isIntermediateVertical?: boolean;
 }

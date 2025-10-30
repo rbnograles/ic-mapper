@@ -9,7 +9,7 @@ import { loadMapData } from '@/utils/mapLoader';
 import type { FloorData, IMapItem } from '@/interface';
 
 // floors: [{ key, name, assets? }]
-import { floors } from '@/pages/IndoorMap/partials/floors';
+import { floors } from '@/utils/floors';
 
 // Reuse single map component for all floors
 import MapBuilder from '@/components/Maps/Maps';
@@ -224,52 +224,73 @@ export function IndoorMap() {
     };
   }, [selectedFloorMap]);
 
+  // ✅ UPDATED: Multi-floor route continuation logic
   useEffect(() => {
     const { multiFloorRoute } = useMapStore.getState();
 
     if (!multiFloorRoute?.isActive) return;
     if (isLoading) return;
-
     if (!floorData.maps.length || !floorData.nodes.length) {
       console.warn('Floor data not ready yet, waiting...');
       return;
     }
 
-    const nextStep = multiFloorRoute.steps.find(
-      (s) => floorMatches(s.floor, selectedFloorMap) && !s.isVerticalTransition
-    );
+    // ✅ Get the CURRENT step using currentStep index
+    const currentStep = multiFloorRoute.steps[multiFloorRoute.currentStep];
+    
+    if (!currentStep) {
+      console.warn('No current step found');
+      return;
+    }
 
-    if (!nextStep) return;
+    // ✅ Check if this step matches the current floor
+    if (!floorMatches(currentStep.floor, selectedFloorMap)) {
+      console.log(`⏳ Waiting for correct floor. Current: ${selectedFloorMap}, Expected: ${currentStep.floor}`);
+      return;
+    }
+
+    console.log(`🎯 Processing step ${multiFloorRoute.currentStep + 1}/${multiFloorRoute.steps.length}`);
+    console.log(`   Floor: ${currentStep.floor}`);
+    console.log(`   Route: ${currentStep.from} → ${currentStep.to}`);
 
     // ✅ Get current floor name
     const currentFloorName =
       floors.find((f) => f.key === selectedFloorMap)?.name || selectedFloorMap;
 
-    // ✅ More robust key matching
-    const preCalculatedKey = `${currentFloorName}:${nextStep.fromId || nextStep.from}:${nextStep.toId || nextStep.to}`;
+    // ✅ Create key for pre-calculated route
+    const preCalculatedKey = `${currentFloorName}:${currentStep.fromId || currentStep.from}:${currentStep.toId || currentStep.to}`;
+
     const preCalculated = multiFloorRoute.preCalculatedRoutes?.get(preCalculatedKey);
 
     if (preCalculated && preCalculated.length > 0) {
-      console.log(`⚡ Using pre-calculated route for step transition`);
+      console.log(`⚡ Using pre-calculated route (${preCalculated.length} nodes)`);
 
       queueMicrotask(() => {
         setActiveNodeIds(preCalculated);
         useMapStore.getState().setIsCalculatingRoute(false);
+        
+        // ✅ Store nodes in the multi-floor route state
+        useMapStore.getState().setCurrentStepNodes(preCalculated);
+        
+        // ✅ Highlight the destination
+        const destMap = floorData.maps.find(m => 
+          m.id === currentStep.toId || m.name === currentStep.to
+        );
+        if (destMap) {
+          useMapStore.getState().setHighlightedPlace(destMap);
+        }
       });
 
-      setTimeout(() => {
-        useMapStore.getState().nextRouteStep();
-      }, 300);
       return;
     }
 
+    // ✅ If not pre-calculated, calculate now
     useMapStore.getState().setIsCalculatingRoute(true);
 
     let cancelled = false;
 
     (async () => {
       try {
-        // ✅ Small delay to ensure loader is visible
         await new Promise((resolve) => setTimeout(resolve, 50));
 
         const currentFloorData = floorDataRef.current;
@@ -280,14 +301,15 @@ export function IndoorMap() {
           return;
         }
 
-        const routeFrom = nextStep.fromId
-          ? resolveMapItemIdentifier(nextStep.fromId)
-          : nextStep.from;
-        const routeTo = nextStep.toId ? resolveMapItemIdentifier(nextStep.toId) : nextStep.to;
+        const routeFrom = currentStep.fromId
+          ? resolveMapItemIdentifier(currentStep.fromId)
+          : currentStep.from;
+        const routeTo = currentStep.toId 
+          ? resolveMapItemIdentifier(currentStep.toId) 
+          : currentStep.to;
 
-        console.log(`🔄 Calculating route: ${routeFrom} → ${routeTo} on ${currentFloorName}`);
+        console.log(`🔄 Calculating route: ${routeFrom} → ${routeTo}`);
 
-        // ✅ Force calculation for multi-floor routes
         const result = await routeMapHandler(
           routeFrom as string,
           routeTo as string,
@@ -298,11 +320,16 @@ export function IndoorMap() {
         );
 
         if (!cancelled && result) {
-          setTimeout(() => {
-            if (!cancelled) {
-              useMapStore.getState().nextRouteStep();
-            }
-          }, 300);
+          // ✅ Store the calculated nodes
+          useMapStore.getState().setCurrentStepNodes(result);
+          
+          // ✅ Highlight destination
+          const destMap = currentFloorData.maps.find(m => 
+            m.id === currentStep.toId || m.name === currentStep.to
+          );
+          if (destMap) {
+            useMapStore.getState().setHighlightedPlace(destMap);
+          }
         } else if (!cancelled) {
           console.error('Route calculation returned no result');
           useMapStore.getState().setIsCalculatingRoute(false);
@@ -324,13 +351,15 @@ export function IndoorMap() {
     resolveMapItemIdentifier,
     floorData.maps.length,
     floorData.nodes.length,
+    // ✅ IMPORTANT: Trigger on step changes
+    useMapStore.getState().multiFloorRoute.currentStep,
   ]);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={layoutStyles.appRoot}>
-        {/* ðŸ” Search Bar */}
+        {/* 🔍 Search Bar */}
         <Box sx={layoutStyles.fixedTop}>
           <SearchAppBar
             onSelect={handlePathSelect}
@@ -340,7 +369,6 @@ export function IndoorMap() {
           />
         </Box>
         {/* Map Container */}
-        {/* Container size pagination problem below */}
         <div style={{ ...layoutStyles.mapContainer }}>
           {isLoading ? (
             <Box

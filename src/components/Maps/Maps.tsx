@@ -183,8 +183,6 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
                       />
                     )
                   )}
-
-              {/* Route line (component can be overridden per-floor) */}
               <PathNodes route={activeNodeIds} nodes={[...nodes, ...entrances]} />
               <VerticalTransitionPrompt centers={centers} maps={map} />
             </g>

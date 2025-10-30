@@ -120,8 +120,8 @@ export default function CachedResults({
           </Typography>
         ) : (
           <List disablePadding>
-            {allCachedPlaces.map((place) => (
-              <Box key={place.id}>
+            {allCachedPlaces.map((place, i) => (
+              <Box key={i}>
                 <ListItem
                   dense
                   disablePadding

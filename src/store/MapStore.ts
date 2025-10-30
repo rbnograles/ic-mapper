@@ -21,9 +21,11 @@ interface IMapStore {
     steps: RouteStep[];
     finalDestination: IMapItem | null;
     preCalculatedRoutes?: Map<string, string[]>;
+    currentStepNodes: string[]; // ✅ NEW: Store current step's route nodes
   };
   isCalculatingRoute: boolean;
   setIsCalculatingRoute: (isCalculating: boolean) => void;
+  setHighlightedPlace: (place: IPlace | IMapItem) => void;
   // handlers
   handlePathSelect: (path: IMapItem | IPlace) => void;
   setMapItems: (path: IMapItem) => void;
@@ -33,6 +35,7 @@ interface IMapStore {
   clearSelectedType: () => void;
   setSelectedFloorMap: (floor: string) => void;
   setActiveNodeIds: (nodeIds: string[]) => void;
+  setCurrentStepNodes: (nodeIds: string[]) => void; // ✅ NEW
   resetMap: () => void;
   setMultiFloorRoute: (
     steps: RouteStep[],
@@ -71,10 +74,19 @@ const useMapStore = create<IMapStore>()((set, get) => ({
     currentStep: 0,
     steps: [],
     finalDestination: null,
+    currentStepNodes: [], // ✅ NEW
   },
   isCalculatingRoute: false,
 
   // handlers
+  setHighlightedPlace: (place) => {
+    const id = (place as any).id ?? '';
+    const name = (place as any).name ?? '';
+    set(() => ({
+      highlightedPlace: { id, name },
+    }));
+  },
+  
   setMapItems: (path) => {
     if (path !== null) {
       set(() => ({
@@ -126,6 +138,16 @@ const useMapStore = create<IMapStore>()((set, get) => ({
     }));
   },
 
+  // ✅ NEW: Set current step nodes
+  setCurrentStepNodes: (nodeIds: string[]) => {
+    set((state) => ({
+      multiFloorRoute: {
+        ...state.multiFloorRoute,
+        currentStepNodes: nodeIds,
+      },
+    }));
+  },
+
   setSelectedFloorMap: (floor) => {
     set(() => ({
       selectedFloorMap: floor,
@@ -141,6 +163,7 @@ const useMapStore = create<IMapStore>()((set, get) => ({
       selectedType: '',
     }));
   },
+
   setMultiFloorRoute: (steps, finalDestination, preCalculatedRoutes) => {
     set(() => ({
       multiFloorRoute: {
@@ -148,7 +171,8 @@ const useMapStore = create<IMapStore>()((set, get) => ({
         currentStep: 0,
         steps,
         finalDestination: finalDestination,
-        preCalculatedRoutes: preCalculatedRoutes || new Map()
+        preCalculatedRoutes: preCalculatedRoutes || new Map(),
+        currentStepNodes: [], // ✅ NEW
       },
     }));
   },
@@ -166,13 +190,16 @@ const useMapStore = create<IMapStore>()((set, get) => ({
           steps: [],
           finalDestination: null,
           preCalculatedRoutes: new Map(),
+          currentStepNodes: [], // ✅ NEW
         },
+        activeNodeIds: [], // ✅ Clear active nodes on completion
       }));
     } else {
       set(() => ({
         multiFloorRoute: {
           ...multiFloorRoute,
           currentStep: nextStep,
+          currentStepNodes: [], // ✅ Clear nodes for next step
         },
       }));
     }
@@ -185,8 +212,10 @@ const useMapStore = create<IMapStore>()((set, get) => ({
         currentStep: 0,
         steps: [],
         finalDestination: null,
-        preCalculatedRoutes: new Map()
+        preCalculatedRoutes: new Map(),
+        currentStepNodes: [], // ✅ NEW
       },
+      activeNodeIds: [],
     }));
   },
 
