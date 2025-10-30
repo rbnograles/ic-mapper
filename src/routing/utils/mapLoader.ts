@@ -1,4 +1,4 @@
-import { FloorData } from "@/interface";
+import { FloorData } from "@/types";
 
 // src/utils/loadMapData.ts
 

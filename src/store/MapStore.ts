@@ -5,7 +5,7 @@
  * Puting map details
  */
 import { create } from 'zustand';
-import { IMapItem, IPlace, RouteStep } from '@/interface';
+import { IMapItem, IPlace, RouteStep } from '@/types';
 
 interface IMapStore {
   // main state

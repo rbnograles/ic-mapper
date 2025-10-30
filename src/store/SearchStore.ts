@@ -2,7 +2,7 @@
  * Search Store
  * Use for search related interaction
  */
-import { IMapItem } from '@/interface';
+import { IMapItem } from '@/types';
 import { create } from 'zustand';
 
 interface ISearchStore {

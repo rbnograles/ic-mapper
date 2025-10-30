@@ -3,7 +3,7 @@ import fs from 'fs';
 // ✅ Add new property "floor" to every place object
 const addFloorProp = () => {
   const args = process.argv.slice(2);
-  const oldJsonPath = `../Data/AyalaMalls/${args[0]}Floor/${args[0]}FloorNodes.json`;
+  const oldJsonPath = `../../Data/AyalaMalls/${args[0]}Floor/${args[0]}FloorNodes.json`;
   const floorName = `Ayala Malls ${args[0]} Floor`;
 
   // Load the JSON

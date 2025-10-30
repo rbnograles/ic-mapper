@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { DOMParser } from 'xmldom';
 // geometry utility
-import { parsePathToPolygon, getCentroid, isPointInPolygon } from './geometry';
+import { parsePathToPolygon, getCentroid, isPointInPolygon } from '../geometry';
 
 /**
  * 
@@ -223,13 +223,13 @@ function parseSvgToJson(svgFile, oldJsonPath) {
 
 // --- run ---
 const args = process.argv.slice(2);
-const svgPath = `../assets/AyalaMallsMap/${args[0]}Floor.svg`;
-const oldJson = `../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`;
+const svgPath = `../../assets/malls/ayala/${args[0]}Floor.svg`;
+const oldJson = `../../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`;
 
 const result = parseSvgToJson(svgPath, oldJson);
 
 fs.writeFileSync(
-  `../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`,
+  `../../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`,
   JSON.stringify({ maps: result.maps }, null, 2)
 );
 

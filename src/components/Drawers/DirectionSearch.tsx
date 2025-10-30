@@ -23,14 +23,14 @@ import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 // Components
-import CachedResults from '@/components/Navigations/CachedResults';
+import CachedResults from '@/components/navigation/CachedResults';
 // Intefaces
-import { IDirectionSearch } from '@/interface/DrawerInterface';
+import { IDirectionSearch } from '@/types/DrawerInterface';
 import SearchBar from '../props/SearchInput';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
 import useSearchStore from '@/store/SearchStore';
-import { ViaOption } from '@/interface';
+import { ViaOption } from '@/types';
 
 interface DirectionProps extends IDirectionSearch {
   setViaMethod?: (m: ViaOption) => void;

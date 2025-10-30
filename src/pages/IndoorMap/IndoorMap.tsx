@@ -3,27 +3,27 @@ import { Box, CssBaseline, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '@/styles/theme';
 import { layoutStyles } from '@/styles/layoutStyles';
-import BottomNavBar from '@/components/Navigations/BottomNavBar';
-import SearchAppBar from '@/components/Navigations/SearchAppBar';
-import { loadMapData } from '@/utils/mapLoader';
-import type { FloorData, IMapItem } from '@/interface';
+import BottomNavBar from '@/components/navigation/BottomNavBar';
+import SearchAppBar from '@/components/navigation/SearchAppBar';
+import { loadMapData } from '@/routing/utils/mapLoader';
+import type { FloorData, IMapItem } from '@/types';
 
 // floors: [{ key, name, assets? }]
-import { floors } from '@/utils/floors';
+import { floors } from '@/routing/utils/Constants';
 
 // Reuse single map component for all floors
-import MapBuilder from '@/components/Maps/Maps';
+import MapBuilder from '@/components/map/Maps';
 
 // plain function
 import { handleMultiFloorRoute, routeMapHandler } from '@/hooks/useRouteMapHandler';
 
-import FloorCardSelector from '@/components/Drawers/FloorSelection';
+import FloorCardSelector from '@/components/drawers/FloorSelection';
 
 import useMapStore from '@/store/MapStore';
 import useDrawerStore from '@/store/DrawerStore';
-import { floorMatches, preloadVerticals } from '@/utils/verticalProcessor';
+import { floorMatches, preloadVerticals } from '@/routing/utils/verticalProcessor';
 
-import CalculatingRouteIndicatorModern from '@/components/props/CalculatingRouteLoader';
+import CalculatingRouteIndicatorModern from '@/components/common/CalculatingRouteLoader';
 
 export function IndoorMap() {
   // MapStore

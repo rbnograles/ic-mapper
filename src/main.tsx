@@ -12,10 +12,12 @@ import "leaflet/dist/leaflet.css";
 
 // Fix for Leaflet default icon paths for many bundlers (optional but recommended)
 import L from "leaflet";
-import AppRouter from "./routes/AppRoutes";
+import AppRouter from "@/app/routes/AppRoutes";
+
 const iconUrl = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png";
 const iconUrl2 = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png";
 const shadowUrl = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png";
+
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl: iconUrl2, shadowUrl });
 

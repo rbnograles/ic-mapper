@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { computeBoundingBox } from './geometry';
+import { computeBoundingBox } from '../geometry';
 
 
 function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
@@ -259,8 +259,8 @@ function parseSvgToRoutingGraph(svgString, outputPath, threshold = 50) {
 // --- Example usage ---
 function main() {
   const args = process.argv.slice(2);
-  const svgString = fs.readFileSync(`../assets/AyalaMallsMap/${args[0]}Floor.svg`, 'utf-8');
-  const outputPath = `../Data/AyalaMalls/${args[0]}Floor/${args[0]}FloorNodes.json`;
+  const svgString = fs.readFileSync(`../assets/malls/ayala/${args[0]}Floor.svg`, 'utf-8');
+  const outputPath = `../../Data/malls/ayala/${args[0]}Floor/${args[0]}FloorNodes.json`;
   parseSvgToRoutingGraph(svgString, outputPath, 150);
 }
 

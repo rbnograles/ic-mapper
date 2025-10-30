@@ -1,29 +1,14 @@
-import { findPathBetweenPlacesOptimized } from '@/utils/routing';
-import { floors } from '@/utils/floors';
-import type { Graph, IEntrances, IMapItem, INodes, RouteStep } from '@/interface/index';
+import type { Graph, IEntrances, IMapItem, INodes, RouteStep } from '@/types/index';
+import { findPathBetweenPlacesOptimized } from '@/routing/algorithms/routing';
+import { floors } from '@/routing/utils/Constants';
+import { loadMapData } from '@/routing/utils/mapLoader';
 import useMapStore from '@/store/MapStore';
-import { loadVerticals } from '@/utils/verticalProcessor';
-import { getCachedRoute, setCachedRoute } from '@/utils/routeCache';
-import { loadMapData } from '@/utils/mapLoader';
+import { loadVerticals } from '@/routing/utils/verticalProcessor';
+import { getCachedRoute, setCachedRoute } from '@/routing/utils/routeCache';
+import { Normalizer } from '@/routing/utils/Normalizer';
 
 const activeCalculations = new Map<string, { isPreCalculation?: boolean }>();
-
-// ✅ Helper function to normalize floor names consistently
-function normalizeFloorName(floorIdentifier: string): string {
-  const floor = floors.find(
-    (f) =>
-      f.key === floorIdentifier ||
-      f.name.toLowerCase() === floorIdentifier.toLowerCase() ||
-      f.aliases.some((a) => a.toLowerCase() === floorIdentifier.toLowerCase())
-  );
-  return floor ? floor.name : floorIdentifier;
-}
-
-// ✅ Helper to create consistent cache keys
-function createRouteKey(floor: string, from: string, to: string): string {
-  const normalizedFloor = normalizeFloorName(floor);
-  return `${normalizedFloor}:${from}:${to}`;
-}
+const NormalizeFloor = new Normalizer(floors);
 
 export async function routeMapHandler(
   from: string,
@@ -42,8 +27,8 @@ export async function routeMapHandler(
   if (!from || !to) return null;
 
   // ✅ Use normalized floor name for key creation
-  const currentFloorName = normalizeFloorName(selectedFloorMap);
-  const preCalculatedKey = createRouteKey(currentFloorName, from, to);
+  const currentFloorName = NormalizeFloor.normalizeFloorName(selectedFloorMap);
+  const preCalculatedKey = NormalizeFloor.createRouteKey(currentFloorName, from, to);
 
   const preCalculated = mapStore.multiFloorRoute.preCalculatedRoutes?.get(preCalculatedKey);
 
@@ -53,7 +38,6 @@ export async function routeMapHandler(
       setActiveNodeIds(preCalculated);
       setSelectedId(to);
       setIsCalculatingRoute(false);
-      // ✅ Route is shown, user must click vertical connector to continue
     });
     return preCalculated;
   }

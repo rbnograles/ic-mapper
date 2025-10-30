@@ -1,15 +1,15 @@
 // Maps.tsx - Fixed using CSS z-index instead of DOM manipulation
 import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import MapFloatingIcons from '@/components/Navigations/MapFloatingIcons';
-import BASE_ICON_MAP from '@/components/props/BaseIconMapper';
-import type { IMapItem, INodes, ILabels } from '@/interface';
+import MapFloatingIcons from '@/components/navigation/MapFloatingIcons';
+import BASE_ICON_MAP from '@/components/common/BaseIconMapper';
+import type { IMapItem, INodes, ILabels } from '@/types';
 
-import Boundaries from '@/components/Maps/Boundaries';
-import Base from '@/components/Maps/Base';
-import RoadMarks from '@/components/Maps/RoadMarks';
-import BuildingMarks from '@/components/Maps/BuildingMarks';
-import PathNodes from '@/components/Maps/PathNodes';
+import Boundaries from '@/components/map/Boundaries';
+import Base from '@/components/map/Base';
+import RoadMarks from '@/components/map/RoadMarks';
+import BuildingMarks from '@/components/map/BuildingMarks';
+import PathNodes from '@/components/map/PathNodes';
 import useMapStore from '@/store/MapStore';
 import useDrawerStore from '@/store/DrawerStore';
 import { VerticalTransitionPrompt } from '../props/VerticalTransitionPrompt';

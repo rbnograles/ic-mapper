@@ -3,7 +3,7 @@ import { MdStairs } from 'react-icons/md';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import useMapStore from '@/store/MapStore';
-import { floors } from '@/utils/floors';
+import { floors } from '@/routing/utils/Constants';
 import useDrawerStore from '@/store/DrawerStore';
 import theme from '@/styles/theme';
 import { useMediaQuery } from '@mui/material';

@@ -55,8 +55,8 @@ function parseSvgToJson(svgFile) {
 
 // --- run ---
 const args = process.argv.slice(2);
-const svgPath = `../assets/AyalaMallsMap/${args[0]}Floor.svg`;
-const outputPath = `../Data/AyalaMalls/${args[0]}Floor/${args[0]}FloorLabels.json`;
+const svgPath = `../assets/malls/ayala/${args[0]}Floor.svg`;
+const outputPath = `../../Data/AyalaMalls/${args[0]}Floor/${args[0]}FloorLabels.json`;
 
 const result = parseSvgToJson(svgPath);
 

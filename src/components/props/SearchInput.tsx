@@ -5,9 +5,9 @@ import theme from '@/styles/theme';
 import useDrawerStore from '@/store/DrawerStore';
 
 import SearchIcon from '@mui/icons-material/Search';
-import CHIPS_ICONMAP from '@/components/props/ChipsIconMapper';
+import CHIPS_ICONMAP from '@/components/common/ChipsIconMapper';
 import VoiceRecorder from '@/components/props/VoiceSearch';
-import type { IMapItem } from '@/interface';
+import type { IMapItem } from '@/types';
 import useSearchStore from '@/store/SearchStore';
 
 export interface LazyLoaderProps {
