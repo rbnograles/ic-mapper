@@ -1,4 +1,5 @@
-import { MdStairs, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
+import React from 'react';
+import { MdStairs } from 'react-icons/md';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import useMapStore from '@/store/MapStore';
@@ -6,7 +7,7 @@ import { floors } from '@/utils/floors';
 import useDrawerStore from '@/store/DrawerStore';
 import theme from '@/styles/theme';
 import { useMediaQuery } from '@mui/material';
-import { FaTimes } from 'react-icons/fa';
+import { FaArrowAltCircleDown, FaArrowAltCircleUp, FaTimes } from 'react-icons/fa';
 
 interface VerticalTransitionPromptProps {
   centers: { [key: string]: { x: number; y: number } };
@@ -31,9 +32,8 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   const isVertical =
     !!clickedMap && ['Stairs', 'Elevator', 'Escalator'].includes(clickedMap.type || '');
 
-  // ✅ Check if multi-floor route is active
   const isMultiFloorActive = multiFloorRoute?.isActive;
-  
+
   if (!isVertical || !clickedMap) return null;
 
   const center = centers[clickedMap.id];
@@ -44,8 +44,25 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
     .toLowerCase()
     .includes('ground');
 
+  // Determine which directions are valid for multi-floor route
+  let expectedDirection: 'up' | 'down' | 'both' = 'both';
+  if (isMultiFloorActive && multiFloorRoute.currentStep < multiFloorRoute.steps.length - 1) {
+    const nextStep = multiFloorRoute.steps[multiFloorRoute.currentStep + 1];
+    if (nextStep) {
+      const nextFloorIndex = floors.findIndex((f) => f.key === nextStep.floor);
+      expectedDirection = nextFloorIndex > currentIndex ? 'up' : 'down';
+    }
+  }
+
   const hasUp = currentIndex >= 0 && currentIndex < floors.length - 1;
   const hasDown = currentIndex > 0;
+
+  const canGoUp =
+    hasUp && (!isMultiFloorActive || expectedDirection === 'up' || expectedDirection === 'both');
+  const canGoDown =
+    hasDown &&
+    (!isMultiFloorActive || expectedDirection === 'down' || expectedDirection === 'both');
+
   const nextFloor = hasUp ? floors[currentIndex + 1] : undefined;
   const prevFloor = hasDown ? floors[currentIndex - 1] : undefined;
   const currentFloorLabel = currentIndex >= 0 ? floors[currentIndex].name : 'Unknown';
@@ -54,7 +71,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
 
   // Responsive scaling
   const baseScale = isMobile ? 2.5 : 3;
-  const tooltipWidth = !isGroundFloor ? 300 * baseScale : 280 * baseScale;
+  const tooltipWidth = !isGroundFloor ? 320 * baseScale : 300 * baseScale;
   const tooltipHeight = !isGroundFloor ? 170 * baseScale : 160 * baseScale;
   const arrowSize = 8 * baseScale;
   const iconSize = 20 * baseScale;
@@ -94,18 +111,30 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
       return;
     }
 
-    // ✅ If in multi-floor route, advance step BEFORE floor change
     if (isMultiFloorActive) {
-      console.log(`✅ Advancing to step ${multiFloorRoute.currentStep + 2}/${multiFloorRoute.steps.length}`);
+      const nextStep = multiFloorRoute.steps[multiFloorRoute.currentStep + 1];
+
+      if (nextStep) {
+        const nextStepFloorKey = nextStep.floor;
+        const nextFloorIndex = floors.findIndex((f) => f.key === nextStepFloorKey);
+        const expectedDir = nextFloorIndex > currentIndexLocal ? 'up' : 'down';
+
+        if (direction !== expectedDir) {
+          console.warn(`⚠️ Wrong direction! Expected ${expectedDir}, got ${direction}`);
+          return;
+        }
+      }
+
+      console.log(
+        `✅ Advancing to step ${multiFloorRoute.currentStep + 2}/${multiFloorRoute.steps.length} (going ${direction})`
+      );
       nextRouteStep();
     }
 
-    // ✅ Change floor
     setSelectedFloorMap(nextFloorLocal.key);
     setIsFloorMapOpen(false);
     setIsExpanded(false);
-    
-    // ✅ Only reset if NOT multi-floor
+
     if (!isMultiFloorActive) {
       console.log('Manual floor change - resetting map');
       resetMap();
@@ -113,7 +142,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   };
 
   const handleClose = () => {
-    // ✅ Clear both map and multi-floor route
     if (isMultiFloorActive) {
       clearMultiFloorRoute();
     }
@@ -125,9 +153,42 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   const textPrimary = '#1a1a1a';
   const textSecondary = '#666666';
 
+  // Shared button content component (arrow left + two lines)
+  const ButtonContent = ({
+    direction,
+    title,
+    subtitle,
+    icon,
+  }: {
+    direction: 'up' | 'down';
+    title: string;
+    subtitle?: string;
+    icon: React.ReactNode;
+  }) => (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 12 * baseScale,
+        height: '100%',
+        paddingLeft: 8 * baseScale,
+        pointerEvents: 'none',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{icon}</div>
+      <div
+        style={{ display: 'flex', flexDirection: 'column', color: '#ffffff', textAlign: 'left' }}
+      >
+        <div style={{ fontSize: buttonFontSize, fontWeight: 700, lineHeight: 1 }}>{title}</div>
+        {subtitle && (
+          <div style={{ fontSize: buttonFontSize * 0.85, opacity: 0.95 }}>{subtitle}</div>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <g style={{ pointerEvents: 'all' }} data-vertical-prompt>
-      {/* Shadow/backdrop blur effect */}
       <defs>
         <filter id="prompt-shadow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
@@ -152,7 +213,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
         </linearGradient>
       </defs>
 
-      {/* Main tooltip container */}
       <rect
         x={tooltipX}
         y={tooltipY}
@@ -165,7 +225,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
         filter="url(#prompt-shadow)"
       />
 
-      {/* Arrow pointing to connector */}
       <path
         d={`M ${center.x - arrowSize} ${tooltipY + tooltipHeight} 
             L ${center.x} ${tooltipY + tooltipHeight + arrowSize} 
@@ -175,7 +234,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
         strokeWidth={2}
       />
 
-      {/* Header section with icon and title */}
       <foreignObject
         x={tooltipX + 16 * baseScale}
         y={tooltipY + 16 * baseScale}
@@ -192,7 +250,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 * baseScale }}>
-            {/* Icon container with subtle background */}
             <div
               style={{
                 width: 44 * baseScale,
@@ -209,7 +266,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               {getIcon()}
             </div>
 
-            {/* Title and current floor */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 * baseScale }}>
               <div
                 style={{
@@ -219,7 +275,11 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
                   lineHeight: 1.2,
                 }}
               >
-                {isGroundFloor ? (isMultiFloorActive ? 'Continue Route' : 'Go Upstairs') : 'Change Floor'}
+                {isGroundFloor
+                  ? isMultiFloorActive
+                    ? 'Continue Route'
+                    : 'Go Upstairs'
+                  : 'Change Floor'}
               </div>
               <div
                 style={{
@@ -233,7 +293,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
             </div>
           </div>
 
-          {/* Close button */}
           <button
             onClick={handleClose}
             aria-label="Close"
@@ -264,7 +323,6 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
         </div>
       </foreignObject>
 
-      {/* Subtitle text */}
       {!isGroundFloor && (
         <foreignObject
           x={tooltipX + 16 * baseScale}
@@ -276,21 +334,22 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
             style={{
               fontSize: fontSize * 0.85,
               color: textSecondary,
-              textAlign: 'center',
+              textAlign: 'start',
               fontWeight: 500,
             }}
           >
-            {isMultiFloorActive ? 'Continue your route' : 'Which direction would you like to go?'}
+            {isMultiFloorActive
+              ? `Continue moving ${expectedDirection === 'up' ? 'upward' : expectedDirection === 'down' ? 'downward' : 'your route'}?`
+              : 'Which direction would you like to go?'}
           </div>
         </foreignObject>
       )}
 
-      {/* Button section */}
       {isGroundFloor ? (
-        // Single "Go Up" button
+        // Single full-width button (ground)
         <g
-          onClick={() => hasUp && handleMove('up')}
-          style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+          style={{ cursor: canGoUp ? 'pointer' : 'not-allowed' }}
+          onClick={() => canGoUp && handleMove('up')}
         >
           <rect
             x={tooltipX + 16 * baseScale}
@@ -298,9 +357,9 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
             width={tooltipWidth - 32 * baseScale}
             height={buttonHeight}
             rx={12 * baseScale}
-            fill={hasUp ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
+            fill={canGoUp ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
             style={{
-              opacity: hasUp ? 1 : 0.5,
+              opacity: canGoUp ? 1 : 0.5,
               transition: 'all 0.3s',
             }}
           />
@@ -311,39 +370,20 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
             width={tooltipWidth - 32 * baseScale}
             height={buttonHeight}
           >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 12 * baseScale,
-                height: '100%',
-                color: '#ffffff',
-                fontWeight: 700,
-                fontSize: buttonFontSize,
-                pointerEvents: 'none',
-              }}
-            >
-              <MdArrowUpward style={{ fontSize: buttonFontSize * 1.5 }} />
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  lineHeight: 1.3,
-                }}
-              >
-                <span style={{ fontSize: buttonFontSize }}>
-                  {isMultiFloorActive ? 'Continue Route' : 'Go to Upper Floor'}
-                </span>
-                {hasUp && (
-                  <span style={{ fontSize: buttonFontSize * 0.8, opacity: 0.9 }}>{upLabel}</span>
-                )}
-              </div>
+            {/* Arrow left + two-line text */}
+            <div style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <ButtonContent
+                direction="up"
+                title={isMultiFloorActive ? 'Continue Route' : 'Go to Upper Floor'}
+                subtitle={canGoUp ? upLabel : ''}
+                icon={
+                  <FaArrowAltCircleUp style={{ fontSize: buttonFontSize * 1.6, color: 'white' }} />
+                }
+              />
             </div>
           </foreignObject>
 
-          {/* Invisible click catcher */}
+          {/* transparent clickable overlay kept for consistent pointer behavior */}
           <rect
             x={tooltipX + 16 * baseScale}
             y={tooltipY + tooltipHeight - buttonHeight - 16 * baseScale}
@@ -351,16 +391,16 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
             height={buttonHeight}
             rx={12 * baseScale}
             fill="transparent"
-            style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+            style={{ cursor: canGoUp ? 'pointer' : 'not-allowed' }}
           />
         </g>
       ) : (
-        // Two buttons for up and down
+        // Two side-by-side buttons with the same visual style
         <>
-          {/* Up button */}
+          {/* UP */}
           <g
-            onClick={() => hasUp && handleMove('up')}
-            style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+            style={{ cursor: canGoUp ? 'pointer' : 'not-allowed' }}
+            onClick={() => canGoUp && handleMove('up')}
           >
             <rect
               x={tooltipX + 16 * baseScale}
@@ -368,8 +408,8 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
               rx={12 * baseScale}
-              fill={hasUp ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
-              style={{ opacity: hasUp ? 1 : 0.5 }}
+              fill={canGoUp ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
+              style={{ opacity: canGoUp ? 1 : 0.5 }}
             />
 
             <foreignObject
@@ -378,26 +418,13 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 4 * baseScale,
-                  height: '100%',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  pointerEvents: 'none',
-                }}
-              >
-                <MdArrowUpward style={{ fontSize: buttonFontSize * 1.4 }} />
-                <span style={{ fontSize: buttonFontSize * 0.8 }}>
-                  {isMultiFloorActive ? 'CONTINUE' : 'UP'}
-                </span>
-                <span style={{ fontSize: buttonFontSize * 0.75, opacity: 0.9 }}>
-                  {hasUp ? upLabel : ''}
-                </span>
+              <div style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <ButtonContent
+                  direction="up"
+                  title={isMultiFloorActive && expectedDirection === 'up' ? 'CONTINUE' : 'UP'}
+                  subtitle={canGoUp ? upLabel : ''}
+                  icon={<FaArrowAltCircleUp style={{ fontSize: buttonFontSize * 1.4, color: 'white' }} />}
+                />
               </div>
             </foreignObject>
 
@@ -408,14 +435,14 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               height={buttonHeight}
               rx={12 * baseScale}
               fill="transparent"
-              style={{ cursor: hasUp ? 'pointer' : 'not-allowed' }}
+              style={{ cursor: canGoUp ? 'pointer' : 'not-allowed' }}
             />
           </g>
 
-          {/* Down button */}
+          {/* DOWN */}
           <g
-            onClick={() => hasDown && handleMove('down')}
-            style={{ cursor: hasDown ? 'pointer' : 'not-allowed' }}
+            style={{ cursor: canGoDown ? 'pointer' : 'not-allowed' }}
+            onClick={() => canGoDown && handleMove('down')}
           >
             <rect
               x={tooltipX + tooltipWidth / 2 + 8 * baseScale}
@@ -423,8 +450,8 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
               rx={12 * baseScale}
-              fill={hasDown ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
-              style={{ opacity: hasDown ? 1 : 0.5 }}
+              fill={canGoDown ? 'url(#button-gradient)' : 'url(#disabled-gradient)'}
+              style={{ opacity: canGoDown ? 1 : 0.5 }}
             />
 
             <foreignObject
@@ -433,24 +460,13 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               width={(tooltipWidth - 48 * baseScale) / 2}
               height={buttonHeight}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 4 * baseScale,
-                  height: '100%',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  pointerEvents: 'none',
-                }}
-              >
-                <MdArrowDownward style={{ fontSize: buttonFontSize * 1.4 }} />
-                <span style={{ fontSize: buttonFontSize * 0.8 }}>DOWN</span>
-                <span style={{ fontSize: buttonFontSize * 0.75, opacity: 0.9 }}>
-                  {hasDown ? downLabel : ''}
-                </span>
+              <div style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <ButtonContent
+                  direction="down"
+                  title={isMultiFloorActive && expectedDirection === 'down' ? 'CONTINUE' : 'DOWN'}
+                  subtitle={canGoDown ? downLabel : ''}
+                  icon={<FaArrowAltCircleDown style={{ fontSize: buttonFontSize * 1.4, color: 'white' }} />}
+                />
               </div>
             </foreignObject>
 
@@ -461,7 +477,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               height={buttonHeight}
               rx={12 * baseScale}
               fill="transparent"
-              style={{ cursor: hasDown ? 'pointer' : 'not-allowed' }}
+              style={{ cursor: canGoDown ? 'pointer' : 'not-allowed' }}
             />
           </g>
         </>
@@ -469,3 +485,5 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
     </g>
   );
 }
+
+export default VerticalTransitionPrompt;

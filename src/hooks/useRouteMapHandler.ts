@@ -227,10 +227,8 @@ async function preCalculateMultiFloorRoutes(
 }
 
 
-
 /**
- * Find path through multiple floors using BFS
- * Returns array of connectors to traverse
+ * Find path through multiple floors using BFS - FIXED for bidirectional traversal
  */
 function findMultiFloorPath(
   verticalsData: any,
@@ -244,11 +242,9 @@ function findMultiFloorPath(
 
   // Helper: Extract floor key from node ID or floor name
   const getFloorKey = (identifier: string): string => {
-    // If it's a node ID like "Ground_bldg_38", extract "ground"
     const parts = identifier.split('_');
     const floorPart = parts[0].toLowerCase();
 
-    // Find matching floor
     const floor = floors.find(
       (f) =>
         f.key === floorPart ||
@@ -260,8 +256,8 @@ function findMultiFloorPath(
     return floor ? floor.key : floorPart;
   };
 
-  // Build adjacency map
-  const adj = new Map<string, { vertical: any; neighbor: string }[]>();
+  // Build adjacency map with BIDIRECTIONAL edges
+  const adj = new Map<string, { vertical: any; neighbor: string; direction: 'up' | 'down' }[]>();
 
   for (const v of verticals) {
     if (v.type?.toLowerCase() !== viaType.toLowerCase()) continue;
@@ -272,8 +268,18 @@ function findMultiFloorPath(
     if (!adj.has(fromKey)) adj.set(fromKey, []);
     if (!adj.has(toKey)) adj.set(toKey, []);
 
-    adj.get(fromKey)!.push({ vertical: v, neighbor: toKey });
-    adj.get(toKey)!.push({ vertical: v, neighbor: fromKey });
+    // ✅ Store both directions with proper metadata
+    adj.get(fromKey)!.push({ 
+      vertical: v, 
+      neighbor: toKey,
+      direction: 'up' // fromKey -> toKey is "up" 
+    });
+    
+    adj.get(toKey)!.push({ 
+      vertical: v, 
+      neighbor: fromKey,
+      direction: 'down' // toKey -> fromKey is "down"
+    });
   }
 
   const startKey = getFloorKey(fromFloor);
@@ -282,22 +288,34 @@ function findMultiFloorPath(
   console.log(`🔍 BFS: "${startKey}" → "${targetKey}"`);
   console.log(`   Available floors:`, Array.from(adj.keys()));
 
-  // BFS
+  // BFS with direction tracking
   const queue = [startKey];
   const visited = new Set([startKey]);
-  const parent = new Map<string, { from: string; vertical: any }>();
+  const parent = new Map<string, { from: string; vertical: any; direction: 'up' | 'down' }>();
 
   while (queue.length > 0) {
     const current = queue.shift()!;
 
     if (current === targetKey) {
-      // Reconstruct path
+      // Reconstruct path with proper direction info
       const path: any[] = [];
       let cur = targetKey;
 
       while (cur !== startKey) {
         const p = parent.get(cur)!;
-        path.unshift(p.vertical);
+        
+        // ✅ Create connector with correct orientation based on direction
+        const connector = {
+          ...p.vertical,
+          // Swap from/to if going down
+          from: p.direction === 'down' ? p.vertical.to : p.vertical.from,
+          to: p.direction === 'down' ? p.vertical.from : p.vertical.to,
+          labelFrom: p.direction === 'down' ? p.vertical.labelTo : p.vertical.labelFrom,
+          labelTo: p.direction === 'down' ? p.vertical.labelFrom : p.vertical.labelTo,
+          direction: p.direction
+        };
+        
+        path.unshift(connector);
         cur = p.from;
       }
 
@@ -306,10 +324,10 @@ function findMultiFloorPath(
     }
 
     const neighbors = adj.get(current) ?? [];
-    for (const { vertical, neighbor } of neighbors) {
+    for (const { vertical, neighbor, direction } of neighbors) {
       if (!visited.has(neighbor)) {
         visited.add(neighbor);
-        parent.set(neighbor, { from: current, vertical });
+        parent.set(neighbor, { from: current, vertical, direction });
         queue.push(neighbor);
       }
     }
@@ -319,6 +337,7 @@ function findMultiFloorPath(
   return null;
 }
 
+// ✅ Updated handleMultiFloorRoute to use the fixed path finding
 export const handleMultiFloorRoute = async (
   from: IMapItem,
   to: IMapItem,
@@ -340,7 +359,6 @@ export const handleMultiFloorRoute = async (
 
   const steps: RouteStep[] = [];
 
-  // ✅ ADD THIS HELPER FUNCTION
   const getFloorKey = (floorIdentifier: string): string => {
     if (!floorIdentifier) return 'ground';
 
@@ -366,7 +384,7 @@ export const handleMultiFloorRoute = async (
     const verticals = await loadVerticals(from.floor);
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    // ✅ Use BFS to find path through multiple floors
+    // ✅ Use fixed BFS with bidirectional support
     const connectorPath = findMultiFloorPath(verticals, from.floor, to.floor, via);
 
     if (!connectorPath || connectorPath.length === 0) {
@@ -376,17 +394,18 @@ export const handleMultiFloorRoute = async (
     }
 
     console.log(`✅ Will traverse ${connectorPath.length} floor(s)`);
+    console.log(`   Direction: ${connectorPath[0].direction === 'up' ? '⬆️ Upward' : '⬇️ Downward'}`);
 
-    // ✅ Step 1: Origin floor - from location to first stairs
+    // ✅ Step 1: Origin floor - from location to first connector
     const firstConnector = connectorPath[0];
     const originFloorKey = getFloorKey(from.floor);
 
     steps.push({
-      floor: originFloorKey, // ✅ Use floor key
+      floor: originFloorKey,
       from: from.name,
       fromId: from.id,
       to: via,
-      toId: firstConnector.from,
+      toId: firstConnector.from, // Already corrected by BFS
       isVerticalTransition: false,
     });
 
@@ -394,46 +413,45 @@ export const handleMultiFloorRoute = async (
       `   [${steps.length}] ${from.floor}: ${from.name} → ${firstConnector.labelFrom || via}`
     );
 
-    // ✅ Traverse each connector with proper node continuity
+    // ✅ Traverse each connector - now properly handles both directions
     for (let i = 0; i < connectorPath.length; i++) {
       const connector = connectorPath[i];
 
-      // Determine floor names
       const getFloorKeyFromNode = (nodeId: string): string => {
-        const floorPart = nodeId.split('_')[0]; // "Ground", "Second", etc.
+        const floorPart = nodeId.split('_')[0];
         return getFloorKey(floorPart);
       };
 
       const fromFloorKey = getFloorKeyFromNode(connector.from);
       const toFloorKey = getFloorKeyFromNode(connector.to);
 
-      console.log(`[${steps.length}] ${fromFloorKey} → ${toFloorKey}: ${via} (vertical)`);
+      console.log(`   [${steps.length + 1}] ${fromFloorKey} → ${toFloorKey}: ${via} (${connector.direction})`);
 
       const isLastConnector = i === connectorPath.length - 1;
 
       if (!isLastConnector) {
         const nextConnector = connectorPath[i + 1];
-        console.log(nextConnector)
+        
         steps.push({
-          floor: toFloorKey, // ✅ Use floor key
-          from: connector.to,
-          fromId: connector.to,
-          to: nextConnector.from,
-          toId: nextConnector.from,
+          floor: toFloorKey,
+          from: connector.labelTo || connector.to, // Use label for display
+          fromId: connector.to, // ✅ Specific connector exit ID
+          to: nextConnector.labelFrom || nextConnector.from, // Use label for display
+          toId: nextConnector.from, // ✅ Specific next connector entrance ID
           isVerticalTransition: false,
         });
 
         console.log(
-          `   [${steps.length}] ${toFloorKey}: ${connector.to} → ${nextConnector.from} (route to next stairs)`
+          `   [${steps.length}] ${toFloorKey}: ${connector.to} → ${nextConnector.from} (connector-to-connector)`
         );
       } else {
-        // ✅ Final floor: stairs exit to destination
+        // ✅ Final floor: connector exit to destination
         const destFloorKey = getFloorKey(to.floor);
-        console.log('dest', connector)
+        
         steps.push({
-          floor: destFloorKey, // ✅ Use floor key
-          from: connector.to,
-          fromId: connector.to,
+          floor: destFloorKey,
+          from: connector.labelTo || connector.to, // Use label for display
+          fromId: connector.to, // ✅ Specific connector exit ID
           to: to.name,
           toId: to.id,
           isVerticalTransition: false,
@@ -445,7 +463,7 @@ export const handleMultiFloorRoute = async (
 
     console.log(`✅ Multi-floor route created: ${steps.length} steps`);
 
-    // ✅ Load floor data in parallel
+    // Load floor data and pre-calculate routes (unchanged)
     const allFloorsData = new Map<
       string,
       { maps: IMapItem[]; nodes: INodes[]; entrances: IEntrances[] }
@@ -458,8 +476,6 @@ export const handleMultiFloorRoute = async (
       uniqueFloorKeys.map(async (floorKey) => {
         try {
           const data = await loadMapData(floorKey);
-
-          // ✅ Store by floor KEY
           allFloorsData.set(floorKey, {
             maps: data.maps,
             nodes: data.nodes,
@@ -471,23 +487,16 @@ export const handleMultiFloorRoute = async (
         }
       })
     );
-    console.log(steps)
-    // ✅ Pre-calculate routes
+
     const preCalculatedRoutes = await preCalculateMultiFloorRoutes(steps, allFloorsData);
     console.log(`✅ Pre-calculated ${preCalculatedRoutes.size} route segments`);
 
-    // ✅ Store routes and switch floor
     const startingFloorKey = getFloorKey(from.floor);
     setMultiFloorRoute(steps, to, preCalculatedRoutes);
     setSelectedFloorMap(startingFloorKey);
 
     console.log(`✅ Multi-floor route setup complete. Starting on floor: ${startingFloorKey}`);
-    console.log(
-      `   Steps use floor keys:`,
-      steps.map((s) => s.floor)
-    );
 
-    console.log('✅ Multi-floor route setup complete');
     return steps;
   } catch (err) {
     console.error('Error setting up multi-floor route:', err);
