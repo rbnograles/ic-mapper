@@ -15,6 +15,22 @@
       "to": "Third_bldg_125",
       "labelFrom": "Stairs", 
       "labelTo": "Stairs" 
+    },
+    {
+      "id": "stairs_125_85",
+      "type": "Stairs",
+      "from": "Third_bldg_125", 
+      "to": "Fourth_stairs_85",
+      "labelFrom": "Stairs", 
+      "labelTo": "Stairs" 
+    },
+    {
+      "id": "stairs_85_17",
+      "type": "Stairs",
+      "from": "Fourth_stairs_85", 
+      "to": "Fifth_Stairs_17",
+      "labelFrom": "Stairs", 
+      "labelTo": "Stairs" 
     }
   ]
 }
