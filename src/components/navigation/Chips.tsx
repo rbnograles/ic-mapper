@@ -20,7 +20,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import theme from '@/styles/theme';
 
 import useMapStore from '@/store/MapStore';
-import CHIPS_ICONMAP from '@/components/props/ChipsIconMapper';
+import CHIPS_ICONMAP from '@/components/common/ChipsIconMapper';
 
 export const Chips = ({ types }: { types: string[] }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

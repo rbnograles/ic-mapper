@@ -1,15 +1,17 @@
+import { Floors } from './Constants';
+
 export class Normalizer {
-  private static floors: any[];
+  private static floors: Floors[];
   constructor(floors: any) {
     Normalizer.floors = floors;
   }
 
   public normalizeFloorName(floorIdentifier: string): string {
     const floor = Normalizer.floors.find(
-      (f: any) =>
+      (f) =>
         f.key === floorIdentifier ||
         f.name.toLowerCase() === floorIdentifier.toLowerCase() ||
-        f.aliases.some((a: any) => a.toLowerCase() === floorIdentifier.toLowerCase())
+        f.aliases.some((a) => a.toLowerCase() === floorIdentifier.toLowerCase())
     );
     return floor ? floor.name : floorIdentifier;
   }

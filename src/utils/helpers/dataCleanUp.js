@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 // ✅ Load category reference
-const categoriesPath = path.resolve('../Data/category.json');
+const categoriesPath = path.resolve('../../Data/category.json');
 
 if (!fs.existsSync(categoriesPath)) {
   console.error('❌ Category file not found:', categoriesPath);
@@ -158,7 +158,7 @@ const specialTypeMatchers = [
 // Data Clean Up function
 const dataCleanUp = () => {
   const args = process.argv.slice(2);
-  const oldJsonPath = path.resolve(`../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`);
+  const oldJsonPath = path.resolve(`../../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`);
 
   // --- Load JSON ---
   if (!fs.existsSync(oldJsonPath)) {
@@ -376,7 +376,7 @@ const dataCleanUp = () => {
 
   // --- Write unmatched names for review ---
   if (unmatched.length > 0) {
-    const unmatchedPath = path.resolve('../Data/unmatched.json');
+    const unmatchedPath = path.resolve('../../Data/unmatched.json');
     fs.writeFileSync(unmatchedPath, JSON.stringify(unmatched, null, 2), 'utf-8');
     console.warn(`⚠️ Some names did not match any category. Saved to ${unmatchedPath}`);
   }

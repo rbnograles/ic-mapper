@@ -2,7 +2,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { line, curveCatmullRom } from 'd3-shape';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { memo, useEffect, useRef, useState } from 'react';
-import type { INodes } from '@/interface';
+import type { INodes } from '@/types';
 import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
 interface PathNodesProps {

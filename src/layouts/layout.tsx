@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider, CssBaseline, Drawer, Box } from '@mui/material';
 import theme from '@/styles/theme';
-import BottomNavBar from '@/components/Navigations/BottomNavBar';
+import BottomNavBar from '@/components/navigation/BottomNavBar';
 import { layoutStyles } from '@/styles/layoutStyles';
-import { IMapItem } from '@/interface';
+import { IMapItem } from '@/types';
 
 export default function Layout() {
   const placeItem: IMapItem = {

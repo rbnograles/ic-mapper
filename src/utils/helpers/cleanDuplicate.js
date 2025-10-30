@@ -2,7 +2,7 @@ import fs from 'fs';
 
 const findDuplicatedIds = () => {
   const args = process.argv.slice(2);
-  const oldJsonPath = `../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`;
+  const oldJsonPath = `../../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`;
 
   if (!fs.existsSync(oldJsonPath)) {
     console.error('File not found:', oldJsonPath);

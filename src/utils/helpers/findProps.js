@@ -4,7 +4,7 @@ import fs from 'fs';
 // Current case im deleting nearNodes from the original json array
 const findProp = () => {
     const args = process.argv.slice(2);
-    const oldJsonPath = `../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`;
+    const oldJsonPath = `../../Data/AyalaMalls/${args[0]}Floor/${args[0]}Floor.json`;
     
     const oldData = fs.existsSync(oldJsonPath)
         ? JSON.parse(fs.readFileSync(oldJsonPath, 'utf-8'))
@@ -19,7 +19,7 @@ const findProp = () => {
     const result = { maps: map }
     console.log(result)
     fs.writeFileSync(
-      '../Data/findResult.json',
+      '../../Data/findResult.json',
       JSON.stringify(result, null, 2)
     );
 }

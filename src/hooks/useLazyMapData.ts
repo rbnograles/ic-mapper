@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { loadMapData } from '@/utils/mapLoader';
-import { IMapItem } from '@/interface';
+import { loadMapData } from '@/routing/utils/mapLoader';
+import { IMapItem } from '@/types';
 
 export function useLazyMapData(floor: string, initialLimit = 20) {
   const [allPlaces, setAllPlaces] = useState<IMapItem[]>([]);

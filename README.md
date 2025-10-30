@@ -1,315 +1,474 @@
-# Self Guided Map - IC 2026
+# IC 2026 Indoor Navigation System
 
-This application is intended to be used for the 2026 International Convention, this application aims to help delegades walk through all the approved locations. This application is built on top or React JS + Vite.
+An interactive indoor navigation application designed for the 2026 International Convention at Ayala Malls. This system helps delegates navigate through multiple floors with real-time pathfinding, voice search, and multi-floor route planning.
 
 ---
 
-## Table of contents
+## Table of Contents
 
-* [Why Vite + React?](#why-vite--react)
 * [Features](#features)
+* [Technology Stack](#technology-stack)
 * [Prerequisites](#prerequisites)
-* [Getting started](#getting-started)
-
-  * [Create the project (if you haven't)](#create-the-project-if-you-havent)
-  * [Install dependencies](#install-dependencies)
-  * [Available scripts](#available-scripts)
-* [Recommended project structure](#recommended-project-structure)
-* [Environment variables](#environment-variables)
-* [Styling / CSS strategy](#styling--css-strategy)
-* [Linting & Formatting](#linting--formatting)
-* [Testing](#testing)
+* [Getting Started](#getting-started)
+* [Project Structure](#project-structure)
+* [Core Features](#core-features)
+* [Architecture](#architecture)
+* [Configuration](#configuration)
+* [Development](#development)
 * [Building & Deploying](#building--deploying)
-* [CI / CD suggestions](#ci--cd-suggestions)
 * [Troubleshooting](#troubleshooting)
 * [Contributing](#contributing)
 * [License](#license)
 
 ---
 
-## Why Vite + React?
-
-Vite provides a fast development environment with instant server start and lightning‑fast HMR. Combined with React, it gives a modern DX for building single page applications.
-
 ## Features
 
-* Fast dev server using native ES modules
-* Hot Module Replacement (HMR)
-* Optimized production builds
-* Simple configuration and extensibility via plugins
-* Works well with TypeScript, Tailwind, PostCSS, and more
+### Navigation & Pathfinding
+- **Multi-floor routing** with intelligent vertical connector selection (stairs, elevators)
+- **A* and Dijkstra algorithms** for optimal path calculation
+- **Real-time route visualization** on interactive SVG maps
+- **Pre-calculated route caching** for instant navigation
+- **Smart entrance resolution** with multiple entrance support
+
+### User Interface
+- **Voice search** for hands-free navigation
+- **Lazy-loaded search** with infinite scroll
+- **Floor selector** with visual floor cards
+- **Responsive design** optimized for mobile and tablet
+- **Touch-friendly map controls** with zoom and pan
+- **Route step indicators** for multi-floor journeys
+
+### Performance
+- **Efficient data loading** with code splitting per floor
+- **Route caching** (memory + localStorage) for repeated queries
+- **Optimized re-renders** using Zustand state management
+- **Preloaded vertical connectors** for faster multi-floor routing
+
+---
+
+## Technology Stack
+
+### Frontend Framework
+- **React 19** - UI library
+- **Vite 7** - Build tool and dev server
+- **TypeScript** - Type safety
+
+### UI & Styling
+- **Material-UI (MUI) 7** - Component library
+- **Emotion** - CSS-in-JS styling
+- **React Icons** - Icon library
+- **Framer Motion** - Animations
+
+### State Management
+- **Zustand** - Lightweight state management
+  - `MapStore` - Map state, active routes, multi-floor routing
+  - `SearchStore` - Search queries, points A/B
+  - `DrawerStore` - UI drawer states
+
+### Mapping & Navigation
+- **React Leaflet** - Map rendering
+- **Custom pathfinding** - A* and Dijkstra implementations
+- **SVG path parsing** - Building and boundary rendering
+- **Polylabel** - Label positioning
+
+### Utilities
+- **Axios** - HTTP client
+- **D3-shape** - Path calculations
+- **React Router DOM** - Routing (if multi-page)
+
+---
 
 ## Prerequisites
 
-* Node.js (LTS recommended, e.g. 18.x or newer)
-* npm, pnpm, or yarn
+- **Node.js 18.x or newer** (LTS recommended)
+- **npm, pnpm, or yarn**
+- Modern browser with ES modules support
 
-## Getting started
+---
 
-### Create the project (if you haven't)
+## Getting Started
 
-You can scaffold a Vite + React app with the following commands (choose one):
-
-```bash
-# npm
-npm create vite@latest my-app -- --template react
-
-# TypeScript template
-npm create vite@latest my-app -- --template react-ts
-
-# yarn
-yarn create vite my-app --template react
-
-# pnpm
-pnpm create vite my-app -- --template react
-```
-
-Replace `react` with `react-ts` for a TypeScript template.
-
-### Install dependencies
+### Install Dependencies
 
 ```bash
-cd my-app
-# npm
 npm install
-
-# or yarn
-yarn
-
-# or pnpm
+# or
+yarn install
+# or
 pnpm install
 ```
 
-### Available scripts
+### Available Scripts
 
-Common scripts you should include in `package.json`:
+```bash
+# Start development server (localhost only)
+npm run dev
 
-```json
-{
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write .",
-    "test": "vitest",
-    "test:watch": "vitest --watch"
-  }
-}
+# Start development server (accessible on network)
+npm run dev-external
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+
+# Format code
+npm run format
 ```
 
-Run the dev server:
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-npm run dev-external
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open `http://localhost:5173` by default.
+Open `http://localhost:5173` in your browser.
 
-## Recommended project structure
+---
+
+## Project Structure
 
 ```
-my-app/
-├─ public/                # static assets (served at /)
+ic_map_navigator/
+├─ public/                    # Static assets
 ├─ src/
-│  ├─ assets/             # images, fonts, etc.
-│  ├─ components/   
-|  |   ├─ Drawers
-|  |   ├─ Maps
-|  |   ├─ Navigations
-|  |   ├─ props
-│  ├─ Data
-│  ├─ pages/              # route-level components
-│  ├─ layouts/            # layout components
-│  ├─ hooks/              # custom React hooks
-│  ├─ services/           # API clients, data layer
-│  ├─ stores/             # state management (zustand, redux, etc.)
-│  ├─ styles/             # global styles, variables
-│  ├─ App.jsx / App.tsx
-│  ├─ main.jsx / main.tsx
-│  └─ types/              # TypeScript types (if using TS)
+│  ├─ components/
+│  │  ├─ common/              # Reusable components (loaders, chips)
+│  │  ├─ Drawers/             # Direction panel, floor selector
+│  │  ├─ map/                 # Map rendering components
+│  │  ├─ navigation/          # Search bar, bottom nav, floating icons
+│  │  └─ props/               # Utility components (voice search)
+│  ├─ Data/
+│  │  ├─ AyalaMalls/          # Floor data (maps, nodes, labels)
+│  │  │  ├─ GroundFloor/
+│  │  │  ├─ SecondFloor/
+│  │  │  ├─ ThirdFloor/
+│  │  │  ├─ FourthFloor/
+│  │  │  ├─ FifthFloor/
+│  │  │  └─ connectors/       # Vertical connectors (stairs, elevators)
+│  │  └─ unique_types.json    # Place categories
+│  ├─ hooks/
+│  │  ├─ useLazyMapData.ts    # Lazy loading + search
+│  │  └─ useRouteMapHandler.ts # Route calculation logic
+│  ├─ pages/
+│  │  └─ IndoorMap.tsx        # Main map page
+│  ├─ routing/
+│  │  ├─ routing.ts           # Core pathfinding (A*, Dijkstra)
+│  │  └─ utils/
+│  │     ├─ Constants.ts      # Floor definitions
+│  │     ├─ mapLoader.ts      # Dynamic map data loading
+│  │     ├─ MinHeap.ts        # Priority queue for pathfinding
+│  │     ├─ Normalizer.ts     # Floor name normalization
+│  │     ├─ routeCache.ts     # Route caching system
+│  │     └─ verticalProcessor.ts # Multi-floor routing
+│  ├─ store/
+│  │  ├─ DrawerStore.ts       # Drawer/panel state
+│  │  ├─ MapStore.ts          # Map, routes, active nodes
+│  │  └─ SearchStore.ts       # Search queries, points
+│  ├─ styles/
+│  │  ├─ theme.ts             # MUI theme configuration
+│  │  └─ layoutStyles.ts      # Layout styles
+│  ├─ types/
+│  │  └─ index.ts             # TypeScript interfaces
+│  ├─ App.tsx                 # Root component
+│  └─ main.tsx                # Entry point
 ├─ index.html
 ├─ package.json
-├─ vite.config.js / ts
-├─ .eslintrc.cjs
-├─ .prettierrc
+├─ tsconfig.json
+├─ vite.config.ts
 └─ README.md
 ```
 
-## Environment variables
+---
 
-Vite exposes environment variables prefixed with `VITE_`.
+## Core Features
 
-Create `.env` / `.env.local` and add variables like:
+### 1. Pathfinding System
 
+**Algorithms:**
+- **A\* Algorithm** - Point-to-point optimal pathfinding with heuristic
+- **Dijkstra's Algorithm** - Single-source shortest paths for multi-destination queries
+
+**Key Classes (`routing.ts`):**
+- `PathfindingAlgorithm` - Base class with adjacency list building
+- `AStarPathfinder` - A* implementation
+- `DijkstraPathfinder` - Dijkstra implementation
+- `EntranceResolver` - Maps entrances to path nodes
+- `PlaceFinder` - Resolves place IDs and names
+- `GraphRouter` - Main routing orchestrator
+
+### 2. Multi-Floor Routing
+
+**Process:**
+1. User selects origin and destination on different floors
+2. User chooses vertical connector (stairs, elevator, escalator)
+3. System calculates route segments:
+   - Floor A: Origin → Connector entrance
+   - Vertical transition
+   - Floor B: Connector exit → Destination
+4. Routes are pre-calculated and cached
+5. User navigates floor-by-floor with visual indicators
+
+**Key Components:**
+- `verticalProcessor.ts` - Finds vertical connectors
+- `handleMultiFloorRoute()` - Generates route steps
+- `MapStore.multiFloorRoute` - Tracks current step
+
+### 3. Route Caching
+
+**Two-tier caching:**
+- **Memory cache** (Map) - Fast, session-based
+- **localStorage** - Persistent across sessions
+- **5-minute TTL** with automatic expiration cleanup
+- **Bidirectional caching** - Supports reverse routes
+
+### 4. Search System
+
+**Features:**
+- Debounced search (300ms)
+- Lazy loading with infinite scroll
+- Voice search integration
+- Recent searches cache
+- Type-based filtering (stores, restaurants, etc.)
+
+**Components:**
+- `SearchInput.tsx` - Autocomplete search bar
+- `useLazyMapData.ts` - Chunk-based data loading
+- `SearchStore.ts` - Query and results state
+
+### 5. Map Rendering
+
+**Layers:**
+- SVG paths for buildings and boundaries
+- Nodes for navigation graph
+- Entrances with visual markers
+- Active route highlighting
+- Place labels (building marks, road marks)
+
+**Interactions:**
+- Zoom and pan controls
+- Touch gestures support
+- Floor switching
+- Place selection
+
+---
+
+## Architecture
+
+### State Management (Zustand)
+
+**MapStore:**
+```typescript
+{
+  highlightedPlace: IPlace;
+  activeNodeIds: string[];
+  multiFloorRoute: {
+    isActive: boolean;
+    currentStep: number;
+    steps: RouteStep[];
+    preCalculatedRoutes: Map<string, string[]>;
+  };
+  selectedFloorMap: string;
+  isCalculatingRoute: boolean;
+}
 ```
-VITE_API_BASE_URL=https://api.example.com
-VITE_MAP_KEY=abc123
+
+**SearchStore:**
+```typescript
+{
+  query: string;
+  pointA: IMapItem | null;
+  pointB: IMapItem | null;
+  displayOptions: IMapItem[];
+}
 ```
 
-Access them in code via `import.meta.env.VITE_API_BASE_URL`.
-
-> **Security note:** Never store secrets that must remain private (server secrets, private keys) in client-side env files.
-
-## Styling / CSS strategy
-
-Options you might choose:
-
-* Plain CSS modules: `Component.module.css`
-* Global CSS: `src/styles/global.css`
-* Tailwind CSS: works great with Vite (see Tailwind docs)
-* CSS-in-JS: styled-components, emotion
-
-Example: adding Tailwind
-
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+**DrawerStore:**
+```typescript
+{
+  isExpanded: boolean;
+  isFloorMapOpen: boolean;
+  isDirectionPanelOpen: boolean;
+  isLoading: boolean;
+}
 ```
 
-Then configure `tailwind.config.js` and include Tailwind directives in your `index.css`.
+### Data Flow
 
-## Linting & Formatting
+1. **Map Loading**: `loadMapData()` → Dynamic import → `setFloorData()`
+2. **Search**: User input → Debounce → `search()` → `displayOptions`
+3. **Route Calculation**: 
+   - Same floor: `routeMapHandler()` → `GraphRouter.findPathBetweenPlaces()`
+   - Multi-floor: `handleMultiFloorRoute()` → Step-by-step routing
+4. **Rendering**: State change → React re-render → SVG update
 
-Recommended tools:
+---
 
-* ESLint with `eslint-plugin-react`, `@typescript-eslint` (for TS)
-* Prettier for formatting
+## Configuration
 
-Example minimal `.eslintrc.cjs` for React + TypeScript:
+### Floor Configuration (`Constants.ts`)
 
-```js
-module.exports = {
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier'
-  ],
-  plugins: ['react', '@typescript-eslint'],
-  settings: { react: { version: 'detect' } },
-  env: { browser: true, es2021: true, node: true }
-};
+```typescript
+export const floors: Floors[] = [
+  {
+    key: 'ground',
+    name: 'Ground Floor',
+    location: 'Ayala Malls',
+    aliases: ['Ayala Malls Ground Floor'],
+    assets: {},
+  },
+  // ... other floors
+];
 ```
 
-Add a Prettier config (e.g. `.prettierrc`) and a `.gitignore` that excludes `node_modules`, `dist`, and `.env*`.
+### Theme (`theme.ts`)
 
-## Testing
+MUI theme customization for colors, typography, and component styles.
 
-Suggested tools:
+### Vite Configuration
 
-* [Vitest](https://vitest.dev/) (fast unit test runner compatible with Vite)
-* [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for component tests
+- Path aliases (`@/` → `src/`)
+- Build optimizations
+- Dev server settings
 
-Install:
+---
 
-```bash
-npm install -D vitest @testing-library/react @testing-library/jest-dom
-```
+## Development
 
-Add a `vitest.config.ts` (or `vite.config.ts`) configuration and use `npm test`.
+### Adding a New Floor
 
-Example simple test script in `package.json`:
+1. Create floor directory: `src/Data/AyalaMalls/SixthFloor/`
+2. Add data files:
+   - `SixthFloor.json` - Place definitions
+   - `SixthFloorNodes.json` - Navigation graph
+   - `SixthFloorLabels.json` - Labels and marks
+3. Update `Constants.ts` with floor entry
+4. Update `mapLoader.ts` switch case
+5. Add vertical connectors in `connectors/Verticals.json`
 
-```json
-"test": "vitest run"
-```
+### Adding Place Types
+
+1. Add type to `unique_types.json`
+2. Create icon mapping in `ChipsIconMapper.tsx`
+3. Update type filter chips
+
+### Debugging Routes
+
+Enable console logs in:
+- `routing.ts` - Pathfinding steps
+- `IndoorMap.tsx` - Multi-floor transitions
+- `routeCache.ts` - Cache hits/misses
+
+---
 
 ## Building & Deploying
 
-Build for production:
+### Production Build
 
 ```bash
 npm run build
 ```
 
-Preview the production build locally:
+Output: `dist/` directory
+
+### Preview Build
 
 ```bash
 npm run preview
 ```
 
-### Deploy targets
+### Deployment Platforms
 
-* **Vercel**: `vite` projects deploy with zero config. Connect repo and set build command `npm run build` and output directory `dist`.
+- **Vercel**: Zero-config, connect GitHub repo
+- **Netlify**: Drag-and-drop `dist/` folder
+- **AWS S3 + CloudFront**: Static hosting
+- **GitHub Pages**: Use `vite-plugin-gh-pages`
 
-## CI / CD suggestions
+**Build settings:**
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node version: 18+
 
-A simple GitHub Actions workflow:
-
-```yaml
-name: CI
-on: [push, pull_request]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Install
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm run test
-      - name: Build
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-```
-
-Adjust jobs for caching, code scanning, and publishing to your hosting provider.
+---
 
 ## Troubleshooting
 
-**Dev server not starting / port in use**
+### Common Issues
 
-* Kill processes using the port or change `--port` in the `dev` script.
+**Route not calculating:**
+- Check if places have valid `entranceNodes`
+- Verify nodes are connected in graph
+- Check console for pathfinding errors
 
-**HMR not working**
+**Multi-floor routing fails:**
+- Ensure vertical connectors are defined
+- Check floor names match between data and Constants
+- Verify `from`/`to` IDs in Verticals.json
 
-* Check console for CORS or proxy errors.
-* Ensure code uses module boundaries (no large sync transforms that block HMR).
+**Search not showing results:**
+- Check `mapLoader.ts` for correct data imports
+- Verify JSON structure matches `IMapItem` type
+- Clear localStorage cache
 
-**Build errors**
+**Map not rendering:**
+- Check SVG path data format
+- Verify coordinate system consistency
+- Inspect browser console for errors
 
-* Read stack traces carefully; missing polyfills or incorrect imports are common.
-* If a dependency relies on Node built-ins, consider `@rollup/plugin-node-resolve` or a polyfill.
+### Performance Optimization
+
+- Use React DevTools Profiler
+- Monitor Zustand state updates
+- Check for unnecessary re-renders
+- Optimize large SVG paths
+
+---
 
 ## Contributing
 
 1. Fork repository
-2. Create a feature branch: `git checkout -b feat/my-feature`
-3. Make changes, write tests
-4. Run `npm run lint`, `npm run test`
-5. Open a PR describing the change
+2. Create feature branch: `git checkout -b feature/new-feature`
+3. Follow code style (Prettier + ESLint)
+4. Test thoroughly on multiple floors
+5. Write meaningful commit messages
+6. Open PR with description
 
-Follow conventional commit messages if your project uses them.
+### Code Standards
 
-## Useful tips & links
+- Use TypeScript for new files
+- Follow component structure conventions
+- Add JSDoc comments for complex functions
+- Update types in `types/index.ts`
 
-* Vite docs: [https://vitejs.dev](https://vitejs.dev)
-* React docs: [https://reactjs.org](https://reactjs.org)
-* Vitest docs: [https://vitest.dev](https://vitest.dev)
-* Tailwind CSS docs: [https://tailwindcss.com](https://tailwindcss.com)
+---
+
+## Useful Links
+
+- [Vite Documentation](https://vitejs.dev)
+- [React Documentation](https://react.dev)
+- [MUI Components](https://mui.com)
+- [Zustand Guide](https://docs.pmnd.rs/zustand)
+- [Leaflet API](https://leafletjs.com)
+
+---
 
 ## License
 
 ```
-MIT © SG Maps Team
+MIT © IC 2026 Navigation Team
 ```
 
 ---
+
+## Acknowledgments
+
+- Ayala Malls for venue access
+- IC 2026 organizing committee
+- Open-source contributors
+
+For questions or support, contact the development team.

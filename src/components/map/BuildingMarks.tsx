@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { ILabels} from '@/interface';
+import type { ILabels} from '@/types';
 
 const BuildingMarks = ({ buidingMarks }: { buidingMarks: ILabels[] }) => {
   return (
