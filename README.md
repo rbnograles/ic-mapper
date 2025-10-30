@@ -139,7 +139,7 @@ ic_map_navigator/
 ├─ src/
 │  ├─ components/
 │  │  ├─ common/              # Reusable components (loaders, chips)
-│  │  ├─ Drawers/             # Direction panel, floor selector
+│  │  ├─ drawers/             # Direction panel, floor selector
 │  │  ├─ map/                 # Map rendering components
 │  │  ├─ navigation/          # Search bar, bottom nav, floating icons
 │  │  └─ props/               # Utility components (voice search)

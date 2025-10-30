@@ -3,7 +3,7 @@ import { ThemeProvider, useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 
 import uniqueTypes from '@/Data/unique_types.json';
-import Direction from '@/components/Drawers/DirectionSearch';
+import Direction from '@/components/drawers/DirectionSearch';
 import { Chips } from '@/components/navigation/Chips';
 import type { IMapItem, ViaOption } from '@/types';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
