@@ -3,34 +3,50 @@
     {
       "id": "stairs_38_39",
       "type": "Stairs",
-      "from": "Ground_bldg_38", 
+      "from": "Ground_bldg_38",
       "to": "Second_bldg_39",
-      "labelFrom": "Stairs", 
-      "labelTo": "Stairs" 
+      "labelFrom": "Stairs",
+      "labelTo": "Stairs"
     },
     {
       "id": "stairs_39_125",
       "type": "Stairs",
-      "from": "Second_bldg_39", 
+      "from": "Second_bldg_39",
       "to": "Third_bldg_125",
-      "labelFrom": "Stairs", 
-      "labelTo": "Stairs" 
+      "labelFrom": "Stairs",
+      "labelTo": "Stairs"
     },
     {
       "id": "stairs_125_85",
       "type": "Stairs",
-      "from": "Third_bldg_125", 
+      "from": "Third_bldg_125",
       "to": "Fourth_stairs_85",
-      "labelFrom": "Stairs", 
-      "labelTo": "Stairs" 
+      "labelFrom": "Stairs",
+      "labelTo": "Stairs"
     },
     {
       "id": "stairs_85_17",
       "type": "Stairs",
-      "from": "Fourth_stairs_85", 
+      "from": "Fourth_stairs_85",
       "to": "Fifth_Stairs_17",
-      "labelFrom": "Stairs", 
-      "labelTo": "Stairs" 
+      "labelFrom": "Stairs",
+      "labelTo": "Stairs"
+    },
+    {
+      "id": "escalator_48_35",
+      "type": "Escalator",
+      "from": "Ground_bldg_48",
+      "to": "Second_bldg_35",
+      "labelFrom": "Escalator",
+      "labelTo": "Escalator"
+    },
+     {
+      "id": "escalator_35_127_1",
+      "type": "Escalator",
+      "from": "Second_bldg_35",
+      "to": "Third_bldg_127_1",
+      "labelFrom": "Escalator",
+      "labelTo": "Escalator"
     }
   ]
 }

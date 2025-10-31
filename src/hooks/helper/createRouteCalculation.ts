@@ -1,4 +1,3 @@
-// routeCalculationUtil.ts (new file, replace useRouteCalculation)
 import type { Graph, IEntrances, IMapItem, INodes } from '@/types/index';
 import { findPathBetweenPlacesOptimized } from '@/routing';
 import { floors } from '@/routing/utils/Constants';
@@ -91,7 +90,7 @@ export function createRouteCalculation({
     return new Promise((resolve) => {
       setTimeout(() => {
         const floorMap = { nodes, entrances, maps } as unknown as Graph;
-
+        
         const resolvedFrom = resolvePlaceCandidate(from);
         const resolvedTo = resolvePlaceCandidate(to);
 
