@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import uniqueTypes from '@/Data/unique_types.json';
 import Direction from '@/components/drawer/DirectionSearch';
-import { Chips } from '@/components/navigation/Chips';
+import { Chips } from '@/components/common/Chips';
 import type { IMapItem, ViaOption } from '@/types';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';

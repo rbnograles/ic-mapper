@@ -23,7 +23,7 @@ import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import ElevatorIcon from '@mui/icons-material/Elevator';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 // Components
-import CachedResults from '@/components/navigation/CachedResults';
+import CachedResults from '@/components/common/CachedResults';
 // Intefaces
 import { IDirectionSearch } from '@/types/DrawerInterface';
 import SearchBar from '../props/SearchInput';
