@@ -20,7 +20,6 @@ import { RiArrowUpDownLine } from 'react-icons/ri';
 import CloseIcon from '@mui/icons-material/Close';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import ElevatorIcon from '@mui/icons-material/Elevator';
-import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 // Components
 import CachedResults from '@/components/common/CachedResults';
 // Intefaces
@@ -30,6 +29,7 @@ import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
 import useSearchStore from '@/store/SearchStore';
 import { ViaOption } from '@/types';
+import { GrEscalator } from 'react-icons/gr';
 
 interface DirectionProps extends IDirectionSearch {
   setViaMethod?: (m: ViaOption) => void;
@@ -191,12 +191,14 @@ const Direction = ({
                       <Stack direction="row" alignItems="center" spacing={1}>
                         <ElevatorIcon />
                         <Typography>Elevator</Typography>
+                         <FormHelperText sx={{ ml: 1 }}>{`From ${floorA} → ${floorB}`}</FormHelperText>
                       </Stack>
                     </MenuItem>
                     <MenuItem value="Escalator">
                       <Stack direction="row" alignItems="center" spacing={1}>
-                        <EscalatorWarningIcon />
+                        <GrEscalator />
                         <Typography>Escalator</Typography>
+                         <FormHelperText sx={{ ml: 1 }}>{`From ${floorA} → ${floorB}`}</FormHelperText>
                       </Stack>
                     </MenuItem>
                   </Select>
