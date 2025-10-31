@@ -681,17 +681,21 @@ SOFTWARE.
 
 ## Acknowledgments
 
-- **Ayala Malls** for venue access and floor plans
+- **Development Team** 
+-   -> **Ryan Nograles**
+-   -> **Nikkie James Palmes**
+- **Tester Team** 
+-   -> **John Xavier Parangan**
+- **Graphincs & Visual Team** 
+-   -> **Luis Jose Quintero**
+-   -> **Nikie Oliveros**
 - **IC 2026 Organizing Committee** for project sponsorship
-- **Open Source Community** for amazing libraries
-- **Development Team** for tireless effort
-- **Beta Testers** for valuable feedback
 
 ---
 
 ## Contact & Support
 
-- 📧 **Email**: dev-team@ic2026navigation.com
+- 📧 **Email**: ryannograles.025.official@gmail.com
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/username/repo/discussions)
 - 🐛 **Bug Reports**: [GitHub Issues](https://github.com/username/repo/issues)
 - 📚 **Documentation**: [Full Docs](./docs/README.md)
