@@ -1,8 +1,32 @@
 import { PaletteMode } from '@mui/material';
+
 export const baseTypography = {
   fontFamily: 'Poppins, Roboto, Helvetica, Arial, sans-serif',
   // add more shared typography here if desired
 };
+
+export const defaultMapColorsLight = {
+  white: "white",
+  pathWhite: 'white',
+  pathCartWhite: 'white',
+  whiteInner: 'white',
+  '#D9D9D9': "#D9D9D9",
+  'E3DAD0': '#E3DAD0',
+  'black': 'black',
+  '#121212': '#121212'
+} as const;
+
+export const defaultMapColorsDark = {
+  // choose colors that read well on dark backgrounds
+  white: "#18243E",
+  pathWhite: '#263660',
+  pathCartWhite: 'yellow',
+  '#E3DAD0': '#13283C',
+  'black': 'white',
+  '#121212': 'white',
+  '#FF0000': 'white',
+  whiteInner: '#26303F',
+} as const;
 
 export const lightPalette = {
   mode: 'light' as PaletteMode,
@@ -44,15 +68,15 @@ export const lightPalette = {
 export const darkPalette = {
   mode: 'dark' as PaletteMode,
   background: {
-    default: '#172542',
-    paper: '#000D2A',
+    default: '#26303F',
+    paper: '#0F1112',
   },
   primary: {
     main: '#7B48FF',
     contrastText: '#ffffff',
   },
   secondary: {
-    main: '#B39DDB',
+    main: '#0F1112',
     contrastText: '#0b1020',
   },
   tertiary: {

@@ -7,7 +7,7 @@
       "type": "Landmark",
       "entranceNode": "Ellipse 363_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 363_2"
       ],
@@ -24,7 +24,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -39,7 +39,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 358_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 358_2"
       ],
@@ -56,7 +56,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 503_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 503_2"
       ],
@@ -90,7 +90,7 @@
       "type": "Concierge",
       "entranceNode": "Ellipse 364_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 364_2"
       ],
@@ -107,7 +107,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -122,7 +122,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 360_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 360_2"
       ],
@@ -141,7 +141,7 @@
         "Ellipse 361_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         4522.82,
@@ -157,7 +157,7 @@
         "Ellipse 362_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         5359.28,
@@ -171,7 +171,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 356_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 356_2"
       ],
@@ -188,7 +188,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 353_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 353_2"
       ],
@@ -224,7 +224,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 354_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 354_2"
       ],
@@ -243,7 +243,7 @@
         "Ellipse 429_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         5559.515,
@@ -275,7 +275,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 355_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 355_2",
         "Ellipse 514_2"
@@ -327,7 +327,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 372_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 372_2"
       ],
@@ -344,7 +344,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 346_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 346_2"
       ],
@@ -380,7 +380,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -395,7 +395,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 352_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 352_2"
       ],
@@ -412,7 +412,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 351_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 351_2"
       ],
@@ -429,7 +429,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 350_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 350_2"
       ],
@@ -502,7 +502,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 349_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 349_2"
       ],
@@ -519,7 +519,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 348_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 348_2"
       ],
@@ -555,7 +555,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 347_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 347_2"
       ],
@@ -572,7 +572,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 344_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 344_2"
       ],
@@ -589,7 +589,7 @@
       "type": "Activity Center",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 504_2"
       ],
@@ -659,7 +659,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 371_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 371_2"
       ],
@@ -676,7 +676,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 370_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 370_2"
       ],
@@ -693,7 +693,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 369_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 369_2"
       ],
@@ -710,7 +710,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 368_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 368_2"
       ],
@@ -727,7 +727,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 367_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 367_2"
       ],
@@ -744,7 +744,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -759,7 +759,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -774,7 +774,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 365_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 365_2"
       ],
@@ -791,7 +791,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 366_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 366_2"
       ],
@@ -828,7 +828,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 345_2"
       ],
@@ -845,7 +845,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 376_2"
       ],
@@ -882,7 +882,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 377_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 377_2"
       ],
@@ -918,7 +918,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 375_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 375_2"
       ],
@@ -935,7 +935,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 381_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 381_2"
       ],
@@ -952,7 +952,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 382_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 382_2"
       ],
@@ -969,7 +969,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 383_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 383_2"
       ],
@@ -986,7 +986,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 384_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 384_2"
       ],
@@ -1003,7 +1003,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 385_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -1035,7 +1035,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 392_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 392_2"
       ],
@@ -1052,7 +1052,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 393_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 393_2"
       ],
@@ -1069,7 +1069,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 394_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 394_2"
       ],
@@ -1086,7 +1086,7 @@
       "type": "Services",
       "entranceNode": "Ellipse 395_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 395_2"
       ],
@@ -1103,7 +1103,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 396_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 396_2"
       ],
@@ -1120,7 +1120,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 397_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 397_2"
       ],
@@ -1137,7 +1137,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 398_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -1152,7 +1152,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 399_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 399_2"
       ],
@@ -1169,7 +1169,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 400_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 400_2"
       ],
@@ -1186,7 +1186,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 401_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 401_2"
       ],
@@ -1224,7 +1224,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 402_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 402_2"
       ],
@@ -1241,7 +1241,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 403_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 403_2"
       ],
@@ -1292,7 +1292,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 380_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 380_2"
       ],
@@ -1309,7 +1309,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 386_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 386_2"
       ],
@@ -1326,7 +1326,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 387_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 387_2"
       ],
@@ -1343,7 +1343,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 388_2"
       ],
@@ -1362,7 +1362,7 @@
         "Ellipse 389_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         4620.47,
@@ -1378,7 +1378,7 @@
         "Ellipse 390_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         4702.09,
@@ -1394,7 +1394,7 @@
         "Ellipse 391_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         4763.715,
@@ -1408,7 +1408,7 @@
       "type": "Services",
       "entranceNode": "Ellipse 405_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 405_2",
         "Ellipse 500_2"
@@ -1443,7 +1443,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 404_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 404_2"
       ],
@@ -1460,7 +1460,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 521_2"
       ],
@@ -1496,7 +1496,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 524_2"
       ],
@@ -1530,7 +1530,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 522_2"
       ],
@@ -1547,7 +1547,7 @@
       "type": "Bank",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 520_2"
       ],
@@ -1564,7 +1564,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 512_2"
       ],
@@ -1596,7 +1596,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 408_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 408_2"
       ],
@@ -1613,7 +1613,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 409_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 409_2"
       ],
@@ -1650,7 +1650,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -1685,7 +1685,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 406_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 406_2"
       ],
@@ -1702,7 +1702,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 407_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 407_2"
       ],
@@ -1742,7 +1742,7 @@
         "Ellipse 410_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         3248.2650000000003,
@@ -1758,7 +1758,7 @@
         "Ellipse 411_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         3031.5,
@@ -1844,7 +1844,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 413_2"
       ],
@@ -1861,7 +1861,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 414_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 414_2"
       ],
@@ -1878,7 +1878,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 415_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 415_2"
       ],
@@ -1914,7 +1914,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 421_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 421_2"
       ],
@@ -1931,7 +1931,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 420_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 420_2"
       ],
@@ -1948,7 +1948,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 422_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 422_2"
       ],
@@ -1965,7 +1965,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 423_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 423_2"
       ],
@@ -1982,7 +1982,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 424_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 424_2"
       ],
@@ -1999,7 +1999,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 427_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 427_2"
       ],
@@ -2016,7 +2016,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 428_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 428_2"
       ],
@@ -2033,7 +2033,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 426_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 426_2"
       ],
@@ -2050,7 +2050,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 425_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 425_2"
       ],
@@ -2069,7 +2069,7 @@
         "Ellipse 412_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         1574.945,
@@ -2083,7 +2083,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 378_2"
       ],
@@ -2100,7 +2100,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 379_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 378_2_2"
       ],
@@ -2604,7 +2604,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -2619,7 +2619,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -2634,7 +2634,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 451_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 451_2"
       ],
@@ -2651,7 +2651,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 450_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 450_2"
       ],
@@ -2751,7 +2751,7 @@
         "Ellipse 454_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         8848.355,
@@ -2765,7 +2765,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 449_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 449_2"
       ],
@@ -2782,7 +2782,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 448_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 448_2"
       ],
@@ -2837,7 +2837,7 @@
         "Ellipse 459_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         7676.445,
@@ -2853,7 +2853,7 @@
         "Ellipse 458_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         7939.15,
@@ -2867,7 +2867,7 @@
       "type": "Food & Beverage",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 457_2"
       ],
@@ -2886,7 +2886,7 @@
         "Ellipse 456_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         8609.49,
@@ -2902,7 +2902,7 @@
         "Ellipse 455_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         9191.82,
@@ -2916,7 +2916,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 442_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -2931,7 +2931,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 443_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 443_2"
       ],
@@ -2948,7 +2948,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 444_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -2963,7 +2963,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 445_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 445_2"
       ],
@@ -2980,7 +2980,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 446_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 446_2"
       ],
@@ -2997,7 +2997,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 447_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3012,7 +3012,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 435_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 435_2"
       ],
@@ -3029,7 +3029,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 436_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 436_2"
       ],
@@ -3061,7 +3061,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 437_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 437_2"
       ],
@@ -3078,7 +3078,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 438_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 438_2"
       ],
@@ -3095,7 +3095,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3110,7 +3110,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 440_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 440_2"
       ],
@@ -3127,7 +3127,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 441_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 441_2"
       ],
@@ -3144,7 +3144,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3159,7 +3159,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3174,7 +3174,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 477_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 477_2"
       ],
@@ -3191,7 +3191,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 476_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 476_2"
       ],
@@ -3208,7 +3208,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 475_2"
       ],
@@ -3225,7 +3225,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 474_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 474_2"
       ],
@@ -3280,7 +3280,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 473_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 473_2"
       ],
@@ -3297,7 +3297,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 472_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 472_2"
       ],
@@ -3314,7 +3314,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 471_2"
       ],
@@ -3369,7 +3369,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 470_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 470_2"
       ],
@@ -3386,7 +3386,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3401,7 +3401,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 469_2"
       ],
@@ -3437,7 +3437,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 461_2_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 461_2_2"
       ],
@@ -3454,7 +3454,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3469,7 +3469,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 463_2"
       ],
@@ -3488,7 +3488,7 @@
         "Ellipse 467_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         10768.25,
@@ -3504,7 +3504,7 @@
         "Ellipse 460_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         9409.02,
@@ -3518,7 +3518,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 464_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 464_2"
       ],
@@ -3565,7 +3565,7 @@
       "type": "Entertainment",
       "entranceNode": "Ellipse 465_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 465_2"
       ],
@@ -3582,7 +3582,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 466_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 466_2"
       ],
@@ -3599,7 +3599,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 468_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 468_2"
       ],
@@ -3616,7 +3616,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3631,7 +3631,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3718,7 +3718,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3733,7 +3733,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 486_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 486_2"
       ],
@@ -3750,7 +3750,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 485_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 485_2"
       ],
@@ -3767,7 +3767,7 @@
       "type": "Food & Beverage",
       "entranceNode": "Ellipse 488_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 488_2"
       ],
@@ -3804,7 +3804,7 @@
         "Ellipse 484_2"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
         9959,
@@ -3818,7 +3818,7 @@
       "type": "Concierge",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 505_2"
       ],
@@ -3835,7 +3835,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3850,7 +3850,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3865,7 +3865,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3880,7 +3880,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3895,7 +3895,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3910,7 +3910,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3925,7 +3925,7 @@
       "type": "NotClickable",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -3940,7 +3940,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 506_2"
       ],
@@ -3957,7 +3957,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 507_2"
       ],
@@ -3974,7 +3974,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 509_2"
       ],
@@ -3991,7 +3991,7 @@
       "type": "Retail",
       "entranceNode": "",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 508_2"
       ],
@@ -4008,7 +4008,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 482_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -4023,7 +4023,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 481_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -4038,7 +4038,7 @@
       "type": "NotClickable",
       "entranceNode": "Ellipse 480_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [],
       "floor": "Ayala Malls Ground Floor",
       "centroid": [
@@ -4125,7 +4125,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 478_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 478_2"
       ],
@@ -4142,7 +4142,7 @@
       "type": "Retail",
       "entranceNode": "Ellipse 479_2",
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "entranceNodes": [
         "Ellipse 479_2"
       ],
@@ -4178,7 +4178,7 @@
         "Ellipse 363_2_2"
       ],
       "description": "Special Metropolitan Public Witnessing",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathCartWhite",
       "floor": "Ayala Malls Ground Floor",
       "icon": "Jehovah's Witnesses Carts",
       "centerY": 50,
@@ -4268,7 +4268,7 @@
         "Ellipse 477_2_2"
       ],
       "description": "Special Metropolitan Public Witnessing",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathCartWhite",
       "floor": "Ayala Malls Ground Floor",
       "icon": "Jehovah's Witnesses Carts",
       "centerY": 50,
@@ -4358,7 +4358,7 @@
         "Ellipse 365_2_2"
       ],
       "description": "Special Metropolitan Public Witnessing",
-      "baseFill": "#FFFFFF",
+      "baseFill": "pathCartWhite",
       "floor": "Ayala Malls Ground Floor",
       "icon": "Jehovah's Witnesses Carts",
       "centerY": 50,

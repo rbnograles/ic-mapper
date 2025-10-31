@@ -9,7 +9,7 @@
         "Ellipse 60"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5823.245000000001,
         1387.19
@@ -25,7 +25,7 @@
         "Ellipse 93"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10158.25,
         4744.129999999999
@@ -41,7 +41,7 @@
         "Ellipse 59"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5825.43,
         1256.875
@@ -57,7 +57,7 @@
         "Ellipse 99"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10266.55,
         3038.505
@@ -73,7 +73,7 @@
         "Ellipse 90"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10740.6,
         4113.405000000001
@@ -89,7 +89,7 @@
         "Ellipse 51"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4387,
         1600.9099999999999
@@ -105,7 +105,7 @@
         "Ellipse 50"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4347.59,
         1553.995
@@ -121,7 +121,7 @@
         "Ellipse 48"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4426.41,
         1553.995
@@ -137,7 +137,7 @@
         "Ellipse 49"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4387,
         1507.08
@@ -246,7 +246,7 @@
         "Ellipse 76"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         7253,
         1173
@@ -262,7 +262,7 @@
         "Ellipse 29"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2839,
         6245.5
@@ -354,7 +354,7 @@
         "Ellipse 71"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9065.64,
         1801.72
@@ -461,7 +461,7 @@
         "Ellipse 86"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         11347.05,
         4391.42
@@ -478,7 +478,7 @@
         "Ellipse 32"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3747.6949999999997,
         8549.36
@@ -492,7 +492,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6605.98,
         1758.075
@@ -508,7 +508,7 @@
         "Ellipse 68"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         8008.255,
         2382.805
@@ -524,7 +524,7 @@
         "Ellipse 23"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3042.71,
         8606.735
@@ -540,7 +540,7 @@
         "Ellipse 27"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2865.37,
         7582.37
@@ -556,7 +556,7 @@
         "Ellipse 21"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3747.6949999999997,
         6511.215
@@ -572,7 +572,7 @@
         "Ellipse 40"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         1772.863,
         1971.0055
@@ -588,7 +588,7 @@
         "Ellipse 54"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3900.955,
         839.8605
@@ -602,7 +602,7 @@
       "type": "Retail",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4255.635,
         964.9649999999999
@@ -618,7 +618,7 @@
         "Ellipse 57"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6134.135,
         907.627
@@ -634,7 +634,7 @@
         "Ellipse 58"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6283.014999999999,
         907.627
@@ -650,7 +650,7 @@
         "Ellipse 74"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6914.62,
         1127.09
@@ -666,7 +666,7 @@
         "Ellipse 75"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         7094.264999999999,
         1351.085
@@ -682,7 +682,7 @@
         "Ellipse 69"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         8487.735,
         2382.805
@@ -698,7 +698,7 @@
         "Ellipse 72"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         7649.195,
         1204.7625
@@ -714,7 +714,7 @@
         "Ellipse 67"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         7535.35,
         2382.805
@@ -730,7 +730,7 @@
         "Ellipse 73"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         8369.505000000001,
         1207.3519999999999
@@ -744,7 +744,7 @@
       "type": "Services",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9049.355,
         2766.55
@@ -760,7 +760,7 @@
         "Ellipse 84"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         11513.25,
         3498.385
@@ -776,7 +776,7 @@
         "Ellipse 78"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9146.744999999999,
         986.082
@@ -792,7 +792,7 @@
         "Ellipse 83"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10922.45,
         2791.74
@@ -808,7 +808,7 @@
         "Ellipse 82"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10456.099999999999,
         2229
@@ -824,7 +824,7 @@
         "Ellipse 81"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10024.77,
         1717.125
@@ -840,7 +840,7 @@
         "Ellipse 46"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3992.87,
         2575.8050000000003
@@ -856,7 +856,7 @@
         "Ellipse 47"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4565.445,
         2325.67
@@ -872,7 +872,7 @@
         "Ellipse 45"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3660.925,
         1895.425
@@ -888,7 +888,7 @@
         "Ellipse 55"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4927.780000000001,
         842.4705
@@ -904,7 +904,7 @@
         "Ellipse 64"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6677.105,
         2343.71
@@ -920,7 +920,7 @@
         "Ellipse 63"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6085.969999999999,
         2098.715
@@ -936,7 +936,7 @@
         "Ellipse 61"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6353.075000000001,
         1731.2199999999998
@@ -950,7 +950,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9602.135,
         3005.715
@@ -966,7 +966,7 @@
         "Ellipse 100"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9711.61,
         3138.635
@@ -982,7 +982,7 @@
         "Ellipse 92"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9827.66,
         4049.175
@@ -998,7 +998,7 @@
         "Ellipse 91"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9992.970000000001,
         3716.88
@@ -1014,7 +1014,7 @@
         "Ellipse 85"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         11319.75,
         4045.21
@@ -1030,7 +1030,7 @@
         "Ellipse 87"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10937.7,
         4692.005
@@ -1046,7 +1046,7 @@
         "Ellipse 94"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10775.650000000001,
         5218.48
@@ -1062,7 +1062,7 @@
         "Ellipse 96"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         8805.195,
         5187.205
@@ -1078,7 +1078,7 @@
         "Ellipse 79"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9519.23,
         1685.655
@@ -1094,7 +1094,7 @@
         "Ellipse 28"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2968.27,
         6088.99
@@ -1110,7 +1110,7 @@
         "Ellipse 34"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2959.5150000000003,
         3998.7250000000004
@@ -1126,7 +1126,7 @@
         "Ellipse 35"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2863.1800000000003,
         3618.2
@@ -1351,7 +1351,7 @@
         "Ellipse 36"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2832.5299999999997,
         4045.635
@@ -1365,7 +1365,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9408.21,
         2653.81
@@ -1379,7 +1379,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9170.605,
         3245.495
@@ -1393,7 +1393,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9418.205,
         3360.01
@@ -1407,7 +1407,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9518.99,
         3636.46
@@ -1421,7 +1421,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9674.470000000001,
         3894.315
@@ -1435,7 +1435,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9654.845000000001,
         3070.91
@@ -1449,7 +1449,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9768.535,
         3205.4700000000003
@@ -1463,7 +1463,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10083.8,
         3475.5950000000003
@@ -1477,7 +1477,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10143.8,
         3638.2749999999996
@@ -1491,7 +1491,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10137.45,
         4108.1849999999995
@@ -1505,7 +1505,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10123.2,
         4379.25
@@ -1519,7 +1519,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9932.5,
         4248.5
@@ -1533,7 +1533,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9825.445,
         3274.165
@@ -1547,7 +1547,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9910.85,
         3375.81
@@ -1561,7 +1561,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10302.75,
         5218.48
@@ -1575,7 +1575,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9926.165,
         5218.48
@@ -1589,7 +1589,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9009.855,
         3092.165
@@ -1603,7 +1603,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9583.814999999999,
         2870.94
@@ -1617,7 +1617,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9707.865000000002,
         3417.88
@@ -1631,7 +1631,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9509.065,
         2838.2
@@ -1645,7 +1645,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         11287.55,
         3949.295
@@ -1659,7 +1659,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10836.95,
         3842.3450000000003
@@ -1673,7 +1673,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10449.650000000001,
         3258.7349999999997
@@ -1687,7 +1687,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10449.6,
         3258.71
@@ -1701,7 +1701,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10158.25,
         4671.155000000001
@@ -1715,7 +1715,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10070.650000000001,
         4671.155000000001
@@ -1729,7 +1729,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10070.650000000001,
         4744.129999999999
@@ -1743,7 +1743,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10447.25,
         4671.155000000001
@@ -1757,7 +1757,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10447.25,
         4744.129999999999
@@ -1771,7 +1771,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10534.8,
         4671.155000000001
@@ -1785,7 +1785,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10534.8,
         4744.129999999999
@@ -1799,7 +1799,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         10898.3,
         4280.209999999999
@@ -1813,7 +1813,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9462.015,
         1518.6950000000002
@@ -1827,7 +1827,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2576.335,
         803.375
@@ -1841,7 +1841,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2576.34,
         803.3755000000001
@@ -1855,7 +1855,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2898.21,
         834.6479999999999
@@ -1869,7 +1869,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3174.08,
         839.8605
@@ -1883,7 +1883,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3414.91,
         839.8605
@@ -1897,7 +1897,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3655.74,
         839.8605
@@ -1911,7 +1911,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4200.9,
         845.0755
@@ -1925,7 +1925,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4172.4400000000005,
         824.2245
@@ -1939,7 +1939,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5350.264999999999,
         774.702
@@ -1953,7 +1953,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5744.424999999999,
         845.0755
@@ -1967,7 +1967,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5989.635,
         912.84
@@ -1981,7 +1981,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6427.514999999999,
         907.627
@@ -1995,7 +1995,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6563.255,
         907.627
@@ -2009,7 +2009,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         6777.82,
         902.4145000000001
@@ -2023,7 +2023,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4233.745000000001,
         1272.51
@@ -2037,7 +2037,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4233.745000000001,
         1199.5349999999999
@@ -2051,7 +2051,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4295.045,
         1199.5349999999999
@@ -2065,7 +2065,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4295.045,
         1272.51
@@ -2079,7 +2079,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4531.5,
         1329.85
@@ -2093,7 +2093,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3318.575,
         2789.39
@@ -2107,7 +2107,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3393.0150000000003,
         2880.67
@@ -2121,7 +2121,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3301.065,
         3086.51
@@ -2135,7 +2135,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3393.015,
         2880.61
@@ -2149,7 +2149,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3338.2799999999997,
         5369.645
@@ -2163,7 +2163,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3331.71,
         4439.1900000000005
@@ -2177,7 +2177,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3900.955,
         3972.66
@@ -2191,7 +2191,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3625.09,
         3970.0499999999997
@@ -2205,7 +2205,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3844.0299999999997,
         3620.81
@@ -2219,7 +2219,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3581.305,
         3461.8199999999997
@@ -2233,7 +2233,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3721.425,
         3284.59
@@ -2247,7 +2247,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3625.09,
         3039.105
@@ -2261,7 +2261,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4033.3599999999997,
         3195.46
@@ -2275,7 +2275,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3749.85,
         2865.1049999999996
@@ -2289,7 +2289,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3870.38,
         2721.63
@@ -2303,7 +2303,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4205.28,
         2966.62
@@ -2317,7 +2317,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4397.945,
         2737.2650000000003
@@ -2331,7 +2331,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4111.195,
         2435.04
@@ -2345,7 +2345,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4670.5599999999995,
         1752.0749999999998
@@ -2359,7 +2359,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         4901.51,
         1718.19
@@ -2373,7 +2373,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5377.105,
         1924.0900000000001
@@ -2387,7 +2387,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         5376.785,
         1924.0900000000001
@@ -2401,7 +2401,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2856.6099999999997,
         9263.49
@@ -2415,7 +2415,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2863.1800000000003,
         6902.165
@@ -2429,7 +2429,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3042.71,
         6568.555
@@ -2443,7 +2443,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2863.1800000000003,
         5760.594999999999
@@ -2457,7 +2457,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2863.1800000000003,
         5411.35
@@ -2471,7 +2471,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         3756.455,
         7532.895
@@ -2485,7 +2485,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2863.1800000000003,
         4389.67
@@ -2499,7 +2499,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2972.65,
         2302.005
@@ -2513,7 +2513,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2972.65,
         2143.02
@@ -2527,7 +2527,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         2626.73,
         1788.565
@@ -2541,7 +2541,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9921.8,
         4572.115
@@ -2555,7 +2555,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9921.8,
         4707.639999999999
@@ -2569,7 +2569,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "centroid": [
         9921.8,
         4848.38

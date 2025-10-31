@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <CustomThemeProvider>
       <Box sx={layoutStyles.appRoot}>
-        {/* <Box
+        <Box
           sx={{
             position: 'fixed',
             top: 12,
@@ -24,7 +24,7 @@ export default function Layout() {
           }}
         >
           <ThemeToggleButton />
-        </Box> */}
+        </Box>
 
         <Outlet />
 
