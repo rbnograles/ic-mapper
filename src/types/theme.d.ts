@@ -6,6 +6,13 @@ declare module '@mui/material/styles' {
     tertiary: Palette['primary'];
   }
 
+  interface Palette {
+    maps?: Record<string, string>;
+  }
+  interface PaletteOptions {
+    maps?: Record<string, string>;
+  }
+
   interface PaletteOptions {
     neutral?: PaletteOptions['primary'];
     tertiary?: PaletteOptions['primary'];

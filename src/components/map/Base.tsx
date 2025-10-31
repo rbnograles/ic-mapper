@@ -1,3 +1,4 @@
+import { useTheme } from '@mui/material/styles';
 import { Fragment, memo, cloneElement } from 'react';
 
 type MapRegionProps = {
@@ -30,6 +31,10 @@ const FloorBase = memo(
     onClick,
     isTypeHighlighted = false,
   }: MapRegionProps) {
+    const theme = useTheme();
+    const themeFill =
+          (theme?.palette as any)?.maps?.[p?.baseFill as any] ?? p.baseFill;
+
     const isNameHighlighted = highlightName === p.name;
 
     const fillColor = isNameHighlighted
@@ -83,7 +88,7 @@ const FloorBase = memo(
           <path
             id={p.id}
             d={p.path}
-            fill={p.type !== 'NotClickable' ? fillColor : '#B8B6B6'}
+            fill={p.type !== 'NotClickable' ? themeFill : '#B8B6B6'}
             stroke={p.type !== 'NotClickable' && p.type !== 'Park' ? strokeColor : 'white'}
             strokeWidth={p.type !== 'NotClickable' ? strokeWidth : 5}
             style={{

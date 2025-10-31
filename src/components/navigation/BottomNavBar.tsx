@@ -6,12 +6,12 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   useTheme,
-  ThemeProvider,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import LocationInformation from '@/components/drawer/LocationInformation';
 import { FaMap } from 'react-icons/fa';
+import { CustomThemeProvider } from '@/app/providers/ThemeProvider';
 
 export default function BottomNavBar() {
   const theme = useTheme();
@@ -55,11 +55,9 @@ export default function BottomNavBar() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <CustomThemeProvider>
       <CssBaseline />
-      <LocationInformation
-        isMobile={isMobile}
-      />
+      <LocationInformation isMobile={isMobile} />
 
       <Paper
         sx={{
@@ -93,6 +91,6 @@ export default function BottomNavBar() {
           <BottomNavigationAction label="Save" icon={<Bookmark />} />
         </BottomNavigation>
       </Paper>
-    </ThemeProvider>
+    </CustomThemeProvider>
   );
 }

@@ -9,7 +9,7 @@
         "Ellipse 32"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8470.135,
@@ -23,7 +23,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1786.7055,
@@ -39,7 +39,7 @@
         "Ellipse 46"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9749.869999999999,
@@ -55,7 +55,7 @@
         "Ellipse 47"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9926.285,
@@ -71,7 +71,7 @@
         "Ellipse 77"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4121.87,
@@ -87,7 +87,7 @@
         "Ellipse 122"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10544,
@@ -103,7 +103,7 @@
         "Ellipse 54"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10702.85,
@@ -119,7 +119,7 @@
         "Ellipse 51"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10582.6,
@@ -135,7 +135,7 @@
         "Ellipse 132"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11419.45,
@@ -151,7 +151,7 @@
         "Ellipse 48"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10298.3,
@@ -167,7 +167,7 @@
         "Ellipse 49"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10054.56,
@@ -183,7 +183,7 @@
         "Ellipse 113"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9616.779999999999,
@@ -199,7 +199,7 @@
         "Ellipse 101"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9108.455,
@@ -215,7 +215,7 @@
         "Ellipse 45"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9193.285,
@@ -231,7 +231,7 @@
         "Ellipse 133"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10420.175,
@@ -247,7 +247,7 @@
         "Ellipse 100"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9111.665,
@@ -263,7 +263,7 @@
         "Ellipse 114"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8091.8099999999995,
@@ -279,7 +279,7 @@
         "Ellipse 116"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6124,
@@ -295,7 +295,7 @@
         "Ellipse 115"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6122.5,
@@ -311,7 +311,7 @@
         "Ellipse 33"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6872.969999999999,
@@ -327,7 +327,7 @@
         "Ellipse 59"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7941.5,
@@ -343,7 +343,7 @@
         "Ellipse 35"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7194.885,
@@ -359,7 +359,7 @@
         "Ellipse 106"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6161.155000000001,
@@ -375,7 +375,7 @@
         "Ellipse 105"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6372.825000000001,
@@ -391,7 +391,7 @@
         "Ellipse 71"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3836.0299999999997,
@@ -407,7 +407,7 @@
         "Ellipse 70"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4012.415,
@@ -423,7 +423,7 @@
         "Ellipse 134"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3519.5,
@@ -439,7 +439,7 @@
         "Ellipse 120"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4544.79,
@@ -455,7 +455,7 @@
         "Ellipse 99"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4324.1,
@@ -471,7 +471,7 @@
         "Ellipse 16"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3656.87,
@@ -487,7 +487,7 @@
         "Ellipse 17"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3900.61,
@@ -503,7 +503,7 @@
         "Ellipse 18"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4207.01,
@@ -519,7 +519,7 @@
         "Ellipse 72"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3050.295,
@@ -535,7 +535,7 @@
         "Ellipse 80"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3050.295,
@@ -551,7 +551,7 @@
         "Ellipse 92"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3050.15,
@@ -567,7 +567,7 @@
         "Ellipse 93"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3249.135,
@@ -583,7 +583,7 @@
         "Ellipse 84"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3050.295,
@@ -599,7 +599,7 @@
         "Ellipse 86"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3050.295,
@@ -615,7 +615,7 @@
         "Ellipse 88"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2549.99,
@@ -631,7 +631,7 @@
         "Ellipse 89"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1908.5749999999998,
@@ -647,7 +647,7 @@
         "Ellipse 90"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1408.27,
@@ -663,7 +663,7 @@
         "Ellipse"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         834.2045,
@@ -679,7 +679,7 @@
         "Ellipse 1"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         875.896,
@@ -695,7 +695,7 @@
         "Ellipse 5"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1969,
@@ -711,7 +711,7 @@
         "Ellipse 6"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2537.455,
@@ -727,7 +727,7 @@
         "Ellipse 7"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2900.725,
@@ -744,7 +744,7 @@
         "Ellipse 4"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1786.705,
@@ -760,7 +760,7 @@
         "Ellipse 14"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2510.495,
@@ -776,7 +776,7 @@
         "Ellipse 117"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4788.525,
@@ -792,7 +792,7 @@
         "Ellipse 119"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4631.38,
@@ -808,7 +808,7 @@
         "Ellipse 118"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4676.280000000001,
@@ -824,7 +824,7 @@
         "Ellipse 20"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4559.79,
@@ -840,7 +840,7 @@
         "Ellipse 22"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4893.325,
@@ -856,7 +856,7 @@
         "Ellipse 23"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5143.48,
@@ -872,7 +872,7 @@
         "Ellipse 24"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5549.48,
@@ -888,7 +888,7 @@
         "Ellipse 26"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6084.1849999999995,
@@ -904,7 +904,7 @@
         "Ellipse 27"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6340.75,
@@ -920,7 +920,7 @@
         "Ellipse 28"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6558.835,
@@ -936,7 +936,7 @@
         "Ellipse 111"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6783.33,
@@ -952,7 +952,7 @@
         "Ellipse 29"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7193.835,
@@ -968,7 +968,7 @@
         "Ellipse 36"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8438.175,
@@ -984,7 +984,7 @@
         "Ellipse 30"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7783.935,
@@ -1000,7 +1000,7 @@
         "Ellipse 135"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2922.01,
@@ -1016,7 +1016,7 @@
         "Ellipse 136"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2812.9700000000003,
@@ -1032,7 +1032,7 @@
         "Ellipse 74"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3990.98,
@@ -1048,7 +1048,7 @@
         "Ellipse 13"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3329.31,
@@ -1064,7 +1064,7 @@
         "Ellipse 87"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4018.83,
@@ -1080,7 +1080,7 @@
         "Ellipse 121"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3557.0150000000003,
@@ -1096,7 +1096,7 @@
         "Ellipse 57"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8553.635,
@@ -1112,7 +1112,7 @@
         "Ellipse 56"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8983.285,
@@ -1128,7 +1128,7 @@
         "Ellipse 38"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9696.645,
@@ -1144,7 +1144,7 @@
         "Ellipse 109"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5165.04,
@@ -1160,7 +1160,7 @@
         "Ellipse 53"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11363.5,
@@ -1176,7 +1176,7 @@
         "Ellipse 76"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4762.87,
@@ -1192,7 +1192,7 @@
         "Ellipse 64"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11916.3,
@@ -1208,7 +1208,7 @@
         "Ellipse 21"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3979.95,
@@ -1508,7 +1508,7 @@
         "Ellipse 44"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10066.95,
@@ -1596,7 +1596,7 @@
         "Ellipse 41"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10753.5,
@@ -1612,7 +1612,7 @@
         "Ellipse 12"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3066.5,
@@ -1628,7 +1628,7 @@
         "Ellipse 11"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2961.5,
@@ -1644,7 +1644,7 @@
         "Ellipse 97"
       ],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3132,
@@ -2134,7 +2134,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4964.32,
@@ -2148,7 +2148,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9378.93,
@@ -2162,7 +2162,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9555.255000000001,
@@ -2176,7 +2176,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11027.3,
@@ -2190,7 +2190,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10931.05,
@@ -2204,7 +2204,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7736.844999999999,
@@ -2218,7 +2218,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7736.844999999999,
@@ -2232,7 +2232,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7736.844999999999,
@@ -2246,7 +2246,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7736.844999999999,
@@ -2260,7 +2260,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7736.844999999999,
@@ -2274,7 +2274,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3484.2650000000003,
@@ -2288,7 +2288,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5260.985000000001,
@@ -2302,7 +2302,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3535.58,
@@ -2316,7 +2316,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3484.2650000000003,
@@ -2330,7 +2330,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4375.83,
@@ -2344,7 +2344,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3535.58,
@@ -2358,7 +2358,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3462.4,
@@ -2372,7 +2372,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3635,
@@ -2386,7 +2386,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3509.92,
@@ -2400,7 +2400,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5956.92,
@@ -2414,7 +2414,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5831.845,
@@ -2428,7 +2428,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5626.59,
@@ -2442,7 +2442,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6072.375,
@@ -2456,7 +2456,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4330.93,
@@ -2470,7 +2470,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3859.495,
@@ -2484,7 +2484,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5068.5599999999995,
@@ -2498,7 +2498,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3872.325,
@@ -2512,7 +2512,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10450,
@@ -2526,7 +2526,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10450,
@@ -2540,7 +2540,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10539.8,
@@ -2554,7 +2554,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10308.95,
@@ -2568,7 +2568,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10937.5,
@@ -2582,7 +2582,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11129.9,
@@ -2596,7 +2596,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11129.9,
@@ -2610,7 +2610,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11219.7,
@@ -2624,7 +2624,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11219.7,
@@ -2638,7 +2638,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10937.5,
@@ -2652,7 +2652,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10847.7,
@@ -2666,7 +2666,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10847.7,
@@ -2680,7 +2680,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10446.25,
@@ -2694,7 +2694,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5819.014999999999,
@@ -2708,7 +2708,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10151.195,
@@ -2722,7 +2722,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8922.01,
@@ -2736,7 +2736,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9231.455,
@@ -2750,7 +2750,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7486.695,
@@ -2764,7 +2764,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7198.055,
@@ -2778,7 +2778,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4666.674999999999,
@@ -2792,7 +2792,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4586.18,
@@ -2806,7 +2806,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4882.41,
@@ -2820,7 +2820,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5125.5,
@@ -2834,7 +2834,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5370.5,
@@ -2848,7 +2848,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3811.385,
@@ -2862,7 +2862,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4167.37,
@@ -2876,7 +2876,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3631.83,
@@ -2890,7 +2890,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3509.92,
@@ -2904,7 +2904,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3452.19,
@@ -2918,7 +2918,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4305.275,
@@ -2932,7 +2932,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4465.63,
@@ -2946,7 +2946,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4465.63,
@@ -2960,7 +2960,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2894.165,
@@ -2974,7 +2974,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3798.5550000000003,
@@ -2988,7 +2988,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5241.74,
@@ -3002,7 +3002,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2768.5,
@@ -3016,7 +3016,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2528.56,
@@ -3030,7 +3030,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2780.77,
@@ -3044,7 +3044,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3120.94,
@@ -3058,7 +3058,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3403.165,
@@ -3072,7 +3072,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1684.08,
@@ -3086,7 +3086,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1508.705,
@@ -3100,7 +3100,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1391.08,
@@ -3114,7 +3114,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3177.87,
@@ -3128,7 +3128,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3047.5,
@@ -3142,7 +3142,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3052.5,
@@ -3156,7 +3156,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1560.02,
@@ -3170,7 +3170,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1752.445,
@@ -3184,7 +3184,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3028.86,
@@ -3198,7 +3198,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3028.86,
@@ -3212,7 +3212,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3592.895,
@@ -3226,7 +3226,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3811.39,
@@ -3240,7 +3240,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2985.795,
@@ -3254,7 +3254,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3509.92,
@@ -3268,7 +3268,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4128.885,
@@ -3282,7 +3282,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3862.7,
@@ -3296,7 +3296,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6013.385,
@@ -3310,7 +3310,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6351.385,
@@ -3324,7 +3324,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6351.385,
@@ -3338,7 +3338,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6150.5,
@@ -3352,7 +3352,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6646.4400000000005,
@@ -3366,7 +3366,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6646.4400000000005,
@@ -3380,7 +3380,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6899.795,
@@ -3394,7 +3394,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7111.465,
@@ -3408,7 +3408,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7345.58,
@@ -3422,7 +3422,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9321.724999999999,
@@ -3436,7 +3436,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8461.645,
@@ -3450,7 +3450,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8461.645,
@@ -3464,7 +3464,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8461.645,
@@ -3478,7 +3478,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8461.645,
@@ -3492,7 +3492,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8763.105,
@@ -3506,7 +3506,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8981.189999999999,
@@ -3520,7 +3520,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8981.189999999999,
@@ -3534,7 +3534,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8981.189999999999,
@@ -3548,7 +3548,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         8718.205,
@@ -3562,7 +3562,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10382.650000000001,
@@ -3576,7 +3576,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10527,
@@ -3590,7 +3590,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10509.05,
@@ -3604,7 +3604,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10434,
@@ -3618,7 +3618,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11060.9,
@@ -3632,7 +3632,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         12659.05,
@@ -3646,7 +3646,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4112.8550000000005,
@@ -3660,7 +3660,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4882.545,
@@ -3674,7 +3674,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2534.975,
@@ -3688,7 +3688,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1927.58,
@@ -3702,7 +3702,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2165.08,
@@ -3716,7 +3716,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1816.585,
@@ -3730,7 +3730,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2768.5,
@@ -3744,7 +3744,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2768.5,
@@ -3758,7 +3758,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2768.5,
@@ -3772,7 +3772,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5241.74,
@@ -3786,7 +3786,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2490.075,
@@ -3800,7 +3800,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         7198.055,
@@ -3814,7 +3814,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6640.025,
@@ -3828,7 +3828,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3513.125,
@@ -3842,7 +3842,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3513.125,
@@ -3856,7 +3856,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3169.975,
@@ -3870,7 +3870,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         1996.185,
@@ -3884,7 +3884,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2060.325,
@@ -3898,7 +3898,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2252.745,
@@ -3912,7 +3912,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2316.8900000000003,
@@ -3926,7 +3926,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3236.04,
@@ -3940,7 +3940,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3543.625,
@@ -3954,7 +3954,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         2740.2200000000003,
@@ -3968,7 +3968,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3997.395,
@@ -3982,7 +3982,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10004.435,
@@ -3996,7 +3996,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         11036.5,
@@ -4010,7 +4010,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5613.765,
@@ -4024,7 +4024,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         5927,
@@ -4038,7 +4038,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9357,
@@ -4052,7 +4052,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3535.58,
@@ -4066,7 +4066,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3824.21,
@@ -4080,7 +4080,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9798.425,
@@ -4094,7 +4094,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         6646.4349999999995,
@@ -4108,7 +4108,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         3990.98,
@@ -4122,7 +4122,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         4384.4349999999995,
@@ -4136,7 +4136,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10148.564999999999,
@@ -4150,7 +4150,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9884.985,
@@ -4164,7 +4164,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10418,
@@ -4178,7 +4178,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9952.955,
@@ -4192,7 +4192,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         10866.9,
@@ -4206,7 +4206,7 @@
       "type": "NotClickable",
       "entranceNodes": [],
       "description": "Place description goes in here...",
-      "baseFill": "white",
+      "baseFill": "pathWhite",
       "floor": "Ayala Malls Fourth Floor",
       "centroid": [
         9131.92,
