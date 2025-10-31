@@ -181,7 +181,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
       >
         <div style={{ fontSize: buttonFontSize, fontWeight: 700, lineHeight: 1 }}>{title}</div>
         {subtitle && (
-          <div style={{ fontSize: buttonFontSize * 0.85, opacity: 0.95 }}>{subtitle}</div>
+          <div style={{ fontSize: buttonFontSize * 0.85, opacity: isMobile ? 1 : 0.95 }}>{subtitle}</div>
         )}
       </div>
     </div>
@@ -375,7 +375,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               <ButtonContent
                 direction="up"
                 title={isMultiFloorActive ? 'Continue Route' : 'Go to Upper Floor'}
-                subtitle={canGoUp ? upLabel : ''}
+                subtitle={canGoUp ? upLabel : 'up'}
                 icon={
                   <FaArrowAltCircleUp style={{ fontSize: buttonFontSize * 1.6, color: 'white' }} />
                 }
