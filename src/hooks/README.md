@@ -14,63 +14,128 @@ This directory contains custom React hooks for managing indoor map navigation, r
 
 ## Table of Contents
 - [Overview](#overview)
+- [Architecture](#architecture)
 - [Hook Dependencies](#hook-dependencies)
 - [Hooks Reference](#hooks-reference)
   - [useFloorData](#usefloordata)
-  - [useFloorKeyResolver](#usefloorkeyresolver)
   - [useLazyMapData](#uselazymapdata)
   - [useMapItemResolver](#usemapitemresolver)
   - [useMultiFloorContinuation](#usemultifloorcontinuation)
-  - [useMultiFloorPathfinding](#usemultifloorpathfinding)
-  - [useMultiFloorRouteBuilder](#usemultifloorroutebuilder)
-  - [useRouteCalculation](#useroutecalculation)
   - [useRouteHandler](#useroutehandler)
-  - [useRouteMapHandler](#useroutemaphandler)
-  - [useRoutePreCalculation](#userouteprecalculation)
+- [Helper Functions](#helper-functions)
+  - [createRouteCalculation](#createroutecalculation)
+  - [createFloorKeyResolver](#createfloorkeyresolver)
+  - [createMultiFloorPathfinding](#createmultifloorpathfinding)
+  - [createMultiFloorRouteBuilder](#createmultifloorroutebuilder)
+  - [createRoutePreCalculation](#createrouteprecalculation)
+- [Exported Functions](#exported-functions)
+  - [routeMapHandler](#routemaphandler)
+  - [handleMultiFloorRoute](#handlemultifloorroute)
 - [Usage Patterns](#usage-patterns)
 - [Best Practices](#best-practices)
 - [Performance Considerations](#performance-considerations)
+- [Cross-Platform Compatibility](#cross-platform-compatibility)
 - [Troubleshooting](#troubleshooting)
 
 ---
 
 ## Overview
 
-These hooks follow the Single Responsibility Principle, with each hook handling a specific aspect of map navigation:
+This hooks system implements a **modular, composable architecture** for indoor navigation with support for:
 
-- **Data Management**: Loading and managing floor/map data
-- **Route Calculation**: Computing paths between locations
-- **Multi-Floor Navigation**: Handling navigation across multiple floors
-- **Utility Functions**: Helper functions for resolving identifiers and keys
+- ✅ Single-floor routing with intelligent caching
+- ✅ Multi-floor navigation with automatic floor transitions
+- ✅ Pre-calculated route segments for instant navigation
+- ✅ Lazy loading with infinite scroll
+- ✅ Smart search with type prioritization
+- ✅ Cross-platform compatibility (iOS, Android, Desktop)
+
+### Key Principles
+
+1. **Separation of Concerns**: Each hook/helper has a single, well-defined responsibility
+2. **Composability**: Helpers are pure functions that can be combined flexibly
+3. **Performance**: Aggressive caching, debouncing, and pre-calculation
+4. **Type Safety**: Full TypeScript support with strict types
+5. **Cross-Platform**: Special handling for iOS Safari limitations
+
+---
+
+## Architecture
+
+### Hook vs Helper Pattern
+
+The codebase uses two patterns:
+
+#### **React Hooks** (prefixed with `use`)
+- Manage component lifecycle and state
+- Use React hooks internally (`useState`, `useEffect`, `useCallback`, etc.)
+- Must be called from React components
+- Examples: `useFloorData`, `useRouteHandler`, `useLazyMapData`
+
+#### **Helper Functions** (prefixed with `create`)
+- Pure functions that return utility objects
+- No React dependencies
+- Can be called anywhere (components, other helpers, async functions)
+- Examples: `createRouteCalculation`, `createFloorKeyResolver`
+
+This separation allows:
+- Reusability across different contexts
+- Easier testing of business logic
+- Better performance (helpers don't trigger re-renders)
+- Use in non-React contexts (e.g., Web Workers in future)
 
 ---
 
 ## Hook Dependencies
 
 ```
-useFloorData
-useFloorKeyResolver
-useLazyMapData
-useMapItemResolver
-useMultiFloorContinuation
-  ├── useFloorKeyResolver (implied)
-  └── useRouteCalculation (for route computation)
-useMultiFloorPathfinding
-useMultiFloorRouteBuilder
-  └── useFloorKeyResolver
-useRouteCalculation
-  └── useMapItemResolver (for candidate resolution)
-useRouteHandler
-  ├── useFloorData
-  ├── useMapItemResolver
-  └── useRouteCalculation (indirectly via routeMapHandler)
-useRouteMapHandler
-  ├── useRouteCalculation
-  ├── useFloorKeyResolver
-  ├── useMultiFloorPathfinding
-  ├── useRoutePreCalculation
-  └── useMultiFloorRouteBuilder
-useRoutePreCalculation
+📦 useFloorData (Data Loading)
+   └─ Loads floor-specific map data
+   └─ Manages loading states
+
+📦 useLazyMapData (Progressive Loading)
+   └─ Infinite scroll implementation
+   └─ Smart search functionality
+
+📦 useMapItemResolver (ID Resolution)
+   └─ Resolves place identifiers
+
+📦 useRouteHandler (Route Orchestration)
+   ├─ Uses: createRouteCalculation
+   ├─ Uses: routeMapHandler
+   ├─ Uses: handleMultiFloorRoute
+   └─ Coordinates UI state changes
+
+📦 useMultiFloorContinuation (Route Progression)
+   ├─ Watches multi-floor route state
+   ├─ Uses: routeMapHandler
+   └─ Automatically advances through steps
+
+🔧 createRouteCalculation (Single-Floor Routing)
+   ├─ Uses: getCachedRoute, setCachedRoute
+   └─ Returns: calculateRoute function
+
+🔧 createFloorKeyResolver (Floor Resolution)
+   └─ Returns: getFloorKey, getFloorKeyFromNode
+
+🔧 createMultiFloorPathfinding (BFS Pathfinding)
+   └─ Returns: findMultiFloorPath function
+
+🔧 createMultiFloorRouteBuilder (Route Building)
+   ├─ Uses: createFloorKeyResolver
+   └─ Returns: buildRouteSteps function
+
+🔧 createRoutePreCalculation (Route Pre-calculation)
+   └─ Returns: preCalculateMultiFloorRoutes function
+
+📤 routeMapHandler (Exported Function)
+   └─ Uses: createRouteCalculation
+
+📤 handleMultiFloorRoute (Exported Function)
+   ├─ Uses: createFloorKeyResolver
+   ├─ Uses: createMultiFloorPathfinding
+   ├─ Uses: createMultiFloorRouteBuilder
+   └─ Uses: createRoutePreCalculation
 ```
 
 ---
@@ -79,30 +144,60 @@ useRoutePreCalculation
 
 ### useFloorData
 
-**File**: `useFloorData.ts`
+**File**: `hooks/useFloorData.ts`
 
-**Purpose**: Manages floor data loading, caching, and state management for the currently selected floor.
+**Purpose**: Core hook for managing floor-specific map data with automatic loading and caching.
+
+**Signature**:
+```typescript
+function useFloorData(
+  selectedFloorMap: string,
+  setIsLoading: (loading: boolean) => void
+): UseFloorDataReturn
+```
 
 **Parameters**:
-- `selectedFloorMap: string` - The key of the currently selected floor
-- `setIsLoading: (loading: boolean) => void` - Callback to update global loading state
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `selectedFloorMap` | `string` | Floor key (e.g., `'ground'`, `'second'`) |
+| `setIsLoading` | `(boolean) => void` | Global loading state updater |
 
 **Returns**:
 ```typescript
-{
-  floorData: Omit<FloorData, 'floor'>;      // Current floor's map data
-  floorDataRef: MutableRefObject<...>;       // Ref to floor data (for async access)
-  isLoading: boolean;                        // Loading state
+interface UseFloorDataReturn {
+  floorData: Omit<FloorData, 'floor'>;      // Current floor's complete data
+  floorDataRef: MutableRefObject<...>;       // Ref for async access
+  isLoading: boolean;                        // Local loading state
   selectedMapName: string;                   // Human-readable floor name
-  loadedFloorsRef: MutableRefObject<Set<string>>; // Cache of loaded floors
+  loadedFloorsRef: MutableRefObject<Set<string>>; // Loaded floor cache
+}
+```
+
+**Data Structure**:
+```typescript
+floorData: {
+  maps: IMapItem[];           // All places on this floor
+  nodes: INodes[];            // Navigation nodes
+  entrances: IEntrances[];    // Entrances/exits
+  buidingMarks: ILabels[];    // Building labels
+  roadMarks: ILabels[];       // Road labels
+  boundaries: ILabels[];      // Boundary markers
 }
 ```
 
 **Key Features**:
-- Automatically loads map data when `selectedFloorMap` changes
-- Maintains a ref to floor data for use in async operations
-- Tracks which floors have been loaded (caching)
-- Converts floor keys to human-readable names
+- ✅ Automatic data loading on floor change
+- ✅ Maintains ref for async operations (prevents stale closures)
+- ✅ Tracks loaded floors to avoid redundant loads
+- ✅ Resolves floor keys to human-readable names
+- ✅ Proper cleanup on unmount
+
+**Internal Logic**:
+1. Updates `selectedMapName` when floor changes
+2. Triggers data load via `loadMapData(floorKey)`
+3. Updates both state and ref with loaded data
+4. Marks floor as loaded in `loadedFloorsRef`
+5. Handles errors gracefully
 
 **Usage Example**:
 ```typescript
@@ -113,359 +208,382 @@ const {
   selectedMapName
 } = useFloorData(selectedFloorMap, setIsLoading);
 
-// Access current floor data
-console.log(floorData.maps, floorData.nodes);
+// Display loading state
+if (isLoading) return <LoadingSpinner floor={selectedMapName} />;
 
-// Use in async operations
-const dataRef = floorDataRef.current;
-```
+// Use current floor data
+<MapBuilder 
+  maps={floorData.maps}
+  nodes={floorData.nodes}
+  entrances={floorData.entrances}
+/>
 
----
-
-### useFloorKeyResolver
-
-**File**: `useFloorKeyResolver.ts`
-
-**Purpose**: Resolves various floor identifiers (names, aliases, node IDs) to standardized floor keys.
-
-**Parameters**: None
-
-**Returns**:
-```typescript
-{
-  getFloorKey: (floorIdentifier: string) => string;
-  getFloorKeyFromNode: (nodeId: string) => string;
-}
-```
-
-**Key Features**:
-- Resolves floor names, keys, and aliases to standardized keys
-- Extracts floor information from node IDs
-- Case-insensitive matching
-- Fallback to original identifier if no match found
-
-**Usage Example**:
-```typescript
-const { getFloorKey, getFloorKeyFromNode } = useFloorKeyResolver();
-
-// Resolve from various formats
-getFloorKey('Ground Floor');  // → 'ground'
-getFloorKey('2F');            // → 'second'
-getFloorKey('GROUND');        // → 'ground'
-
-// Extract from node ID
-getFloorKeyFromNode('ground_elevator_01'); // → 'ground'
+// Access in async callback (won't be stale)
+const asyncHandler = async () => {
+  const currentData = floorDataRef.current;
+  await doSomethingWith(currentData);
+};
 ```
 
 ---
 
 ### useLazyMapData
 
-**File**: `useLazyMapData.ts`
+**File**: `hooks/useLazyMapData.ts`
 
-**Purpose**: Lazily loads map data with infinite scroll support and smart search functionality.
+**Purpose**: Implements progressive loading (infinite scroll) with intelligent search and caching.
+
+**Signature**:
+```typescript
+function useLazyMapData(
+  floor: string,
+  initialLimit?: number
+): UseLazyMapDataReturn
+```
 
 **Parameters**:
-- `floor: string` - Floor key to load data for
-- `initialLimit?: number` - Initial number of places to display (default: 20)
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `floor` | `string` | - | Floor key to load data for |
+| `initialLimit` | `number` | `20` | Initial items to display |
 
 **Returns**:
 ```typescript
-{
-  visiblePlaces: IMapItem[];        // Currently visible places
-  hasMore: boolean;                 // Whether more items can be loaded
-  loadMore: () => void;             // Load more items
-  search: (query: string) => IMapItem[]; // Search places
-  loading: boolean;                 // Loading state
-  clearCache: () => void;           // Clear cached selections
-  saveToCache: (place: IMapItem) => void; // Cache selected place
+interface UseLazyMapDataReturn {
+  visiblePlaces: IMapItem[];                    // Currently visible items
+  hasMore: boolean;                             // More items available?
+  loadMore: () => void;                         // Load next batch
+  search: (query: string) => IMapItem[];        // Search function
+  loading: boolean;                             // Loading state
+  clearCache: () => void;                       // Clear selection cache
+  saveToCache: (place: IMapItem) => void;       // Cache user selection
 }
 ```
 
 **Key Features**:
-- Progressive loading with infinite scroll
-- Smart search by name and type
-- Automatic deduplication by name
-- Floor-specific prioritization in results
-- In-memory + localStorage caching
-- Automatically merges 'all' floors data when needed
+
+#### 1. **Progressive Loading**
+- Loads `initialLimit` items initially
+- `loadMore()` loads `initialLimit` more items
+- Automatically merges "all floors" data when floor-specific data exhausted
+- Prevents duplicate loads
+
+#### 2. **Smart Search**
+```typescript
+search(query: string): IMapItem[]
+```
+- **Type-priority matching**: If query matches a type, show only that type
+- **Fallback to name search**: Otherwise search both name and type
+- **Automatic deduplication**: By normalized name
+- Example:
+  ```typescript
+  search('coffee')  // Returns all coffee shops
+  search('Starbucks') // Returns Starbucks locations
+  ```
+
+#### 3. **Intelligent Sorting**
+- When `floor !== 'all'`: Prioritizes items from current floor
+- Maintains original order within priority groups
+
+#### 4. **Caching System**
+- **In-memory cache**: Fast access to frequently selected places
+- **localStorage persistence**: Survives page reloads
+- **Deduplication**: Prevents duplicate entries by name and ID
+- Cache key format: `map-cache-${floor}`
+
+**Internal Logic Flow**:
+
+```
+┌─────────────────────────────────────────────────────┐
+│ 1. Initial Load (useEffect)                        │
+│    └─ loadMapData(floor)                           │
+│    └─ filterPlaces (remove Unknown/NotClickable)   │
+│    └─ Sort by floor priority                       │
+│    └─ Set visiblePlaces = first N items            │
+└─────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────┐
+│ 2. User scrolls → loadMore()                       │
+│    └─ Slice next batch from allPlaces              │
+│    └─ If exhausted and floor !== 'all'             │
+│        └─ Load 'all' floors data                   │
+│        └─ Merge & deduplicate                      │
+│        └─ Re-sort with floor priority              │
+└─────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────┐
+│ 3. User searches → search(query)                   │
+│    └─ Check if query matches any type              │
+│    └─ If yes: filter by type only                  │
+│    └─ If no: filter by name OR type                │
+│    └─ Deduplicate results                          │
+└─────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────┐
+│ 4. User selects place → saveToCache(place)        │
+│    └─ Add to in-memory cache                       │
+│    └─ Persist to localStorage                      │
+│    └─ Prevent duplicates                           │
+└─────────────────────────────────────────────────────┘
+```
 
 **Usage Example**:
 ```typescript
-const { visiblePlaces, hasMore, loadMore, search } = useLazyMapData('ground', 20);
+const { 
+  visiblePlaces, 
+  hasMore, 
+  loadMore, 
+  search, 
+  loading,
+  saveToCache 
+} = useLazyMapData('ground', 20);
 
-// Display initial places
-{visiblePlaces.map(place => <PlaceItem key={place.id} {...place} />)}
-
-// Load more on scroll
-{hasMore && <button onClick={loadMore}>Load More</button>}
+// Infinite scroll
+<InfiniteScroll
+  dataLength={visiblePlaces.length}
+  next={loadMore}
+  hasMore={hasMore}
+  loader={<Spinner />}
+>
+  {visiblePlaces.map(place => (
+    <PlaceCard 
+      key={place.id} 
+      {...place}
+      onClick={() => saveToCache(place)}
+    />
+  ))}
+</InfiniteScroll>
 
 // Search
-const results = search('coffee');
+const handleSearch = (query: string) => {
+  const results = search(query);
+  setSearchResults(results);
+};
 ```
+
+**Performance Optimization**:
+- `filterPlaces` is memoized with `useCallback`
+- `mergeUniqueByName` uses `Map` for O(n) deduplication
+- `search` caches `allPlaces` via closure
+- `loadingAllRef` prevents duplicate "all floors" requests
 
 ---
 
 ### useMapItemResolver
 
-**File**: `useMapItemResolver.ts`
+**File**: `hooks/useMapItemResolver.ts`
 
-**Purpose**: Resolves map item identifiers (IDs, names, entrance references) to their canonical identifiers.
+**Purpose**: Resolves ambiguous place identifiers to their canonical form.
+
+**Signature**:
+```typescript
+function useMapItemResolver(
+  floorData: Omit<FloorData, 'floor'>
+): { resolveMapItemIdentifier: (candidate: string) => string }
+```
 
 **Parameters**:
-- `floorData: Omit<FloorData, 'floor'>` - Current floor's map data
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `floorData` | `Omit<FloorData, 'floor'>` | Current floor's map data |
 
 **Returns**:
 ```typescript
 {
-  resolveMapItemIdentifier: (candidate: string) => string;
+  resolveMapItemIdentifier: (candidate: string) => string
 }
 ```
 
-**Key Features**:
-- Checks if candidate exists as a map ID
-- Checks if candidate exists as an entrance ID
-- Returns original candidate if not found (graceful fallback)
+**Resolution Logic**:
+```typescript
+resolveMapItemIdentifier(candidate: string): string
+```
+
+1. **Check if exists as map ID**: `maps.find(m => m.id === candidate)`
+2. **Check if exists as entrance ID**: `entrances.find(e => e.id === candidate)`
+3. **Return original**: If not found, return `candidate` unchanged (graceful fallback)
+
+**Use Cases**:
+- Resolving user input (name) to ID
+- Validating entrance references
+- Preparing route calculation inputs
 
 **Usage Example**:
 ```typescript
 const { resolveMapItemIdentifier } = useMapItemResolver(floorData);
 
-// Resolve various identifiers
-const id = resolveMapItemIdentifier('store-123');      // Returns ID if exists
-const name = resolveMapItemIdentifier('Starbucks');    // Returns name
-const entrance = resolveMapItemIdentifier('entrance-A'); // Returns entrance ID
+// Resolve various inputs
+const id1 = resolveMapItemIdentifier('store-123');     // Returns 'store-123' if exists
+const id2 = resolveMapItemIdentifier('Starbucks');     // Returns 'Starbucks'
+const id3 = resolveMapItemIdentifier('entrance-A');    // Returns 'entrance-A' if exists
+const id4 = resolveMapItemIdentifier('invalid');       // Returns 'invalid' (fallback)
+
+// Use in routing
+const routeFrom = resolveMapItemIdentifier(userInput);
+const routeTo = resolveMapItemIdentifier(destination);
+await calculateRoute(routeFrom, routeTo);
 ```
+
+**Note**: This is a simple resolver. For more complex resolution (name → ID lookup, entrance node lookup), use `createRouteCalculation`'s `resolvePlaceCandidate` function.
 
 ---
 
 ### useMultiFloorContinuation
 
-**File**: `useMultiFloorContinuation.ts`
+**File**: `hooks/useMultiFloorContinuation.ts`
 
-**Purpose**: Manages the continuation of multi-floor routes as the user progresses through steps.
+**Purpose**: Automatically manages multi-floor route progression as user navigates between floors.
+
+**Signature**:
+```typescript
+function useMultiFloorContinuation(props: UseMultiFloorContinuationProps): void
+```
 
 **Parameters**:
 ```typescript
-{
-  selectedFloorMap: string;
-  isLoading: boolean;
-  floorData: Omit<FloorData, 'floor'>;
-  floorDataRef: MutableRefObject<...>;
-  resolveMapItemIdentifier: (candidate: string) => string;
+interface UseMultiFloorContinuationProps {
+  selectedFloorMap: string;                           // Current floor
+  isLoading: boolean;                                 // Floor data loading state
+  floorData: Omit<FloorData, 'floor'>;               // Current floor data
+  floorDataRef: MutableRefObject<...>;                // Ref to floor data
+  resolveMapItemIdentifier: (candidate: string) => string; // ID resolver
 }
 ```
 
-**Returns**: void (side effects only)
+**Returns**: `void` (side effects only via Zustand store)
 
 **Key Features**:
-- Monitors current step in multi-floor route
-- Checks if current floor matches expected floor
-- Uses pre-calculated routes when available
-- Calculates routes on-the-fly if not pre-calculated
-- Highlights destination locations
-- Handles cleanup on unmount
+- ✅ Watches `multiFloorRoute` state from MapStore
+- ✅ Validates floor matches current step
+- ✅ Uses pre-calculated routes when available
+- ✅ Calculates routes on-the-fly if needed
+- ✅ Highlights destination on each floor
+- ✅ Proper cleanup on unmount
 
-**How It Works**:
-1. Watches for changes to `selectedFloorMap` and multi-floor route state
-2. Validates that floor data is ready and matches current step
-3. Retrieves pre-calculated route if available
-4. If not pre-calculated, computes route in real-time
-5. Updates map store with active nodes and highlighted destination
+**State Machine**:
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ useEffect Dependencies:                                  │
+│  - selectedFloorMap                                      │
+│  - isLoading                                             │
+│  - floorData.maps.length                                 │
+│  - floorData.nodes.length                                │
+│  - multiFloorRoute.currentStep                           │
+└──────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌──────────────────────────────────────────────────────────┐
+│ Guard Conditions (early return if true)                  │
+├──────────────────────────────────────────────────────────┤
+│ 1. !multiFloorRoute.isActive                            │
+│ 2. isLoading === true                                   │
+│ 3. floorData.maps.length === 0                          │
+│ 4. currentStep not found                                │
+│ 5. currentStep.floor !== selectedFloorMap               │
+└──────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌──────────────────────────────────────────────────────────┐
+│ Build Pre-calculated Route Key                           │
+│ Format: "FloorName:fromId:toId"                         │
+│ Example: "Ground Floor:store-1:elevator-a"              │
+└──────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+              ┌─────────┴─────────┐
+              │ Pre-calculated?   │
+              └─────────┬─────────┘
+                Yes │   │ No
+                    │   │
+        ┌───────────┘   └───────────┐
+        ▼                           ▼
+┌──────────────────┐    ┌──────────────────────┐
+│ Use Pre-calc     │    │ Calculate Fresh      │
+│ Route (instant)  │    │ Route (async)        │
+├──────────────────┤    ├──────────────────────┤
+│ setActiveNodeIds │    │ resolveMapItemIds    │
+│ setCurrentStep   │    │ routeMapHandler()    │
+│ highlightDest    │    │ setCurrentStepNodes  │
+│ setIsCalculating │    │ highlightDest        │
+│   = false        │    │                      │
+└──────────────────┘    └──────────────────────┘
+```
+
+**Destination Highlighting Logic**:
+
+```typescript
+// Priority 1: Exact ID match
+if (currentStep.toId) {
+  destMap = floorData.maps.find(m => m.id === currentStep.toId);
+}
+
+// Priority 2: Entrance lookup
+if (!destMap && currentStep.to) {
+  const isEntranceId = floorData.entrances.some(e => e.id === currentStep.to);
+  if (isEntranceId) {
+    destMap = floorData.maps.find(m => 
+      m.entranceNodes?.includes(currentStep.to)
+    );
+  }
+}
+
+// Priority 3: Name match (must be unique)
+if (!destMap && currentStep.to) {
+  const nameMatches = floorData.maps.filter(m => m.name === currentStep.to);
+  if (nameMatches.length === 1) {
+    destMap = nameMatches[0];
+  } else if (nameMatches.length > 1) {
+    console.warn('Multiple matches - skipping highlight');
+  }
+}
+```
 
 **Usage Example**:
 ```typescript
-// Used internally in IndoorMap component
+// In IndoorMap.tsx
 useMultiFloorContinuation({
   selectedFloorMap,
-  isLoading,
+  isLoading: floorDataLoading,
   floorData,
   floorDataRef,
   resolveMapItemIdentifier,
 });
 
-// No explicit return value - manages state via useMapStore
+// No direct return value - manages state internally via:
+// - useMapStore.getState().setActiveNodeIds()
+// - useMapStore.getState().setHighlightedPlace()
+// - useMapStore.getState().setIsCalculatingRoute()
 ```
 
----
-
-### useMultiFloorPathfinding
-
-**File**: `useMultiFloorPathfinding.ts`
-
-**Purpose**: Implements BFS algorithm to find paths between floors using vertical connectors (stairs, elevators, escalators).
-
-**Parameters**: None
-
-**Returns**:
-```typescript
-{
-  findMultiFloorPath: (
-    verticalsData: any,
-    fromFloor: string,
-    toFloor: string,
-    viaType: string
-  ) => any[] | null;
-}
+**Console Logs** (for debugging):
 ```
-
-**Key Features**:
-- Bidirectional BFS traversal (handles going up or down)
-- Supports different vertical connector types (stairs, elevator, escalator)
-- Builds adjacency map of floor connections
-- Reconstructs path with proper direction metadata
-- Handles floor key extraction from node IDs
-
-**Algorithm Details**:
-1. Builds bidirectional adjacency map from verticals data
-2. Performs BFS from start floor to target floor
-3. Tracks direction (up/down) for each transition
-4. Reconstructs path with corrected connector orientation
-
-**Usage Example**:
-```typescript
-const { findMultiFloorPath } = useMultiFloorPathfinding();
-
-const path = findMultiFloorPath(
-  verticalsData,     // Loaded vertical connectors
-  'ground',          // From floor
-  'third',           // To floor
-  'elevator'         // Via type
-);
-
-// Returns: Array of connectors with direction metadata
-// [
-//   { from: 'ground_elevator_1', to: 'second_elevator_1', direction: 'up', ... },
-//   { from: 'second_elevator_1', to: 'third_elevator_1', direction: 'up', ... }
-// ]
-```
-
----
-
-### useMultiFloorRouteBuilder
-
-**File**: `useMultiFloorRouteBuilder.ts`
-
-**Purpose**: Builds the step-by-step route structure for multi-floor navigation.
-
-**Parameters**: None (uses `useFloorKeyResolver` internally)
-
-**Returns**:
-```typescript
-{
-  buildRouteSteps: (
-    from: IMapItem,
-    to: IMapItem,
-    via: string,
-    connectorPath: any[]
-  ) => RouteStep[];
-}
-```
-
-**Key Features**:
-- Creates initial step from origin to first connector
-- Generates intermediate steps between connectors
-- Creates final step from last connector to destination
-- Properly assigns `fromId` and `toId` for precise routing
-- Logs each step for debugging
-
-**Route Structure**:
-```typescript
-RouteStep {
-  floor: string;              // Floor key (e.g., 'ground')
-  from: string;               // Display name of start point
-  fromId: string;             // Precise ID of start point
-  to: string;                 // Display name of end point
-  toId: string;               // Precise ID of end point
-  isVerticalTransition: boolean; // Whether this is a vertical movement
-}
-```
-
-**Usage Example**:
-```typescript
-const { buildRouteSteps } = useMultiFloorRouteBuilder();
-
-const steps = buildRouteSteps(
-  fromLocation,    // IMapItem: { name, id, floor }
-  toLocation,      // IMapItem: { name, id, floor }
-  'elevator',      // Via type
-  connectorPath    // Path from useMultiFloorPathfinding
-);
-
-// Returns array of RouteStep objects
-```
-
----
-
-### useRouteCalculation
-
-**File**: `useRouteCalculation.ts`
-
-**Purpose**: Handles single-floor route calculation with caching and optimization.
-
-**Parameters**:
-```typescript
-{
-  maps: IMapItem[];
-  nodes: INodes[];
-  entrances: IEntrances[];
-  selectedFloorMap: string;
-}
-```
-
-**Returns**:
-```typescript
-{
-  calculateRoute: (
-    from: string,
-    to: string,
-    forceCalculation?: boolean
-  ) => Promise<string[] | null>;
-  resolvePlaceCandidate: (candidate: string) => string;
-}
-```
-
-**Key Features**:
-- Checks pre-calculated multi-floor routes first
-- Uses cached routes when available
-- Resolves place candidates (ID, name, or entrance)
-- Debounces calculations (30ms iOS, 50ms others)
-- Updates map store with calculated path
-- Prevents duplicate calculations
-
-**Caching Strategy**:
-1. Check pre-calculated routes (multi-floor optimization)
-2. Check route cache (previous calculations)
-3. Calculate fresh route if needed
-4. Store result in cache for future use
-
-**Usage Example**:
-```typescript
-const { calculateRoute, resolvePlaceCandidate } = useRouteCalculation({
-  maps: floorData.maps,
-  nodes: floorData.nodes,
-  entrances: floorData.entrances,
-  selectedFloorMap,
-});
-
-// Calculate route
-const nodes = await calculateRoute('Starbucks', 'Exit A');
-
-// Resolve identifiers
-const resolvedId = resolvePlaceCandidate('store-123');
+🎯 Processing step 2/3
+   Floor: second
+   Route: Elevator A → Cinema
+⚡ Using pre-calculated route (15 nodes)
+[highlight] highlighting dest map id=cinema-1 name="Cinema"
 ```
 
 ---
 
 ### useRouteHandler
 
-**File**: `useRouteHandler.ts`
+**File**: `hooks/useRouteHandler.ts`
 
-**Purpose**: High-level route handler that manages both same-floor and multi-floor routing.
+**Purpose**: High-level route orchestrator that handles UI state, drawer closing, and delegates to appropriate routing functions.
+
+**Signature**:
+```typescript
+function useRouteHandler(props: UseRouteHandlerProps): { handleRoute: Function }
+```
 
 **Parameters**:
 ```typescript
-{
+interface UseRouteHandlerProps {
   floorData: Omit<FloorData, 'floor'>;
   floorDataRef: MutableRefObject<...>;
   resolveMapItemIdentifier: (candidate: string) => string;
@@ -482,28 +600,118 @@ const resolvedId = resolvePlaceCandidate('store-123');
     from: IMapItem,
     to: IMapItem,
     via?: string
-  ) => Promise<string[] | null>;
+  ) => Promise<string[] | null>
 }
 ```
 
-**Key Features**:
-- Closes drawer UI before routing (better UX)
-- Adds mobile-specific delays for smooth animations
-- Handles same-floor routing directly
-- Delegates multi-floor routing to specialized handler
-- Waits for floor data to load before calculating
-- Proper error handling and cleanup
+**Routing Decision Tree**:
 
-**Routing Logic**:
 ```
-if (same floor):
-  → Calculate route directly
-else if (multi-floor with via type):
-  → Use handleMultiFloorRoute
-  → Wait for floor data
-  → Calculate first segment
-else:
-  → Return null (invalid request)
+handleRoute(from, to, via?)
+         │
+         ▼
+┌────────────────────┐
+│ Set calculating    │
+│ = true             │
+└────────┬───────────┘
+         │
+         ▼
+┌────────────────────┐
+│ Close UI           │
+│ - setIsExpanded    │
+│ - setIsFloorMapOpen│
+└────────┬───────────┘
+         │
+         ▼
+┌────────────────────┐
+│ Mobile delay?      │
+│ (100ms if iOS/And) │
+└────────┬───────────┘
+         │
+         ▼
+    ┌────┴────┐
+    │from.floor│
+    │= to.floor│
+    └────┬────┘
+      Yes│  │No
+    ┌────┘  └────┐
+    ▼            ▼
+┌─────────┐  ┌──────────┐
+│Same Floor│  │Multi Floor│
+│          │  │+ via?    │
+└────┬────┘  └────┬─────┘
+     │            │
+     ▼            ▼
+┌─────────────┐ ┌────────────────────┐
+│routeMap     │ │handleMultiFloor    │
+│Handler()    │ │Route()             │
+│             │ │                    │
+│Returns:     │ │ 1. Build steps     │
+│ string[]    │ │ 2. Pre-calculate   │
+│             │ │ 3. Set floor       │
+│             │ │ 4. Calculate first │
+└─────────────┘ └────────────────────┘
+```
+
+**Key Features**:
+
+#### 1. **UI State Management**
+```typescript
+// Close drawer before routing (better UX)
+setIsExpanded(false);
+setIsFloorMapOpen(false);
+```
+
+#### 2. **Mobile-Specific Delays**
+```typescript
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  await new Promise(resolve => setTimeout(resolve, 100));
+}
+```
+- Gives drawer animation time to complete
+- Prevents janky UI on mobile devices
+
+#### 3. **Same-Floor Routing**
+```typescript
+if (from.floor === to.floor) {
+  return routeMapHandler(
+    from.name,
+    to.name,
+    floorData.maps,
+    floorData.nodes,
+    floorData.entrances,
+    false  // Use cache
+  );
+}
+```
+
+#### 4. **Multi-Floor Routing**
+```typescript
+if (via) {
+  const steps = await handleMultiFloorRoute(
+    from, to, via,
+    setMultiFloorRoute,
+    setSelectedFloorMap
+  );
+  
+  // Wait for floor data to load
+  await waitForFloorData();
+  
+  // Calculate first segment
+  return routeMapHandler(...);
+}
+```
+
+**Error Handling**:
+```typescript
+try {
+  // Routing logic
+} catch (err) {
+  console.error('Route handler error:', err);
+  useMapStore.getState().setIsCalculatingRoute(false);
+  return null;
+}
 ```
 
 **Usage Example**:
@@ -518,292 +726,182 @@ const { handleRoute } = useRouteHandler({
 });
 
 // Same floor
-await handleRoute(
+const nodes = await handleRoute(
   { name: 'Starbucks', id: 'store-1', floor: 'ground' },
   { name: 'Exit A', id: 'exit-a', floor: 'ground' }
 );
 
 // Multi-floor
-await handleRoute(
+const nodes = await handleRoute(
   { name: 'Starbucks', id: 'store-1', floor: 'ground' },
   { name: 'Cinema', id: 'cinema-1', floor: 'third' },
-  'elevator'
+  'elevator'  // Via type
 );
 ```
 
 ---
 
-### useRouteMapHandler
+## Helper Functions
 
-**File**: `useRouteMapHandler.ts`
+### createRouteCalculation
 
-**Purpose**: Orchestrates all routing logic by composing multiple specialized hooks.
+**File**: `hooks/helper/createRouteCalculation.ts`
 
-**Exports**:
-- `routeMapHandler` - Main route calculation function
-- `handleMultiFloorRoute` - Multi-floor route setup function
+**Purpose**: Core routing engine for single-floor pathfinding with intelligent caching.
 
-**Functions**:
-
-#### routeMapHandler
+**Signature**:
 ```typescript
-async function routeMapHandler(
-  from: string,
-  to: string,
-  maps: IMapItem[],
-  nodes: INodes[],
-  entrances: IEntrances[],
-  forceCalculation?: boolean
-): Promise<string[] | null>
+function createRouteCalculation(props: CreateRouteCalculationProps): {
+  calculateRoute: Function;
+  resolvePlaceCandidate: Function;
+}
 ```
 
-Uses `useRouteCalculation` internally to compute single-floor routes.
-
-#### handleMultiFloorRoute
+**Parameters**:
 ```typescript
-async function handleMultiFloorRoute(
-  from: IMapItem,
-  to: IMapItem,
-  via: string,
-  setMultiFloorRoute: (steps, destination, preCalculated?) => void,
-  setSelectedFloorMap: (floor: string) => void
-): Promise<RouteStep[] | null>
+interface CreateRouteCalculationProps {
+  maps: IMapItem[];
+  nodes: INodes[];
+  entrances: IEntrances[];
+  selectedFloorMap: string;
+}
 ```
-
-**Multi-Floor Process**:
-1. Load vertical connectors data
-2. Find path through floors (BFS)
-3. Build route steps
-4. Load data for all required floors
-5. Pre-calculate all route segments
-6. Set up multi-floor route in store
-7. Navigate to starting floor
-
-**Usage Example**:
-```typescript
-import { routeMapHandler, handleMultiFloorRoute } from '@/hooks/useRouteMapHandler';
-
-// Single floor
-const nodes = await routeMapHandler(
-  'Starbucks',
-  'Exit A',
-  maps,
-  nodes,
-  entrances
-);
-
-// Multi-floor
-const steps = await handleMultiFloorRoute(
-  fromLocation,
-  toLocation,
-  'elevator',
-  setMultiFloorRoute,
-  setSelectedFloorMap
-);
-```
-
----
-
-### useRoutePreCalculation
-
-**File**: `useRoutePreCalculation.ts`
-
-**Purpose**: Pre-calculates all route segments for multi-floor navigation to enable instant navigation.
-
-**Parameters**: None
 
 **Returns**:
 ```typescript
 {
-  preCalculateMultiFloorRoutes: (
-    steps: RouteStep[],
-    allFloorsData: Map<string, FloorDataSet>
-  ) => Promise<Map<string, string[]>>;
+  calculateRoute: (
+    from: string,
+    to: string,
+    forceCalculation?: boolean
+  ) => Promise<string[] | null>;
+  
+  resolvePlaceCandidate: (candidate: string) => string;
 }
 ```
 
-**Key Features**:
-- Calculates routes for all steps in parallel
-- Skips vertical transition steps (they're just floor changes)
-- Stores results in a Map keyed by `"floorName:from:to"`
-- Handles last segment specially (uses explicit IDs)
-- Resolves identifiers to proper map/entrance references
+**Caching Strategy** (3-tier):
 
-**Pre-Calculation Benefits**:
-- Instant route display when user changes floors
-- Better UX (no loading delay between floors)
-- Validates entire multi-floor route before starting
-- Can detect unreachable destinations early
+```
+calculateRoute(from, to, forceCalculation?)
+         │
+         ▼
+┌────────────────────────────────────┐
+│ Tier 1: Pre-calculated Routes     │
+│ (Multi-floor optimization)         │
+├────────────────────────────────────┤
+│ Key: "FloorName:from:to"          │
+│ Source: multiFloorRoute.preCalculated │
+│ Speed: Instant (synchronous)       │
+└────────┬───────────────────────────┘
+         │ Miss
+         ▼
+┌────────────────────────────────────┐
+│ Tier 2: Route Cache                │
+│ (Previous calculations)            │
+├────────────────────────────────────┤
+│ getCachedRoute(floor, from, to)   │
+│ - Memory cache (Map)               │
+│ - localStorage fallback            │
+│ - Bidirectional (from↔to)          │
+│ Speed: Very fast (~1ms)            │
+└────────┬───────────────────────────┘
+         │ Miss
+         ▼
+┌────────────────────────────────────┐
+│ Tier 3: Fresh Calculation          │
+│ (BFS pathfinding)                  │
+├────────────────────────────────────┤
+│ findPathBetweenPlacesOptimized()  │
+│ - Build graph                      │
+│ - Run BFS algorithm                │
+│ - Store in cache                   │
+│ Speed: ~50-200ms                   │
+└────────────────────────────────────┘
+```
+
+**resolvePlaceCandidate Logic**:
+
+```typescript
+resolvePlaceCandidate(candidate: string): string
+```
+
+Priority order:
+1. **Map ID**: `maps.find(m => m.id === candidate)` → return `m.id`
+2. **Map Name**: `maps.find(m => m.name === candidate)` → return `m.name`
+3. **Entrance Node**: `maps.find(m => m.entranceNodes?.includes(candidate))` → return `m.id`
+4. **Fallback**: Return `candidate` unchanged
+
+**Debouncing**:
+```typescript
+const debounceTime = /iPhone|iPad|iPod/.test(navigator.userAgent) ? 30 : 50;
+setTimeout(() => {
+  // Calculate route
+}, debounceTime);
+```
+- iOS: 30ms (more aggressive for smoother UX)
+- Others: 50ms
+
+**State Updates**:
+```typescript
+// iOS-compatible: wrapped in queueMicrotask
+queueMicrotask(() => {
+  setActiveNodeIds(orderedNodes);
+  setSelectedId(to);
+  setIsCalculatingRoute(false);
+});
+```
+
+**Deduplication**:
+```typescript
+const activeCalculations = new Map<string, {}>();
+const calculationKey = `${selectedFloorMap}-${from}-${to}`;
+
+if (activeCalculations.has(calculationKey)) {
+  activeCalculations.delete(calculationKey); // Cancel previous
+}
+activeCalculations.set(calculationKey, {});
+```
 
 **Usage Example**:
 ```typescript
-const { preCalculateMultiFloorRoutes } = useRoutePreCalculation();
-
-const preCalculated = await preCalculateMultiFloorRoutes(
-  steps,           // Array of RouteStep
-  allFloorsData    // Map of floor data
-);
-
-// Result: Map<string, string[]>
-// {
-//   "Ground Floor:Starbucks:Elevator A" => ['node1', 'node2', ...],
-//   "Second Floor:Elevator A:Cinema" => ['node5', 'node6', ...],
-//   ...
-// }
-```
-
----
-
-## Usage Patterns
-
-### Basic Floor Navigation
-```typescript
-// In a component
-const { floorData, isLoading } = useFloorData(selectedFloor, setIsLoading);
-
-if (isLoading) return <LoadingSpinner />;
-
-return <MapBuilder {...floorData} />;
-```
-
-### Single-Floor Routing
-```typescript
-const { calculateRoute } = useRouteCalculation({
+const { calculateRoute, resolvePlaceCandidate } = createRouteCalculation({
   maps: floorData.maps,
   nodes: floorData.nodes,
   entrances: floorData.entrances,
-  selectedFloorMap,
+  selectedFloorMap: 'ground'
 });
 
-const nodes = await calculateRoute('Store A', 'Exit B');
+// Resolve ambiguous inputs
+const from = resolvePlaceCandidate('Starbucks');
+const to = resolvePlaceCandidate('exit-a');
+
+// Calculate route
+const nodes = await calculateRoute(from, to);
+// Returns: ['node1', 'node2', 'node3', ...]
+
+// Force recalculation (bypass cache)
+const freshNodes = await calculateRoute(from, to, true);
 ```
 
-### Multi-Floor Routing
+---
+
+### createFloorKeyResolver
+
+**File**: `hooks/helper/createFloorKeyResolver.ts`
+
+**Purpose**: Normalizes various floor identifiers to standardized floor keys.
+
+**Signature**:
 ```typescript
-const { handleRoute } = useRouteHandler({
-  floorData,
-  floorDataRef,
-  resolveMapItemIdentifier,
-  setSelectedFloorMap,
-  setIsExpanded,
-  setIsFloorMapOpen,
-});
-
-await handleRoute(fromLocation, toLocation, 'elevator');
+function createFloorKeyResolver(): {
+  getFloorKey: (floorIdentifier: string) => string;
+  getFloorKeyFromNode: (nodeId: string) => string;
+}
 ```
 
-### Multi-Floor Route Continuation
+**Returns**:
 ```typescript
-// Automatically handles route progression
-useMultiFloorContinuation({
-  selectedFloorMap,
-  isLoading,
-  floorData,
-  floorDataRef,
-  resolveMapItemIdentifier,
-});
-```
-
-### Lazy Loading with Search
-```typescript
-const { visiblePlaces, hasMore, loadMore, search } = useLazyMapData('ground');
-
-// Render visible items
-{visiblePlaces.map(place => <PlaceCard {...place} />)}
-
-// Infinite scroll
-<InfiniteScroll hasMore={hasMore} loadMore={loadMore} />
-
-// Search functionality
-const results = search(searchQuery);
-```
-
----
-
-## Best Practices
-
-1. **Always use refs for async operations**: Use `floorDataRef.current` in async callbacks to avoid stale closures
-
-2. **Handle loading states**: Check `isLoading` before attempting route calculations
-
-3. **Resolve identifiers**: Always use `resolveMapItemIdentifier` or `resolvePlaceCandidate` before routing
-
-4. **Clean up on unmount**: Hooks that use effects include proper cleanup functions
-
-5. **Error handling**: All hooks include try-catch blocks and graceful fallbacks
-
-6. **Logging**: Extensive console logging for debugging (prefix with emoji for easy filtering)
-
-7. **Cache management**: Use `useLazyMapData`'s caching features to improve performance
-
-8. **Avoid duplicate requests**: Hooks implement deduplication to prevent unnecessary API calls
-
----
-
-## Performance Considerations
-
-- **Caching**: Routes are cached to avoid recalculation
-- **Debouncing**: Route calculations are debounced (30-50ms)
-- **Pre-calculation**: Multi-floor routes are pre-calculated for instant display
-- **Lazy loading**: Floor data loaded only when needed
-- **Refs for performance**: Use refs to avoid unnecessary re-renders
-- **Infinite scroll**: `useLazyMapData` loads items progressively
-- **Smart search**: Search prioritizes type matches for faster results
-- **Deduplication**: Automatic removal of duplicate places by name
-
----
-
-## Troubleshooting
-
-### Route not calculating
-- Check if floor data is loaded (`isLoading === false`)
-- Verify identifiers exist using `resolveMapItemIdentifier`
-- Check console for BFS pathfinding logs
-
-### Multi-floor route not progressing
-- Verify `useMultiFloorContinuation` is mounted
-- Check if current floor matches expected floor
-- Look for "⏳ Waiting for correct floor" log
-
-### Pre-calculated routes not working
-- Check pre-calculation logs ("⚡ Pre-calculated")
-- Verify floor data was loaded for all required floors
-- Ensure route keys match format: "FloorName:from:to"
-
-### Lazy loading not working
-- Check if `hasMore` is true
-- Verify `loadMore` is being called correctly
-- Look for console logs about floor data loading
-
-### Search returning no results
-- Ensure query is not empty
-- Check if places array is populated
-- Verify places have valid names and types
-
----
-
-## Future Improvements
-
-- Add TypeScript strict mode compliance
-- Implement route optimization algorithms (A*, Dijkstra)
-- Add support for accessibility routing (wheelchair-accessible paths)
-- Cache vertical connector data globally
-- Add route recalculation on floor data updates
-- Implement route history/undo functionality
-- Optimize lazy loading with virtual scrolling
-- Add fuzzy search capabilities
-
----
-
-## Related Files
-
-- **Types**: `@/types/index.ts` - TypeScript interfaces
-- **Algorithms**: `@/routing/algorithms/routing.ts` - Pathfinding implementation
-- **Utilities**: `@/routing/utils/*` - Helper functions
-- **Store**: `@/store/MapStore.ts` - Zustand state management
-
----
-
-**Last Updated**: October 30, 2025  
-**Version**: 1.1.0  
-**Maintained by**: Development Team
+{
+  getFloorKey: (floorIdentifier: string) => string;
+  getFloorKeyFromNode: (nodeId: string) =>

@@ -7,7 +7,17 @@ const memoryCache = new Map<string, CachedRoute>();
 const MAX_CACHE_SIZE = 50;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-// âœ… Safe cache key that prevents collisions
+// ✅ Polyfill for requestIdleCallback (not available in iOS Safari)
+const scheduleIdleTask = (callback: () => void) => {
+  if (typeof requestIdleCallback !== 'undefined') {
+    requestIdleCallback(callback);
+  } else {
+    // Fallback for iOS Safari - use setTimeout with delay
+    setTimeout(callback, 100);
+  }
+};
+
+// ✅ Safe cache key that prevents collisions
 function createCacheKey(floor: string, from: string, to: string): string {
   // Use length prefixes to prevent collision
   return `${floor}:${from.length}:${from}:${to.length}:${to}`;
@@ -84,9 +94,9 @@ export function setCachedRoute(
     }
   }
 
-  // Store in localStorage asynchronously
+  // Store in localStorage asynchronously (with iOS Safari fallback)
   if (typeof window !== 'undefined' && window.localStorage) {
-    requestIdleCallback(() => {
+    scheduleIdleTask(() => {
       try {
         const lsKey = `route-cache-${floor}-${encodeURIComponent(from)}-${encodeURIComponent(to)}`;
         localStorage.setItem(lsKey, JSON.stringify(cached));
@@ -107,7 +117,7 @@ export function setCachedRoute(
   }
 }
 
-// âœ… Clear expired cache entries
+// ✅ Clear expired cache entries
 export function cleanExpiredCache(): void {
   const now = Date.now();
   
@@ -118,9 +128,9 @@ export function cleanExpiredCache(): void {
     }
   }
   
-  // Clean localStorage in background
+  // Clean localStorage in background (with iOS Safari fallback)
   if (typeof window !== 'undefined' && window.localStorage) {
-    requestIdleCallback(() => {
+    scheduleIdleTask(() => {
       try {
         const keysToRemove: string[] = [];
         for (let i = 0; i < localStorage.length; i++) {
