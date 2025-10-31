@@ -20,7 +20,7 @@ An interactive indoor navigation application designed for the 2026 International
 
 ### Code Documentation
 - [🪝 **Custom Hooks**](./src/hooks/README.md) - React hooks for navigation, routing, and data management
-- [🗺️ **Routing System**](./src/routing/README.md) - Pathfinding algorithms (A*, Dijkstra)
+- [🗺️ **Routing System**](./src/routing/Readme.md) - Pathfinding algorithms (A*, Dijkstra)
 - [🧩 **Components**](./src/components/README.md) - Reusable UI components (IN PROGRESS README)
 - [💾 **State Management**](./src/store/README.md) - Zustand stores (Map, Search, Drawer)
 - [🛠️ **Utilities**](./src/routing/utils/README.md) - Helper functions and tools
