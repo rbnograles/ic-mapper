@@ -70,3 +70,5 @@ export interface RouteStep {
   isVerticalTransition: boolean;
   isIntermediateVertical?: boolean;
 }
+
+export type AdjList = Record<string, { to: string; weight: number }[]>;

@@ -72,11 +72,11 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   // Responsive scaling
   const baseScale = isMobile ? 2.5 : 3;
   const tooltipWidth = !isGroundFloor ? 320 * baseScale : 300 * baseScale;
-  const tooltipHeight = !isGroundFloor ? 170 * baseScale : 160 * baseScale;
+  const tooltipHeight = !isGroundFloor ? 190 * baseScale : 160 * baseScale;
   const arrowSize = 8 * baseScale;
   const iconSize = 20 * baseScale;
   const fontSize = 16 * baseScale;
-  const buttonHeight = 48 * baseScale;
+  const buttonHeight = (isMobile ? 60 : 48) * baseScale;
   const buttonFontSize = 14 * baseScale;
 
   const tooltipX = center.x - tooltipWidth / 2;

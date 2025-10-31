@@ -7,7 +7,6 @@ const memoryCache = new Map<string, CachedRoute>();
 const MAX_CACHE_SIZE = 50;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-// ✅ Polyfill for requestIdleCallback (not available in iOS Safari)
 const scheduleIdleTask = (callback: () => void) => {
   if (typeof requestIdleCallback !== 'undefined') {
     requestIdleCallback(callback);
