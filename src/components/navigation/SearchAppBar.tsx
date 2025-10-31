@@ -9,7 +9,7 @@ import type { IMapItem, ViaOption } from '@/types';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
 import useSearchStore from '@/store/SearchStore';
-import SearchBar from '../props/SearchInput';
+import SearchInput from '../props/SearchInput';
 import useMapStore from '@/store/MapStore';
 
 function getFloor(value: any): string | null {
@@ -186,7 +186,7 @@ export default function SearchAppBar({
               gap: 2,
             }}
           >
-            <SearchBar
+            <SearchInput
               placeholder="Search for a place or type"
               value={pointA}
               onChange={(val) => {

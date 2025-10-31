@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import type { ILabels} from '@/types';
+import { useTheme } from '@mui/material/styles';
 
 const Boundaries = ({boundaries}: {boundaries: ILabels[]}) => {
   return (

@@ -1,7 +1,5 @@
-// components/SearchBar.tsx
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Box, Autocomplete, CircularProgress, styled, TextField } from '@mui/material';
-import theme from '@/styles/theme';
+import { Box, Autocomplete, CircularProgress, styled, TextField, useTheme } from '@mui/material';
 import useDrawerStore from '@/store/DrawerStore';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,19 +9,19 @@ import type { IMapItem } from '@/types';
 import useSearchStore from '@/store/SearchStore';
 
 export interface LazyLoaderProps {
-  visiblePlaces: IMapItem[]; // current chunk / visible items
+  visiblePlaces: IMapItem[];
   hasMore: boolean;
-  loadMore: () => void; // triggers next chunk
-  search: (query: string) => IMapItem[]; // synchronous search returning results
-  loading: boolean; // loader state from the hook
-  saveToCache: (item: IMapItem) => void; // persist selected item
+  loadMore: () => void;
+  search: (query: string) => IMapItem[];
+  loading: boolean;
+  saveToCache: (item: IMapItem) => void;
 }
 
-export interface SearchBarProps {
+export interface SearchInputProps {
   placeholder?: string;
   value?: IMapItem | string | null;
   onChange?: (val: IMapItem | null) => void;
-  lazy: LazyLoaderProps; // pass the hook outputs here
+  lazy: LazyLoaderProps;
   isMobile?: boolean;
   debounceMs?: number;
 }
@@ -32,7 +30,7 @@ export interface SearchBarProps {
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: 10,
-  backgroundColor: theme.palette.common.white,
+  backgroundColor: theme.palette.background.paper,
   boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
   flex: 1,
   display: 'flex',
@@ -61,14 +59,16 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 
 const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toUpperCase());
 
-export default function SearchBar({
+export default function SearchInput({
   placeholder = 'Search',
   value = null,
   onChange,
   lazy,
   isMobile = false,
   debounceMs = 300,
-}: SearchBarProps) {
+}: SearchInputProps) {
+  const theme = useTheme();
+  
   const isDirectionPanelOpen = useDrawerStore((s) => s.isDirectionPanelOpen);
 
   // destructure lazy loader props

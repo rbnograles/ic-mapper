@@ -2,10 +2,8 @@ import { useEffect } from 'react';
 
 import type { IMapItem } from '@/types';
 
-import theme from '@/styles/theme';
-import { ThemeProvider } from '@mui/material/styles';
 import { layoutStyles } from '@/styles/layoutStyles';
-import { Box, CssBaseline, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import BottomNavBar from '@/components/navigation/BottomNavBar';
 import SearchAppBar from '@/components/navigation/SearchAppBar';
@@ -26,6 +24,8 @@ import { useFloorData } from '@/hooks/useFloorData';
 import { useMapItemResolver } from '@/hooks/useMapItemResolver';
 import { useRouteHandler } from '@/hooks/useRouteHandler';
 import { useMultiFloorContinuation } from '@/hooks/useMultiFloorContinuation';
+import { CustomThemeProvider } from '@/app/providers/ThemeProvider';
+import { useTheme } from '@mui/material/styles';
 
 export function IndoorMap() {
   // MapStore
@@ -94,9 +94,10 @@ export function IndoorMap() {
     resetMap();
   };
 
+  const theme = useTheme(); 
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <CustomThemeProvider>
       <Box sx={layoutStyles.appRoot}>
         {/* Search Bar */}
         <Box sx={layoutStyles.fixedTop}>
@@ -147,6 +148,6 @@ export function IndoorMap() {
         {/* Floor Drawer */}
         <FloorSelection floors={floors} selectedKey={selectedFloorMap} onSelect={openFloor} />
       </Box>
-    </ThemeProvider>
+    </CustomThemeProvider>
   );
 }

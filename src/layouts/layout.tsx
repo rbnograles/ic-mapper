@@ -1,35 +1,35 @@
 import { Outlet } from 'react-router-dom';
-import { ThemeProvider, CssBaseline, Drawer, Box } from '@mui/material';
-import theme from '@/styles/theme';
+import { Box } from '@mui/material';
 import BottomNavBar from '@/components/navigation/BottomNavBar';
 import { layoutStyles } from '@/styles/layoutStyles';
-import { IMapItem } from '@/types';
+import ThemeToggleButton from '@/components/props/ThemeToggle';
+import { CustomThemeProvider } from '@/app/providers/ThemeProvider';
 
 export default function Layout() {
-  const placeItem: IMapItem = {
-    entranceNodes: [],
-    path: '',
-    centroid: [],
-    floor: '',
-    baseFill: '',
-    centerY: 0,
-    id: '',
-    name: '',
-    type: '',
-  };
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <CustomThemeProvider>
       <Box sx={layoutStyles.appRoot}>
-        {/* top-level fixed content (AppBar, Search) can go here if you want */}
+        {/* <Box
+          sx={{
+            position: 'fixed',
+            top: 12,
+            right: 12,
+            zIndex: (theme) => theme.zIndex.tooltip + 1,
+            borderRadius: 1,
+            p: 0.5,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: 'transparent',
+          }}
+        >
+          <ThemeToggleButton />
+        </Box> */}
+
         <Outlet />
-        {/* persistent bottom bar (always visible) */}
-        <BottomNavBar
-          expanded={false} // wire in real state if you have slider
-          handleSliderClose={() => {}}
-          pathItem={placeItem}
-        />
+
+        <BottomNavBar />
       </Box>
-    </ThemeProvider>
+    </CustomThemeProvider>
   );
 }

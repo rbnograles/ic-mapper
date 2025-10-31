@@ -12,9 +12,8 @@ import {
   Select,
   MenuItem,
   FormHelperText,
+  useTheme,
 } from '@mui/material';
-
-import theme from '@/styles/theme';
 
 import { FaLocationDot } from 'react-icons/fa6';
 import { RiArrowUpDownLine } from 'react-icons/ri';
@@ -26,7 +25,7 @@ import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import CachedResults from '@/components/common/CachedResults';
 // Intefaces
 import { IDirectionSearch } from '@/types/DrawerInterface';
-import SearchBar from '../props/SearchInput';
+import SearchInput from '../props/SearchInput';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
 import useSearchStore from '@/store/SearchStore';
@@ -51,6 +50,7 @@ const Direction = ({
   floorA,
   floorB,
 }: DirectionProps) => {
+  const theme = useTheme();
   // Drawer store
   const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen);
   const isDirectionPanelOpen = useDrawerStore((state) => state.isDirectionPanelOpen);
@@ -130,7 +130,7 @@ const Direction = ({
 
             {/* Search fields + swap button */}
             <Stack spacing={1.5} flex={1}>
-              <SearchBar
+              <SearchInput
                 placeholder="Choose starting..."
                 value={pointA}
                 onChange={(val) => {
@@ -146,7 +146,7 @@ const Direction = ({
                   saveToCache,
                 }}
               />
-              <SearchBar
+              <SearchInput
                 placeholder="Choose destination..."
                 value={pointB}
                 onChange={(val) => {
