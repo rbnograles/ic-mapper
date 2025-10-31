@@ -1,6 +1,6 @@
 // src/routing/utils/createRoutePreCalculation.ts
 import type { Graph, IEntrances, IMapItem, INodes, RouteStep } from '@/types/index';
-import { findPathBetweenPlacesOptimized } from '@/routing/algorithms/routing';
+import { findPathBetweenPlacesOptimized } from '@/routing';
 import { floors } from '@/routing/utils/Constants';
 
 export function createRoutePreCalculation() {

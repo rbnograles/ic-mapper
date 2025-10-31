@@ -1,6 +1,6 @@
 import { Floors } from './Constants';
 
-export class Normalizer {
+export default class Normalizer {
   private static floors: Floors[];
   constructor(floors: any) {
     Normalizer.floors = floors;

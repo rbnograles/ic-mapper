@@ -72,11 +72,11 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
   // Responsive scaling
   const baseScale = isMobile ? 2.5 : 3;
   const tooltipWidth = !isGroundFloor ? 320 * baseScale : 300 * baseScale;
-  const tooltipHeight = !isGroundFloor ? 170 * baseScale : 160 * baseScale;
+  const tooltipHeight = !isGroundFloor ? 190 * baseScale : 160 * baseScale;
   const arrowSize = 8 * baseScale;
   const iconSize = 20 * baseScale;
   const fontSize = 16 * baseScale;
-  const buttonHeight = 48 * baseScale;
+  const buttonHeight = (isMobile ? 60 : 48) * baseScale;
   const buttonFontSize = 14 * baseScale;
 
   const tooltipX = center.x - tooltipWidth / 2;
@@ -181,7 +181,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
       >
         <div style={{ fontSize: buttonFontSize, fontWeight: 700, lineHeight: 1 }}>{title}</div>
         {subtitle && (
-          <div style={{ fontSize: buttonFontSize * 0.85, opacity: 0.95 }}>{subtitle}</div>
+          <div style={{ fontSize: buttonFontSize * 0.85, opacity: isMobile ? 1 : 0.95 }}>{subtitle}</div>
         )}
       </div>
     </div>
@@ -375,7 +375,7 @@ export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPr
               <ButtonContent
                 direction="up"
                 title={isMultiFloorActive ? 'Continue Route' : 'Go to Upper Floor'}
-                subtitle={canGoUp ? upLabel : ''}
+                subtitle={canGoUp ? upLabel : 'up'}
                 icon={
                   <FaArrowAltCircleUp style={{ fontSize: buttonFontSize * 1.6, color: 'white' }} />
                 }

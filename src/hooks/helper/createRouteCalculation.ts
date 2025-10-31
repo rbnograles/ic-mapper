@@ -1,10 +1,10 @@
 // routeCalculationUtil.ts (new file, replace useRouteCalculation)
 import type { Graph, IEntrances, IMapItem, INodes } from '@/types/index';
-import { findPathBetweenPlacesOptimized } from '@/routing/algorithms/routing';
+import { findPathBetweenPlacesOptimized } from '@/routing';
 import { floors } from '@/routing/utils/Constants';
 import useMapStore from '@/store/MapStore';
 import { getCachedRoute, setCachedRoute } from '@/routing/utils/routeCache';
-import { Normalizer } from '@/routing/utils/Normalizer';
+import Normalizer from '@/routing/utils/Normalizer';
 
 const activeCalculations = new Map<string, { isPreCalculation?: boolean }>();
 const NormalizeFloor = new Normalizer(floors);

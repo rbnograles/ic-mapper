@@ -21,15 +21,9 @@ An interactive indoor navigation application designed for the 2026 International
 ### Code Documentation
 - [🪝 **Custom Hooks**](./src/hooks/README.md) - React hooks for navigation, routing, and data management
 - [🗺️ **Routing System**](./src/routing/README.md) - Pathfinding algorithms (A*, Dijkstra)
-- [🧩 **Components**](./src/components/README.md) - Reusable UI components
+- [🧩 **Components**](./src/components/README.md) - Reusable UI components (IN PROGRESS README)
 - [💾 **State Management**](./src/store/README.md) - Zustand stores (Map, Search, Drawer)
-- [📐 **Type Definitions**](./src/types/README.md) - TypeScript interfaces and types
 - [🛠️ **Utilities**](./src/routing/utils/README.md) - Helper functions and tools
-
-### Additional Resources
-- [📊 Data Structure](./src/Data/README.md) - Floor data format and schema
-- [🎨 Styling Guide](./src/styles/README.md) - Theme and styling conventions
-- [🤝 Contributing](./CONTRIBUTING.md) - How to contribute to the project
 
 ---
 
@@ -192,8 +186,16 @@ ic_map_navigator/
 │  │  ├─ unique_types.json    # Place categories
 │  │  └─ README.md            # 📖 Data structure documentation
 │  ├─ hooks/                  # 🪝 Custom React hooks
+│  │  ├─helper
+│  │  │  ├─createFloorKeyResolver.ts
+│  │  │  ├─createMultiFloorPathfinding.ts
+│  │  │  ├─createMultiFloorRouteBuilder.ts
+│  │  │  ├─createRoutePreCalculation.ts
 │  │  ├─ useFloorData.ts      # Floor data management
 │  │  ├─ useLazyMapData.ts    # Lazy loading + search
+│  │  ├─ useMapItemResolver.ts 
+│  │  ├─ useMultiFloorContinuation.ts 
+│  │  ├─ useRouteHandler.ts # Route calculation logic 
 │  │  ├─ useRouteMapHandler.ts # Route calculation logic
 │  │  └─ README.md            # 📖 Hooks documentation
 │  ├─ pages/                  # 📄 Page components
