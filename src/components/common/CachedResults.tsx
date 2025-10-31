@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemText, Divider, useTheme } from '@mui/material';
 import { History } from '@mui/icons-material';
-import theme from '@/styles/theme';
 
 interface Place {
   id: string;
@@ -18,6 +17,9 @@ export default function CachedResults({
   getLocationFromHistory?: (history: any) => void;
   setDirectionOpen: (value: boolean) => void;
 }) {
+
+  const theme = useTheme(); 
+  
   const [allCachedPlaces, setAllCachedPlaces] = useState<Place[]>([]);
 
   useEffect(() => {

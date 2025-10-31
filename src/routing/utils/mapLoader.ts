@@ -1,8 +1,5 @@
 import { FloorData } from "@/types";
 
-// src/utils/loadMapData.ts
-
-
 export async function loadMapData(floor: any) {
   const loadSingleFloor = async (dirName: string, canonicalFloorName: string): Promise<FloorData> => {
     const [{ default: mapData }, { default: nodeData }, { default: labels }] = await Promise.all([

@@ -5,8 +5,7 @@ import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import useMapStore from '@/store/MapStore';
 import { floors } from '@/routing/utils/Constants';
 import useDrawerStore from '@/store/DrawerStore';
-import theme from '@/styles/theme';
-import { useMediaQuery } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { FaArrowAltCircleDown, FaArrowAltCircleUp, FaTimes } from 'react-icons/fa';
 
 interface VerticalTransitionPromptProps {
@@ -16,6 +15,8 @@ interface VerticalTransitionPromptProps {
 }
 
 export function VerticalTransitionPrompt({ centers, maps }: VerticalTransitionPromptProps) {
+  const theme = useTheme();
+  
   const highlightedId = useMapStore((s) => s.highlightedPlace?.id);
   const currentFloor = useMapStore((s) => s.selectedFloorMap);
   const multiFloorRoute = useMapStore((s) => s.multiFloorRoute);

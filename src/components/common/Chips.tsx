@@ -10,6 +10,7 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from '@mui/material';
 
 // icons
@@ -17,12 +18,12 @@ import { FaLocationArrow } from 'react-icons/fa';
 
 import { HiDotsHorizontal } from 'react-icons/hi';
 
-import theme from '@/styles/theme';
-
 import useMapStore from '@/store/MapStore';
 import CHIPS_ICONMAP from '@/components/common/ChipsIconMapper';
 
 export const Chips = ({ types }: { types: string[] }) => {
+  const theme = useTheme();
+  
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const scrollRef = useRef<HTMLDivElement | null>(null);
 

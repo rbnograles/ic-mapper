@@ -76,7 +76,6 @@ const FloorBase = memo(
           key={p.id}
           onClick={p.type !== 'NotClickable' && p.name !== 'Park' ? () => onClick?.(p) : undefined}
           style={{
-            // ✅ Use CSS to bring highlighted items forward instead of DOM manipulation
             position: 'relative',
             zIndex: isNameHighlighted || isTypeHighlighted ? 100 : 1,
           }}

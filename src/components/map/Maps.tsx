@@ -13,6 +13,8 @@ import PathNodes from '@/components/map/PathNodes';
 import useMapStore from '@/store/MapStore';
 import useDrawerStore from '@/store/DrawerStore';
 import { VerticalTransitionPrompt } from '../props/VerticalTransitionPrompt';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
 
 type TMapBuilder = {
   map: any[];
@@ -25,6 +27,9 @@ type TMapBuilder = {
 };
 
 function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks }: TMapBuilder) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const highlightPlace = useMapStore((state) => state.highlightedPlace);
   const activeNodeIds = useMapStore((state) => state.activeNodeIds);
   const selectedType = useMapStore((state) => state.selectedType);
@@ -37,7 +42,8 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
   const { BASE_ICON_MAP: ICONS = BASE_ICON_MAP, viewBox = '0 0 14779 10835' } = {};
 
   const transformRef = useRef<any>(null);
-  const initialScale = 3.5;
+
+  const initialScale = isMobile ? 2 : 3.5;
 
   const [centers, setCenters] = useState<Record<string, { x: number; y: number }>>({});
 
@@ -90,6 +96,7 @@ function MapBuilder({ map, nodes, entrances, boundaries, buidingMarks, roadMarks
             <g id="Base Map" style={{ isolation: 'isolate' }}>
               <Boundaries boundaries={boundaries} />
               <RoadMarks roadMarks={roadMarks} />
+              {/* Base Map, renders the actual map */}
               {map.map((p) => (
                 <Base
                   key={p.id}
