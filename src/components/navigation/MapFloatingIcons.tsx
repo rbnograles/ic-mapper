@@ -8,81 +8,154 @@ import { FiZoomIn, FiZoomOut } from 'react-icons/fi';
 import useDrawerStore from '@/store/DrawerStore';
 import { Fragment } from 'react/jsx-runtime';
 import { FaDirections } from 'react-icons/fa';
+import { useThemeMode } from '@/app/providers/ThemeProvider';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function MapFloatingIcons({ transformRef }: { transformRef: any }) {
   const { zoomIn, zoomOut } = useControls();
-  // ✅ MUI breakpoints
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // <600px
+  const { mode, toggleColorMode } = useThemeMode();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); 
   const isMidTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'xl')); // 600–900px
-  // Drawer Store
+  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'xl'));
+  
   const setIsFloorMapOpen = useDrawerStore((state) => state.setIsFloorMapOpen);
   const setIsDirectionPanelOpen = useDrawerStore((state) => state.setIsDirectionPanelOpen);
 
   const handleReset = () => {
     if (!transformRef?.current) return;
-    let scale = 3;
-    let x = 450;
-    let y = 140;
-    transformRef.current.setTransform(x, y, scale);
+    transformRef.current.setTransform(450, 140, 3);
+  };
+
+  // ✅ Simplified positioning logic
+  const getTopPosition = () => {
+    if (isMobile) return '140px'; // Below chips on mobile
+    return '16px'; // Top-right on desktop
+  };
+
+  const getBottomPosition = () => {
+    if (isMobile) return 70; // Above bottom nav
+    if (isMidTablet) return 100;
+    return 16; // Standard desktop spacing
   };
 
   return (
-    <Box
-      sx={{
-        '& > :not(style)': {
-          m: 1,
-          // ✅ Default (desktop/tablet size)
-          width: 55,
-          height: 55,
-          minHeight: 55,
-          // ✅ Smaller size for mobile
-          '@media (max-width:600px)': {
-            width: 50,
-            height: 50,
-            minHeight: 50,
-          },
-        },
-        position: 'fixed',
-        bottom: isMobile ? 60 : isMidTablet ? 90 : isTablet ? 16 : 100,
-        right: isMobile ? 2 : 15,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: isMobile || isMidTablet || isTablet ? 'space-between' : '',
-        height: isMobile  ? '67vh' : isTablet ? '75vh' : isMidTablet ? '80vh' : '32vh',
-        zIndex: 300,
-      }}
-    >
-      <Fab
-        aria-label="add"
-        onClick={() => setIsFloorMapOpen(true)}
-        sx={{ bgcolor: theme.palette.secondary.main, borderRadius: '22px' }}
+    <>
+      {/* ✅ TOP GROUP: Night mode + Floor selector - Always top-right */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: getTopPosition(),
+          right: isMobile ? 8 : 16,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
+          zIndex: 1300, // ✅ Higher than AppBar to stay on top
+        }}
       >
-        <HiMiniSquare3Stack3D style={{ color: 'white', fontSize: 18 }} />
-      </Fab>
-      <Fab
-        aria-label="add"
-        onClick={() => setIsDirectionPanelOpen(true)}
-        sx={{ bgcolor: theme.palette.primary.main, borderRadius: '22px' }}
+        <Fab
+          onClick={toggleColorMode}
+          sx={{ 
+            bgcolor: theme.palette.secondary.main, 
+            width: isMobile ? 50 : 55,
+            height: isMobile ? 50 : 55,
+            borderRadius: '22px'
+          }}
+          aria-label="toggle theme"
+        >
+          {theme.palette.mode === 'dark' ? (
+            <Brightness7Icon sx={{ color: 'white', fontSize: 18 }} />
+          ) : (
+            <Brightness4Icon sx={{ color: 'white', fontSize: 18 }} />
+          )}
+        </Fab>
+        
+        <Fab
+          onClick={() => setIsFloorMapOpen(true)}
+          sx={{ 
+            bgcolor: theme.palette.secondary.main,
+            width: isMobile ? 50 : 55,
+            height: isMobile ? 50 : 55,
+            borderRadius: '22px'
+          }}
+          aria-label="floor selector"
+        >
+          <HiMiniSquare3Stack3D style={{ color: 'white', fontSize: 18 }} />
+        </Fab>
+      </Box>
+
+      {/* All other controls - Bottom-right */}
+      <Box
+        sx={{
+          position: 'fixed',
+          bottom: getBottomPosition(),
+          right: isMobile ? 8 : 16,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
+          zIndex: 1100, // Below top group but above map
+        }}
       >
-        <FaDirections style={{ color: 'white', fontSize: 18 }} />
-      </Fab>
-      {!isMobile && !isMidTablet && !isTablet && (
-        <Fragment>
-          <Fab aria-label="add" onClick={() => zoomIn()} sx={{ bgcolor: '#7B48FF' }}>
-            <FiZoomIn style={{ color: 'white' }} />
-          </Fab>
-          <Fab aria-label="zoom-out" onClick={() => zoomOut()} sx={{ bgcolor: '#E0DCF4' }}>
-            <FiZoomOut />
-          </Fab>
-          <Fab aria-label="reset" onClick={() => handleReset()} sx={{ bgcolor: '#E0DCF4' }}>
-            <RestartAltIcon />
-          </Fab>
-        </Fragment>
-      )}
-    </Box>
+        <Fab
+          onClick={() => setIsDirectionPanelOpen(true)}
+          sx={{ 
+            bgcolor: theme.palette.primary.main,
+            width: isMobile ? 50 : 55,
+            height: isMobile ? 50 : 55,
+            borderRadius: '22px'
+          }}
+          aria-label="directions"
+        >
+          <FaDirections style={{ color: 'white', fontSize: 18 }} />
+        </Fab>
+
+        {/* ✅ Zoom controls - Only on desktop */}
+        {!isMobile && !isMidTablet && !isTablet && (
+          <>
+            <Fab 
+              onClick={() => zoomIn()} 
+              sx={{ 
+                bgcolor: theme.palette.primary.main,
+                width: 55,
+                height: 55,
+                borderRadius: '22px'
+              }}
+              aria-label="zoom in"
+            >
+              <FiZoomIn style={{ color: 'white' }} />
+            </Fab>
+            
+            <Fab 
+              onClick={() => zoomOut()} 
+              sx={{ 
+                bgcolor: theme.palette.secondary.light || '#E0DCF4',
+                width: 55,
+                height: 55,
+                borderRadius: '22px'
+              }}
+              aria-label="zoom out"
+            >
+              <FiZoomOut style={{ color: 'white'}} />
+            </Fab>
+            
+            <Fab 
+              onClick={handleReset} 
+              sx={{ 
+                bgcolor: theme.palette.secondary.light || '#E0DCF4',
+                width: 55,
+                height: 55,
+                borderRadius: '22px'
+              }}
+              aria-label="reset view"
+            >
+              <RestartAltIcon style={{ color: 'white'}} />
+            </Fab>
+          </>
+        )}
+      </Box>
+    </>
   );
 }
 

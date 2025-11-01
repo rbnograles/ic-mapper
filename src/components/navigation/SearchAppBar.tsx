@@ -5,7 +5,7 @@ import { useState } from 'react';
 import uniqueTypes from '@/Data/unique_types.json';
 import Direction from '@/components/drawer/DirectionSearch';
 import { Chips } from '@/components/common/Chips';
-import type { IMapItem, ViaOption } from '@/types';
+import type { IMapItem, IPlace, ViaOption } from '@/types';
 import { useLazyMapData } from '@/hooks/useLazyMapData';
 import useDrawerStore from '@/store/DrawerStore';
 import useSearchStore from '@/store/SearchStore';
@@ -168,7 +168,7 @@ export default function SearchAppBar({
           position="fixed"
           elevation={0}
           sx={{
-            width: '100vw', // make sure it never exceeds viewport
+            width: '100vw',
             maxWidth: '100%',
             left: 0,
             backgroundColor: 'transparent',
@@ -176,6 +176,7 @@ export default function SearchAppBar({
             paddingTop: 1.5,
             flexDirection: isMobile ? 'column' : 'row',
             overflowX: 'hidden',
+            paddingRight: isMobile ? 0 : '70px',
           }}
         >
           <Toolbar

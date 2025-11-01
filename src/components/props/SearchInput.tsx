@@ -70,8 +70,9 @@ export default function SearchInput({
   const theme = useTheme();
   
   const isDirectionPanelOpen = useDrawerStore((s) => s.isDirectionPanelOpen);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [open, setOpen] = useState(false);
 
-  // destructure lazy loader props
   const {
     visiblePlaces: hookVisible,
     hasMore,
@@ -81,14 +82,12 @@ export default function SearchInput({
     saveToCache,
   } = lazy;
 
-  // Use search store
   const storeQuery = useSearchStore((state) => state.query);
   const storeDisplayOptions = useSearchStore((state) => state.displayOptions);
 
   const setStoreQuery = useSearchStore((state) => state.setQuery);
   const setStoreDisplayOptions = useSearchStore((state) => state.setDisplayOptions);
 
-  // local UI state for spinner only
   const [localLoading, setLocalLoading] = useState<boolean>(false);
 
   const mounted = useRef(true);
@@ -102,12 +101,10 @@ export default function SearchInput({
     };
   }, []);
 
-  // Initialize/Sync store display options when hookVisible changes
   useEffect(() => {
     setStoreDisplayOptions(hookVisible);
   }, [hookVisible]);
 
-  // Debounced search — uses storeQuery and writes results to storeDisplayOptions
   useEffect(() => {
     if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
 
@@ -117,7 +114,6 @@ export default function SearchInput({
       if (!mounted.current) return;
 
       if (!storeQuery.trim()) {
-        // restore visible chunk from hook
         setStoreDisplayOptions(hookVisible);
       } else {
         const results = search(storeQuery);
@@ -132,7 +128,6 @@ export default function SearchInput({
     };
   }, [storeQuery, hookVisible]);
 
-  // infinite-scroll - calls the parent's loadMore
   const handleLoadMore = useCallback(() => {
     if (!hasMore) return;
     loadMore();
@@ -145,7 +140,6 @@ export default function SearchInput({
     }
   };
 
-  // Normalize selection: string -> IMapItem (try to find match then fallback to minimal item)
   const normalizeSelection = useCallback(
     (val: string | IMapItem | null): IMapItem | null => {
       if (!val) return null;
@@ -162,15 +156,28 @@ export default function SearchInput({
     [storeDisplayOptions, hookVisible]
   );
 
-  // onChange handler for Autocomplete
   const handleChange = (_event: any, val: string | IMapItem | null) => {
     const normalized = normalizeSelection(val);
-    onChange?.(normalized);
-    // Also update store pointA/pointB if the selected value matches current UI context.
-    // Persist to cache via lazy hook
-    if (normalized) {
-      saveToCache(normalized);
+    
+    // CRITICAL: Close dropdown and blur input immediately on iOS
+    setOpen(false);
+    if (inputRef.current) {
+      inputRef.current.blur();
     }
+    
+    // Force blur on any active element (for iOS keyboard dismissal)
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
+    // On mobile, delay the onChange callback to let keyboard fully dismiss
+    const delay = isMobile ? 300 : 0;
+    setTimeout(() => {
+      onChange?.(normalized);
+      if (normalized) {
+        saveToCache(normalized);
+      }
+    }, delay);
   };
 
   const handleInputChange = (_: any, val: string) => {
@@ -178,8 +185,16 @@ export default function SearchInput({
   };
 
   const handleFocus = () => {
-    setStoreQuery(''); // this will reset the query to prevent shared query issue
+    setStoreQuery('');
     setStoreDisplayOptions(hookVisible);
+    setOpen(true);
+  };
+
+  const handleBlur = () => {
+    // Small delay to allow selection to register first
+    setTimeout(() => {
+      setOpen(false);
+    }, 150);
   };
 
   return (
@@ -191,6 +206,9 @@ export default function SearchInput({
       <Autocomplete<IMapItem, false, false, true>
         freeSolo
         blurOnSelect
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
         value={value ?? null}
         options={storeDisplayOptions}
         loading={localLoading || hookLoading}
@@ -205,14 +223,13 @@ export default function SearchInput({
         onChange={handleChange}
         onInputChange={handleInputChange}
         onFocus={handleFocus}
+        onBlur={handleBlur}
         ListboxProps={{
           onScroll: listBoxOnScroll,
           style: { maxHeight: 350, overflow: 'auto', scrollbarGutter: 'stable' as any },
         }}
         sx={{ flex: 1 }}
-        // this section is responsible for building list items
         renderOption={(props, option: IMapItem, { index }) => {
-            // check if the item is last then show fetching icon
           const isLastItem = index === storeDisplayOptions.length - 1;
 
           return (
@@ -262,10 +279,10 @@ export default function SearchInput({
             </li>
           );
         }}
-        // this section is responsible for rendering the search input
         renderInput={(params) => (
           <StyledTextField
             {...params}
+            inputRef={inputRef}
             style={{ padding: 10 }}
             placeholder={isDirectionPanelOpen ? `${placeholder}` : placeholder}
             variant="standard"
@@ -275,7 +292,6 @@ export default function SearchInput({
 
       <VoiceRecorder
         onTranscript={(text: string) => {
-          // update store query when voice transcript arrives
           setStoreQuery(text);
         }}
         color={theme.palette.secondary.main}

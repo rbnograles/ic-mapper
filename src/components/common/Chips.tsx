@@ -23,7 +23,7 @@ import CHIPS_ICONMAP from '@/components/common/ChipsIconMapper';
 
 export const Chips = ({ types }: { types: string[] }) => {
   const theme = useTheme();
-  
+
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -149,7 +149,8 @@ export const Chips = ({ types }: { types: string[] }) => {
         onMouseLeave={onMouseUpOrLeave}
         sx={{
           display: 'flex',
-          width: '100%',
+          width: isMobile ? '100%' : 'calc(100% - 80px)', // reserve space for icons
+          maxWidth: '100%',
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
           msOverflowStyle: 'none',
